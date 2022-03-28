@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": ["functions/send-email.mjs"],
+  "sourceRoot": "C:/Users/HYPER/AppData/Local/Temp/tmp-32048-Lqpv2jLnQZ28",
+  "sourcesContent": ["import { MAILGUN_API_KEY } from '../.constants.js';\n// import mailgunSdk from 'mailgun-js'\n\nconst domain = \"frogefinance.com\"\n\n// const apiKey = process.env.MAILGUN_API_KEY\n// const domain = `mail.${process.env.DOMAIN}`\n// const mailgun = mailgunSdk({ MAILGUN_API_KEY, domain })\nexports.handler = async (event, context, callback) => {\n  console.log('waaaat ', event)\n\n  // const data = event.body;\n  const data = JSON.parse(event.body);\n\n  let response;\n  try {\n    /* Send email to recicipent */\n    response = await mailgun.messages().send({\n      from: data.email,\n      to: 'admin@frogefinance.com',\n      subject: \"Enquiry by: \" + data.name,\n      text: data.message,\n    })\n  } catch (e) {\n    console.log('Err', e)\n    return {\n      statusCode: e.statusCode || 500,\n      body: JSON.stringify({\n        error: e.message\n      })\n    }\n  }\n\n  return {\n    statusCode: 200,\n    body: JSON.stringify({\n      result: response.message\n    })\n  }\n}\n"],
+  "mappings": ";AAQA,QAAQ,UAAU,OAAO,OAAO,SAAS,aAAa;AACpD,UAAQ,IAAI,WAAW;AAGvB,QAAM,OAAO,KAAK,MAAM,MAAM;AAE9B,MAAI;AACJ,MAAI;AAEF,eAAW,MAAM,QAAQ,WAAW,KAAK;AAAA,MACvC,MAAM,KAAK;AAAA,MACX,IAAI;AAAA,MACJ,SAAS,iBAAiB,KAAK;AAAA,MAC/B,MAAM,KAAK;AAAA;AAAA,WAEN,GAAP;AACA,YAAQ,IAAI,OAAO;AACnB,WAAO;AAAA,MACL,YAAY,EAAE,cAAc;AAAA,MAC5B,MAAM,KAAK,UAAU;AAAA,QACnB,OAAO,EAAE;AAAA;AAAA;AAAA;AAKf,SAAO;AAAA,IACL,YAAY;AAAA,IACZ,MAAM,KAAK,UAAU;AAAA,MACnB,QAAQ,SAAS;AAAA;AAAA;AAAA;",
+  "names": []
+}
