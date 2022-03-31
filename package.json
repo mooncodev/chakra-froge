@@ -3,9 +3,9 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "ChakraDev": "cross-env REACT_APP_PHASE=0 craco start",
-        "ChakraNetDev": "cross-env REACT_APP_PHASE=0 netlify dev",
-        "ChakraNetProdBuild": "cross-env REACT_APP_PHASE=3 netlify build",
+        "ChakraDev": "craco start",
+        "ChakraNetDev": "netlify dev",
+        "ChakraNetProdBuild": "netlify build",
         "build": "craco build",
         "test": "craco test --env=jsdom",
         "eject": "craco ejct",

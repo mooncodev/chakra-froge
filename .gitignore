@@ -4,7 +4,6 @@ package-lock.json
 yarn-lock.json
 build
 .DS_Store
-.env.development
 
 # Local Netlify folder
 .netlify
