@@ -8,12 +8,12 @@ import { WalletConnectConnector } from 'web3-react-walletconnect-connector'
 import { WalletLinkConnector } from 'web3-react-walletlink-connector'
 
 import UNISWAP_LOGO_URL from '../assets/svg/logo.svg'
-import getLibrary from '../utils/getLibrary'
-import { FortmaticConnector } from './Fortmatic'
+// import getLibrary from '../utils/getLibrary'
+// import { FortmaticConnector } from './Fortmatic'
 import { NetworkConnector } from './NetworkConnector'
 
-const FORMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY
-const PORTIS_ID = process.env.REACT_APP_PORTIS_ID
+// const FORMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY
+// const PORTIS_ID = process.env.REACT_APP_PORTIS_ID
 
 export default function getLibrary(provider) {
   const library = new Web3Provider(
@@ -48,17 +48,17 @@ export const walletconnect = new WalletConnectConnector({
   qrcode: true,
 })
 
-// mainnet only
-export const fortmatic = new FortmaticConnector({
-  apiKey: FORMATIC_KEY ?? '',
-  chainId: 1,
-})
-
-// mainnet only
-export const portis = new PortisConnector({
-  dAppId: PORTIS_ID ?? '',
-  networks: [1],
-})
+// // mainnet only
+// export const fortmatic = new FortmaticConnector({
+//   apiKey: FORMATIC_KEY ?? '',
+//   chainId: 1,
+// })
+//
+// // mainnet only
+// export const portis = new PortisConnector({
+//   dAppId: PORTIS_ID ?? '',
+//   networks: [1],
+// })
 
 export const walletlink = new WalletLinkConnector({
   url: INFURA_NETWORK_URLS[SupportedChainId.MAINNET],

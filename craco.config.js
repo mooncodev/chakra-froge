@@ -43,7 +43,7 @@ module.exports = {
 
             return {
                 ...config,
-                mode: "development", // "production" | "development" | "none"
+                // mode: "development", // "production" | "development" | "none"
                 // devtool: "source-map",
                 module: {
                     ...module,
