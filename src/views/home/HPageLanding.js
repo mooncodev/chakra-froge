@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import {
   Box, Flex, Button, FormControl, FormLabel,
-  Heading, Input, Link, Switch, Text, useColorModeValue, Image, VStack, StackDivider, HStack,
+  Heading, Input, Link, Switch, Text, Image, VStack, StackDivider, HStack,
 } from '@chakra-ui/react';
 // Assets
 import signInImage from "assets/img/signInImage.png";

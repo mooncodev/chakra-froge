@@ -2,8 +2,7 @@
 import {
   Box, Button, Flex, Grid,
   Icon, Image, Progress, SimpleGrid, Spacer, Text,
-  Table, Tbody, Th, Thead, Tr,
-  useColorMode, useColorModeValue, Portal,
+  Table, Tbody, Th, Thead, Tr, Portal,
 } from '@chakra-ui/react';
 // assets
 import peopleImage from "assets/img/people-image.png";

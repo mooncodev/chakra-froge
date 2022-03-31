@@ -1,6 +1,5 @@
 import {
-  Button, Icon, Text, chakra,
-  useColorMode, useColorModeValue, Center, HStack, VStack,
+  Button, Icon, Text, chakra, Center, HStack, VStack,
 } from '@chakra-ui/react';
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";

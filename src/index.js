@@ -22,25 +22,25 @@ const AppProvider = React.lazy(() =>
 // );
 
 ReactDOM.render(
-  <Suspense fallback={<div className="loading" />}>
-    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-    <BrowserRouter>
-      <Routes>
-        <Route element={<HomeLayout />} >
-          <Route path={'/'} element={<HPageLanding/>} />
-          <Route path={'/team'} element={<HPageTeam/>} />
-        </Route>
-        <Route path={'/app/*'} element={<AppProvider/>} >
-          <Route path={'dash'} element={<APageDashboard/>} />
-          <Route path={'billing'} element={<APageBilling/>} />
-          <Route path={'profile'} element={<APageProfile/>} />
-          <Route path={'tables'} element={<APageTables/>} />
-          <Route path={'*'} element={<APageDashboard/>} />
-        </Route>
-        <Route path='*' element={<HomeLayout/>} />
-      </Routes>
-    </BrowserRouter>
-  </Suspense>
+  <><ColorModeScript initialColorMode={theme.config.initialColorMode}/>
+    <Suspense fallback={<div className="loading"/>}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<HomeLayout/>}>
+            <Route path={'/'} element={<HPageLanding/>}/>
+            <Route path={'/team'} element={<HPageTeam/>}/>
+          </Route>
+          <Route path={'/app/*'} element={<AppProvider/>}>
+            <Route path={'dash'} element={<APageDashboard/>}/>
+            <Route path={'billing'} element={<APageBilling/>}/>
+            <Route path={'profile'} element={<APageProfile/>}/>
+            <Route path={'tables'} element={<APageTables/>}/>
+            <Route path={'*'} element={<APageDashboard/>}/>
+          </Route>
+          <Route path="*" element={<HomeLayout/>}/>
+        </Routes>
+      </BrowserRouter>
+    </Suspense></>
 
   , document.getElementById("root")
 );

@@ -1,5 +1,5 @@
 // Chakra Imports
-import { Button, useColorModeValue } from "@chakra-ui/react";
+import { Button, } from "@chakra-ui/react";
 // Custom Icons
 import { SettingsIcon } from "components/Icons/Icons";
 import PropTypes from "prop-types";

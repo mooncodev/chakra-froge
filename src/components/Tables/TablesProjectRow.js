@@ -7,7 +7,6 @@ import {
   Progress,
   Icon,
   Button,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { FaEllipsisV } from "react-icons/fa";
 

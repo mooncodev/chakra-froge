@@ -2,13 +2,7 @@ import React from "react";
 // Chakra imports
 import {
   Flex,
-  Table,
-  Tbody,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  useColorModeValue,
+  Table, Tbody, Text, Th, Thead, Tr,
 } from "@chakra-ui/react";
 // Custom components
 import Card from "components/Card/Card.js";

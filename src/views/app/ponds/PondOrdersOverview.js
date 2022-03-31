@@ -2,11 +2,8 @@
 import {
   Box, Button, Flex, Grid,
   Icon, Image, Progress, SimpleGrid, Spacer, Text,
-  Table, Tbody, Th, Thead, Tr,
-  useColorMode, useColorModeValue,
 } from "@chakra-ui/react";
 // assets
-import peopleImage from "assets/img/people-image.png";
 import frog009 from "assets/img/stock-frogs/darkbg/square/009.jpg";
 // Custom components
 import {Pond,PondBody,PondHeader} from '../bits/Pond.js';

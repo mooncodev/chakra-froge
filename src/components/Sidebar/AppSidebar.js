@@ -4,7 +4,6 @@ import {
   Box, Button, Drawer, DrawerBody, DrawerCloseButton,
   DrawerContent, DrawerHeader, DrawerOverlay,
   Flex, Icon, Link, Stack, StackDivider, Text, VStack,
-  useColorModeValue, useDisclosure,
 } from '@chakra-ui/react';
 import IconBox from "components/Icons/IconBox";
 import { ExternalLinkIcon } from '@chakra-ui/icons'

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import {
   IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon,
-  useColorModeValue as ucmv, Link, Drawer, DrawerContent, Text,
+  Link, Drawer, DrawerContent, Text,
   useDisclosure, BoxProps, FlexProps,
   Menu, MenuButton, MenuDivider, MenuItem, MenuList, Button, Image,
 } from '@chakra-ui/react';
@@ -25,7 +25,7 @@ const LinkItems = [
 export default function Olenav({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={ucmv('gray.100', 'gray.900')}>
+    <Box minH="100vh" bg={'gray.900'}>
       {/* <SidebarContent */}
       {/*   onClose={() => onClose} */}
       {/*   display={{ base: 'none', md: 'block' }} */}
@@ -54,8 +54,8 @@ export default function Olenav({ children }) {
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
-      transition="3s ease" bg={ucmv('white', 'gray.900')}
-      borderRight="1px" borderRightColor={ucmv('gray.200', 'gray.700')}
+      transition="3s ease" bg={'gray.900'}
+      borderRight="1px" borderRightColor={'gray.700'}
       w={{ base: 'full', md: 60 }} pos="fixed" h="full"
       {...rest}
     >
@@ -107,8 +107,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
   return (
     <Flex
       mx={{ base: 0, md: 20 }} px={{ base: 4, md: 4 }} height="20" alignItems="center"
-      bg={ucmv('white', 'gray.900')}
-      borderBottomWidth="1px" borderBottomColor={ucmv('gray.200', 'gray.700')}
+      bg={'gray.900'}
+      borderBottomWidth="1px" borderBottomColor={'gray.700'}
       justifyContent={{ base: 'space-between', md: 'flex-end' }} {...rest}>
       <Text display={{ base: 'flex', md: 'none' }} fontSize="2xl" fontFamily="monospace" fontWeight="bold">
         Froge
@@ -116,7 +116,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
       <HStack spacing={{ base: '0', md: '6' }}>
         <LogoSection/>
-        <Image left="0" width={12} size={'sm'} src={'./logo-alpha-504x504.png'}/>
+        <Image left="0" width={12} size='sm' src={'./logo-alpha-504x504.png'}/>
 
         <Flex alignItems={'center'}>
           <Menu>
@@ -131,8 +131,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 <Box display={{ base: 'none', md: 'flex' }}><FiChevronDown /></Box>
               </HStack>
             </MenuButton>
-            <MenuList bg={ucmv('white', 'gray.900')}
-                      borderColor={ucmv('gray.200', 'gray.700')}>
+            <MenuList bg='gray.900'
+                      borderColor='gray.700'>
               <MenuItem>Greenpaper</MenuItem>
               <MenuDivider />
               <MenuItem>FrogeHopper</MenuItem>

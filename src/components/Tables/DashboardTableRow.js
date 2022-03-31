@@ -7,7 +7,6 @@ import {
   Td,
   Text,
   Tr,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
 

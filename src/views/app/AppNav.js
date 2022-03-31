@@ -6,7 +6,6 @@ import {
   BreadcrumbLink, Center,
   Flex,
   Link,
-  useColorModeValue,
 } from '@chakra-ui/react';
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from 'react';

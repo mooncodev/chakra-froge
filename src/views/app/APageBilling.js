@@ -7,7 +7,6 @@ import {
   Icon,
   Spacer,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
 // Assets
 import BackgroundCard1 from "assets/img/BackgroundCard1.png";
@@ -37,14 +36,10 @@ import {
 } from "data/general";
 
 function APageBilling() {
-  // Chakra color mode
   const iconTeal = "green.300"
   const textColor = "white"
   const borderColor = "gray.500"
-  const bgButton = useColorModeValue(
-    "linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)",
-    "gray.800"
-  );
+  const bgButton = "gray.800"
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
@@ -62,7 +57,7 @@ function APageBilling() {
             <Card
               backgroundImage={BackgroundCard1}
               backgroundRepeat="no-repeat"
-              background="cover"
+              backgroundSize="cover"
               bgPosition="10%"
               p="16px"
               h={{ sm: "220px", xl: "100%" }}

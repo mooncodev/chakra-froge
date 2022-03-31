@@ -1,7 +1,7 @@
 import {
   Box, Flex, Text, IconButton, Button, Stack, Collapse,
   Icon, Link, Popover, PopoverTrigger, PopoverContent,
-  useDisclosure, Image, useColorMode, Center,
+  useDisclosure, Image, Center,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon,
@@ -10,12 +10,10 @@ import { NavLink } from 'react-router-dom';
 import { FrogeLogoSvg, FrogeTitleLogoSvg,
   FrogeLogoPng, FrogeTitleLogoColorPng } from 'assets/FrogeBrand.js';
 import React from 'react';
-import { BsMoonStarsFill, BsSun } from 'react-icons/bs';
 
 
 export default function HomeNavbar() {
   const { isOpen, onToggle } = useDisclosure();
-  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Box>
@@ -35,12 +33,6 @@ export default function HomeNavbar() {
         </Flex>
 
         <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
-
-          <Button aria-label="Toggle Color Mode" onClick={toggleColorMode}
-            _focus={{ boxShadow: 'none' }} w="fit-content"
-          >
-            {colorMode === 'light' ? <BsMoonStarsFill /> : <BsSun />}
-          </Button>
 
           <Button
             display='inline-flex' fontSize={'sm'} fontWeight={600} color={'white'}

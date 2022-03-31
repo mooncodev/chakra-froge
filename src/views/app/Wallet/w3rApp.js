@@ -110,11 +110,11 @@ export default function W3RApp() {
   }
 
   return (
-    <Menu id='ConnectWalletMenu' backgroundColor="transparent">
+    <Menu id='ConnectWalletMenu'>
       <MenuButton onClick={()=>set_wcModalIsOpen(true)} id='WCButton'>
         <ConnectWalletNavButton/>
       </MenuButton>
-      <MenuList p="16px 8px" opacity='0.7'>
+      <MenuList p="16px 8px">
         {/* <MenuItem borderRadius="8px" mb="10px"></MenuItem> */}
 
         <VStack opacity='0.7'>

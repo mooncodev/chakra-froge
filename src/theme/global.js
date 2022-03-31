@@ -1,7 +1,6 @@
 import { mode } from "@chakra-ui/theme-tools";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import { fontsTheme } from './foundations/fonts.js';
-
 //https://paletton.com/
 //https://themera.vercel.app/
 //http://colormind.io/bootstrap/
@@ -50,6 +49,7 @@ export const globalStyles = {
         fontFamily: 'Montserrat , Helvetica, sans-serif',
         fontWeight: 400,
         bg: "global.bg",
+        //...bgPattern,
       },
       heading: 'Montserrat , Helvetica, sans-serif',
       html: {
@@ -59,3 +59,21 @@ export const globalStyles = {
     }),
   },
 };
+
+const bgPattern = {
+  ':before': {
+    content: '" "',
+    display: 'block',
+    position: 'absolute',
+    left: '0',
+    top: '0',
+    width: '100%',
+    height: '100%',
+    opacity: '0.06',
+    backgroundImage: import('../assets/pattern-svgs/pattern5.svg'),
+    backgroundRepeat: 'repeat',
+    backgroundPosition: '50%, 50%',
+    backgroundSize: '25%',
+    pointerEvents: 'none',
+  }
+}

@@ -1,8 +1,8 @@
+import React from 'react';
 import {
   Box, Button, Container, Link, SimpleGrid, Stack,
-  Text, VisuallyHidden, Input, IconButton, useColorModeValue, Icon,
+  Text, VisuallyHidden, Input, IconButton, Icon,
 } from '@chakra-ui/react';
-import React, { ReactNode } from 'react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { BiMailSend } from 'react-icons/bi';
 import { FrogeLogo, FrogeLogoFull } from 'components/Icons/FrogeBrandSvgs.js';
@@ -12,12 +12,11 @@ import ErrorBoundary from 'helpers/ErrorBoundary';
 
 
 export default function HomeFooter() {
-  const iconTeal = "green.300"
-  const iconBoxInside = "white"
+
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}>
+      bg={'gray.900'}
+      color={'gray.200'}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid
           templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 2fr' }}
@@ -60,15 +59,15 @@ export default function HomeFooter() {
             <Stack direction={'row'}>
               <Input
                 placeholder={'Your email address'}
-                bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+                bg={'whiteAlpha.100'}
                 border={0}
                 _focus={{
                   bg: 'whiteAlpha.300',
                 }}
               />
               <IconButton
-                bg={useColorModeValue('green.400', 'green.800')}
-                color={useColorModeValue('white', 'gray.800')}
+                bg={'green.800'}
+                color={'gray.800'}
                 _hover={{
                   bg: 'green.600',
                 }}
@@ -86,12 +85,12 @@ export default function HomeFooter() {
 const SocialButton = ({ children, label, href, }) => {
   return (
     <Button
-      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+      bg={'whiteAlpha.100'}
       rounded={'full'} w={8} h={9} bgSize={8}
       cursor={'pointer'} as={'a'} href={href}
       display={'inline-flex'} alignItems={'center'}
       justifyContent={'center'} transition={'background 0.3s ease'}
-      _hover={{bg:useColorModeValue('blackAlpha.200','whiteAlpha.200'),}}>
+      _hover={{bg:'whiteAlpha.200',}}>
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}
     </Button>
