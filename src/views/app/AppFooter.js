@@ -33,14 +33,14 @@ export default function AppFooter(props) {
         </ListItem>
         <ListItem me={{ base: "20px", md: "44px", }}>
           <Link href="https://froge.fi"
-            target="_blank"
+            target="_parent"
             color="gray.400">
             {"Back to Home"}
           </Link>
         </ListItem>
         <ListItem me={{ base: "20px", md: "44px", }}>
           <Link color="gray.400"
-            target="_blank"
+            target="_parent"
             href="https://froge.fi">
             {"Support"}
           </Link>

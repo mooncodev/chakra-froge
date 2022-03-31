@@ -1,9 +1,9 @@
-import "@fontsource/raleway/200.css"
-import "@fontsource/raleway/400.css"
+import "@fontsource/raleway/300.css"
+import "@fontsource/raleway/500.css"
 import "@fontsource/raleway/700.css"
 import "@fontsource/raleway/900.css"
-import "@fontsource/montserrat/200.css"
-import "@fontsource/montserrat/400.css"
+import "@fontsource/montserrat/300.css"
+import "@fontsource/montserrat/500.css"
 import "@fontsource/montserrat/700.css"
 import "@fontsource/montserrat/900.css"
 
@@ -15,8 +15,8 @@ export const fontsTheme = {
     mono: "Menlo, monospace",
   },
   fontWeights: {
-    rale: { light: 200, medium: 400, bold: 700, heavy: 900, },
-    mont: { light: 200, medium: 400, bold: 700, heavy: 900, },
+    rale: { light: 300, medium: 500, bold: 700, heavy: 900, },
+    mont: { light: 300, medium: 500, bold: 700, heavy: 900, },
   },
 }
 
@@ -29,14 +29,14 @@ function buildFontTree( famStr, weightsObj, sizesObj, rv = {} ){
 const montFam = 'mont'
 const raleFam = 'mont'
 const montWeights = {
-  lt:200,
-  md:400,
+  lt:300,
+  md:500,
   bd:700,
   hv:900,
 };
 const montSizes = {
-  xs:'.4rem',
-  sm:'.6rem',
+  xs:'.6rem',
+  sm:'.8rem',
   md:'.9rem',
   lg:'1.2rem',
   xl:'1.5rem',

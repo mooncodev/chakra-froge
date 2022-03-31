@@ -8,12 +8,8 @@ import {
   DrawerCloseButton,
   DrawerContent,
   DrawerOverlay,
-  Flex, HStack, Icon,
-  Link,
+  Flex,
   Stack,
-  Text, useBreakpointValue,
-  useColorModeValue as ucmv,
-  useDisclosure, useStyleConfig, VStack,
 } from '@chakra-ui/react';
 import IconBox from "components/Icons/IconBox.js";
 import { Separator } from "components/Separator/Separator.js";
@@ -108,13 +104,16 @@ export function AppSidebar(props) {
             <DrawerBody px="1rem">
               <SBCloseButton/>
               <Box pt={8} textAlign='center'>
-                <FrogeLogo opacity='.7' fontSize="46" _hover={{ opacity:'.8', }}  alignSelf="center"/>
+                <FrogeLogo fontSize="46" _hover={{ opacity:'.8', }}  alignSelf="center"/>
                 <Stack my={5} direction="column" alignItems="center">
                   <SBNavLink to='./'>Dash</SBNavLink>
-                  <SBNavLink to='./billing'>Billing</SBNavLink>
-                  <SBNavLink to='./profile'>Profile</SBNavLink>
-                  <SBNavLink to='./tables'>Tables</SBNavLink>
-                  <SBNavLink to='./tables'>Calculators</SBNavLink>
+                  <SBNavLink to='./billing'>FrogeX</SBNavLink>
+                  <SBNavLink to='./profile'>Eco Action</SBNavLink>
+                  <SBNavLink to='./tables'>Sponsorships</SBNavLink>
+                  <SBNavLink to='./calculators'>Game Night</SBNavLink>
+                  <SBNavLink to='./calculators'>NFT</SBNavLink>
+                  <SBNavLink to='./calculators'>Xchange</SBNavLink>
+                  <SBNavLink to='./calculators'>Calculators</SBNavLink>
                 </Stack>
               </Box>
             </DrawerBody>

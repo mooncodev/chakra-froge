@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "ChakraDev": "craco start",
-        "ChakraNetDev": "BROWSER=none netlify dev",
+        "ChakraNetDev": "netlify dev",
         "ChakraNetProdBuild": "netlify build",
         "build": "craco build",
         "test": "craco test --env=jsdom",

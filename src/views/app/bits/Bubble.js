@@ -12,12 +12,13 @@ const BubbleStyleConfig = {
   baseStyle: {
     Bubble:{
       width: "100%",
-      mb:'6px',
+      py:'12px',
     },
     BubLabel:{
       textAlign:'center',
+      lineHeight: 'normal',
       width: "100%",
-      color:'gray.300',
+      color:'gray.400',
       ...mont.md.lg,
     },
     BubValue:{
@@ -30,11 +31,11 @@ const BubbleStyleConfig = {
       ...mont.md.md,
     },
     BubSub:{
-      color:'gray.300',
+      color:'gray.400',
       position: "absolute",
       right: "0",
       top: "100%",
-      ...mont.hv.sm,
+      ...mont.md.sm,
     },
 
   },

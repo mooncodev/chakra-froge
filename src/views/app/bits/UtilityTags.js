@@ -105,18 +105,22 @@ export const ConnectWalletNavButton = ({active,children,...rest})=> {
   const statusIconStyle = {
     backgroundColor: 'brand.green',
     borderRadius: '7px', w: '26px', h: '23px', mx:'4px',
-    boxShadow: 'hsl(76deg 100% 61%) 1px 1px 5px 0px, hsl(93deg 28% 27%) -1px -1px 5px 0px inset'
+    boxShadow: 'hsl(76deg 100% 61%) 1px 1px 2px 0px, hsl(93deg 28% 27%) -1px -1px 8px 0px inset'
   }
+  const ethBalStyle    = {...mont.bd.sm,px:'5px'}
   return (
     <Center id="CWButton" __css={buttonStyle}>
-      {sIs0(_ethBalance[0]) && (
-        <VStack __css={{...mont.hv.sm,px:'5px',lineHeight: '10px'}}>
-          <S>{_ethBalance[1]}</S>
-          <S>{_ethBalance[2]}</S>
+      {!sIs0(_ethBalance[0]) && u_active && (
+        <FaEthereum as={Icon}/>
+      )}
+      {!sIs0(_ethBalance[0]) && u_active && (
+        <VStack __css={ethBalStyle}>
+          <S lineHeight='12px' {...mont.bd.sm}>{_ethBalance[1]}</S>
+          <S lineHeight='11px' {...mont.md.xs}>${_ethBalance[2]}</S>
         </VStack>
       )}
       <Center id="BtnStatusIcon" __css={statusIconStyle}>
-        {!u_active ? (<GrConnect/>):(<MdOutlinePrivateConnectivity/>)}
+        {!u_active ? (<GrConnect size='20px'/>):(<MdOutlinePrivateConnectivity size='20px'/>)}
       </Center>
       {!u_active ? (
         <Text> Connect Wallet</Text>

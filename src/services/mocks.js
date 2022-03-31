@@ -9,4 +9,4 @@ export const mockFxGetAccount1 = {
   _isExcludedFromFees:false,
   _fxIsClaimEligible:true,
 }
-export const mockEthBal = '1333666999333666999'
+export const mockEthBal = '131333666999333666999'
