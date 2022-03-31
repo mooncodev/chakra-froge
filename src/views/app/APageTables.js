@@ -19,7 +19,7 @@ import TablesTableRow from "components/Tables/TablesTableRow";
 import { tablesProjectData, tablesTableData } from "data/general";
 
 function APageTables() {
-  const textColor = useColorModeValue("gray.700", "white");
+  const textColor = "white"
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>

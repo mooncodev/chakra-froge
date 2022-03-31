@@ -14,7 +14,7 @@ import addr from 'data/addresses.js';
 import { olaToObject } from '../../../helpers/deep.js';
 import LogoMetaMask from '../Wallet/assets/LogoMetaMask.png';
 import { connectors } from '../Wallet/connectors.js';
-import { useCrawlStore } from '../../../services/atoms.js';
+import { useCrawlStore, useFxAccountStore, useFxStore } from '../../../services/atoms.js';
 import { useAtom } from 'jotai';
 import PopoverFXGetConfig from '../bits/PopoverFXGetConfig.js';
 import { BtnXs, TextXs } from '../bits/UtilityTags.js';
@@ -41,8 +41,9 @@ export default function PondNetworkVitals() {
     active:n_active,
   } = n_
 
-  const [_getConfigRaw, set_getConfigRaw] = useState({})
-  const [_balanceOf, set_balanceOf] = useState('')
+  const _getConfigRaw = useFxStore(s=>s.fxGetConfigRaw)
+  const _balanceFx = useFxAccountStore(s=>s._balance[1])
+  const _balanceFxUSD = useFxAccountStore(s=>s._balance[2])
   // const ethPrice = useCrawlStore(state=>state.ethPrice)
 
 
@@ -59,7 +60,7 @@ export default function PondNetworkVitals() {
           n_chainId : {n_chainId}<br/>
           <br/>
           _ethPtnLqty : {_getConfigRaw._ethPtnLqty}<br/>
-          _balanceOf : {_balanceOf}<br/>
+          _balanceOf : {_balanceFx}<br/>
 
 
         </TextXs>
@@ -71,7 +72,7 @@ export default function PondNetworkVitals() {
   }
 
   useEffect(async ()=>{
-    set_getConfigRaw(useCrawlStore.getState().fx_getConfigLabels)
+    await useFxStore.getState().hydrateFxStore()
   },[u_,n_])
 
   const u_call = async() => {

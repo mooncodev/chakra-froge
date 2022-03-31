@@ -34,10 +34,6 @@ export default function AppNav(props) {
       id="__AppNavbar"
       position="absolute" top="10px" right="24px"
       display="flex"
-      px={{ sm: '15px', md: '30px', }}
-      py={{ sm: '4px', md: '6px', }}
-      filter="none"
-      {...sxGlassBg}
     >
         <Box ms="auto" w={{ sm: '100%', md: 'unset' }}>
           <AppNavControls/>

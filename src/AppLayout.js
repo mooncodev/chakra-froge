@@ -34,7 +34,7 @@ export default function AppLayout(props) {
   //   // console.log('u_account', u_account)
   //   await useW3Store.getState().activateNetwork()
   //   await useCrawlStore.getState().fetch_ethPrice()
-  //   await useCrawlStore.getState().fetch_fx_getConfig()
+  //   await useCrawlStore.getState().fetch_fxGetConfig()
   // },[])
   const getLibrary = (provider) => {
     const library = new ethers.providers.Web3Provider(provider);

@@ -6,6 +6,9 @@ import { sExp, sMul, sRnd } from '../helpers/math/zmath.mjs';
 import addr from '../data/addresses.js';
 import { connectors } from '../views/app/Wallet/connectors.js';
 import { getWeb3ReactContext, useWeb3React, Web3ReactProvider } from '@web3-react/core';
+import { ethers } from 'ethers';
+import { mockEthBal, mockFxGetAccount1 } from './mocks.js';
+import { envPHASE } from '../data/constants.js';
 
 // const priceAtom = atom(10)
 // const messageAtom = atom('hello')
@@ -30,98 +33,168 @@ import { getWeb3ReactContext, useWeb3React, Web3ReactProvider } from '@web3-reac
 export const appNavDrawerOpenAtom = atom(false)
 export const wcModalIsOpenAtom = atom(false)
 
-export const useFxRewardsStore = create((set,get) => ({
-  _ethPrice: null,
-  _fxPrice: null,
-  _rewardWeiAvail: null,
-  _rewardWeiAvailAsUSD: null,
-  _rewardWeiAvailAsEth: null,
-  _xMinClaimableDivs: null,
-  _xMinClaimableDivsAsUSD: null,
-  _xMinClaimableDivsAsEth: null,
-  _requirementMet: null,
+export const useFxStore = create((set,get) => ({
+  fxPrice:'-',
+  _xMinClaimableDivs:['','',''],
+  xGetDivsGlobalTotalDist:'',
+  fxGetConfigRaw: {},
+  fxGetConfigLabels: [],
+  fxGetConfigArrArr: [[]],
+  hydrateFxStore: async (state) => {
+    const fxPrice = await FXP.getFxPrice();
+    const xGetDivsGlobalTotalDist = await readFX('xGetDivsGlobalTotalDist')
+    const cfg = await readFX('getConfig')
+    if(cfg) {
+      const labels = Object.entries(cfg).map((k,v)=>`${k}: ${v}`)
+      const arrarr = Object.entries(cfg).map((k,v)=>[k,v])
+      const ethPrice = useCrawlStore.getState().ethPrice
+      const _minClaimTuple = balToHrTuple(cfg._xMinClaimableDivs, 18, ethPrice)
+      set({ fxPrice:fxPrice,_xMinClaimableDivs:_minClaimTuple,
+        xGetDivsGlobalTotalDist:xGetDivsGlobalTotalDist, fxGetConfigRaw: cfg,
+        fxGetConfigLabels: labels,fxGetConfigArrArr: arrarr});
+    }
+    return get().fxGetConfigRaw
+  },
+}))
+
+export function balToHrTuple(rawBal, decimal, usdPrice){
+  //pure: returns array as [rawBal, decimalAdjustedBal, usdEquivalent]
+  const decimalAdjustedBal = sRnd(sExp(rawBal,-decimal),-4)
+  const usdEquivalent = sRnd(sMul(decimalAdjustedBal,usdPrice),-2)
+  return [rawBal,decimalAdjustedBal,usdEquivalent]
+}
+export const epoch = {
+  now: ()=>Math.floor(Date.now()/1000),
+  diff: (epoch)=>Math.floor(Date.now()/1000)-epoch,
+}
+export const useFxAccountStore = create((set,get) => ({
+  _ethBalance:['','',''],
+  _balance: ['','',''],
+  _xDivsAvailable: ['','',''],
+  _xDivsEarnedToDate: ['','',''],
+  _xDivsWithdrawnToDate: ['','',''],
+  _isAMMPair: '',
+  _isBlackListedBot: '',
+  _isExcludedFromRwds: '',
+  _isExcludedFromFees: '',
+  _fxIsClaimEligible: false,
   execClaim:async(u_account)=>{
     return await stx({
       from:u_account,to: addr.mainnet.FROGEX.ERC20,
       path: ['FrogeX','xClaim'],})
   },
-  hydrateRewardsInfo: async (state) => {
-    // let _rewardWeiAvail = await call(addr.mainnet.FROGEX.ERC20,
-    //   ['FrogeX','xGetDivsAvailable'],[u_account])
-    let _rewardWeiAvail = sExp(.004324,18)
-    await useCrawlStore.getState().fetch_fx_getConfig()
-    const ucsgs = useCrawlStore.getState().fx_getConfigRaw
-    const {_xMinClaimableDivs} = ucsgs
-    const _ethPrice =  useCrawlStore.getState().ethPrice;
-    const _fxPrice = await FXP.getFxPrice();
-    const _rewardWeiAvailAsEth = sExp(_rewardWeiAvail,-18)
-    const _xMinClaimableDivsAsEth = sExp(_xMinClaimableDivs,-18)
-    const _rewardWeiAvailAsUSD = sRnd(sMul(_rewardWeiAvailAsEth,_ethPrice),-2)
-    const _xMinClaimableDivsAsUSD = sRnd(sMul(_xMinClaimableDivsAsEth,_ethPrice),-2)
-    const _requirementMet = _rewardWeiAvail>_xMinClaimableDivs
+  hydrateEthBalance:async()=>{
+    const u_account = useW3Store.getState().u_account;
+    const lib = useW3Store.getState().n_library;
+    let _ethBalance = envPHASE>0?await lib.provider.getBalance(u_account)
+      :mockEthBal
+    _ethBalance=  _ethBalance.toString()
+    const ethPrice = useCrawlStore.getState().ethPrice
+    const _ethBalanceTuple = balToHrTuple(_ethBalance, 18, ethPrice)
+    set({_ethBalance:_ethBalanceTuple})
+  },
+  removeAccount:()=>{
     set({
-      _ethPrice: _ethPrice,
-      _fxPrice: _fxPrice,
-      _rewardWeiAvail: _rewardWeiAvail,
-      _rewardWeiAvailAsUSD: _rewardWeiAvailAsUSD,
-      _rewardWeiAvailAsEth: _rewardWeiAvailAsEth,
-      _xMinClaimableDivs: _xMinClaimableDivs,
-      _xMinClaimableDivsAsUSD: _xMinClaimableDivsAsUSD,
-      _xMinClaimableDivsAsEth: _xMinClaimableDivsAsEth,
-      _requirementMet: _requirementMet,
-    },(_requirementMet?execClaim:()=>{}))
-    async function execClaim(u_account){
-      return await stx({
-        from:u_account,to: addr.mainnet.FROGEX.ERC20,
-        path: ['FrogeX','xClaim'],})
-    }
+
+      _balance: ['','',''],
+      _xDivsAvailable: ['','',''],
+      _xDivsEarnedToDate: ['','',''],
+      _xDivsWithdrawnToDate: ['','',''],
+      _isAMMPair: '',
+      _isBlackListedBot: '',
+      _isExcludedFromRwds: '',
+      _isExcludedFromFees: '',
+      _fxIsClaimEligible: false,});
+  },
+  hydrateFxGetAccount:async()=>{
+    await get().hydrateEthBalance()
+    const u_account = useW3Store.getState().u_account;
+    if(!u_account){get().removeAccount();return;}//TODO: implement full reset this line
+    const { _balance, _xDivsAvailable,
+      _xDivsEarnedToDate, _xDivsWithdrawnToDate,
+      _isAMMPair, _isBlackListedBot,
+      _isExcludedFromRwds, _isExcludedFromFees,
+    } = envPHASE>0?await readFX('getAccount',[u_account])
+      :mockFxGetAccount1
+    const fxPrice = useFxStore.getState().fxPrice
+    const ethPrice = useCrawlStore.getState().ethPrice
+    const minForClaim = useFxStore.getState()._xMinClaimableDivs[0];
+    const _balanceTuple = balToHrTuple(_balance, 9, fxPrice)
+    const _xDivsAvailableTuple = balToHrTuple(_xDivsAvailable, 18, ethPrice)
+    const _xDivsEarnedToDateTuple = balToHrTuple(_xDivsEarnedToDate, 18, ethPrice)
+    const _xDivsWithdrawnToDateTuple = balToHrTuple(_xDivsWithdrawnToDate, 18, ethPrice)
+    const reqMet = _xDivsAvailable > minForClaim
+    set({ _balance:_balanceTuple,
+      _xDivsAvailable:_xDivsAvailableTuple,
+      _xDivsEarnedToDate:_xDivsEarnedToDateTuple,
+      _xDivsWithdrawnToDate:_xDivsWithdrawnToDateTuple,
+      _isAMMPair:_isAMMPair,
+      _isBlackListedBot:_isBlackListedBot,
+      _isExcludedFromRwds:_isExcludedFromRwds,
+      _isExcludedFromFees:_isExcludedFromFees,
+      _fxIsClaimEligible:reqMet,
+    })
   },
 }))
 
+
 export const useW3Store = create((set,get) => ({
+  u_library:null,
   u_chainId:'',
   u_account:'',
   u_error:'',
   u_active:'',
-  u_activate:()=>{},
-  u_deactivate:()=>{},
+  u_activate:null,
+  u_deactivate:null,
+  n_library:null,
   n_chainId:'',
   n_account:'',
   n_error:'',
   n_active:'',
-  n_activate:()=>{},
-  n_deactivate:()=>{},
+  n_activate:null,
+  n_deactivate:null,
   activateNetwork:async()=>{
-    await get().n_activate(connectors.network);
+    (get().n_activate && await get().n_activate(connectors.network));
   },
   activateUser:async(connector)=>{
-    await get().u_activate(connector);
+    (get().u_activate && await get().u_activate(connector));
   },
-
+  init:async(u_,n_)=>{
+    set({
+      u_library:u_.library,
+      u_chainId:u_.chainId,
+      u_account:u_.account,
+      u_error:u_.error,
+      u_active:u_.active,
+      u_activate:u_.activate,
+      u_deactivate:u_.deactivate,
+      n_library:n_.library,
+      n_chainId:n_.chainId,
+      n_account:n_.account,
+      n_error:n_.error,
+      n_active:n_.active,
+      n_activate:n_.activate,
+      n_deactivate:n_.deactivate,
+    })
+    await get().activateNetwork();
+  },
 }))
 
 export const useCrawlStore = create((set,get) => ({
-  ethPrice: 0,
+  ethPrice: '-',
+  ethPriceTS: '-',
   fetch_ethPrice: async (state) => {
+    if(epoch.diff(get().ethPriceTS) < 5){
+      console.log('too soon to update ethPrice');
+      return get().ethPrice;
+    }
+    set({ethPriceTS: epoch.now()});
+    console.log('OK updating ethPrice')
     const res = await axios('/api/etherscan?method=ethPrice')
-    if(res.data && res.data.response) {
-      set({ ethPrice: res.data.response });
+    if(res.data) {
+      set({ethPrice: res.data});
     }
     return get().ethPrice
-  },
-  fx_getConfigRaw: {},
-  fx_getConfigLabels: [],
-  fx_getConfigArrArr: [[]],
-  fetch_fx_getConfig: async (state) => {
-    const cfg = await readFX('getConfig')
-    if(cfg) {
-      const labels = Object.entries(cfg).map((k,v)=>`${k}: ${v}`)
-      const arrarr = Object.entries(cfg).map((k,v)=>[k,v])
-      set({ fx_getConfigRaw: cfg,
-        fx_getConfigLabels: labels,
-        fx_getConfigArrArr: arrarr});
-    }
-    return get().fx_getConfigRaw
   },
 }))
 

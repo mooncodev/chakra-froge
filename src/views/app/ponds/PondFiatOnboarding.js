@@ -24,7 +24,7 @@ import PortionBar from '../../../components/Charts/PortionBar.js';
 import { BtnReadMore } from '../bits/UtilityTags.js';
 
 export default function PondFrogeXVitals() {
-  const textColor = useColorModeValue("gray.700", "white");
+  const textColor = "white"
   const w3r = useWeb3React()
   // const [_getConfig, set_getConfig] = useState(cfgInit)
 

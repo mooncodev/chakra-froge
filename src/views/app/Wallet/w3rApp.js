@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   VStack,
   useDisclosure,
@@ -18,7 +18,7 @@ import {
   Grid,
   Icon,
   AccordionItem,
-  Accordion, AccordionButton, AccordionIcon, AccordionPanel
+  Accordion, AccordionButton, AccordionIcon, AccordionPanel, Center
 } from '@chakra-ui/react';
 import { useWeb3React } from "@web3-react/core";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
@@ -26,7 +26,7 @@ import { Tooltip } from "@chakra-ui/react";
 import { networkParams } from "./networks.js";
 import { connectors } from "./connectors.js";
 import { toHex, truncateAddress } from "helpers/math/utils.js";
-import { wcModalIsOpenAtom } from '../../../services/atoms.js';
+import { useW3Store, wcModalIsOpenAtom } from '../../../services/atoms.js';
 import { useAtom } from 'jotai';
 import LogoCoinbaseWallet from './assets/LogoCoinbaseWallet.png';
 import LogoWalletConnect from './assets/LogoWalletConnect.png';
@@ -36,97 +36,55 @@ import { GrConnect } from 'react-icons/gr';
 import { first4, last4, surr4s } from '../../../helpers/math/zmath.mjs';
 import { FaEthereum } from 'react-icons/fa';
 import BoxSignSetVerify from './BoxSignSetVerify.js';
+import { BtnBrandIcon, BtnConnectWallet, ConnectWalletNavButton } from '../bits/UtilityTags.js';
+import { mont } from '../../../theme/foundations/fonts.js';
 
 export default function W3RApp() {
   const {
-    library,
-    chainId,
-    account,
-    activate,
-    deactivate,
-    active
-  } = useWeb3React();
-  const [signature, setSignature] = useState("");
+    u_library,
+    u_chainId,
+    u_account,
+    u_activate,
+    u_deactivate,
+    u_active
+  } = useW3Store();
   const [error, setError] = useState("");
-  const [network, set_userDesiredChainId] = useState(undefined);
-  const [message, setMessage] = useState("");
-  const [signedMessage, setSignedMessage] = useState("");
-  const [verified, setVerified] = useState();
+  const [userDesiredChainId, set_userDesiredChainId] = useState(undefined);
   const [wcModalIsOpen, set_wcModalIsOpen] = useAtom(wcModalIsOpenAtom);
+
 
   const handle_userDesiredChainId = (e) => {
     const id = e.target.value;
     set_userDesiredChainId(Number(id));
   };
-
-  const handleInput = (e) => {
-    const msg = e.target.value;
-    setMessage(msg);
-  };
-
   const switch_userDesiredChainId = async () => {
-    await library.provider.request({
+    await u_library.provider.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: toHex(chainId) }]
-    })
-    .then((switchSuccess)=>{
-
-    })
+      params: [{ chainId: toHex(u_chainId) }]
+    }).then((switchSuccess)=>{})
     .catch(async (switchError)=>{
       if (switchError.code === 4902) {
-        await library.provider.request({
+        await u_library.provider.request({
           method: "wallet_addEthereumChain",
-          params: [networkParams[toHex(chainId)]]
-        })
-        .then((addSuccess)=>{})
+          params: [networkParams[toHex(u_chainId)]]
+        }).then((addSuccess)=>{})
         .catch((addError)=>{setError(addError);});
       }
     });
   };
-
-  const signMessage = async () => {
-    if (!library) return;
-    try {
-      const signature = await library.provider.request({
-        method: "personal_sign",
-        params: [message, account]
-      });
-      setSignedMessage(message);
-      setSignature(signature);
-    } catch (error) {
-      setError(error);
-    }
-  };
-
-  const verifyMessage = async () => {
-    if (!library) return;
-    try {
-      const verify = await library.provider.request({
-        method: "personal_ecRecover",
-        params: [signedMessage, signature]
-      });
-      setVerified(verify === account.toLowerCase());
-    } catch (error) {
-      setError(error);
-    }
-  };
-
   const refreshState = () => {
     window.localStorage.setItem("provider", undefined);
     set_userDesiredChainId("");
-    setMessage("");
-    setSignature("");
-    setVerified(undefined);
   };
 
   const disconnect = () => {
     refreshState();
-    deactivate();
+    u_deactivate();
   };
 
   useEffect(() => {
     const provider = window.localStorage.getItem("provider");
-    // if (provider) activate(connectors[provider]); //auto-activate onload
+    // if (provider) u_activate(connectors[provider]); //auto-activate onload
   }, []);
 
   const setProvider = (type) => {
@@ -135,17 +93,17 @@ export default function W3RApp() {
 
   const onClickWCBrand = (brand)=>{
     if(brand==='WC'){
-      activate(connectors.walletConnect);
+      u_activate(connectors.walletConnect);
       setProvider("walletConnect");
       set_wcModalIsOpen(false)
     }
     if(brand==='MM'){
-      activate(connectors.injected);
+      u_activate(connectors.injected);
       setProvider("injected");
       set_wcModalIsOpen(false)
     }
     if(brand==='CBW'){
-      activate(connectors.coinbaseWallet);
+      u_activate(connectors.coinbaseWallet);
       setProvider("coinbaseWallet");
       set_wcModalIsOpen(false)
     }
@@ -153,19 +111,14 @@ export default function W3RApp() {
 
   return (
     <Menu id='ConnectWalletMenu' backgroundColor="transparent">
-      <MenuButton as={Button} onClick={()=>set_wcModalIsOpen(true)}
-                  id='WCButton' colorScheme='green' opacity='.7'>
-        {!active ? (
-          <HStack><Icon as={GrConnect}/><Text>Connect Wallet</Text></HStack>
-          ) : (
-          <HStack><Icon as={MdOutlinePrivateConnectivity}/><Text fontSize={12}>...{account&&last4(account)}</Text></HStack>
-          )}
+      <MenuButton onClick={()=>set_wcModalIsOpen(true)} id='WCButton'>
+        <ConnectWalletNavButton/>
       </MenuButton>
       <MenuList p="16px 8px" opacity='0.7'>
         {/* <MenuItem borderRadius="8px" mb="10px"></MenuItem> */}
 
         <VStack opacity='0.7'>
-          {active
+          {u_active
             ?(<Button onClick={()=>disconnect()}>Disconnect</Button>)
             :(<><Button variant="outline" w="100%"
                          onClick={() => onClickWCBrand('CBW')}>
@@ -186,7 +139,7 @@ export default function W3RApp() {
         </VStack>
 
         <Box justifyContent="center" alignItems="center" mt={4} opacity='0.7'>
-          {active && (
+          {u_active && (
             <Box justifyContent="flex-start" alignItems="center">
               <Accordion allowToggle colorScheme='green'>
                 <AccordionItem opacity='0.7'>
@@ -201,11 +154,11 @@ export default function W3RApp() {
                   <AccordionPanel pb={4}>
                     <HStack>
                       <Text fontSize='xs'>Connection Status:</Text>
-                      {active ? (<CheckCircleIcon color="green"/>):(<WarningIcon color="red"/>)}
+                      {u_active ? (<CheckCircleIcon color="green"/>):(<WarningIcon color="red"/>)}
                     </HStack>
                     <Text>Account:</Text>
-                    <Text color={'#00ff00'}>{account&&surr4s(account)}</Text>
-                    <Text>{`Network ID: ${chainId ? chainId : "No Network"}`}</Text>
+                    <Text color={'#00ff00'}>{u_account&&surr4s(u_account)}</Text>
+                    <Text>{`Network ID: ${u_chainId ? u_chainId : "No Network"}`}</Text>
                   </AccordionPanel>
                 </AccordionItem>
 
@@ -221,11 +174,11 @@ export default function W3RApp() {
                   </h2>
                   <AccordionPanel pb={4}  justifyContent="space-evenly">
                     <HStack>
-                      <Button h={100} onClick={switch_userDesiredChainId}><Icon as={FaEthereum}/>&nbsp;Mainnet</Button>
+                      <Button h={100} onClick={switch_userDesiredChainId}><FaEthereum as={Icon}/>&nbsp;Mainnet</Button>
                       <VStack>
-                        <Button size='xs' onClick={switch_userDesiredChainId}><Icon as={FaEthereum}/>&nbsp;Ropsten</Button>
-                        <Button size='xs' onClick={switch_userDesiredChainId}><Icon as={FaEthereum}/>&nbsp;Rinkeby</Button>
-                        <Button size='xs' onClick={switch_userDesiredChainId}><Icon as={FaEthereum}/>&nbsp;Kovan</Button>
+                        <Button size='xs' onClick={switch_userDesiredChainId}><FaEthereum as={Icon}/>&nbsp;Ropsten</Button>
+                        <Button size='xs' onClick={switch_userDesiredChainId}><FaEthereum as={Icon}/>&nbsp;Rinkeby</Button>
+                        <Button size='xs' onClick={switch_userDesiredChainId}><FaEthereum as={Icon}/>&nbsp;Kovan</Button>
                       </VStack>
                     </HStack>
                   </AccordionPanel>

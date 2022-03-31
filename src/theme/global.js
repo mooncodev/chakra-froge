@@ -1,65 +1,60 @@
 import { mode } from "@chakra-ui/theme-tools";
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import arsenal from "@fontsource/arsenal"
-import actor from "@fontsource/actor"
-import mononoki from "@fontsource/mononoki"
-import monda from "@fontsource/monda"
-import miriamlibre from "@fontsource/miriam-libre"
-import mina from "@fontsource/mina"
-import raleway from "@fontsource/raleway"
-import raleway200 from "@fontsource/raleway/200.css"
-import montserrat from "@fontsource/montserrat"
-import mochiypopone from "@fontsource/mochiy-pop-one"
-const f = [mononoki,
-  monda,
-  miriamlibre,
-  mina,
-  raleway,
-  montserrat,
-  mochiypopone]
+import { fontsTheme } from './foundations/fonts.js';
+
+//https://paletton.com/
 //https://themera.vercel.app/
+//http://colormind.io/bootstrap/
+//https://gka.github.io/palettes/
 export const globalStyles = {
-  initialColorMode: 'light',
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
   colors: {
-    gray: {
-      700: "#1e2434",
+    brand: {
+      outline: "#212e3e",
+      dkgreen: "#7ba735",
+      green: "#90c63e",
+      ltgreen: "#9ed648",
     },
-    "blue": {
-      "50": "#EFF1F6",
-      "100": "#D2D7E5",
-      "200": "#B5BDD4",
-      "300": "#98A3C3",
-      "400": "#7A8AB3",
-      "500": "#5D70A2",
-      "600": "#4B5A81",
-      "700": "#384361",
-      "800": "#252D41",
-      "900": "#131620"
+    global: {
+      bg: "#111623",
+      panel: "#192030",
+      bubble: "#1f2738",
     },
-    "green": {
-      "50": "#F0F9EB",
-      "100": "#D6EEC8",
-      "200": "#BBE4A5",
-      "300": "#A0D982",
-      "400": "#86CE5F",
-      "500": "#6BC33C",
-      "600": "#569C30",
-      "700": "#407524",
-      "800": "#2B4E18",
-      "900": "#15270C"
-    }
+    bog50: "#E5ECFF",
+    bog100: "#D8E3FE",
+    bog150: "#CCDAFD",
+    bog200: "#B8C9F9",
+    bog250: "#B8C9F9",
+    bog300: "#778DC5",
+    bog350: "#6374A0",
+    bog400: "#596992",
+    bog450: "#4C5B83",
+    bog500: "#3D4A6D",
+    bog550: "#374361",
+    bog600: "#303950",
+    bog650: "#283146",
+    bog700: "#232B3F",
+    bog750: "#1E2537",
+    bog800: "#192030",
+    bog850: "#151B29",
+    bog900: "#111623",
   },
+  radii: {
+    panelsRadius: '12px',
+  },
+  ...fontsTheme,
   styles: {
     global: (props) => ({
       body: {
-        bg: mode("blue.50", "blue.800")(props),
-        fontFamily: 'Raleway , Helvetica, sans-serif',
-        fontWeight: 200,
+        fontFamily: 'Montserrat , Helvetica, sans-serif',
+        fontWeight: 400,
+        bg: "global.bg",
       },
-      heading: "Raleway",
+      heading: 'Montserrat , Helvetica, sans-serif',
       html: {
-        fontFamily: 'Raleway , Helvetica, sans-serif',
-        fontWeight: 200,
+        fontFamily: 'Montserrat , Helvetica, sans-serif',
+        fontWeight: 400,
       }
     }),
   },

@@ -23,7 +23,7 @@ import { olaToObject } from '../../../helpers/deep.js';
 import IconBox from '../../../components/Icons/IconBox.js';
 
 export default function PondRockets() {
-  const textColor = useColorModeValue("gray.700", "white");
+  const textColor = "white"
   const w3r = useWeb3React()
   // const [_getConfig, set_getConfig] = useState(cfgInit)
   const overlayRef = React.useRef();

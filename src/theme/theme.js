@@ -1,6 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
 import { globalStyles } from "./global.js";
-import { fonts } from "./foundations/fonts.js";
 import { breakpoints } from "./foundations/breakpoints";
 import { buttonStyles } from "./components/button";
 import { accordionStyles } from "./components/accordion";
@@ -10,13 +9,13 @@ import { drawerStyles } from "./components/drawer";
 import { CardComponent } from "./additions/card/Card";
 import { CardBodyComponent } from "./additions/card/CardBody";
 import { CardHeaderComponent } from "./additions/card/CardHeader";
-import { MainPanelComponent } from "./additions/layout/MainPanel";
 import { PondComponent } from '../views/app/bits/Pond.js';
+import { SBNavLinkComponent } from '../views/app/bits/SBNavLink.js';
+import { BubbleComponent } from '../views/app/bits/Bubble.js';
 // import { mode } from "@chakra-ui/theme-tools";
 export default extendTheme(
   { breakpoints }, // Breakpoints
   globalStyles,
-  fonts, // Global styles
   buttonStyles, // Button styles
   accordionStyles, // Accordion Styles
   badgeStyles, // Badge styles
@@ -25,6 +24,7 @@ export default extendTheme(
   CardComponent, // Card component
   CardBodyComponent, // Card Body component
   CardHeaderComponent, // Card Header component
-  MainPanelComponent, // Main Panel component
   PondComponent, // Main Panel component
+  BubbleComponent, // Main Panel component
+  SBNavLinkComponent, // Main Panel component
 );

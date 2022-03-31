@@ -70,17 +70,16 @@ export const FXP = {
   token0:async()=>readFXP('token0', []),//FROGEX
   token1:async()=>readFXP('token1', []),//WETH
   getReserves:async()=> {
-    const rsvFX = await FX.balanceOf(addr.mainnet.FROGEX.PAIR)
-    const rsvWETH = await WETH.balanceOf(addr.mainnet.FROGEX.PAIR)
+    // const rsvFX = await FX.balanceOf(addr.mainnet.FROGEX.PAIR)
+    // const rsvWETH = await WETH.balanceOf(addr.mainnet.FROGEX.PAIR)
     const gRsvs = await readFXP('getReserves', [])
-    console.log(gRsvs)
+    // console.log(gRsvs)
     const { reserve0,reserve1 } = gRsvs;
-    console.log(rsvFX,rsvWETH,reserve0,reserve1)
-    return [rsvFX,rsvWETH,reserve0,reserve1] //TODO: unburden multicall
+    return [reserve0,reserve1] //TODO: unburden multicall
   },
   getAmountOut:async(amountIn,nTokenIn)=> {
-    //nTokenIn: 0 for sells, 1 for buys
-    const [fx1,weth1,fx2,weth2] = await FXP.getReserves()
+    //nTokenIn: 0 is frogex in (for sells), 1 is eth in (for buys)
+    const [fx1,weth1] = await FXP.getReserves()
     const [reserveIn,reserveOut] = nTokenIn?[weth1,fx1]:[fx1,weth1]
     let amountInWithFee = _Mul(amountIn,997);
     let numerator = _Mul(amountInWithFee,reserveOut);
@@ -103,37 +102,7 @@ export async function readFXP(method, args=[]){
   return olaToObject(await call(addr.mainnet.FROGEX.PAIR,
     ['UniswapV2Pair',method],args))
 }
-export async function claimFX(u_account, dataAndExecFn=(data,execFn)=>{}){
-  // let _rewardWeiAvail = await call(addr.mainnet.FROGEX.ERC20,
-  //   ['FrogeX','xGetDivsAvailable'],[u_account])
-  let _rewardWeiAvail = sExp(.004324,18)
-  await useCrawlStore.getState().fetch_fx_getConfig()
-  const ucsgs = useCrawlStore.getState().fx_getConfigRaw
-  const {_xMinClaimableDivs} = ucsgs
-  const _ethPrice =  useCrawlStore.getState().ethPrice;
-  const _fxPrice = await FXP.getFxPrice();
-  const _rewardWeiAvailAsEth = sExp(_rewardWeiAvail,-18)
-  const _xMinClaimableDivsAsEth = sExp(_xMinClaimableDivs,-18)
-  const _rewardWeiAvailAsUSD = sRnd(sMul(_rewardWeiAvailAsEth,_ethPrice),-2)
-  const _xMinClaimableDivsAsUSD = sRnd(sMul(_xMinClaimableDivsAsEth,_ethPrice),-2)
-  const _requirementMet = _rewardWeiAvail>_xMinClaimableDivs
-  dataAndExecFn({
-    _ethPrice: _ethPrice,
-    _fxPrice: _fxPrice,
-    _rewardWeiAvail: _rewardWeiAvail,
-    _rewardWeiAvailAsUSD: _rewardWeiAvailAsUSD,
-    _rewardWeiAvailAsEth: _rewardWeiAvailAsEth,
-    _xMinClaimableDivs: _xMinClaimableDivs,
-    _xMinClaimableDivsAsUSD: _xMinClaimableDivsAsUSD,
-    _xMinClaimableDivsAsEth: _xMinClaimableDivsAsEth,
-    _requirementMet: _requirementMet,
-  },(_requirementMet?execClaim:()=>{}))
-  async function execClaim(){
-    return await stx({
-      from:u_account,to: addr.mainnet.FROGEX.ERC20,
-      path: ['FrogeX','xClaim'],})
-  }
-}
+
 export async function call(address,path,args=[]){
   const fnAbi = abiFrags[path[0]].find(v=>v.name===path[1])
   const failRV = fnAbi.outputs.length<2? '' : fnAbi.outputs.map(v=>'');

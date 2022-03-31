@@ -9,8 +9,8 @@ import avatar2 from '../../assets/img/avatars/avatar2.png';
 import avatar3 from '../../assets/img/avatars/avatar3.png';
 
 export function WalletBrands() {
-  const navbarIcon = useColorModeValue("gray.500", "gray.200");
-  const notificationColor = useColorModeValue("gray.700", "white");
+  const navbarIcon = "gray.200"
+  const notificationColor = "white"
   const spacing = " ";
   return (
     <Flex flexDirection="column">

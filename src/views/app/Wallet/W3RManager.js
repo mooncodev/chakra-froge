@@ -4,9 +4,14 @@ import { useWeb3React } from '@web3-react/core'
 import { network } from './connectors'
 import { useEagerConnect, useInactiveListener } from './web3Hooks.js'
 import { Text } from '@chakra-ui/react';
-import { useCrawlStore, useW3Store } from '../../../services/atoms.js';
+import {
+  useCrawlStore,
+  useFxAccountStore,
+  useFxStore,
+  useW3Store
+} from '../../../services/atoms.js';
 
-
+let ran1x = false
 export default function W3RManager({ children }) {
   const u_ = useWeb3React()
   const n_ = useWeb3React('NETWORK')
@@ -20,46 +25,53 @@ export default function W3RManager({ children }) {
     account:n_account, error:n_error, active:n_active,
     activate:n_activate, deactivate:n_deactivate,
   } = n_
+  if(!ran1x){
+    console.log('ran1x exec')
+    useW3Store.getState().init(u_,n_)
+    useCrawlStore.getState().fetch_ethPrice()
+    // useFxStore.getState().hydrateFxStore()
+    ran1x=true;
+  }
 
   // try to eagerly connect to an injected provider, if it exists and has granted access already
-  const triedEager = useEagerConnect()
-  console.log('rendered W3RManager.js')
-  // after eagerly trying injected, if the network connect ever isn't active or in an error state, activate it
-  useEffect(() => {
-    if (triedEager && !n_active && !n_error && !u_active) {
-      n_activate(network)
-    }
-  }, [triedEager, n_active, n_error, n_activate, u_active])
   useEffect(async () => {
     console.log('activating everything in W3RManager.js')
     // await u_activate(connectors.network);
     // console.log('u_account', u_account)
-
-    await useW3Store.getState().activateNetwork()
-    await useCrawlStore.getState().fetch_ethPrice()
-    await useCrawlStore.getState().fetch_fx_getConfig()
-
-    useW3Store.setState({
-      u_activate:u_activate,
-      u_deactivate:u_deactivate,
-      n_activate:n_activate,
-      n_deactivate:n_deactivate,
-    })
+    // if(!ran1x){
+    //   await useW3Store.getState().activateNetwork()
+    //   await useCrawlStore.getState().fetch_ethPrice()
+    //   await useFxStore.getState().hydrateFxStore()
+    //   ran1x=true;
+    // }
+    // useW3Store.setState({
+    //   u_activate:u_activate,
+    //   u_deactivate:u_deactivate,
+    //   n_activate:n_activate,
+    //   n_deactivate:n_deactivate,
+    // })
   }, [])
-  useEffect(() => {
-    useW3Store.setState({
-      u_chainId:u_chainId,
-      u_account:u_account,
-      u_active:u_active,
-    })
+
+  const triedEager = useEagerConnect()
+
+  useEffect(async () => {
+    console.log('w3rmanager running user effects')
+    await useW3Store.getState().init(u_,n_)
+    await useFxAccountStore.getState().hydrateFxGetAccount()
   }, [u_chainId,u_account,u_active,])
-  useEffect(() => {
-    useW3Store.setState({
-      n_chainId:n_chainId,
-      n_account:n_account,
-      n_active:n_active,
-    })
+  useEffect(async () => {
+    console.log('w3rmanager running network effects')
+    await useW3Store.getState().init(u_,n_)
+    await useFxStore.getState().hydrateFxStore()
   }, [n_chainId,n_account,n_active])
+
+  // after eagerly trying injected, if the network connect ever isn't active or in an error state, activate it
+  useEffect(() => {
+    if (triedEager && !n_active && !n_error && !u_active) {
+      console.log('W3RManager - n_activate(network)')
+      n_activate(network)
+    }
+  }, [triedEager, n_active, n_error, n_activate, u_active])
 
   // when there's no account connected, react to logins (broadly speaking) on the injected provider, if it exists
   useInactiveListener(!triedEager)

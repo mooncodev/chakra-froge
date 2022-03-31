@@ -38,9 +38,9 @@ import {
 
 function APageBilling() {
   // Chakra color mode
-  const iconTeal = useColorModeValue("green.300", "green.300");
-  const textColor = useColorModeValue("gray.700", "white");
-  const borderColor = useColorModeValue("#dee2e6", "gray.500");
+  const iconTeal = "green.300"
+  const textColor = "white"
+  const borderColor = "gray.500"
   const bgButton = useColorModeValue(
     "linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)",
     "gray.800"

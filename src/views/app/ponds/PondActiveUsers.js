@@ -24,12 +24,12 @@ import BarChart from '../../../components/Charts/BarChart.js';
 import IconBox from '../../../components/Icons/IconBox.js';
 
 export default function PondActiveUsers() {
-  const textColor = useColorModeValue("gray.700", "white");
+  const textColor = "white"
   const w3r = useWeb3React()
   // const [_getConfig, set_getConfig] = useState(cfgInit)
 
-  const iconTeal = useColorModeValue("green.300", "green.300");
-  const iconBoxInside = useColorModeValue("white", "white");
+  const iconTeal = "green.300"
+  const iconBoxInside = "white"
 
   useEffect(async ()=>{
 

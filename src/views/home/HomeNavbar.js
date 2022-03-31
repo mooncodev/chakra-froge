@@ -67,9 +67,9 @@ export default function HomeNavbar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = ucmv('gray.600', 'gray.200');
-  const linkHoverColor = ucmv('gray.800', 'white');
-  const popoverContentBgColor = ucmv('white', 'gray.800');
+  const linkColor = 'gray.200'
+  const linkHoverColor = 'white'
+  const popoverContentBgColor = 'gray.800'
 
   return (
     <Stack direction={'row'} spacing={4}>

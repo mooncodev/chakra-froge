@@ -24,7 +24,7 @@ import { timelineData } from '../../../data/general.js';
 import TimelineRow from '../../../components/Tables/TimelineRow.js';
 
 export default function PondOrdersOverview() {
-  const textColor = useColorModeValue("gray.700", "white");
+  const textColor = "white"
   const w3r = useWeb3React()
   // const [_getConfig, set_getConfig] = useState(cfgInit)
 

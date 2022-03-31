@@ -2,24 +2,28 @@
 import {
   Box,
   Button,
-  Flex,
+  Flex, HStack,
   Image,
   Popover,
   PopoverArrow, PopoverBody, PopoverCloseButton,
   PopoverContent,
   PopoverHeader,
   PopoverTrigger,
-  Text,
-  VStack,
+  Text, Portal,
+  VStack, forwardRef,
 } from '@chakra-ui/react';
 import {Pond,PondBody,PondHeader} from '../bits/Pond.js';
 import React, { useEffect, useState } from 'react';
 
 import { useWeb3React } from '@web3-react/core';
-import { call, stx, claimFX, FX, readFX } from 'stx/stx.js';
+import { call, stx, FX, readFX } from 'stx/stx.js';
 import { olaToObject } from '../../../helpers/deep.js';
-import { useCrawlStore } from '../../../services/atoms.js';
-import { BtnXs, sxFrogeEyeEyeBeforeBg, TextXs } from '../bits/UtilityTags.js';
+import { useCrawlStore, useFxAccountStore, useFxStore } from '../../../services/atoms.js';
+import { BtnXs, P, S, sxFrogeEyeEyeBeforeBg, TextXs } from '../bits/UtilityTags.js';
+import { Bubble, BubLabel, BubSub, BubValue } from '../bits/Bubble.js';
+import { last4 } from '../../../helpers/math/zmath.mjs';
+import { mont } from '../../../theme/foundations/fonts.js';
+import { MoreInfoPopover } from '../bits/MoreInfoPopover.js';
 
 
 let _execClaimFn = ()=>{}
@@ -30,99 +34,104 @@ export default function PondMyFrogeXRewards() {
   const {chainId:u_chainId,account:u_account,active:u_active,} = useWeb3React()
   const {chainId:n_chainId,account:n_account,active:n_active,} = useWeb3React('NETWORK')
 
-  const [_getAccount, set_getAccount] = useState({})
-  const [_balanceOf, set_balanceOf] = useState('')
-  const ucs_ethPrice = useCrawlStore(state => state.ethPrice)
+  const _getAccount = useState({})
   const [isClaimBtnDisabled, set_isClaimBtnDisabled] = useState(false)
 
-  const [_ethPrice,set_ethPrice] = useState('')
-  const [_fxPrice,set_fxPrice] = useState('')
-  const [_rewardWeiAvailAsEth,set_rewardWeiAvailAsEth] = useState('')
-  const [_rewardWeiAvailAsUSD,set_rewardWeiAvailAsUSD] = useState('')
-  const [_xMinClaimableDivsAsEth,set_xMinClaimableDivsAsEth] = useState('')
-  const [_xMinClaimableDivsAsUSD,set_xMinClaimableDivsAsUSD] = useState('')
-  const [_requirementMet,set_requirementMet] = useState('')
+  const ethPrice = useCrawlStore(s=>s.ethPrice)
+  const fxPrice = useFxStore(s=>s.fxPrice)
+  const _balanceFx = useFxAccountStore(s=>s._balance)
+  const _xDivsAvailable = useFxAccountStore(s=>s._xDivsAvailable)
+  const _xDivsEarnedToDate = useFxAccountStore(s=>s._xDivsEarnedToDate)
+  const _xDivsWithdrawnToDate = useFxAccountStore(s=>s._xDivsWithdrawnToDate)
+  const _xMinClaimableDivs = useFxStore(s=>s._xMinClaimableDivs)
+  const _fxIsClaimEligible = useFxAccountStore(s=>s._fxIsClaimEligible)
 
 
   useEffect(async ()=>{
-    if(u_account && ucs_ethPrice) {
-      set_getAccount(await FX.getAccount(u_account));
-      await u_xclaim();
-    }
-  },[u_account,ucs_ethPrice])
+    await hydrate()
+  },[])
 
-  const u_xclaim = async() => {
-    const rcpt = await claimFX(u_account,(data,execFn)=>{
-      console.log('claim data: ', data);
-      set_ethPrice(data._ethPrice)
-      set_fxPrice(data._fxPrice)
-      set_rewardWeiAvailAsEth(data._rewardWeiAvailAsEth)
-      set_rewardWeiAvailAsUSD(data._rewardWeiAvailAsUSD)
-      set_xMinClaimableDivsAsEth(data._xMinClaimableDivsAsEth)
-      set_xMinClaimableDivsAsUSD(data._xMinClaimableDivsAsUSD)
-      set_requirementMet(data._requirementMet)
-      _execClaimFn = execFn
-    })
-  };
-  const u_call = async() => {
-    // set_getAccount(olaToObject(await stx({
-    //   from:u_account,to: addr.mainnet.FROGEX.ERC20,
-    //   path: ['FrogeX','getAccount'],})))
-    // set_balanceOf(await readFX('balanceOf',[u_account]))
-    // const {} = await FX.getAccount(u_account)
-    // FX.getAccountFormatTechLabels()
-    // FX.totalSupply
-    // FX.xGetDivsGlobalTotalDist
-    // getAmountOut()
-  };
-  const n_call = async() => {
-    set_getAccount(olaToObject(await readFX('getAccount')))
-  };
+
+  const hydrate = async()=>{
+    console.log('hydrating stuff from PondMyFrogeXRewards')
+    await useFxAccountStore.getState().hydrateFxGetAccount()
+    await useFxStore.getState().hydrateFxStore()
+    if(_fxIsClaimEligible){
+      set_isClaimBtnDisabled(false)
+    }else{
+      set_isClaimBtnDisabled(true)
+      console.log('things have changed... no longer eligible')
+    }
+
+  }
+
   const onExecClaim = async() => {
     set_isClaimBtnDisabled(true)
-    const res = await _execClaimFn();
+    const rcpt = await useFxAccountStore.getState().execClaim()
     set_isClaimBtnDisabled(false)
   };
 
+  const tickerBubbleStyle = {
+    color:'gray.300',
+    width: "45%",
+    textAlign:'center',
+    bgColor:'global.bubble',
+    borderRadius: '6px',
+    ...mont.md.md,
+  }
   return (
-    <Pond minHeight="290.5px" p="1.2rem"
-          sx={sxFrogeEyeEyeBeforeBg}>
-      <PondHeader>My FrogeX Rewards</PondHeader>
+    <Pond maxWidth='400px' variant={'alignCenter'}>
+      <PondHeader>
+        <S color='white'>FrogeX</S>&nbsp;<S color='gray.300'>Dividends</S>
+      </PondHeader>
+      {u_account&&<TextXs mt='-5px' mb='7px'>For <S fontWeight='bold'>{last4(u_account)}</S></TextXs>}
       <PondBody>
         <VStack>
+          <HStack width='100%' justifyContent='space-evenly'>
+            <VStack __css={tickerBubbleStyle}><P>FrogeX</P><P>${fxPrice}</P></VStack>
+            <VStack __css={tickerBubbleStyle}><P>ETH</P><P>${ethPrice}</P></VStack>
+          </HStack>
           {!u_account ? (
             <TextXs>Please connect a wallet to view its FrogeX details
               and optionally claim its due ETH rewards!</TextXs>
           ):(
-            <Box w="100%">
-              <TextXs>
-                u_account : {u_account}<br/>
-                u_active : {String(u_active)}<br/>
-                u_chainId : {u_chainId}<br/>
-                <br/>
-                ETH Price: {_ethPrice}<br/>
-                FX Price: {_fxPrice}<br/>
-                ETH Available: {_rewardWeiAvailAsEth}<br/>
-                (USD Value: {_rewardWeiAvailAsUSD})<br/>
-                Minimum For Claim: {_xMinClaimableDivsAsEth}<br/>
-                (USD Value: {_xMinClaimableDivsAsUSD})<br/>
-                <Button disabled={!_requirementMet || isClaimBtnDisabled}
-                        onClick={()=>onExecClaim()}>Make Claim</Button><br/>
-                {!_requirementMet &&
-                  <>We try to set the minimum around $20 USD equivalent
-                    - this helps keep the cost low on myriad TX,
-                    because of the auto-claim feature. For example,
-                    imagine you are due $4 in rewards, but processing
-                    the rewards will cost $5. The FrogeX contract prevents
-                    this with a minimum claimable setting, which is manually
-                    adjusted from time to time to keep things running optimally.
-                  </>
-                }
-              </TextXs>
+            <>
+              <Bubble>
+                <BubLabel>Gross Total Earned Dividends</BubLabel>
+                <BubValue>
+                  {_xDivsEarnedToDate[1]} ETH
+                  <BubSub>(${_xDivsEarnedToDate[2]} USD)</BubSub>
+                </BubValue>
+              </Bubble>
+              <Bubble>
+                <BubLabel>Dividends Claimed To Date</BubLabel>
+                <BubValue>
+                  {_xDivsWithdrawnToDate[1]} ETH
+                  <BubSub>(${_xDivsWithdrawnToDate[2]} USD)</BubSub>
+                </BubValue>
+              </Bubble>
+              <Bubble>
+                <BubLabel>Unclaimed Dividends</BubLabel>
+                <BubValue>
+                  {_xDivsAvailable[1]}&nbsp;ETH
+                  <BubSub>(${_xDivsAvailable[2]}&nbsp;USD)</BubSub>
+                </BubValue>
+              </Bubble>
+              <br/>
+              <Button disabled={!_fxIsClaimEligible || isClaimBtnDisabled}
+                      onClick={() => onExecClaim()}>Make Claim</Button>
 
-              {/* <BtnXs disabled={isClaimBtnDisabled} */}
-              {/*        onClick={()=>u_xclaim()}>Claim Rewards</BtnXs> */}
-            </Box>
+              <TextXs>Minimum For Claim (Current Setting):</TextXs>
+              {/* <MoreInfoPopover> */}
+              {/*   We try to set the minimum around $20 USD equivalent - this helps keep the cost */}
+              {/*   low on myriad TX, because of the auto-claim feature. For example, imagine you */}
+              {/*   are due $4 in rewards, but processing the rewards will cost $5. The FrogeX */}
+              {/*   contract prevents this with a minimum claimable setting, which is manually */}
+              {/*   adjusted from time to time to keep things running optimally. */}
+              {/* </MoreInfoPopover> */}
+              <TextXs>{_xMinClaimableDivs[1]}&nbsp;ETH&nbsp;
+                (${_xMinClaimableDivs[2]}&nbsp;USD)</TextXs>
+            </>
           )}
         </VStack>
       </PondBody>
@@ -143,5 +152,5 @@ const cfgInit = {
   _ttlFeePctBuys:'',
   _ttlFeePctSells:'',
   _xGasForClaim:'',
-  _xMinClaimableDivs:'',
+  _minClaim:'',
 }

@@ -2,16 +2,18 @@ import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 
 import { injected } from './connectors'
+import { useFxAccountStore, useW3Store } from '../../../services/atoms.js';
 
 export function useEagerConnect() {
-  const { activate, active } = useWeb3React()
+  const u_activate = useW3Store(s=>s.u_activate)
+  const u_active = useW3Store(s=>s.u_active)
   const [tried, setTried] = useState(false)
 
   useEffect(() => {
-    if (!active ) {
+    if (!u_active ) {
       injected.isAuthorized().then((isAuthorized) => {
         if (isAuthorized) {
-          activate(injected, undefined, true).catch(() => {
+          u_activate(injected, undefined, true).catch(() => {
             setTried(true)
           })
         } else {
@@ -23,10 +25,10 @@ export function useEagerConnect() {
 
   // wait until we get confirmation of a connection to flip the flag
   useEffect(() => {
-    if (active) {
+    if (u_active) {
       setTried(true)
     }
-  }, [active])
+  }, [u_active])
 
   return tried
 }
@@ -36,25 +38,34 @@ export function useEagerConnect() {
  * and out after checking what network theyre on
  */
 export function useInactiveListener(suppress = false) {
-  const { active, error, activate } = useWeb3React()
+  const u_activate = useW3Store(s=>s.u_activate)
+  const u_active = useW3Store(s=>s.u_active)
+  const u_error = useW3Store(s=>s.u_error)
 
   useEffect(() => {
     const ethereum = window.ethereum
 
-    if (ethereum && ethereum.on && !active && !error && !suppress) {
+    if (ethereum && ethereum.on && !u_active && !u_error && !suppress) {
       const handleChainChanged = () => {
         // eat errors
-        activate(injected, undefined, true).catch((error) => {
-          console.error('Failed to activate after chain changed', error)
-        })
+        if(u_activate){
+          u_activate(injected, undefined, true).catch((err) => {
+            console.error('Failed to activate after chain changed', err)
+          })
+        }
       }
 
-      const handleAccountsChanged = (accounts) => {
-        if (accounts.length > 0) {
+      const handleAccountsChanged = (injAccounts) => {
+        if (injAccounts.length > 0) {
           // eat errors
-          activate(injected, undefined, true).catch((error) => {
-            console.error('Failed to activate after accounts changed', error)
-          })
+          if(u_activate){
+            u_activate(injected, undefined, true).catch((err) => {
+              console.error('Failed to activate after accounts changed', err)
+            })
+          }
+          useFxAccountStore.getState().removeAccount();
+        }else{
+
         }
       }
 
@@ -69,5 +80,5 @@ export function useInactiveListener(suppress = false) {
       }
     }
     return undefined
-  }, [active, error, suppress, activate])
+  }, [u_active, u_error, suppress, u_activate])
 }

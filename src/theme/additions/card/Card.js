@@ -10,12 +10,12 @@ const Card = {
     backgroundClip: "border-box",
   },
   variants: {
-    panel: (props) => ({
-      bg: props.colorMode === "dark" ? "gray.700" : "white",
+    panel: {
+      bg: "gray.700",
       width: "100%",
       boxShadow: "0px 3.5px 5.5px rgba(0, 0, 0, 0.02)",
       borderRadius: "15px",
-    }),
+    },
   },
   defaultProps: {
     variant: "panel",

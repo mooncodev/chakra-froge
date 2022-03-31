@@ -10,8 +10,8 @@ import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
 
 function HPageLanding() {
   // Chakra color mode
-  // const titleColor = useColorModeValue("green.300", "green.200");
-  // const textColor = useColorModeValue("gray.400", "white");
+  // const titleColor = "green.200"
+  // const textColor = "white"
 
   return (
     <VStack

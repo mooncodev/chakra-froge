@@ -10,8 +10,8 @@ import signInImage from "assets/img/signInImage.png";
 
 function HPageTeam() {
   // Chakra color mode
-  // const titleColor = useColorModeValue("green.300", "green.200");
-  // const textColor = useColorModeValue("gray.400", "white");
+  // const titleColor = "green.200"
+  // const textColor = "white"
 
   return (
     <Flex position="relative" mb="40px">

@@ -42,9 +42,9 @@ export default function APageDashboard() {
   const value = "$100.000";
   // Chakra Color Mode
   const { colorMode, toggleColorMode } = useColorMode();
-  const iconTeal = useColorModeValue("green.300", "green.300");
-  const iconBoxInside = useColorModeValue("white", "white");
-  const textColor = useColorModeValue("gray.700", "white");
+  const iconTeal = "green.300"
+  const iconBoxInside = "white"
+  const textColor = "white"
   const [series, setSeries] = useState([
     {
       type: "area",

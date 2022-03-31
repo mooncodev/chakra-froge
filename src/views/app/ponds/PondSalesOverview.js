@@ -23,7 +23,7 @@ import { olaToObject } from '../../../helpers/deep.js';
 import LineChart from '../../../components/Charts/LineChart.js';
 
 export default function PondSalesOverview() {
-  const textColor = useColorModeValue("gray.700", "white");
+  const textColor = "white"
   const w3r = useWeb3React()
   // const [_getConfig, set_getConfig] = useState(cfgInit)
 

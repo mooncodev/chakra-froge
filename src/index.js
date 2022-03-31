@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { ColorModeScript } from '@chakra-ui/react'
 import HPageLanding from './views/home/HPageLanding.js';
 import HPageTeam from './views/home/HPageTeam.js';
 
@@ -8,6 +9,7 @@ import APageBilling from './views/app/APageBilling.js';
 import APageDashboard from './views/app/APageDashboard.js';
 import APageProfile from './views/app/APageProfile.js';
 import APageTables from './views/app/APageTables.js';
+import theme from './theme/theme.js';
 
 const HomeLayout = React.lazy(() =>
   import(/* webpackChunkName: "views-home" */ './HomeLayout.js')
@@ -21,6 +23,7 @@ const AppProvider = React.lazy(() =>
 
 ReactDOM.render(
   <Suspense fallback={<div className="loading" />}>
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <BrowserRouter>
       <Routes>
         <Route element={<HomeLayout />} >

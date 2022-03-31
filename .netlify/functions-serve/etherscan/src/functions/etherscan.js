@@ -2770,12 +2770,19 @@ var urlConfTimeEstimate = `https://api.etherscan.io/api
    &apikey=${ETHERSCAN_API_KEY2}`;
 var urlGasOracle = `https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=${ETHERSCAN_API_KEY2}`;
 var urlLatestEthPrice = `https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${ETHERSCAN_API_KEY2}`;
+var devMode = true;
 exports.handler = async (event, _, callback) => {
   const { method } = event.queryStringParameters;
   if (!method) {
     return {
       statusCode: 400,
       body: "Method Required Eg. ?module=stats"
+    };
+  }
+  if (devMode) {
+    return {
+      statusCode: 200,
+      body: "3420.69"
     };
   }
   const url = {
@@ -2794,9 +2801,7 @@ exports.handler = async (event, _, callback) => {
   }
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      response
-    })
+    body: response
   };
 };
 //# sourceMappingURL=etherscan.js.map

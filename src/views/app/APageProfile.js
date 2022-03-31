@@ -40,7 +40,7 @@ import { IoDocumentsSharp } from "react-icons/io5";
 
 function APageProfile() {
   // Chakra color mode
-  const textColor = useColorModeValue("gray.700", "white");
+  const textColor = "white"
   const bgProfile = useColorModeValue(
     "hsla(0,0%,100%,.8)",
     "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
@@ -49,7 +49,7 @@ function APageProfile() {
     "white",
     "rgba(255, 255, 255, 0.31)"
   );
-  const emailColor = useColorModeValue("gray.400", "gray.300");
+  const emailColor = "gray.300"
 
   return (
     <Flex direction="column">

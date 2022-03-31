@@ -12,8 +12,8 @@ import ErrorBoundary from 'helpers/ErrorBoundary';
 
 
 export default function HomeFooter() {
-  const iconTeal = useColorModeValue("green.300", "green.300");
-  const iconBoxInside = useColorModeValue("white", "white");
+  const iconTeal = "green.300"
+  const iconBoxInside = "white"
   return (
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}

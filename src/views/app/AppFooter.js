@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { NavLink } from 'react-router-dom';
 
 export default function AppFooter(props) {
-  // const linkTeal = useColorModeValue("green.400", "red.200");=
+  // const linkTeal = "red.200"=
   return (
     <Flex id='AppFooter'
       flexDirection="column"

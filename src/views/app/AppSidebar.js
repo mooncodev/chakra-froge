@@ -28,6 +28,8 @@ import { FrogeLogo } from '../../components/Icons/FrogeBrandSvgs.js';
 import { useDeviceMode } from '../../theme/foundations/breakpoints.js';
 import { desktopSidebarWidth } from 'data/constants.js';
 import { sxGlassBg,sxGlassBg2 } from './bits/UtilityTags.js';
+import { SBNavLink } from './bits/SBNavLink.js';
+import FrogeEyeEye from '../../assets/logos/froge-eyeeye-outline-halfwhites.svg';
 export function AppSidebar(props) {
   // to check for active links and opened collapses
   let location = useLocation();
@@ -36,18 +38,8 @@ export function AppSidebar(props) {
   const [get_appNavDrawerOpen, set_appNavDrawerOpen] = useAtom(appNavDrawerOpenAtom)
 
   //  Chakra Color Mode
-  const mainText = ucmv("gray.50", "gray.200");
-  let hamburgerColor = ucmv("gray.500", "gray.200");
-  if (props.secondary === true) {
-    hamburgerColor = "white";
-  }
-  const SBNavLink = ({to,children})=>{
-    const [w,h] = isDesktop?['160px','40px']:['200px','40px']
-    return(
-    <Button as={NavLink} to={to} _hover={{ opacity: ".8" }} {...sxGlassBg2}
-            onClick={()=>set_appNavDrawerOpen(false)}
-            w={w} h={h} color={mainText}>{children}</Button>);
-  }
+  const mainText = "gray.200"
+
   const SBCloseButton = ()=>{return(
     <DrawerCloseButton as={Button}
       color={mainText}
@@ -56,7 +48,6 @@ export function AppSidebar(props) {
   }
 
   // SIDEBAR
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const [isMobile, isDesktop] = useDeviceMode()
 
   useEffect(()=>{console.log('deviceMode changed');
@@ -70,21 +61,38 @@ export function AppSidebar(props) {
               display="flex"
               alignItems="start"
               justifyContent='center'
-              style={{
+              sx={{
+                ':before': {
+                  content: '" "',
+                  display: 'block',
+                  position: 'absolute',
+                  left: '10px',
+                  top: '10px',
+                  right: '10px',
+                  bottom: '10px',
+                  borderRadius:'panelsRadius',
+                  // width: '100%',
+                  // height: '100%',
+                  backgroundColor: 'global.panel',
+                  pointerEvents: 'none',
+                },
+                position: 'fixed',
                 left: '0', top: '0',
                 width: desktopSidebarWidth,
-                position: 'fixed',
                 height: '100%'
               }}
         >
-          <Box pt={8} textAlign='center'>
-            <FrogeLogo opacity='.7' fontSize="46" _hover={{ opacity:'.8', }}  alignSelf="center"/>
-            <Stack m={5} direction="column" alignItems="center">
+          <Box pt={8} textAlign='center' position={'relative'}>
+            <FrogeLogo fontSize="69" alignSelf="center"/>
+            <Stack m={5} direction="column" flexFlow={'wrap'} gap='5px'>
               <SBNavLink to='./'>Dash</SBNavLink>
-              <SBNavLink to='./billing'>Billing</SBNavLink>
-              <SBNavLink to='./profile'>Profile</SBNavLink>
-              <SBNavLink to='./tables'>Tables</SBNavLink>
-              <SBNavLink to='./tables'>Calculators</SBNavLink>
+              <SBNavLink to='./billing'>FrogeX</SBNavLink>
+              <SBNavLink to='./profile'>Eco Action</SBNavLink>
+              <SBNavLink to='./tables'>Sponsorships</SBNavLink>
+              <SBNavLink to='./calculators'>Game Night</SBNavLink>
+              <SBNavLink to='./calculators'>NFT</SBNavLink>
+              <SBNavLink to='./calculators'>Xchange</SBNavLink>
+              <SBNavLink to='./calculators'>Calculators</SBNavLink>
             </Stack>
           </Box>
 

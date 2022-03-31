@@ -47,11 +47,11 @@ const hrWeiToEth=(s1)=>{
   solHandler(s1)
   sExp(s1,-18)
 }
-const weiToUSD = (inputWei, ethPrice='3000.00')=>{
+const weiToUSD = (inputWei, ethPrice)=>{
   let weiPrice = sExp(ethPrice,-18);
   return sRnd(sMul(sAbs(inputWei), weiPrice),-9)
 }
-const usdToWei = (inputUSD, ethPrice='3000.00')=>{
+const usdToWei = (inputUSD, ethPrice)=>{
   let weiPrice = sExp(ethPrice,-18);
   let usdAsWei = _F(sDiv(inputUSD,weiPrice),0)
   return usdAsWei

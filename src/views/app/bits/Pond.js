@@ -1,78 +1,99 @@
-import { Box, extendTheme, useStyleConfig } from '@chakra-ui/react';
-import { MainPanelComponent } from '../../../theme/additions/layout/MainPanel.js';
+import {
+  Box,
+  StylesProvider,
+  useMultiStyleConfig,
+  useStyles
+} from '@chakra-ui/react';
 
-const _Pond = {
+const PondStyleConfig = {
+  parts: ['Pond','PondHeader','PondBody'],
   baseStyle: {
-    display: "flex",
-    flexDirection: "column",
-    position: "relative",
-    width: "100%",
-    p: "22px",
-    minWidth: "0px",
-    wordWrap: "break-word",
-    backgroundClip: "border-box",
-    overflow:'hidden',
+    Pond:{
+      display: "flex",
+      flexDirection: "column",
+      position: "relative",
+      width: "fit-content",
+      height: 'fit-content',
+      p: "1.2rem",
+      minWidth: "0px",
+      wordWrap: "break-word",
+      backgroundColor: 'global.panel',
+      borderRadius:'panelsRadius',
+      backgroundClip: "border-box",
+      overflow:'hidden',
+      justifySelf:[ 'center','center','unset','unset'],
+    },
+    PondHeader:{
+      width: "100%",
+      fontFamily: 'rale',
+      fontSize: '1.3rem',
+      fontWeight: 'rale.heavy',
+    },
+    PondBody:{
+      display: "flex",
+      width: "100%",
+      fontFamily: 'mont',
+      fontSize: '0.9rem',
+      fontWeight: 'mont.medium',
+    },
+  },
+  sizes: {
+    sm: {
+      Pond:{p: "10px",justifySelf: 'center', },
+      PondHeader:{fontSize: '1.4rem',bgColor:'unset'},
+      PondBody:{fontSize: '0.875rem',},
+    },
+    md: {
+      Pond:{p: "22px",justifySelf: 'center',},
+      PondHeader:{},
+      PondBody:{},
+    },
   },
   variants: {
-    panel: (props) => ({
-      bg: props.colorMode === "dark" ? "gray.800" : "white",
-      width: "100%",
-      boxShadow: "0px 3.5px 5.5px rgba(0, 0, 0, 0.02)",
-      borderRadius: "15px",
-    }),
+    alignCenter: {
+      Pond:{
+        textAlign:'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      PondHeader:{
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      PondBody:{
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    },
   },
   defaultProps: {
-    variant: "panel",
-  },
-};
-const _PondHeader = {
-  baseStyle: {
-    display: "flex",
-    width: "100%"
-  },
-};
-const _PondBody = {
-  baseStyle: {
-    display: "flex",
-    width: "100%",
   },
 };
 
 export function Pond(props) {
-  const { variant, children, ...rest } = props;
-  const styles = useStyleConfig("Pond", { variant });
+  const { size,variant, children, ...rest } = props;
+  const styles = useMultiStyleConfig("Pond", { size,variant });
   return (
-    <Box __css={styles} {...rest}>
-      {children}
+    <Box __css={styles.Pond} {...rest}>
+      <StylesProvider value={styles}>
+        {children}
+      </StylesProvider>
     </Box>
   );
 }
 
 export function PondHeader(props) {
-  const { variant, children, ...rest } = props;
-  const styles = useStyleConfig("PondHeader", { variant });
-  return (
-    <Box __css={styles} {...rest}>
-      {children}
-    </Box>
-  );
+  const styles = useStyles();
+  return <Box __css={styles.PondHeader} {...props}/>;
 }
-
 export function PondBody(props) {
-  const { variant, children, ...rest } = props;
-  const styles = useStyleConfig("PondBody", { variant });
-  return (
-    <Box __css={styles} {...rest}>
-      {children}
-    </Box>
-  );
+  const styles = useStyles();
+  return <Box __css={styles.PondBody} {...props}/>;
 }
 
 export const PondComponent = {
   components: {
-    Pond: _Pond,
-    PondHeader: _PondHeader,
-    PondBody: _PondBody,
+    Pond: PondStyleConfig,
   },
 };
 

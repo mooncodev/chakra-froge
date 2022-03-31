@@ -25,7 +25,7 @@ import { dashboardTableData } from '../../../data/general.js';
 import DashboardTableRow from '../../../components/Tables/DashboardTableRow.js';
 
 export default function PondProjects() {
-  const textColor = useColorModeValue("gray.700", "white");
+  const textColor = "white"
   const w3r = useWeb3React()
   // const [_getConfig, set_getConfig] = useState(cfgInit)
 
