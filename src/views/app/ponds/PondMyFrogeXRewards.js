@@ -29,8 +29,8 @@ import { MoreInfoPopover } from '../bits/MoreInfoPopover.js';
 let _execClaimFn = ()=>{}
 
 
-export default function PondMyFrogeXRewards() {
-
+export default function PondMyFrogeXRewards(props) {
+  const {pondLink} = props;
   const {chainId:u_chainId,account:u_account,active:u_active,} = useWeb3React()
   const {chainId:n_chainId,account:n_account,active:n_active,} = useWeb3React('NETWORK')
 
@@ -72,15 +72,14 @@ export default function PondMyFrogeXRewards() {
   };
 
   const tickerBubbleStyle = {
-    color:'gray.300',
+    color:'gray.400',
     width: "45%",
-    textAlign:'center',
     bgColor:'global.bubble',
     borderRadius: '6px',
     ...mont.md.md,
   }
   return (
-    <Pond maxWidth='400px' variant={'alignCenter'}>
+    <Pond maxWidth='400px' variant='alignCenter' pondLink={pondLink}>
       <PondHeader>
         <S color='white'>FrogeX</S>&nbsp;<S color='gray.300'>Dividends</S>
       </PondHeader>

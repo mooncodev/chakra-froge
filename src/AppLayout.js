@@ -62,7 +62,8 @@ export default function AppLayout(props) {
              flexDirection: 'column',
              overflow: "auto",
              marginLeft:isDesktop?desktopSidebarWidth:'0',
-             paddingRight:isDesktop?'10px':'1px'
+             paddingRight:isDesktop?'10px':'1px',
+             paddingTop:'60px'
            }}>
         <Outlet/>
         <AppFooter/>

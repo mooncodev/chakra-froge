@@ -27,7 +27,8 @@ export default function W3RManager({ children }) {
   } = n_
   if(!ran1x){
     console.log('ran1x exec')
-    useW3Store.getState().init(u_,n_)
+    useW3Store.getState().u_init(u_)
+    useW3Store.getState().n_init(n_)
     useCrawlStore.getState().fetch_ethPrice()
     // useFxStore.getState().hydrateFxStore()
     ran1x=true;
@@ -36,7 +37,7 @@ export default function W3RManager({ children }) {
   // try to eagerly connect to an injected provider, if it exists and has granted access already
   useEffect(async () => {
     console.log('activating everything in W3RManager.js')
-    // await u_activate(connectors.network);
+    await n_activate(network);
     // console.log('u_account', u_account)
     // if(!ran1x){
     //   await useW3Store.getState().activateNetwork()
@@ -56,12 +57,12 @@ export default function W3RManager({ children }) {
 
   useEffect(async () => {
     console.log('w3rmanager running user effects')
-    await useW3Store.getState().init(u_,n_)
+    await useW3Store.getState().u_init(u_)
     await useFxAccountStore.getState().hydrateFxGetAccount()
   }, [u_chainId,u_account,u_active,])
   useEffect(async () => {
     console.log('w3rmanager running network effects')
-    await useW3Store.getState().init(u_,n_)
+    await useW3Store.getState().n_init(n_)
     await useFxStore.getState().hydrateFxStore()
   }, [n_chainId,n_account,n_active])
 

@@ -12,7 +12,9 @@ export default function AppFooter(props) {
       alignItems="center"
       justifyContent="space-between"
       px="20px"
-      opacity='0.8'
+          mt="26px"
+
+          opacity='0.8'
     >
       <List display="flex"
             my={{ base: "10px", xl: "15px" }}

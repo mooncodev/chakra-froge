@@ -1,9 +1,11 @@
 import {
-  Box,
+  Box, Center,
   StylesProvider,
   useMultiStyleConfig,
-  useStyles
+  useStyles, chakra, Button
 } from '@chakra-ui/react';
+import { useCallback, useRef } from 'react';
+import { usePondLinkStore } from '../../../services/usePondLinkStore.js';
 
 const PondStyleConfig = {
   parts: ['Pond','PondHeader','PondBody'],
@@ -14,17 +16,20 @@ const PondStyleConfig = {
       position: "relative",
       width: "fit-content",
       height: 'fit-content',
-      p: "1.2rem",
-      minWidth: "0px",
+      px: "1.2rem",
+      pt: "0",
+      pb: "1.2rem",
+      minWidth: "150px",
+      maxWidth: "380px",
       wordWrap: "break-word",
       backgroundColor: 'global.panel',
       borderRadius:'panelsRadius',
       backgroundClip: "border-box",
       overflow:'hidden',
-      justifySelf:[ 'center','center','unset','unset'],
+      justifySelf:'center',
     },
     PondHeader:{
-      width: "100%",
+      mt: '5px',
       fontFamily: 'rale',
       fontSize: '1.3rem',
       fontWeight: 'rale.heavy',
@@ -39,12 +44,12 @@ const PondStyleConfig = {
   },
   sizes: {
     sm: {
-      Pond:{p: "10px",justifySelf: 'center', },
-      PondHeader:{fontSize: '1.4rem',bgColor:'unset'},
+      Pond:{},
+      PondHeader:{fontSize: '1.4rem',},
       PondBody:{fontSize: '0.875rem',},
     },
     md: {
-      Pond:{p: "22px",justifySelf: 'center',},
+      Pond:{},
       PondHeader:{},
       PondBody:{},
     },
@@ -52,7 +57,6 @@ const PondStyleConfig = {
   variants: {
     alignCenter: {
       Pond:{
-        textAlign:'center',
         alignItems: 'center',
         justifyContent: 'center',
       },
@@ -71,15 +75,49 @@ const PondStyleConfig = {
 };
 
 export function Pond(props) {
-  const { size,variant, children, ...rest } = props;
+  const { size,variant, children,pondLink, ...rest } = props;
   const styles = useMultiStyleConfig("Pond", { size,variant });
-  return (
-    <Box __css={styles.Pond} {...rest}>
+  const [pageName,pondName] = pondLink;
+  // const pondTag = usePondLinkStore(s => {
+  //   return s[pageName].tags[pondName];
+  // });
+  const pondTag = usePondLinkStore(useCallback(
+    s => s[pageName].tags[pondName], [pageName,pondName])
+  )
+
+  const minBarStyle = {
+    w:'100%', h:'1rem', bgColor:'bog.500', opacity:'.4',borderRadius:'0 0 5px 5px'
+  }
+  const minBStyle = {
+    background: 'linear-gradient(to top left, #fff0 calc(50% - 1px), #aaa, #fff0 calc(50% + 1px) )',
+    width: '7px',
+    height: '10px'
+  }
+  const minHr = {
+    position:'relative',
+    // _hover:{bgColor:'#fff'},
+    w:'70%',
+    ':before': {
+      content: '" "', display: 'block', position: 'absolute',
+      background: 'linear-gradient(to top right, #fff0 calc(50% - 1px), #aaa6, #fff0 calc(50% + 1px) )',
+      w: '12px', h: '12px', left: '-12px', bottom: '-6px'
+    },
+    ':after': {
+      content: '" "', display: 'block', position: 'absolute',
+      background: 'linear-gradient(to top left, #fff0 calc(50% - 1px), #aaa6, #fff0 calc(50% + 1px) )',
+      w: '12px', h: '12px', right: '-12px', top: '-6px'
+    }
+  }
+  const minimize=()=>{usePondLinkStore.getState().plinkMinimize(pageName,pondName)}
+  return !pondTag.plinkify &&
+    (<Box __css={styles.Pond} {...rest}>
+        <Center as={Button} {...minBarStyle} onClick={minimize}>
+          <chakra.hr sx={minHr}/>
+        </Center>
       <StylesProvider value={styles}>
         {children}
       </StylesProvider>
-    </Box>
-  );
+    </Box>);
 }
 
 export function PondHeader(props) {

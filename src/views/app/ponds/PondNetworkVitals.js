@@ -21,7 +21,8 @@ import { BtnXs, TextXs } from '../bits/UtilityTags.js';
 
 
 
-export default function PondNetworkVitals() {
+export default function PondNetworkVitals(props) {
+  const {pondLink} = props;
   const u_ = useWeb3React()
   const n_ = useWeb3React('NETWORK')
   const {
@@ -91,7 +92,7 @@ export default function PondNetworkVitals() {
   };
 
   return (
-    <Pond minHeight="290.5px" p="1.2rem">
+    <Pond minHeight="290.5px" pondLink={pondLink}>
       <PondHeader>Network Vitals</PondHeader>
       <PondBody>
         <VStack>

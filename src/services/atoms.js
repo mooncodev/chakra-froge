@@ -1,12 +1,10 @@
-import { atom, useAtom } from 'jotai';
+import { atom } from 'jotai';
 import axios from 'axios';
-import create from 'zustand'
-import { FX, FXP, readFX, stx } from '../stx/stx.js';
+import create from 'zustand';
+import { FXP, readFX, stx } from '../stx/stx.js';
 import { sExp, sMul, sRnd } from '../helpers/math/zmath.mjs';
 import addr from '../data/addresses.js';
 import { connectors } from '../views/app/Wallet/connectors.js';
-import { getWeb3ReactContext, useWeb3React, Web3ReactProvider } from '@web3-react/core';
-import { ethers } from 'ethers';
 import { mockEthBal, mockFxGetAccount1 } from './mocks.js';
 import { envPHASE } from '../data/constants.js';
 
@@ -67,6 +65,7 @@ export const epoch = {
   now: ()=>Math.floor(Date.now()/1000),
   diff: (epoch)=>Math.floor(Date.now()/1000)-epoch,
 }
+
 export const useFxAccountStore = create((set,get) => ({
   _ethBalance:['','',''],
   _balance: ['','',''],
@@ -84,9 +83,11 @@ export const useFxAccountStore = create((set,get) => ({
       path: ['FrogeX','xClaim'],})
   },
   hydrateEthBalance:async()=>{
+    const state = useW3Store.getState();
+    const lib = state.n_library;
+    if(!lib){return}
     const u_account = useW3Store.getState().u_account;
-    const lib = useW3Store.getState().n_library;
-    let _ethBalance = envPHASE>0?await lib.provider.getBalance(u_account)
+    let _ethBalance = envPHASE>0?await lib.getBalance(u_account)
       :mockEthBal
     _ethBalance=  _ethBalance.toString()
     const ethPrice = useCrawlStore.getState().ethPrice
@@ -95,7 +96,6 @@ export const useFxAccountStore = create((set,get) => ({
   },
   removeAccount:()=>{
     set({
-
       _balance: ['','',''],
       _xDivsAvailable: ['','',''],
       _xDivsEarnedToDate: ['','',''],
@@ -159,7 +159,7 @@ export const useW3Store = create((set,get) => ({
   activateUser:async(connector)=>{
     (get().u_activate && await get().u_activate(connector));
   },
-  init:async(u_,n_)=>{
+  u_init:async(u_)=>{
     set({
       u_library:u_.library,
       u_chainId:u_.chainId,
@@ -168,6 +168,11 @@ export const useW3Store = create((set,get) => ({
       u_active:u_.active,
       u_activate:u_.activate,
       u_deactivate:u_.deactivate,
+    })
+    await get().activateNetwork();
+  },
+  n_init:async(n_)=>{
+    set({
       n_library:n_.library,
       n_chainId:n_.chainId,
       n_account:n_.account,

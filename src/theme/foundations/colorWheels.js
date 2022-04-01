@@ -1,4 +1,4 @@
-// 1. Import the utilities
+
 export const colorWheels = {
   "gray": {
     "50": "#EDF1F7",
