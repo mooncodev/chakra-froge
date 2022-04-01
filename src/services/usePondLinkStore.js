@@ -5,16 +5,18 @@ import { CgMaximize } from 'react-icons/cg';
 import produce from 'immer';
 
 export const usePondLinkStore = create((set, get) => ({
-  pgDash: {
-    tags: {
-      ['FrogeX Dividends']:{},
-      ['Network Vitals']:{},
-    }
-  },
-  pgFrogeX: {
-    tags: {}
-  },
+  pgDash: { tags: {} },
+  pgFrogeX: { tags: {} },
+  pgEcoAct: { tags: {} },
+  pgSpshps: { tags: {} },
+  pgGament: { tags: {} },
+  pgNFT: { tags: {} },
+  pgXchang: { tags: {} },
+  pgCalcs: { tags: {} },
   plinkMinimize: async (pageName, pondName) => {
+    if(!get()[pageName].tags[pondName]){
+      set((produce((s) => {s[pageName].tags[pondName]={}})))
+    }
     set(produce((s) => { s[pageName].tags[pondName].plinkify = true }))
   },
   plinkMaximize: async (pageName, pondName) => {
@@ -37,7 +39,7 @@ const egPagesObj = {
   }
 };
 
-export function TagRow(props) {
+export function PondLinkTagRow(props) {
   const { pondLinkPg, } = props;
   const tags = usePondLinkStore(s => s[pondLinkPg].tags);
   const rowStyles = {w:"100%", h:"30px", display:'flex',flexWrap:'wrap',gap:'10px',mb:'10px'}

@@ -1,5 +1,4 @@
 import { mode } from "@chakra-ui/theme-tools";
-import 'react-perfect-scrollbar/dist/css/styles.css';
 import { fontsTheme } from './foundations/fonts.js';
 import { colorWheels } from './foundations/colorWheels.js';
 //https://paletton.com/

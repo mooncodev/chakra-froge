@@ -5,15 +5,15 @@ import React from 'react';
 // react icons
 import PondNetworkVitals from './ponds/PondNetworkVitals.js';
 import PondMyFrogeXRewards from './ponds/PondMyFrogeXRewards.js';
-import { TagRow } from '../../services/usePondLinkStore.js';
+import { PondLinkTagRow } from '../../services/usePondLinkStore.js';
 
-export default function APageDashboard() {
+export default function A_PgDash() {
 
   return (
     // <Flex flexDirection="column" flexGrow='1' pt="75px">
 
     <>
-      <TagRow pondLinkPg='pgDash'/>
+      <PondLinkTagRow pondLinkPg='pgDash'/>
       <Grid
         templateColumns={{
           md: '1fr',

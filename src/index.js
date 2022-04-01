@@ -5,10 +5,10 @@ import { ColorModeScript } from '@chakra-ui/react'
 import HPageLanding from './views/home/HPageLanding.js';
 import HPageTeam from './views/home/HPageTeam.js';
 
-import APageBilling from './views/app/APageBilling.js';
-import APageDashboard from './views/app/APageDashboard.js';
-import APageProfile from './views/app/APageProfile.js';
-import APageTables from './views/app/APageTables.js';
+import A_PgBilling from './views/app/A_PgBilling.js';
+import A_PgDash from './views/app/A_PgDash.js';
+import A_PgProfile from './views/app/A_PgProfile.js';
+import A_PgTables from './views/app/A_PgTables.js';
 import theme from './theme/theme.js';
 
 const HomeLayout = React.lazy(() =>
@@ -31,11 +31,11 @@ ReactDOM.render(
             <Route path={'/team'} element={<HPageTeam/>}/>
           </Route>
           <Route path={'/app/*'} element={<AppProvider/>}>
-            <Route path={'dash'} element={<APageDashboard/>}/>
-            <Route path={'billing'} element={<APageBilling/>}/>
-            <Route path={'profile'} element={<APageProfile/>}/>
-            <Route path={'tables'} element={<APageTables/>}/>
-            <Route path={'*'} element={<APageDashboard/>}/>
+            <Route path={'dash'} element={<A_PgDash/>}/>
+            <Route path={'billing'} element={<A_PgBilling/>}/>
+            <Route path={'profile'} element={<A_PgProfile/>}/>
+            <Route path={'tables'} element={<A_PgTables/>}/>
+            <Route path={'*'} element={<A_PgDash/>}/>
           </Route>
           <Route path="*" element={<HomeLayout/>}/>
         </Routes>

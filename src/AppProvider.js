@@ -8,7 +8,7 @@ import {
 import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core';
 import { ethers } from "ethers";
 import AppLayout from './AppLayout.js';
-import W3RManager from './views/app/Wallet/W3RManager.js';
+import W3RManager from './views/app/wallet/W3RManager.js';
 const Web3ReactProviderNetwork = createWeb3ReactRoot('NETWORK')
 
 const getLibrary = (provider) => {

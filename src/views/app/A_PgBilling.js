@@ -35,7 +35,7 @@ import {
   olderTransactions,
 } from "data/general";
 
-function APageBilling() {
+function A_PgBilling() {
   const iconTeal = "green.300"
   const textColor = "white"
   const borderColor = "gray.500"
@@ -412,4 +412,4 @@ function APageBilling() {
   );
 }
 
-export default APageBilling;
+export default A_PgBilling;

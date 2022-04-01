@@ -17,15 +17,15 @@ import { AppSidebarHelp } from "components/Sidebar/AppSidebarHelp.js";
 import PropTypes from "prop-types";
 import React, { useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
-import { RocketIcon } from '../../components/Icons/Icons.js';
+import { RocketIcon } from '../../../components/Icons/Icons.js';
 import { useAtom } from 'jotai';
-import { appNavDrawerOpenAtom } from '../../services/atoms.js';
-import { FrogeLogo } from '../../components/Icons/FrogeBrandSvgs.js';
-import { useDeviceMode } from '../../theme/foundations/breakpoints.js';
+import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
+import { FrogeLogo } from '../../../components/Icons/FrogeBrandSvgs.js';
+import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
 import { desktopSidebarWidth } from 'data/constants.js';
-import { sxGlassBg,sxGlassBg2 } from './bits/UtilityTags.js';
-import { SBNavLink } from './bits/SBNavLink.js';
-import FrogeEyeEye from '../../assets/logos/froge-eyeeye-outline-halfwhites.svg';
+import { sxGlassBg,sxGlassBg2 } from '../bits/UtilityTags.js';
+import { SBNavLink } from '../bits/SBNavLink.js';
+import FrogeEyeEye from '../../../assets/logos/froge-eyeeye-outline-halfwhites.svg';
 export function AppSidebar(props) {
   // to check for active links and opened collapses
   let location = useLocation();

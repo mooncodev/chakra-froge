@@ -4,7 +4,7 @@ import create from 'zustand';
 import { FXP, readFX, stx } from '../stx/stx.js';
 import { sExp, sMul, sRnd } from '../helpers/math/zmath.mjs';
 import addr from '../data/addresses.js';
-import { connectors } from '../views/app/Wallet/connectors.js';
+import { connectors } from '../views/app/wallet/connectors.js';
 import { mockEthBal, mockFxGetAccount1 } from './mocks.js';
 import { envPHASE } from '../data/constants.js';
 

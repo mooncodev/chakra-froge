@@ -48,7 +48,7 @@ export default function PondMyFrogeXRewards(props) {
 
 
   useEffect(async ()=>{
-    await hydrate()
+    // await hydrate()
   },[])
 
 
@@ -136,20 +136,4 @@ export default function PondMyFrogeXRewards(props) {
       </PondBody>
     </Pond>
   );
-}
-
-const cfgInit = {
-  _ethPtnChty:'',
-  _ethPtnLqty:'',
-  _ethPtnMktg:'',
-  _ethPtnRwds:'',
-  _hopThreshold:'',
-  _lockerUnlockDate:'',
-  _lqtyThreshold:'',
-  _tknPtnLqty:'',
-  _tradingEnabled:'',
-  _ttlFeePctBuys:'',
-  _ttlFeePctSells:'',
-  _xGasForClaim:'',
-  _minClaim:'',
 }

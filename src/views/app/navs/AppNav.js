@@ -10,7 +10,7 @@ import {
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from 'react';
 import AppNavControls from "./AppNavControls.js";
-import { sxGlassBg } from './bits/UtilityTags.js';
+import { sxGlassBg } from '../bits/UtilityTags.js';
 // import { useAtom } from 'jotai';
 // import { appNavDrawerOpenAtom } from '../../services/atoms.js';
 

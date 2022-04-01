@@ -109,7 +109,7 @@ export function Pond(props) {
     }
   }
   const minimize=()=>{usePondLinkStore.getState().plinkMinimize(pageName,pondName)}
-  return !pondTag.plinkify &&
+  return (!pondTag||!pondTag.plinkify) &&
     (<Box __css={styles.Pond} {...rest}>
         <Center as={Button} {...minBarStyle} onClick={minimize}>
           <chakra.hr sx={minHr}/>

@@ -37,7 +37,7 @@ import {
 } from "react-icons/fa";
 import { IoDocumentsSharp } from "react-icons/io5";
 
-function APageProfile() {
+function A_PgProfile() {
   // Chakra color mode
   const textColor = "white"
   const bgProfile = "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
@@ -717,4 +717,4 @@ function APageProfile() {
   );
 }
 
-export default APageProfile;
+export default A_PgProfile;

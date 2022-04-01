@@ -6,11 +6,11 @@ import {
 import PropTypes from "prop-types";
 import React from "react";
 import { useAtom } from 'jotai';
-import { appNavDrawerOpenAtom } from '../../services/atoms.js';
-import W3RApp from './Wallet/w3rApp.js';
-import { useDeviceMode } from '../../theme/foundations/breakpoints.js';
-import { BtnBrandIcon } from './bits/UtilityTags.js';
-import HistoryWidget from './Wallet/HistoryWidget.js';
+import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
+import W3RApp from '../wallet/w3rApp.js';
+import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
+import { BtnBrandIcon } from '../bits/UtilityTags.js';
+import HistoryWidget from '../wallet/HistoryWidget.js';
 
 export default function AppNavControls(props) {
   const [isMobile, isDesktop] = useDeviceMode()
