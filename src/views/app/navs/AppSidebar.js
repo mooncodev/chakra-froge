@@ -22,7 +22,7 @@ import { useAtom } from 'jotai';
 import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
 import { FrogeLogo } from '../../../components/Icons/FrogeBrandSvgs.js';
 import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
-import { desktopSidebarWidth } from 'data/constants.js';
+import { desktopSidebarWidth, PHASE } from 'data/constants.js';
 import { sxGlassBg,sxGlassBg2 } from '../bits/UtilityTags.js';
 import { SBNavLink } from '../bits/SBNavLink.js';
 import FrogeEyeEye from '../../../assets/logos/froge-eyeeye-outline-halfwhites.svg';
@@ -82,13 +82,13 @@ export function AppSidebar(props) {
             <FrogeLogo fontSize="69" alignSelf="center"/>
             <Stack m={5} direction="column" flexFlow={'wrap'} gap='5px'>
               <SBNavLink to='./'>Dash</SBNavLink>
-              <SBNavLink to='./billing'>FrogeX</SBNavLink>
-              <SBNavLink to='./profile'>Eco Action</SBNavLink>
-              <SBNavLink to='./tables'>Sponsorships</SBNavLink>
-              <SBNavLink to='./calculators'>Game Night</SBNavLink>
-              <SBNavLink to='./calculators'>NFT</SBNavLink>
-              <SBNavLink to='./calculators'>Xchange</SBNavLink>
-              <SBNavLink to='./calculators'>Calculators</SBNavLink>
+              <SBNavLink to='./frogex'>FrogeX</SBNavLink>
+              <SBNavLink to='./eco-action'>Eco Action</SBNavLink>
+              <SBNavLink to='./sponsorships'>Sponsorships</SBNavLink>
+              <SBNavLink to='./game-night'>Game Night</SBNavLink>
+              <SBNavLink to='./nft'>NFT</SBNavLink>
+              <SBNavLink to='./xchange'>Xchange</SBNavLink>
+              <SBNavLink to='./calc'>Calculators</SBNavLink>
             </Stack>
           </Box>
 
@@ -99,7 +99,7 @@ export function AppSidebar(props) {
                 finalFocusRef={btnRef} placement="right">
           <DrawerOverlay backdropFilter="saturate(200%) blur(3px)"/>
           <DrawerContent style={{background:'transparent',borderRadius:'9px',
-            top:'7px', right:'7px', bottom:'auto', width:'auto',
+            top:'7px', right:'7px', bottom:'auto', width:'11rem',
           }}>
             <DrawerBody px="1rem">
               <SBCloseButton/>
@@ -107,13 +107,18 @@ export function AppSidebar(props) {
                 <FrogeLogo fontSize="46" _hover={{ opacity:'.8', }}  alignSelf="center"/>
                 <Stack my={5} direction="column" alignItems="center">
                   <SBNavLink to='./'>Dash</SBNavLink>
-                  <SBNavLink to='./billing'>FrogeX</SBNavLink>
-                  <SBNavLink to='./profile'>Eco Action</SBNavLink>
-                  <SBNavLink to='./tables'>Sponsorships</SBNavLink>
-                  <SBNavLink to='./calculators'>Game Night</SBNavLink>
-                  <SBNavLink to='./calculators'>NFT</SBNavLink>
-                  <SBNavLink to='./calculators'>Xchange</SBNavLink>
-                  <SBNavLink to='./calculators'>Calculators</SBNavLink>
+                  <SBNavLink to='./frogex'>FrogeX</SBNavLink>
+                  <SBNavLink to='./eco-action'>Eco Action</SBNavLink>
+                  <SBNavLink to='./sponsorships'>Sponsorships</SBNavLink>
+                  <SBNavLink to='./game-night'>Game Night</SBNavLink>
+                  <SBNavLink to='./nft'>NFT</SBNavLink>
+                  <SBNavLink to='./xchange'>Xchange</SBNavLink>
+                  <SBNavLink to='./calc'>Calculators</SBNavLink>
+                  {PHASE<3 &&(<>
+                    <SBNavLink to="./billing">billing</SBNavLink>
+                    <SBNavLink to="./profile">profile</SBNavLink>
+                    <SBNavLink to="./tables">tables</SBNavLink>
+                  </>)}
                 </Stack>
               </Box>
             </DrawerBody>

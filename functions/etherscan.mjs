@@ -20,6 +20,7 @@ const urlConfTimeEstimate =
    &apikey=${ETHERSCAN_API_KEY}`
 const urlGasOracle = `https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=${ETHERSCAN_API_KEY}`
 const urlLatestEthPrice = `https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${ETHERSCAN_API_KEY}`
+const urlLatestEthPriceCoinstat = `https://api.coinstats.app/public/v1/coins/ethereum?currency=USD`
 const devMode = true;
 exports.handler = async (event, _, callback) => {
   const { method } = event.queryStringParameters
@@ -36,7 +37,7 @@ exports.handler = async (event, _, callback) => {
     }
   }
   const url = {
-    ethPrice:urlLatestEthPrice,
+    ethPrice:urlLatestEthPriceCoinstat,
     estConfirmTime:urlConfTimeEstimate,
     gasOracle:urlGasOracle,
   }[method]

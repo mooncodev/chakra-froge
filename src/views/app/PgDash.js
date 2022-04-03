@@ -4,33 +4,19 @@ import { Grid, } from '@chakra-ui/react';
 import React from 'react';
 // react icons
 import PondNetworkVitals from './ponds/PondNetworkVitals.js';
-import PondMyFrogeXRewards from './ponds/PondMyFrogeXRewards.js';
-import { PondLinkTagRow } from '../../services/usePondLinkStore.js';
+import PondFrogeXDividends from './ponds/PondFrogeXDividends.js';
 
-export default function A_PgDash() {
+export default function PgDash() {
 
   return (
     // <Flex flexDirection="column" flexGrow='1' pt="75px">
 
     <>
-      <PondLinkTagRow pondLinkPg='pgDash'/>
-      <Grid
-        templateColumns={{
-          md: '1fr',
-          lg: '1fr 1fr'
-        }}
-        templateRows={{
-          md: '1fr auto',
-          lg: '1fr'
-        }}
-        gap="24px"
-      >
         {/* <BogGlobalStats/> */}
-        <PondMyFrogeXRewards pondLink={['pgDash','FrogeX Dividends']}/>
-        <PondNetworkVitals pondLink={['pgDash','Network Vitals']}/>
+        <PondFrogeXDividends pondLink={['PgDash','FrogeX Dividends']}/>
+        <PondNetworkVitals pondLink={['PgDash','Network Vitals']}/>
         {/* <PondFrogeXVitals/> */}
         {/* <PondRockets/> */}
-      </Grid>
     </>
       // <Grid
       //   templateColumns={{ sm: "1fr", lg: "1.3fr 1.7fr" }}

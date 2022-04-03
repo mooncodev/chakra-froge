@@ -29,7 +29,7 @@ import { MoreInfoPopover } from '../bits/MoreInfoPopover.js';
 let _execClaimFn = ()=>{}
 
 
-export default function PondMyFrogeXRewards(props) {
+export default function PondFrogeXDividends(props) {
   const {pondLink} = props;
   const {chainId:u_chainId,account:u_account,active:u_active,} = useWeb3React()
   const {chainId:n_chainId,account:n_account,active:n_active,} = useWeb3React('NETWORK')
@@ -85,7 +85,6 @@ export default function PondMyFrogeXRewards(props) {
       </PondHeader>
       {u_account&&<TextXs mt='-5px' mb='7px'>For <S fontWeight='bold'>{last4(u_account)}</S></TextXs>}
       <PondBody>
-        <VStack>
           <HStack width='100%' justifyContent='space-evenly'>
             <VStack __css={tickerBubbleStyle}><P>FrogeX</P><P>${fxPrice}</P></VStack>
             <VStack __css={tickerBubbleStyle}><P>ETH</P><P>${ethPrice}</P></VStack>
@@ -132,7 +131,6 @@ export default function PondMyFrogeXRewards(props) {
                 (${_xMinClaimableDivs[2]}&nbsp;USD)</TextXs>
             </>
           )}
-        </VStack>
       </PondBody>
     </Pond>
   );

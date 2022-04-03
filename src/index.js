@@ -5,11 +5,18 @@ import { ColorModeScript } from '@chakra-ui/react'
 import HPageLanding from './views/home/HPageLanding.js';
 import HPageTeam from './views/home/HPageTeam.js';
 
-import A_PgBilling from './views/app/A_PgBilling.js';
-import A_PgDash from './views/app/A_PgDash.js';
-import A_PgProfile from './views/app/A_PgProfile.js';
-import A_PgTables from './views/app/A_PgTables.js';
+import XPgBilling from './views/app/XPgBilling.js';
+import PgDash from './views/app/PgDash.js';
+import XPgProfile from './views/app/XPgProfile.js';
+import XPgTables from './views/app/XPgTables.js';
 import theme from './theme/theme.js';
+import PgEcoAction from './views/app/PgEcoAction.js';
+import PgFrogeX from './views/app/PgFrogeX.js';
+import PgSponsorships from './views/app/PgSponsorships.js';
+import PgGameNight from './views/app/PgGameNight.js';
+import PgNFT from './views/app/PgNFT.js';
+import PgXchange from './views/app/PgXchange.js';
+import PgCalculators from './views/app/PgCalculators.js';
 
 const HomeLayout = React.lazy(() =>
   import(/* webpackChunkName: "views-home" */ './HomeLayout.js')
@@ -31,11 +38,18 @@ ReactDOM.render(
             <Route path={'/team'} element={<HPageTeam/>}/>
           </Route>
           <Route path={'/app/*'} element={<AppProvider/>}>
-            <Route path={'dash'} element={<A_PgDash/>}/>
-            <Route path={'billing'} element={<A_PgBilling/>}/>
-            <Route path={'profile'} element={<A_PgProfile/>}/>
-            <Route path={'tables'} element={<A_PgTables/>}/>
-            <Route path={'*'} element={<A_PgDash/>}/>
+            <Route path={'dash'} element={<PgDash/>}/>
+            <Route path={'frogex'} element={<PgFrogeX/>}/>
+            <Route path={'eco-action'} element={<PgEcoAction/>}/>
+            <Route path={'sponsorships'} element={<PgSponsorships/>}/>
+            <Route path={'game-night'} element={<PgGameNight/>}/>
+            <Route path={'nft'} element={<PgNFT/>}/>
+            <Route path={'xchange'} element={<PgXchange/>}/>
+            <Route path={'calc'} element={<PgCalculators/>}/>
+            <Route path={'billing'} element={<XPgBilling/>}/>
+            <Route path={'profile'} element={<XPgProfile/>}/>
+            <Route path={'tables'} element={<XPgTables/>}/>
+            <Route path={'*'} element={<PgDash/>}/>
           </Route>
           <Route path="*" element={<HomeLayout/>}/>
         </Routes>

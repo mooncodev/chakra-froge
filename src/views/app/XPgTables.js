@@ -12,7 +12,7 @@ import TablesProjectRow from "components/Tables/TablesProjectRow";
 import TablesTableRow from "components/Tables/TablesTableRow";
 import { tablesProjectData, tablesTableData } from "data/general";
 
-function A_PgTables() {
+function XPgTables() {
   const textColor = "white"
 
   return (
@@ -98,4 +98,4 @@ function A_PgTables() {
   );
 }
 
-export default A_PgTables;
+export default XPgTables;

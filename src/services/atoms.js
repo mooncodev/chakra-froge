@@ -6,7 +6,7 @@ import { sExp, sMul, sRnd } from '../helpers/math/zmath.mjs';
 import addr from '../data/addresses.js';
 import { connectors } from '../views/app/wallet/connectors.js';
 import { mockEthBal, mockFxGetAccount1 } from './mocks.js';
-import { envPHASE } from '../data/constants.js';
+import { PHASE } from '../data/constants.js';
 
 // const priceAtom = atom(10)
 // const messageAtom = atom('hello')
@@ -87,7 +87,7 @@ export const useFxAccountStore = create((set,get) => ({
     const lib = state.n_library;
     if(!lib){return}
     const u_account = useW3Store.getState().u_account;
-    let _ethBalance = envPHASE>0?await lib.getBalance(u_account)
+    let _ethBalance = PHASE>0?await lib.getBalance(u_account)
       :mockEthBal
     _ethBalance=  _ethBalance.toString()
     const ethPrice = useCrawlStore.getState().ethPrice
@@ -114,7 +114,7 @@ export const useFxAccountStore = create((set,get) => ({
       _xDivsEarnedToDate, _xDivsWithdrawnToDate,
       _isAMMPair, _isBlackListedBot,
       _isExcludedFromRwds, _isExcludedFromFees,
-    } = envPHASE>0?await readFX('getAccount',[u_account])
+    } = PHASE>0?await readFX('getAccount',[u_account])
       :mockFxGetAccount1
     const fxPrice = useFxStore.getState().fxPrice
     const ethPrice = useCrawlStore.getState().ethPrice

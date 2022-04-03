@@ -3,16 +3,17 @@ import React, { useRef } from 'react';
 import { Box, Center, Icon } from '@chakra-ui/react';
 import { CgMaximize } from 'react-icons/cg';
 import produce from 'immer';
+import { TiPlus } from 'react-icons/ti';
 
 export const usePondLinkStore = create((set, get) => ({
-  pgDash: { tags: {} },
-  pgFrogeX: { tags: {} },
-  pgEcoAct: { tags: {} },
-  pgSpshps: { tags: {} },
-  pgGament: { tags: {} },
-  pgNFT: { tags: {} },
-  pgXchang: { tags: {} },
-  pgCalcs: { tags: {} },
+  PgDash: { tags: {} },
+  PgFrogeX: { tags: {} },
+  PgEcoAction: { tags: {} },
+  PgSponsorships: { tags: {} },
+  PgGameNight: { tags: {} },
+  PgNFT: { tags: {} },
+  PgXchange: { tags: {} },
+  PgCalculators: { tags: {} },
   plinkMinimize: async (pageName, pondName) => {
     if(!get()[pageName].tags[pondName]){
       set((produce((s) => {s[pageName].tags[pondName]={}})))
@@ -25,7 +26,7 @@ export const usePondLinkStore = create((set, get) => ({
 }));
 
 const egPagesObj = {
-  pgDash: {
+  PgDash: {
     tags: {
       ['Network Vitals']: {
         pondRef: {},
@@ -51,7 +52,7 @@ export function PondLinkTagRow(props) {
         <Center sx={tagStyles}
                 key={pondLinkPg+k}
                 onClick={()=>maximize(pondLinkPg, k)}>
-          {k}&nbsp;<CgMaximize/>
+          {k}&nbsp;<TiPlus style={{ marginTop: '-8px',height: '12px', width:'auto'}}/>
         </Center>
       ))}
     </Box>

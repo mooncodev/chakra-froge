@@ -35,7 +35,7 @@ import {
   olderTransactions,
 } from "data/general";
 
-function A_PgBilling() {
+function XPgBilling() {
   const iconTeal = "green.300"
   const textColor = "white"
   const borderColor = "gray.500"
@@ -412,4 +412,4 @@ function A_PgBilling() {
   );
 }
 
-export default A_PgBilling;
+export default XPgBilling;

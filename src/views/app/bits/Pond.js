@@ -2,7 +2,7 @@ import {
   Box, Center,
   StylesProvider,
   useMultiStyleConfig,
-  useStyles, chakra, Button
+  useStyles, chakra, Button, VStack, Heading
 } from '@chakra-ui/react';
 import { useCallback, useRef } from 'react';
 import { usePondLinkStore } from '../../../services/usePondLinkStore.js';
@@ -11,22 +11,20 @@ const PondStyleConfig = {
   parts: ['Pond','PondHeader','PondBody'],
   baseStyle: {
     Pond:{
-      display: "flex",
-      flexDirection: "column",
       position: "relative",
-      width: "fit-content",
+      width: "345px",
       height: 'fit-content',
       px: "1.2rem",
       pt: "0",
       pb: "1.2rem",
-      minWidth: "150px",
-      maxWidth: "380px",
-      wordWrap: "break-word",
+      gap:'5px',
+      // minWidth: "300px",
+      // maxWidth: "360px",
+      // wordBreak: "break-all",
       backgroundColor: 'global.panel',
       borderRadius:'panelsRadius',
       backgroundClip: "border-box",
-      overflow:'hidden',
-      justifySelf:'center',
+      overflow:'auto',
     },
     PondHeader:{
       mt: '5px',
@@ -56,18 +54,9 @@ const PondStyleConfig = {
   },
   variants: {
     alignCenter: {
-      Pond:{
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      PondHeader:{
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      PondBody:{
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
+      Pond:{},
+      PondHeader:{},
+      PondBody:{},
     },
   },
   defaultProps: {
@@ -84,7 +73,6 @@ export function Pond(props) {
   const pondTag = usePondLinkStore(useCallback(
     s => s[pageName].tags[pondName], [pageName,pondName])
   )
-
   const minBarStyle = {
     w:'100%', h:'1rem', bgColor:'bog.500', opacity:'.4',borderRadius:'0 0 5px 5px'
   }
@@ -110,23 +98,23 @@ export function Pond(props) {
   }
   const minimize=()=>{usePondLinkStore.getState().plinkMinimize(pageName,pondName)}
   return (!pondTag||!pondTag.plinkify) &&
-    (<Box __css={styles.Pond} {...rest}>
+    (<VStack __css={styles.Pond} {...rest}>
         <Center as={Button} {...minBarStyle} onClick={minimize}>
           <chakra.hr sx={minHr}/>
         </Center>
       <StylesProvider value={styles}>
         {children}
       </StylesProvider>
-    </Box>);
+    </VStack>);
 }
 
 export function PondHeader(props) {
   const styles = useStyles();
-  return <Box __css={styles.PondHeader} {...props}/>;
+  return <Heading as='h3' size='lg' __css={styles.PondHeader} {...props}/>;
 }
 export function PondBody(props) {
   const styles = useStyles();
-  return <Box __css={styles.PondBody} {...props}/>;
+  return <VStack __css={styles.PondBody} {...props}/>;
 }
 
 export const PondComponent = {

@@ -20,14 +20,14 @@ export default function AppNavControls(props) {
   return (
     <Flex id='FCB-AppNavbarLinks'
       pe={{ sm: "0px", md: "16px" }} w={{ sm: "100%", md: "auto" }}
-      alignItems="center" flexDirection="row" gap={2}
+      alignItems="center" flexDirection="row" gap={isMobile?'1.2rem':'.8rem'}
     >
       <HistoryWidget/>
 
       <W3RApp/>
 
       {isMobile && (
-        <BtnBrandIcon type='burger'
+        <BtnBrandIcon h='2.2rem' type='burger'
           onClick={() => set_appNavDrawerOpen(!get_appNavDrawerOpen)}
         />
       )}
