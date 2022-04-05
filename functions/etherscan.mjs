@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import * as constants from '../.constants.js';
 
@@ -25,21 +24,13 @@ const devMode = true;
 exports.handler = async (event, _, callback) => {
   const { method } = event.queryStringParameters
   if(!method){
-    return {
-      statusCode: 400,
-      body: 'Method Required Eg. ?module=stats'
-    }
+    return { statusCode: 400, body: 'Method Required Eg. ?module=stats' }
   }
   if(devMode){
-    return {
-      statusCode: 200,
-      body: '3420.69'
-    }
+    return { statusCode: 200, body: '3420.69' }
   }
   const url = {
-    ethPrice:urlLatestEthPriceCoinstat,
-    estConfirmTime:urlConfTimeEstimate,
-    gasOracle:urlGasOracle,
+    ethPrice:urlLatestEthPriceCoinstat, estConfirmTime:urlConfTimeEstimate, gasOracle:urlGasOracle,
   }[method]
 
   let response;
@@ -51,9 +42,5 @@ exports.handler = async (event, _, callback) => {
     response = error;
     console.error(method,error);
   }
-
-  return {
-    statusCode: 200,
-    body: response
-  }
+  return { statusCode: 200, body: response }
 }

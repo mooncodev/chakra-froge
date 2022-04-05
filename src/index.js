@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { ColorModeScript } from '@chakra-ui/react'
-import HPageLanding from './views/home/HPageLanding.js';
-import HPageTeam from './views/home/HPageTeam.js';
+import PgHomeLanding from './views/home/PgHomeLanding.js';
+import PgHomeTeam from './views/home/PgHomeTeam.js';
 
 import XPgBilling from './views/app/XPgBilling.js';
 import PgDash from './views/app/PgDash.js';
@@ -34,8 +34,8 @@ ReactDOM.render(
       <BrowserRouter>
         <Routes>
           <Route element={<HomeLayout/>}>
-            <Route path={'/'} element={<HPageLanding/>}/>
-            <Route path={'/team'} element={<HPageTeam/>}/>
+            <Route path={'/'} element={<PgHomeLanding/>}/>
+            <Route path={'/team'} element={<PgHomeTeam/>}/>
           </Route>
           <Route path={'/app/*'} element={<AppProvider/>}>
             <Route path={'dash'} element={<PgDash/>}/>

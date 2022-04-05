@@ -46,6 +46,9 @@ export const globalStyles = {
   ...fontsTheme,
   styles: {
     global: (props) => ({
+      ':focus:not(:focus-visible):not([role="dialog"]):not([role="menu"])': {
+        boxShadow: 'none !important'
+      },
       body: {
         fontFamily: 'Montserrat , Helvetica, sans-serif',
         fontWeight: 400,

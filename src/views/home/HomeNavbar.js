@@ -24,16 +24,14 @@ export default function HomeNavbar() {
         borderBottom={1} borderStyle={'solid'}
         borderColor={'gray.900'}
         align={'center'}>
-        <Flex flex={{ base: 1 }} justify={{ base: 'start', md: 'start' }} alignItems={'center'}>
-
+        <Flex flex={{ base: 1 }} justify='space-between' alignItems={'center'}>
           <FrogeTitleLogoColorPng width='150px'/>
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Flex display={{ base: 'none', md: 'flex' }} mx={8}>
             <DesktopNav />
           </Flex>
         </Flex>
 
         <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
-
           <Button
             display='inline-flex' fontSize={'sm'} fontWeight={600} color={'white'}
             bg={'green.400'} as={NavLink} to={'/app'} _hover={{ bg: 'green.300', }}
@@ -121,7 +119,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={'gray.800'} p={4} display={{ md: 'none' }}>
+    <Stack bg={'gray.800'} p={4} display={{ md: 'none' }} textAlign='center'>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.key} {...navItem} />
       ))}
@@ -177,12 +175,7 @@ const NAV_ITEMS = [
     key: 'froadmap',
   },
   {
-    label: <>Eco-Initiatives &amp;<br/>Partnerships</>,
-    href: '/eco',
-    key: 'eco',
-  },
-  {
-    label: <>Guides, Docs,<br/>Resources ▼</>,
+    label: <>Docs &amp;<br/>Resources ▼</>,
     key:'resources',
     children: [
       {
@@ -211,7 +204,12 @@ const NAV_ITEMS = [
     key: 'team',
   },
   {
-    label: <>Legal &amp;<br/>Accounting</>,
+    label: 'Eco',
+    href: '/eco',
+    key: 'eco',
+  },
+  {
+    label: <>Accounting</>,
     href: '/accounting',
     key: 'accounting',
   },

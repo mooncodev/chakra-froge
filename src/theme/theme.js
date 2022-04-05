@@ -13,6 +13,7 @@ import { PondComponent } from '../views/app/bits/Pond.js';
 import { SBNavLinkComponent } from '../views/app/bits/SBNavLink.js';
 import { BubbleComponent } from '../views/app/bits/Bubble.js';
 import { colorWheels } from './foundations/colorWheels.js';
+import { SentenceTabsComponent } from '../views/app/bits/SentenceTabs.js';
 // import { mode } from "@chakra-ui/theme-tools";
 export default extendTheme(
   { breakpoints }, // Breakpoints
@@ -25,7 +26,8 @@ export default extendTheme(
   CardComponent, // Card component
   CardBodyComponent, // Card Body component
   CardHeaderComponent, // Card Header component
-  PondComponent, // Main Panel component
-  BubbleComponent, // Main Panel component
-  SBNavLinkComponent, // Main Panel component
+  PondComponent,
+  BubbleComponent,
+  SBNavLinkComponent,
+  SentenceTabsComponent,
 );

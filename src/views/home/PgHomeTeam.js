@@ -8,7 +8,7 @@ import {
 import signInImage from "assets/img/signInImage.png";
 
 
-function HPageTeam() {
+function PgHomeTeam() {
   // Chakra color mode
   // const titleColor = "green.200"
   // const textColor = "white"
@@ -34,4 +34,4 @@ function HPageTeam() {
   );
 }
 
-export default HPageTeam;
+export default PgHomeTeam;

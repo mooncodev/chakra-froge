@@ -1,5 +1,5 @@
 import {
-  Button, Icon, Text, chakra, Center, HStack, VStack,
+  Button, Icon, Text, chakra, Center, HStack, VStack, Flex,
 } from '@chakra-ui/react';
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
@@ -74,6 +74,16 @@ export const BtnXs = ({children,...rest})=>(<Button {...rest}
     h: 'min-content',
   }}>{children}</Button>
 )
+export const BtnFrMap = ({children,...rest})=>(
+  <chakra.button {...rest}
+          sx={{
+            w: 'min-content',
+            ...mont.md.sm,
+            p: '7px',
+            h: 'min-content',
+          }}>{children}</chakra.button>
+)
+
 export const BtnBrandIcon = ({type,children,...rest})=> {
   const _icon = {
     burger: HamburgerIcon,
@@ -129,6 +139,23 @@ export const ConnectWalletNavButton = ({active,children,...rest})=> {
     </Center>
   );
 }
+
+export const VFlex = (p)=>(
+  <Flex direction="column" align="stretch" justify='stretch' {...p} />)
+export const VFlexCC = (p)=>(
+  <Flex direction="column" align="center"  justify='center' {...p} />)
+export const VFlexCS = (p)=>(
+  <Flex direction="column" align="center"  justify='stretch' {...p} />)
+export const VFlexSC = (p)=>(
+  <Flex direction="column" align="stretch" justify='center' {...p} />)
+export const HFlex = (p)=>(
+  <Flex direction="row" justify="stretch" align='stretch' {...p} />)
+export const HFlexCC = (p)=>(
+  <Flex direction="row" justify="center"  align='center' {...p} />)
+export const HFlexCS = (p)=>(
+  <Flex direction="row" justify="center"  align='stretch' {...p} />)
+export const HFlexSC = (p)=>(
+  <Flex direction="row" justify="stretch" align='center' {...p} />)
 
 export const TextXs = (props)=>(<Text fontSize="xs" color="gray.400" {...props} />)
 export const S = (props)=>(<chakra.span {...props} />)
