@@ -19,14 +19,14 @@ import {
 } from '@chakra-ui/react';
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { HFlex, S, TextXs, VFlex } from '../views/app/bits/UtilityTags.js';
-import { mont } from '../theme/foundations/fonts.js';
+import { HFlex, S, TextXs, VFlex } from '../../app/bits/UtilityTags.js';
+import { mont } from '../../../theme/foundations/fonts.js';
 import { froadmapData } from './froadmap-data.js';
-import ecodeficircles from '../assets/logos/ecodefi-circles.svg';
+import ecodeficircles from '../../../assets/logos/ecodefi-circles.svg';
 import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
 import { FiChevronDown } from 'react-icons/fi';
 import { animate } from 'framer-motion';
-import { sSub } from '../helpers/math/zmath.mjs';
+import { sSub } from '../../../helpers/math/zmath.mjs';
 
 export function bgBefore({
   opacity='1', bgColor, img,borderRadius='0',
@@ -206,7 +206,7 @@ const FrogressBar = ({pct, imgId, onClick, bgColor='bog.650',fillColor='bog.100'
    __before.backgroundImage = require(`./img/${imgId}.jpg`)
    __before.backgroundRepeat = 'no-repeat'
    __before.backgroundPosition = '50% 50%'
-   __before.backgroundSize = '355px'
+   __before.backgroundSize = 'cover'
   }
   const frogressBar = {
     bgColor:bgColor,

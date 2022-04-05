@@ -1,7 +1,7 @@
 // chakra imports
 import { Box, ChakraProvider, Portal } from "@chakra-ui/react";
 // core components
-import HomeNavbar from "views/home/HomeNavbar.js";
+import HomeNavbar from "views/home/navs/HomeNavbar.js";
 import React from "react";
 import { Route, Outlet  } from "react-router-dom";
 import theme from "theme/theme.js";

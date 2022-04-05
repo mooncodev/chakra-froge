@@ -9,8 +9,8 @@ import {
 import { NavLink } from 'react-router-dom';
 import { FrogeLogoSvg, FrogeTitleLogoSvg,
   FrogeLogoPng, FrogeTitleLogoColorPng } from 'assets/FrogeBrand.js';
+import FrogeTitleAllGreen from 'assets/logos/title-allgreen/froge-title-logo-ff-allgreen.svg';
 import React from 'react';
-
 
 export default function HomeNavbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -25,16 +25,16 @@ export default function HomeNavbar() {
         borderColor={'gray.900'}
         align={'center'}>
         <Flex flex={{ base: 1 }} justify='space-between' alignItems={'center'}>
-          <FrogeTitleLogoColorPng width='150px'/>
+          <Image src={FrogeTitleAllGreen} width='150px'/>
           <Flex display={{ base: 'none', md: 'flex' }} mx={8}>
             <DesktopNav />
           </Flex>
         </Flex>
 
-        <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
+        <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} alignItems='center' direction={'row'} spacing={6}>
           <Button
-            display='inline-flex' fontSize={'sm'} fontWeight={600} color={'white'}
-            bg={'green.400'} as={NavLink} to={'/app'} _hover={{ bg: 'green.300', }}
+            display='inline-flex' size={'sm'} fontWeight={600} color={'white'}
+            bg={'brand.dkgreen'} as={NavLink} to={'/app'} _hover={{ bg: 'green.300', }}
           >
             Launch App
           </Button>

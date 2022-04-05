@@ -1,6 +1,6 @@
 import { Box, Flex, Image, Text, useBreakpointValue } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
-import { HFlex, S } from '../views/app/bits/UtilityTags.js';
+import { HFlex, S } from '../../app/bits/UtilityTags.js';
 import Marquee from "react-fast-marquee";
 
 export const NewsMarquee = () => {
@@ -14,7 +14,7 @@ export const NewsMarquee = () => {
         style={{ height:_h }}
         play={true}
         pauseOnClick={true}
-        pauseOnHover={true}
+        pauseOnHover={false}
         direction={'right'}
         speed={20}
         gradientColor={[21,27,41]}
