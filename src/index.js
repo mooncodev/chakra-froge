@@ -17,6 +17,9 @@ import PgGameNight from './views/app/PgGameNight.js';
 import PgNFT from './views/app/PgNFT.js';
 import PgXchange from './views/app/PgXchange.js';
 import PgCalculators from './views/app/PgCalculators.js';
+import PgHomeAccounting from './views/home/PgHomeAccounting.js';
+import PgHomeEco from './views/home/PgHomeEco.js';
+import PgHomeFAQ from './views/home/PgHomeFAQ.js';
 
 const HomeLayout = React.lazy(() =>
   import(/* webpackChunkName: "views-home" */ './HomeLayout.js')
@@ -36,6 +39,9 @@ ReactDOM.render(
           <Route element={<HomeLayout/>}>
             <Route path={'/'} element={<PgHomeLanding/>}/>
             <Route path={'/team'} element={<PgHomeTeam/>}/>
+            <Route path={'/FAQ'} element={<PgHomeFAQ/>}/>
+            <Route path={'/eco-partnerships'} element={<PgHomeEco/>}/>
+            <Route path={'/accounting'} element={<PgHomeAccounting/>}/>
           </Route>
           <Route path={'/app/*'} element={<AppProvider/>}>
             <Route path={'dash'} element={<PgDash/>}/>

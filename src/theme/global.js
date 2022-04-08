@@ -52,8 +52,8 @@ export const globalStyles = {
       body: {
         fontFamily: 'Montserrat , Helvetica, sans-serif',
         fontWeight: 400,
-        bg: "global.bg",
         //...bgPattern,
+        bg: "global.bg",
       },
       heading: 'Montserrat , Helvetica, sans-serif',
       html: {

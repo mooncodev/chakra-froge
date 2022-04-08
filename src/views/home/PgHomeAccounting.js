@@ -3,7 +3,6 @@ import {
   Box, Flex, Button, FormControl, FormLabel,
   Heading, Input, Link, Switch, Text,
 } from "@chakra-ui/react";
-// Assets
 import { VFlex, VFlexCS } from '../app/bits/UtilityTags.js';
 import { NewsMarquee } from './sections/marquee.js';
 
@@ -16,7 +15,7 @@ function PgHomeTeam() {
         <NewsMarquee/>
       </VFlexCS>
       <VFlexCS h='4rem'>
-        Soon: Team Page!
+        Soon: Charity Accounting Page!
       </VFlexCS>
 
     </VFlex>

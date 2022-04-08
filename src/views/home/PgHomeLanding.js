@@ -25,7 +25,6 @@ import {
   SimpleGrid,
   useBreakpointValue,
 } from '@chakra-ui/react';
-// Assets
 import signInImage from "assets/img/signInImage.png";
 import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
 import frogefinity from '../../assets/logos/frogefinity.svg';
@@ -161,7 +160,7 @@ function PgHomeLanding() {
       <FrogeAtAGlance/>
 
       {/** FROGEX SECTION **/}
-      <VFlexCS mb='2rem' gap={5}>
+      <VFlexCS mb='2rem' gap={5} id='frogex'>
         <Heading as={'h1'} color='brand.ltgreen'>FrogeX</Heading>
         <S fontSize='.7rem'>Click on the sentences for detail!</S>
         <SentenceTabs id={'AAA'}
@@ -190,7 +189,7 @@ function PgHomeLanding() {
       </VFlexCS>
 
       {/** FROADMAP SECTION **/}
-      <VFlexCS py={7} gap={3}>
+      <VFlexCS py={7} gap={3} id='froadmap'>
         <Heading as={'h1'} color='brand.ltgreen'>Froad Map</Heading>
         <br/>
         <FroadMap/>

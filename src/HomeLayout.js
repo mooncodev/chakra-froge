@@ -6,6 +6,7 @@ import React from "react";
 import { Route, Outlet  } from "react-router-dom";
 import theme from "theme/theme.js";
 import HomeFooter from "./views/home/HomeFooter.js";
+import { VFlex } from './views/app/bits/UtilityTags.js';
 
 export default function HomeLayout(props) {
   const { ...rest } = props;
@@ -14,19 +15,12 @@ export default function HomeLayout(props) {
     // Specify how to clean up after this effect:
     return ()=>{};
   });
-  const navRef = React.useRef();
   document.documentElement.dir = "ltr";
   return (
     <ChakraProvider theme={theme} resetCss={false} w="100%">
-      <Box ref={navRef} w="100%">
-        <HomeNavbar/>
-        <Box w="100%">
-          <Outlet/>
-        </Box>
-        <Box px="24px" mx="auto" width="1044px" maxW="100%">
-          <HomeFooter/>
-        </Box>
-      </Box>
+      <HomeNavbar/>
+      <Outlet/>
+      <HomeFooter/>
     </ChakraProvider>
   );
 }

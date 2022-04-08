@@ -15,7 +15,7 @@ export default function HomeFooter() {
 
   return (
     <Box
-      bg={'gray.900'}
+      bg={'bog.700'}
       color={'gray.200'}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid

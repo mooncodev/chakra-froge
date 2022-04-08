@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr"
-      style="background-color: #212e3e; --chakra-ui-color-mode:dark;"
-      data-theme="dark">
+<html lang="en" dir="ltr" style="--chakra-ui-color-mode:dark;" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -67,7 +65,7 @@
         -->
     <title>Froge Finance</title>
     <style>
-      /*html,body,body>#root {height: 100%;}*/
+      html,body,body>#root {height: 100%;}
       /** {outline: 1px solid #f00 !important;}*/
 
       ::-webkit-scrollbar {
@@ -92,6 +90,24 @@
       }
       ::-webkit-scrollbar-corner {
         background: transparent;
+      }
+      #root{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-align-items: stretch;
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        -webkit-box-pack: stretch;
+        -ms-flex-pack: stretch;
+        -webkit-justify-content: stretch;
+        justify-content: stretch;
+        width: 100%;
       }
     </style>
   </head>
