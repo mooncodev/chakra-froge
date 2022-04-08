@@ -7,7 +7,7 @@ import { VFlex, VFlexCS } from '../app/bits/UtilityTags.js';
 import { NewsMarquee } from './sections/marquee.js';
 
 
-function PgHomeTeam() {
+function PgHomeFAQ() {
 
   return (
     <VFlex flexGrow={1}>
@@ -22,4 +22,4 @@ function PgHomeTeam() {
   );
 }
 
-export default PgHomeTeam;
+export default PgHomeFAQ;

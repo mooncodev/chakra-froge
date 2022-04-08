@@ -39,8 +39,8 @@ ReactDOM.render(
           <Route element={<HomeLayout/>}>
             <Route path={'/'} element={<PgHomeLanding/>}/>
             <Route path={'/team'} element={<PgHomeTeam/>}/>
-            <Route path={'/FAQ'} element={<PgHomeFAQ/>}/>
-            <Route path={'/eco-partnerships'} element={<PgHomeEco/>}/>
+            <Route path={'/faq'} element={<PgHomeFAQ/>}/>
+            <Route path={'/eco'} element={<PgHomeEco/>}/>
             <Route path={'/accounting'} element={<PgHomeAccounting/>}/>
           </Route>
           <Route path={'/app/*'} element={<AppProvider/>}>

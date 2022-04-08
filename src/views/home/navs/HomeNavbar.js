@@ -30,12 +30,12 @@ export const NAV_ITEMS = [
     label: 'Resources', key: 'resources', icon:MdWidgets,
     children: [
       { label: 'FrogeX GreenPaper',
-        subLabel: 'Whitepaper?  What are you, some kind of racist?',
+        subLabel: '',
         href: '/FrogeX-Green-Paper.docx', key: 'greenpaper',  icon:MdOutlineFindInPage,},
       { label: 'Foundation Articles', subLabel: '',
         href: '/FrogeX-Articles.docx', key: 'articles',  icon:RiArticleLine,},
       { label: 'FAQ Page', subLabel: 'Robust Q&A!',
-        href: '/fraq', key: 'fraq',  icon:MdOutlineEco,},
+        href: '/faq', key: 'fraq',  icon:MdOutlineEco,},
     ],
   }, {
     label: 'Team Froge',
