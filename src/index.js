@@ -2,8 +2,6 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { ColorModeScript } from '@chakra-ui/react'
-import PgHomeLanding from './views/home/PgHomeLanding.js';
-import PgHomeTeam from './views/home/PgHomeTeam.js';
 
 import XPgBilling from './views/app/XPgBilling.js';
 import PgDash from './views/app/PgDash.js';
@@ -17,13 +15,20 @@ import PgGameNight from './views/app/PgGameNight.js';
 import PgNFT from './views/app/PgNFT.js';
 import PgXchange from './views/app/PgXchange.js';
 import PgCalculators from './views/app/PgCalculators.js';
-import PgHomeAccounting from './views/home/PgHomeAccounting.js';
-import PgHomeEco from './views/home/PgHomeEco.js';
-import PgHomeFAQ from './views/home/PgHomeFAQ.js';
 
-const HomeLayout = React.lazy(() =>
-  import(/* webpackChunkName: "views-home" */ './HomeLayout.js')
-);
+// import PgHomeLanding from './views/home/PgHomeLanding.js';
+// import PgHomeTeam from './views/home/PgHomeTeam.js';
+// import PgHomeAccounting from './views/home/PgHomeAccounting.js';
+// import PgHomeEco from './views/home/PgHomeEco.js';
+// import PgHomeFAQ from './views/home/PgHomeFAQ.js';
+
+const HomeLayout = React.lazy(() => import(/* webpackChunkName: "views-homelayout" */ './HomeLayout.js'));
+const PgHomeLanding = React.lazy(() => import(/* webpackChunkName: "views-landing" */ './views/home/PgHomeLanding.js'));
+const PgHomeTeam = React.lazy(() => import(/* webpackChunkName: "views-team" */ './views/home/PgHomeTeam.js'));
+const PgHomeAccounting = React.lazy(() => import(/* webpackChunkName: "views-accounting" */ './views/home/PgHomeAccounting.js'));
+const PgHomeEco = React.lazy(() => import(/* webpackChunkName: "views-home" */ './views/home/PgHomeEco.js'));
+const PgHomeFAQ = React.lazy(() => import(/* webpackChunkName: "views-faq" */ './views/home/PgHomeFAQ.js'));
+
 const AppProvider = React.lazy(() =>
   import(/* webpackChunkName: "views-app" */ './AppProvider.js')
 );
