@@ -25,7 +25,7 @@ export default function HomeFooter() {
       >
         <Stack spacing={{ base: '6', md: '8' }} align="center" flex={1}>
           <FrogeTitleLogoSvg style={{ width: '150px', }}/>
-          <Text>We're friendly!  Come say "hi":<br/>
+          <Text>We're friendly!  Come say hi:<br/>
             <Link color='bog.400' href=''> Community Telegram</Link></Text>
         </Stack>
 
@@ -52,9 +52,9 @@ export default function HomeFooter() {
             </Stack>
           </VStack>
         </Stack>
-        <VStack spacing="4"  flex={1}>
+        <VStack spacing="4" flex={1}>
           <Text fontSize="sm" fontWeight="semibold" color="subtle">Stay up to date</Text>
-          <Input maxW='50%' disabled placeholder="Email" type="email" required/>
+          <Input maxW={{ base:'50%',md:'unset' }} minW='80px' disabled placeholder="Email" type="email" required/>
           <Button disabled type="submit" flexShrink={0}>Subscribe</Button>
         </VStack>
       </Stack>
