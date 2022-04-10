@@ -1,5 +1,5 @@
 import {
-  Box,
+  Box, chakra,
   Flex,
   Heading, Icon,
   Image, Link, Tab,
@@ -12,7 +12,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { HFlex, HFlexSC, S, VFlexCS } from '../../app/bits/UtilityTags.js';
 import { SentenceTabs } from '../../app/bits/SentenceTabs.js';
 import { Parallax, ParallaxProvider, useParallax } from 'react-scroll-parallax';
-import { FrogeLogoSvg } from '../../../assets/FrogeBrand.js';
+import FrogeLogoSvg from 'assets/logos/froge-logo.svg';
 import forestBG from "assets/parallax-woods/ParallaxWoodsBG.png";
 import F1png from "assets/parallax-woods/ParallaxWoodsFAR.png";
 import F2png from "assets/parallax-woods/ParallaxWoodsMID.png";
@@ -22,7 +22,7 @@ const $$Icon = {
   borderRadius: "50%", border:'2px solid',borderColor:'bog.400',color:'bog.600', opacity:'.1' }
 // const BG = ()=><Image src={forestBG} style={{width:'100%'}}/>
 let base = {
-  position:'relative',height:'300px',width:'100%',
+  position:'relative',height:'300px',width:'100%',overflow:'hidden',
   userSelect:'none', gap:'10px',backgroundColor:'#1b1e0b'
 }
 const $$ABS = {
@@ -44,11 +44,21 @@ const mfWraps = {
   // width:'300px',
 }
 
-const FROGE = ()=>(
-  <Parallax style={{position:'absolute',bottom: '5%',left: '50%',width:'100px',height:'50%',}} translateX={[-400,400]}>
-    <FrogeLogoSvg style={{width:'100%',height:'100%',}}/>
-  </Parallax>
-)
+const FROGE = ()=>{
+  const __Froge = {
+    position:'absolute',bottom: '30px',left: '50%',
+    width:'100px',height:'100px',backgroundRepeat: 'no-repeat',backgroundPosition: '0 0',backgroundSize: 'contain',
+    backgroundImage: FrogeLogoSvg
+  }
+  const refFroge = useParallax({
+    translateX: [-400,400],
+    onChange:(el)=>{
+      // console.log(el)
+    },
+  })
+  return (
+    <Box sx={__Froge} ref={refFroge.ref}/>
+)}
 
 export const Forest = () => {
   const refBase = useRef(null);

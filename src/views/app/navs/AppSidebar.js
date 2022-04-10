@@ -20,7 +20,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { RocketIcon } from '../../../components/Icons/Icons.js';
 import { useAtom } from 'jotai';
 import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
-import { FrogeLogo } from '../../../components/Icons/FrogeBrandSvgs.js';
+import { FrogeLogoSvg } from 'assets/FrogeBrand.js';
 import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
 import { desktopSidebarWidth, PHASE } from 'data/constants.js';
 import { sxGlassBg,sxGlassBg2 } from '../bits/UtilityTags.js';
@@ -79,7 +79,7 @@ export function AppSidebar(props) {
               }}
         >
           <Box pt={8} textAlign='center' position={'relative'}>
-            <FrogeLogo fontSize="69" alignSelf="center"/>
+            <FrogeLogoSvg fontSize="69" alignSelf="center"/>
             <Stack m={5} direction="column" flexFlow={'wrap'} gap='5px'>
               <SBNavLink to='./'>Dash</SBNavLink>
               <SBNavLink to='./frogex'>FrogeX</SBNavLink>
@@ -104,7 +104,7 @@ export function AppSidebar(props) {
             <DrawerBody px="1rem">
               <SBCloseButton/>
               <Box pt={8} textAlign='center'>
-                <FrogeLogo fontSize="46" _hover={{ opacity:'.8', }}  alignSelf="center"/>
+                <FrogeLogoSvg fontSize="46" _hover={{ opacity:'.8', }}  alignSelf="center"/>
                 <Stack my={5} direction="column" alignItems="center">
                   <SBNavLink to='./'>Dash</SBNavLink>
                   <SBNavLink to='./frogex'>FrogeX</SBNavLink>

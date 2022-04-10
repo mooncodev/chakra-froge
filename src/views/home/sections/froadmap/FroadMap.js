@@ -62,6 +62,7 @@ export function FroadMap({ froadMapObj,id,...rest }) {
    <VFlexCS py={7} gap={3} id='froadmap' position='relative'>
       <Heading as={'h1'} color='brand.ltgreen'>Froad Map</Heading>
       <br/>
+{/*
       <Box style={{ position:'absolute',top:0,right:0,left:0,bottom:0,overflow:'hidden' }}>
         {Array.from({ length: 20 }, (_, i) =>
           <Parallax key={i} style={{position:'absolute'}}
@@ -74,6 +75,7 @@ export function FroadMap({ froadMapObj,id,...rest }) {
           </Parallax>
         )}
       </Box>
+*/}
 
       {froadmapData.map((v,i)=>
         (<FroadMapCard froadMapObj={v} key={v.id}/>)
