@@ -8,6 +8,7 @@ import theme from "theme/theme.js";
 import HomeFooter from "./views/home/HomeFooter.js";
 import { VFlex } from './views/app/bits/UtilityTags.js';
 
+
 export default function HomeLayout(props) {
   const { ...rest } = props;
   React.useEffect(() => {

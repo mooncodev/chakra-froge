@@ -19,14 +19,16 @@ import {
 } from '@chakra-ui/react';
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { HFlex, S, TextXs, VFlex } from '../../app/bits/UtilityTags.js';
-import { mont } from '../../../theme/foundations/fonts.js';
+import { HFlex, S, TextXs, VFlex, VFlexCS } from '../../../app/bits/UtilityTags.js';
+import { mont } from '../../../../theme/foundations/fonts.js';
 import { froadmapData } from './froadmap-data.js';
-import ecodeficircles from '../../../assets/logos/ecodefi-circles.svg';
+import ecodeficircles from '../../../../assets/logos/ecodefi-circles.svg';
 import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
 import { FiChevronDown } from 'react-icons/fi';
 import { animate } from 'framer-motion';
-import { sSub } from '../../../helpers/math/zmath.mjs';
+import { sSub } from '../../../../helpers/math/zmath.mjs';
+import { FrogeLogoOutlineSvg } from 'assets/FrogeBrand.js';
+import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 
 export function bgBefore({
   opacity='1', bgColor, img,borderRadius='0',
@@ -51,13 +53,34 @@ export function bgBefore({
   //...bgBefore({opacity:'.6',bgColor:'#259',})
 }
 
-export function FroadMap({ froadMapObj,id,...rest }) {
-  return (<>
-    {froadmapData.map((v,i)=>
-      (<FroadMapCard froadMapObj={v} key={v.id}/>)
-    )}
-  </>)
+const $$Icon = {
+  borderRadius: "50%", border:'2px solid',borderColor:'bog.400',color:'bog.600', opacity:'.1' }
 
+export function FroadMap({ froadMapObj,id,...rest }) {
+  return (
+ <ParallaxProvider>
+   <VFlexCS py={7} gap={3} id='froadmap' position='relative'>
+      <Heading as={'h1'} color='brand.ltgreen'>Froad Map</Heading>
+      <br/>
+      <Box style={{ position:'absolute',top:0,right:0,left:0,bottom:0,overflow:'hidden' }}>
+        {Array.from({ length: 20 }, (_, i) =>
+          <Parallax key={i} style={{position:'absolute'}}
+                    translateX={[`${(Math.random()*2600)}px`,`${(Math.random()*2600)}px`]}
+                    translateY={[`${(Math.random()*1800)-900}px`,`${(Math.random()*1800)-900}px`]}
+                    scale={[(Math.random()*2), Math.random()*2]}
+                    rotate={[Math.random()*720, Math.random()*720]}
+                    easing="easeInQuad"
+          ><Icon sx={{ ...$$Icon, width:'100px',height:'100px', }} as={FrogeLogoOutlineSvg}/>
+          </Parallax>
+        )}
+      </Box>
+
+      {froadmapData.map((v,i)=>
+        (<FroadMapCard froadMapObj={v} key={v.id}/>)
+      )}
+    </VFlexCS>
+ </ParallaxProvider>
+ )
 }
 const noMarg = {marginStart:'0', marginInline:'0',paddingInline:'0',}
 const heights = {
