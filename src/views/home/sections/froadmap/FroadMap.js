@@ -46,7 +46,7 @@ const $$Icon = {
 const frMapCategoryBox = {
   borderRadius: "12px", border:'2px solid',borderColor:'bog.400',
   bgColor:'bog.950', padding:'1rem',
-  display:'flex', flexDirection:'column',justifyContent:'center', alignItems:'center', gap: '0.3rem',
+  display:'flex', flexDirection:'column',justifyContent:'center', alignItems:'center', gap: '0.5rem',
 }
 
 export function FroadMap({ froadMapObj,id,...rest }) {
@@ -132,7 +132,7 @@ export function FroadMapCard({ froadMapObj,id,...rest }) {
     textShadow: '2px 2px 7px #000',
     borderRadius:'12px',
     color:'bog.50',
-    bgColor:'rgba(17,22,35,.4)',
+    bgColor:'rgba(17,22,35,.7)',
   }
   const expandIcon = {
     bgColor:'bog.750',
@@ -177,6 +177,7 @@ export function FroadMapCard({ froadMapObj,id,...rest }) {
   }
   const linksSelected = { color: 'bog.200', bg: 'bog.700' }
   const taskBase = {
+    fontSize:'.8rem',
     display: 'grid',
     gridTemplateColumns: '1fr 90%',
     width: '95%', textAlign: 'left',
@@ -194,6 +195,9 @@ export function FroadMapCard({ froadMapObj,id,...rest }) {
   const [show, setShow] = React.useState(false)
   const toggle = () => setShow(!show)
   const [tabIdx, settabIdx] = React.useState(0)
+  useEffect(()=>{
+
+  },[tabIdx])
   const onTab = (elIdx)=>{settabIdx(elIdx)}
   return (
     <Collapse startingHeight={35} in={show} style={collaps}>
@@ -204,8 +208,7 @@ export function FroadMapCard({ froadMapObj,id,...rest }) {
         <FrogressBar style={{ ...headFrogress,opacity:!show?'1':'0' }} pct={v.progress} fillColor={'bog.200'}/>
       </Box>
       <HFlex sx={tabRow}>
-        <chakra.button onClick={() => onTab(0)} active={String(tabIdx === 0)} sx={tab}>Description
-        </chakra.button>
+        <chakra.button onClick={() => onTab(0)} active={String(tabIdx === 0)} sx={tab}>Description</chakra.button>
         <chakra.button onClick={() => onTab(1)} active={String(tabIdx === 1)} sx={tab}>Get Involved</chakra.button>
       </HFlex>
       <Box sx={body}>

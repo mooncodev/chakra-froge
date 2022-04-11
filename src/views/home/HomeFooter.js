@@ -46,7 +46,7 @@ export default function HomeFooter() {
             <Stack spacing="3" shouldWrapChildren>
               <Button as={'a'} variant="link" href={links.FrogeAdminEmail.url}>admin@froge.fi</Button>
               <Button as={'a'} variant="link" to={links.FrogeTgCommunity.url}>Telegram Main</Button>
-              <Button as={'a'} variant="link" to={links.FrogeTgAnnounce.url}>Telegram Announce</Button>
+              <Button as={'a'} variant="link" to={links.FrogeTgAnnounce.url}>Telegram News</Button>
               <Button as={'a'} variant="link" href={links.Medium.url}
                       sx={{backgroundColor:'bog.300', padding:'0 14px', borderRadius:'7px'}}>{icons.Medium}</Button>
             </Stack>

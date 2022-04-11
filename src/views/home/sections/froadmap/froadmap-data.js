@@ -125,12 +125,7 @@ export const froadmapData_dev_siteAndDApp = [
       at any fiat onboarders please contact the team.`,
     sizeRating:3,
     progress:33,
-    tasks:[
-      'design',
-      'implement',
-      'test',
-      'release',
-    ],
+    tasks:['design', 'implement', 'test', 'release',],
   },
   {
     title:'Anon Suggestion Box',
@@ -139,12 +134,19 @@ export const froadmapData_dev_siteAndDApp = [
     getInvolved:'Once the box is up leave us a message. We always love hearing from our community!',
     sizeRating:2,
     progress:25,
-    tasks:[
-      'design',
-      'implement',
-      'test',
-      'release',
-    ],
+    tasks:['design', 'implement', 'test', 'release',],
+  },
+  {
+    title:'AutoMode FrogeX Market Widget',
+    img:['018','047'],
+    description:`At the push of a couple buttons through the dapp, the widget connects to uniswap 
+      to initiate a transaction with the user defined number of tokens for the desired buy/sell 
+      of FrogeX via ETH with slippage automatically set at 8%. This makes transacting 
+      on the uniswap DEX more simple with FrogeX.`,
+    getInvolved:'',
+    sizeRating:5,
+    progress:0,
+    tasks:['design', 'implement', 'test', 'release',],
   },
 ]
 
@@ -265,10 +267,8 @@ export const froadmapData_admin_general = [
     title:'Game Nights with FrogeX',
 
     img:['013','042'],
-    description:`Having a great community is about more than constant marketing and hype. 
-      In order to foster the comradery and joy of a vigorous and healthy community we 
-      will be hosting game nights and other events where community members can interact 
-      with each other and the team.`,
+    description:`Having fun is the best part of having a great community! 
+      We will be hosting all-inclusive game nights and other mystery events you won't want to miss!`,
     getInvolved:`Join in when a game night is announced and have fun!  
       Also please message with any ideas/suggestions!`,
     sizeRating:2,

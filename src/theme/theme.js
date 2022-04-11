@@ -14,18 +14,20 @@ import { SBNavLinkComponent } from '../views/app/bits/SBNavLink.js';
 import { BubbleComponent } from '../views/app/bits/Bubble.js';
 import { colorWheels } from './foundations/colorWheels.js';
 import { SentenceTabsComponent } from '../views/app/bits/SentenceTabs.js';
+import { formStyles } from './components/form.js';
 // import { mode } from "@chakra-ui/theme-tools";
 export default extendTheme(
-  { breakpoints }, // Breakpoints
+  { breakpoints },
   globalStyles,
-  buttonStyles, // Button styles
-  accordionStyles, // Accordion Styles
-  badgeStyles, // Badge styles
-  linkStyles, // Link styles
-  drawerStyles, // Sidebar variant for Chakra's drawer
-  CardComponent, // Card component
-  CardBodyComponent, // Card Body component
-  CardHeaderComponent, // Card Header component
+  buttonStyles,
+  accordionStyles,
+  badgeStyles,
+  formStyles,
+  linkStyles,
+  drawerStyles,
+  CardComponent,
+  CardBodyComponent,
+  CardHeaderComponent,
   PondComponent,
   BubbleComponent,
   SBNavLinkComponent,

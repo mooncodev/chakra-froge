@@ -27,7 +27,7 @@ const PondStyleConfig = {
       overflow:'auto',
     },
     PondHeader:{
-      mt: '5px',
+      marginTop: '10px',
       fontFamily: 'rale',
       fontSize: '1.3rem',
       fontWeight: 'rale.heavy',
@@ -54,9 +54,6 @@ const PondStyleConfig = {
   },
   variants: {
     alignCenter: {
-      Pond:{},
-      PondHeader:{},
-      PondBody:{},
     },
   },
   defaultProps: {
@@ -65,14 +62,17 @@ const PondStyleConfig = {
 
 export function Pond(props) {
   const { size,variant, children,pondLink, ...rest } = props;
+  let pageName,pondName,pondTag;
   const styles = useMultiStyleConfig("Pond", { size,variant });
-  const [pageName,pondName] = pondLink;
-  // const pondTag = usePondLinkStore(s => {
-  //   return s[pageName].tags[pondName];
-  // });
-  const pondTag = usePondLinkStore(useCallback(
-    s => s[pageName].tags[pondName], [pageName,pondName])
-  )
+  if(props.pondLink){
+    [pageName,pondName] = pondLink;
+    // const pondTag = usePondLinkStore(s => {
+    //   return s[pageName].tags[pondName];
+    // });
+    pondTag = usePondLinkStore(useCallback(
+      s => s[pageName].tags[pondName], [pageName,pondName])
+    )
+  }
   const minBarStyle = {
     w:'100%', h:'1rem', bgColor:'bog.500', opacity:'.4',borderRadius:'0 0 5px 5px'
   }
@@ -99,9 +99,9 @@ export function Pond(props) {
   const minimize=()=>{usePondLinkStore.getState().plinkMinimize(pageName,pondName)}
   return (!pondTag||!pondTag.plinkify) &&
     (<VStack __css={styles.Pond} {...rest}>
-        <Center as={Button} {...minBarStyle} onClick={minimize}>
-          <chakra.hr sx={minHr}/>
-        </Center>
+      {pondTag&&(<Center as={Button} {...minBarStyle} onClick={minimize}>
+        <chakra.hr sx={minHr}/>
+      </Center>)}
       <StylesProvider value={styles}>
         {children}
       </StylesProvider>
@@ -110,7 +110,7 @@ export function Pond(props) {
 
 export function PondHeader(props) {
   const styles = useStyles();
-  return <Heading as='h3' size='lg' __css={styles.PondHeader} {...props}/>;
+  return <Box as='h3' size='lg' __css={styles.PondHeader} {...props}/>;
 }
 export function PondBody(props) {
   const styles = useStyles();
