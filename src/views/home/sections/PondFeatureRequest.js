@@ -11,6 +11,16 @@ import { Pond, PondHeader } from '../../app/bits/Pond.js';
 import { RadioButtons } from '../../app/bits/RadioCard.js';
 import axios from 'axios';
 
+const mockCreateEpic = {
+  "title":"Test Title",
+  "img":["000","000"],
+  "description":"Test Description",
+  "getInvolved":"Test Blurb About Stuff",
+  "sizeRating":"1",
+  "tasks":["research","design","implement","test","stall for time","release"],
+  "progress": "30"
+}
+
 export const PondFeatureRequest = () => {
 
   const [size, setSize] = useState('1')

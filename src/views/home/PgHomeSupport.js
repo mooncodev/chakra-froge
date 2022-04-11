@@ -25,17 +25,6 @@ import { RadioButtons } from '../app/bits/RadioCard.js';
 import axios from 'axios';
 import { PondFeatureRequest } from './sections/PondFeatureRequest.js';
 
-const mockCreateEpic = {
-  "title":"Test Title",
-  "img":["000","000"],
-  "description":"Test Description",
-  "getInvolved":"Test Blurb About Stuff",
-  "sizeRating":"1",
-  "tasks":["design","implement","test","stall for time","release"],
-  "progress": "30"
-}
-
-
 function PgHomeFAQ() {
 
   return (
@@ -44,8 +33,10 @@ function PgHomeFAQ() {
         <NewsMarquee/>
       </VFlexCS>
       <VFlexCS h='4rem'>
-        Soon: FAQ / Q&A Page!
+        <Heading>Support</Heading>
       </VFlexCS>
+
+      <PondFeatureRequest/>
     </VFlex>
   );
 }

@@ -45,10 +45,11 @@ export default function HomeFooter() {
             <Text fontSize="sm" fontWeight="semibold" color="subtle">Find Out</Text>
             <Stack spacing="3" shouldWrapChildren>
               <Button as={'a'} variant="link" href={links.FrogeAdminEmail.url}>admin@froge.fi</Button>
-              <Button as={'a'} variant="link" to={links.FrogeTgCommunity.url}>Telegram Main</Button>
-              <Button as={'a'} variant="link" to={links.FrogeTgAnnounce.url}>Telegram News</Button>
+              <Button as={'a'} variant="link" href={links.FrogeTgCommunity.url}>Telegram Main</Button>
+              <Button as={'a'} variant="link" href={links.FrogeTgAnnounce.url}>Telegram News</Button>
               <Button as={'a'} variant="link" href={links.Medium.url}
                       sx={{backgroundColor:'bog.300', padding:'0 14px', borderRadius:'7px'}}>{icons.Medium}</Button>
+              <Button as={'a'} variant="link" href={'/support'}>Support</Button>
             </Stack>
           </VStack>
         </Stack>

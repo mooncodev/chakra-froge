@@ -26,8 +26,9 @@ const HomeLayout = React.lazy(() => import(/* webpackChunkName: "views-homelayou
 const PgHomeLanding = React.lazy(() => import(/* webpackChunkName: "views-landing" */ './views/home/PgHomeLanding.js'));
 const PgHomeTeam = React.lazy(() => import(/* webpackChunkName: "views-team" */ './views/home/PgHomeTeam.js'));
 const PgHomeAccounting = React.lazy(() => import(/* webpackChunkName: "views-accounting" */ './views/home/PgHomeAccounting.js'));
-const PgHomeEco = React.lazy(() => import(/* webpackChunkName: "views-home" */ './views/home/PgHomeEco.js'));
+const PgHomeEco = React.lazy(() => import(/* webpackChunkName: "views-eco" */ './views/home/PgHomeEco.js'));
 const PgHomeFAQ = React.lazy(() => import(/* webpackChunkName: "views-faq" */ './views/home/PgHomeFAQ.js'));
+const PgHomeSupport = React.lazy(() => import(/* webpackChunkName: "views-support" */ './views/home/PgHomeSupport.js'));
 
 const AppProvider = React.lazy(() =>
   import(/* webpackChunkName: "views-app" */ './AppProvider.js')
@@ -47,6 +48,7 @@ ReactDOM.render(
             <Route path={'/faq'} element={<PgHomeFAQ/>}/>
             <Route path={'/eco'} element={<PgHomeEco/>}/>
             <Route path={'/accounting'} element={<PgHomeAccounting/>}/>
+            <Route path={'/support'} element={<PgHomeSupport/>}/>
           </Route>
           <Route path={'/app/*'} element={<AppProvider/>}>
             <Route path={'dash'} element={<PgDash/>}/>
