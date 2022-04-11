@@ -39,32 +39,42 @@ function PgHomeFAQ() {
 
   const [size, setSize] = useState('1')
   const [title, setTitle] = useState('')
+  const [titleErr, setTitleErr] = useState(false)
   const [description, setDescription] = useState('')
+  const [descriptionErr, setDescriptionErr] = useState(false)
   const [getInvolved, setGetInvolved] = useState('')
+  const [getInvolvedErr, setGetInvolvedErr] = useState(false)
   const [status, setStatus] = useState('none')//none|processing|fail|success
-  const [step1, setStep1] = useState('')
-  const [step2, setStep2] = useState('')
-  const [step3, setStep3] = useState('')
-  const [step4, setStep4] = useState('')
+  const [step1, setStep1] = useState('research')
+  const [step2, setStep2] = useState('design')
+  const [step3, setStep3] = useState('implement')
+  const [step4, setStep4] = useState('release')
   const [step5, setStep5] = useState('')
-  const onDescription = (e)=>{
+  const onChangeTitle = (e)=>{
+    let inputValue = e.target.value
+    setTitle(inputValue)
+    setTitleErr(inputValue.length>30||inputValue.length<3)
+  }
+  const onChangeDescription = (e)=>{
     let inputValue = e.target.value
     setDescription(inputValue)
+    setDescriptionErr(inputValue.length>300||inputValue.length<3)
   }
-  const onGetInvolved = (e)=>{
+  const onChangeGetInvolved = (e)=>{
     let inputValue = e.target.value
     setGetInvolved(inputValue)
+    setGetInvolvedErr(inputValue.length>300||inputValue.length<3)
   }
   const onSubmit = async (e)=>{
     setStatus('processing');
     e.target.disabled=true;
-    // if(title.length<6
-    //   ||description.length<10
-    //   || getInvolved.length<10
-    // ){
-    //   console.log(`come on, dont bullshit me`);
-    //   return;
-    // }
+    if(title.length<6
+      ||description.length<10
+      || getInvolved.length<10
+    ){
+      console.log(`come on, dont bullshit me`);
+      return;
+    }
 
     const payload = {
       title:title,
@@ -73,16 +83,15 @@ function PgHomeFAQ() {
       getInvolved:getInvolved,
       sizeRating:size,
       progress:10,
-      tasks:[
-        step1?step1:'design',
-        step2?step2:'implement',
-        step3?step3:'test',
-        step4?step4:'stall for time',
-        step5?step5:'release',
-      ],
+      tasks:[],
     }
+    if(step1){payload.tasks.push(step1)}
+    if(step2){payload.tasks.push(step2)}
+    if(step3){payload.tasks.push(step3)}
+    if(step4){payload.tasks.push(step4)}
+    if(step5){payload.tasks.push(step5)}
 
-    const res = await axios.post('/api/slmdb-submit-feature-request',JSON.stringify(mockCreateEpic)).catch(e=>e)
+    const res = await axios.post('/api/slmdb-submit-feature-request',JSON.stringify(payload)).catch(e=>e)
     // const res = await axios.post('http://localhost:4040/v1/epic/create-epic',JSON.stringify(mockCreateEpic))
     if(res.data === 'success') {
       setStatus('success');
@@ -105,8 +114,8 @@ function PgHomeFAQ() {
 
         <PondHeader size="md">Feature Suggestion</PondHeader>
 
-        <FormControl mt={4} variant='floating' id='first-name' isRequired>
-          <Input onChange={(e)=>setTitle(e.target.value)} placeholder=' ' />
+        <FormControl mt={4} variant='floating' id='first-name' isRequired isInvalid={titleErr}>
+          <Input onChange={onChangeTitle} placeholder=' ' />
           {/* <IconButton aria-label="icon" icon={<BiPaste />} size="xs" /> */}
           <FormLabel>Feature Title</FormLabel>
           <FormErrorMessage>Your First name is invalid</FormErrorMessage>
@@ -117,14 +126,14 @@ function PgHomeFAQ() {
           <RadioButtons onChange={setSize} options={['1','2','3','5','8','13','21',]} defaultOption='1'/>
         </HStack>
 
-        <FormControl mt={6} variant='floating' id='first-name' isRequired>
-          <Textarea value={description} onChange={onDescription}
+        <FormControl mt={6} variant='floating' id='first-name' isRequired isInvalid={descriptionErr}>
+          <Textarea value={description} onChange={onChangeDescription}
                     placeholder=' ' size='sm'/>
           <FormLabel>Description:</FormLabel>
         </FormControl>
 
-        <FormControl mt={6} variant='floating' id='first-name' isRequired>
-          <Textarea value={getInvolved} onChange={onGetInvolved}
+        <FormControl mt={6} variant='floating' id='first-name' isRequired isInvalid={getInvolvedErr}>
+          <Textarea value={getInvolved} onChange={onChangeGetInvolved}
                     placeholder=' ' size='sm'/>
           <FormLabel>How people can get involved:</FormLabel>
         </FormControl>
