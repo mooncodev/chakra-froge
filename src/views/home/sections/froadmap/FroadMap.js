@@ -1,27 +1,15 @@
 import {
-  Box,
-  Center,
-  StylesProvider,
-  useMultiStyleConfig,
-  useStyles,
-  chakra,
-  Button,
-  VStack,
-  Heading,
-  Tabs,
-  TabList,
-  HStack,
-  Tab,
-  TabPanels,
-  TabPanel,
-  Flex,
-  AccordionIcon, Icon, useDisclosure, Collapse, useTheme
+  Box, Center, StylesProvider, useMultiStyleConfig, useStyles, chakra,
+  Button, VStack, Heading, Tabs, TabList, HStack, Tab, TabPanels, TabPanel,
+  Flex, Icon, useDisclosure, Collapse, useTheme, Text
 } from '@chakra-ui/react';
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { HFlex, S, TextXs, VFlex, VFlexCS } from '../../../app/bits/UtilityTags.js';
 import { mont } from '../../../../theme/foundations/fonts.js';
-import { froadmapData } from './froadmap-data.js';
+import { froadmapData_dev_general,
+  froadmapData_dev_siteAndDApp,
+  froadmapData_admin_general, } from './froadmap-data.js';
 import ecodeficircles from '../../../../assets/logos/ecodefi-circles.svg';
 import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
 import { FiChevronDown } from 'react-icons/fi';
@@ -55,6 +43,11 @@ export function bgBefore({
 
 const $$Icon = {
   borderRadius: "50%", border:'2px solid',borderColor:'bog.400',color:'bog.600', opacity:'.1' }
+const frMapCategoryBox = {
+  borderRadius: "12px", border:'2px solid',borderColor:'bog.400',
+  bgColor:'bog.950', padding:'1rem',
+  display:'flex', flexDirection:'column',justifyContent:'center', alignItems:'center', gap: '0.3rem',
+}
 
 export function FroadMap({ froadMapObj,id,...rest }) {
   return (
@@ -76,10 +69,27 @@ export function FroadMap({ froadMapObj,id,...rest }) {
         )}
       </Box>
 */}
+     <chakra.fieldset sx={frMapCategoryBox}>
+       <chakra.legend>Administrative</chakra.legend>
+       {froadmapData_admin_general.map((v,i)=>
+         (<FroadMapCard froadMapObj={v} key={v.id}/>)
+       )}
+     </chakra.fieldset>
 
-      {froadmapData.map((v,i)=>
-        (<FroadMapCard froadMapObj={v} key={v.id}/>)
-      )}
+     <chakra.fieldset sx={frMapCategoryBox}>
+       <chakra.legend>Development - General</chakra.legend>
+       {froadmapData_dev_general.map((v,i)=>
+         (<FroadMapCard froadMapObj={v} key={v.id}/>)
+       )}
+     </chakra.fieldset>
+
+     <chakra.fieldset sx={frMapCategoryBox}>
+       <chakra.legend>Development - Site/dApp</chakra.legend>
+       {froadmapData_dev_siteAndDApp.map((v,i)=>
+         (<FroadMapCard froadMapObj={v} key={v.id}/>)
+       )}
+     </chakra.fieldset>
+
     </VFlexCS>
  </ParallaxProvider>
  )
@@ -111,7 +121,7 @@ export function FroadMapCard({ froadMapObj,id,...rest }) {
     userSelect:'none',
     height:heights.head,
     borderRadius:'12px',
-    backgroundImage: require(`./img/${v.headImg}.jpg`),
+    backgroundImage: require(`./img/${v.img[0]}.jpg`),
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '0% 0%',
     backgroundSize: '100%',
@@ -125,13 +135,13 @@ export function FroadMapCard({ froadMapObj,id,...rest }) {
     bgColor:'rgba(17,22,35,.4)',
   }
   const expandIcon = {
-    bgColor:'brand.ltgreen',
+    bgColor:'bog.750',
     borderRadius:'12px',
     color:'brand.dkgreen',
     opacity:'.3',
     w:'1.2rem',h:'1.2rem',
     position: 'absolute',
-    top: '.1rem',
+    top: '.16rem',
     right: '.1rem',
     transition: 'transform .4s ease',
   }
@@ -196,26 +206,25 @@ export function FroadMapCard({ froadMapObj,id,...rest }) {
       <HFlex sx={tabRow}>
         <chakra.button onClick={() => onTab(0)} active={String(tabIdx === 0)} sx={tab}>Description
         </chakra.button>
-        <chakra.button onClick={() => onTab(1)} active={String(tabIdx === 1)} sx={tab}>Size
-          ({v.sizeRating})
-        </chakra.button>
+        <chakra.button onClick={() => onTab(1)} active={String(tabIdx === 1)} sx={tab}>Get Involved</chakra.button>
       </HFlex>
       <Box sx={body}>
         {tabIdx === 0 && (<>{v.description}</>)}
-        {tabIdx === 1 && (<>{v.sizeText}</>)}
-        {tabIdx === 2 && (<>{v.howToHelp}</>)}
-        {tabIdx === 3 && (<>{v.tasks.map((v, i) => (
+        {tabIdx === 1 && (<>{v.getInvolved}</>)}
+        {tabIdx === 2 && (<>{v.tasks.map((v, i) => (
           <Box sx={taskBase} key={i}><S>{i + 1}.</S><S>{v}</S></Box>
         ))}</>)}
       </Box>
       <HFlex sx={tabRow}>
-        <chakra.button onClick={() => onTab(2)} active={String(tabIdx === 2)} sx={tab}>How To Help
-        </chakra.button>
-        <chakra.button onClick={() => onTab(3)} active={String(tabIdx === 3)} sx={tab}>Frogress
-          ({v.progress}%)
+        <chakra.button onClick={() => onTab(2)} active={String(tabIdx === 2)} sx={{ ...tab,flexGrow:'.98' }}>
+          <HStack justify='space-around' flexGrow={1} px='15px'>
+            <S flex={1}>Size: <strong>{v.sizeRating}</strong></S>
+            <S flex={0}>|</S>
+            <S flex={1}>Frogress: <strong>{v.progress}%</strong></S>
+          </HStack>
         </chakra.button>
       </HFlex>
-      <FrogressBar onClick={() => onTab(3)} pct={v.progress} imgId={v.prgBarImg}/>
+      <FrogressBar onClick={() => onTab(2)} pct={v.progress} imgId={v.img[1]}/>
     </VFlex>
     </Collapse>
   )

@@ -5,340 +5,330 @@ const admin = 'Administrative'
 const exp = 'Customer Experience'
 const mktg = 'Marketing & Promotion'
 
-export const froadmapData = [
+const roadmapTemplate = [
   {
-    id:'fm-fiatonboarding',
-    category: dev,
-    title:'Fiat Onboarding',
-    headImg:'001',
-    prgBarImg:'030',
-    description:'This feature will enable our community to purchase ETH with their bank accounts or credit cards directly from within our dApp.',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'Investigations into this feature have been very optimistic that we can bring this to fruition quite soon.  In fact, we plan to give our community multiple options by integrating additional 3rd party vendors into our application.',
+    title:'The Title',
+    img:['017','046'],
+    description:`This feature will...`,
+    getInvolved:`Message us with...`,
+    sizeRating:3,
     tasks:[
-      'design', 'implement', 'test', 'release',
+      'design', 'implement',
+      'test', 'release',
     ],
-    latest:'Development on this feature is currently in progress.',
-    progress:33,
-    bgImage:'',
+  },
+]
+
+export const froadmapData_dev_general = [
+  {
+    title:'New Chain Token & Bridge',
+
+    img:['008','037'],
+    description:`FrogeX will eventually conquer all major blockchains. We are setting 
+      our sights on bridging to an eco-conscious blockchain like 
+      Cardano, Cronos, Fantom, or Avalanche.`,
+    getInvolved:`If you are an expert or have opinions or detailed information about 
+      any blockchain that FrogeX should look at bridging with, please contact the team.`,
+    sizeRating:13,
+    progress:5,
+    tasks:[
+      'Design Stage: Determine target chain',
+      'Author new smart contract (Solidity)',
+      'Author bridge contract (Solidity)',
+      'Author bridge widget (UI)',
+      'Author Guide/FAQ',
+      'Launch!',
+    ],
   },
   {
-    id:'fm-foundation',
-    category: chty,
-    title:'Establish the Froge Foundation',
-    headImg:'002',
-    prgBarImg:'031',
-    description:'FrogeX will establish an independent foundation, that will administer all generated charity funds and donate them to ecodefi charity. The FrogeX team will incorporate a foundation in the Netherlands, and help the foundation in setting up it\'s digital infrastructure',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'Complete!',
-    tasks:[
-      'Incorporate Foundation',
-      'Set up Foundation website',
-      'Setup Donation Charter',
-      'Seek publicity for the Foundation',
-    ],
-    latest:'',
-    progress:100,
-    bgImage:'',
-  },
-  {
-    id:'fm-montelwilliams',
-    category: mktg,
-    title:'Montel Williams: The FrogeX Fighter',
-    headImg:'004',
-    prgBarImg:'033',
-    description:'By backing Montel Williams and helping him and his coaching team to reach the UFC or other National or World level events we can utilize the attention on him to raise awareness of FrogeX with a wide audience of MMA enthusiasts',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'We can accomplish this by',
-    tasks:[
-      'Sponsoring Montel',
-      'Having PR events like AMAs and Meetups with Montel',
-      'Arranging Watch Parties for Fights Montel is in',
-    ],
-    progress:55,
-  },
-  {
-    id:'fm-ecoportfolio',
-    category: dev,
-    title:'FrogeX Eco-Investment Portfolio',
-    headImg:'005',
-    prgBarImg:'034',
-    description:'This would be an addition to our Hybrid Eco-DEX where fiat users could put money into a managed portfolio of Eco-Defi coins that will not only save the planet but generate a nice amount of dividend income between 3-6% Quarterly. This would be a good option for those who are Eco-Conscious and understand the power of Cryptocurrency but who either do not have the time or knowledge to Invest on their own',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'We can establish this by',
-    tasks:[
-      'Creating a separate Legal Entity for this kind of business',
-      'Gaining the regulatory approval to act as a management fund',
-      'Marketing our new service to Older and Busier clienteles',
-    ],
-    progress:33,
-  },
-  {
-    id:'fm-digitalplatforms',
-    category: dev,
-    title:'FrogeX as Currency on Digital Platforms',
-    headImg:'006',
-    prgBarImg:'035',
-    description:'We convince gaming and merchant platforms to accept and use FrogeX as currency. Platforms like Steam, Amazon, Ebay, Humble Bundle, and smaller retail groups could be convinced based on the Eco-conscious nature and the ETH rewards function of FrogeX',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'We can accomplish this by',
-    tasks:[
-      'Making business relationships with retailers',
-      'Demonstrating the ease of use and potential gains for doing so',
-      'Creating a Layer 2 business platform or using an existing one like Kranz',
-    ],
-    progress:77,
-  },
-  {
-    id:'fm-indexerlistings',
-    category: admin,
-    title:'CMC/CG listing',
-    headImg:'007',
-    prgBarImg:'036',
-    description:'FrogeX will apply for the great market listings after launch, so the great public can find out about FrogeX.',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'Listing will take some time as we need to adhere to CMC/CG standards first. We will file for application as soon as possible.',
-    tasks:[
-      'File CG application',
-      'File CMC application',
-      'Listings Occur',
-      'Retract the v1 Froge Finance page',
-    ],
-    progress:25,
-  },
-  {
-    id:'fm-bridge',
-    category: chainDev,
-    title:'Fantom Bridge',
-    headImg:'008',
-    prgBarImg:'037',
-    description:'FrogeX will ultimately rule all chains. We will start our expansion on the Fantom chain by building a bridgeapp and Fantom smart contract.',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'Bridging will require building a dApp to easily swap from one chain to another (and incorporate multichain compatibility in the future) and a Fantom smart contract.',
-    tasks:[
-      'Build bridge interface',
-      'Set up Fantom smart contract',
-      'Deploy an FAQ for using it',
-      'Launching the bridge',
-    ],
-    progress:98,
-  },
-  {
-    id:'fm-linkcomp',
-    category: mktg,
-    title:'FrogeX Link Competition',
-    headImg:'009',
-    prgBarImg:'038',
-    description:'A contest to bring in new tg members and holders as well as getting eyes on our Website. Prizes offered for 1st, 2nd, and 3rd places. Participants will receive a unique bit.ly (or other similar tracking service) link to our website or telegram. Whoever\'s link brings in the most views, member adds, and buys will win.',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'We can accomplish this by',
-    tasks:[
-      'Figuring out how to track tg adds / buys off a link click',
-      'Having funds on hand to give out FrogeX and maybe ETH in prizes',
-      'Getting enough community involvement to actually have a reasonable competition',
-      'Figuring out just how invasive a link\'s datamining can be without actually being illegal',
-    ],
-    progress:2,
-  },
-  {
-    id:'fm-dapp',
-    category: dev,
     title:'Froge Dashboard/Dapp',
-    headImg:'010',
-    prgBarImg:'039',
-    description:'FrogeX has a revolutionary “gasless” contract and uses less gas than any other comparable token on the Ethereum blockchain. We will create a dashboard/dapp to easily withdraw your ETH dividends and look at some very interesting statistics!',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'Designing, programming, implementing and testing the dashboard/dapp until it is ready for public launch!',
+    img:['010','039'],
+    description:`FrogeX holders deserve a robust set of tools for checking and collecting 
+    their ETH rewards as well as for monitoring their FrogeX holdings. The FrogeX 
+    Dashboard dApp will allow our holders to do this and more.`,
+    getInvolved:`Feature suggestions, and any bug/issue reports - please message the team, thanks!`,
+    sizeRating:8,
+    progress:90,
     tasks:[
       'Designing dashboard/dapp',
       'Coding it',
       'Testing phase',
       'Public launch!',
     ],
-    progress:4,
   },
   {
-    id:'fm-nfts',
-    category: dev,
-    title:'Froge NFTs',
-    headImg:'011',
-    prgBarImg:'040',
-    description:'FrogeX will join the NFT market with it\'s "Bored Froge Lambo Club" NFT-series. All will be available on a special minting website with part of the proceeds of course going to ecodefi charity!',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'The NFT-series will have to be graphically and artistically top of the bill. To achieve this we are seeking cooperation with ecodefi artists. Once the artwork is done the special minting website needs to be programmed and deployed. We will seek verification on Opensea before launch.',
+    title:'FrogeX Link Competition',
+
+    img:['009','038'],
+    description:`Our Telegram Group is the lifeblood of our community. 
+    To bring even more people into our vibrant and expanding community 
+    we will host a competition for inviting new members to the community. 
+    Each contestant will be given a custom invite link and whoever gets 
+    the most new members to join and post at least once, will win. 
+    Prizes in FrogeX will be given out at the end.  More info coming soon!`,
+    getInvolved:'Participate in the competition when it is announced officially. ',
+    sizeRating:2,
+    progress:25,
     tasks:[
-      'Allying with ecodefi artists',
+      'Research how to track tg adds / buys off a link click',
+      'Having funds on hand to give out FrogeX and maybe ETH in prizes',
+      'Getting enough community involvement to actually have a reasonable competition',
+      'Figuring out just how invasive a link\'s datamining can be without actually being illegal',
+    ],
+  },
+  {
+    title:'Froge NFTs',
+
+    img:['011','040'],
+    description:`While there have been some community members making Froge themed NFTs, 
+      we are planning a set of Official FrogeX NFTs which will entitle the owners to 
+      extra perks and special events. Please look forward to updates in this area of interest.`,
+    getInvolved:`If you have unique expertise with NFTs please feel free to share with 
+      the team to help us weigh options and maximize our value proposition with NFTs.`,
+    sizeRating:3,
+    progress:10,
+    tasks:[
+      'R & D',
       'Setting up the artwork',
       'Setting up the minting site',
       'Launch on Opensea',
     ],
-    progress:1,
   },
   {
-    id:'fm-inoffice',
-    category: dev,
-    title:'FrogeX in Office',
-    headImg:'012',
-    prgBarImg:'041',
-    description:'Using Marketing and/or Charity funds FrogeX would back local and state level politicians in the US and other countries to push Eco-conscious and Transparency agendas. Targeted offices would be Mayors, Treasurers, Attorney Generals, Comptrollers, Governors, Local and State Assemblypersons, and any other position that might have sway over ecologic decisions',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'We can accomplish this by',
+    title:'Froge Lounge',
+
+    img:['016','045'],
+    description:`A digital space hosted by us where people can meet and 
+    discuss both FrogeX and environmental causes. Featuring films by 
+    David Attenborough, Steve Irwin and other influential nature personalities. 
+    This will be a chill place to hang out with fellow FrogeX holders 
+    and interact with the team in a quiet setting.`,
+    getInvolved:'Please look forward to updates!',
+    sizeRating:21,
+    progress:5,
+    tasks:[
+      'Determine approach, scope, and prioritization',
+      'Development',
+      'chill in the lounge!',
+    ],
+  },
+]
+
+export const froadmapData_dev_siteAndDApp = [
+  {
+    title:'Fiat Onboarding',
+
+    img:['001','030'],
+    description:`We will partner with a fiat onboarding service to allow people to 
+      directly purchase FrogeX with their VISA or Debit cards, right within our dApp!`,
+    getInvolved:`If you know any good services or have a point of contact 
+      at any fiat onboarders please contact the team.`,
+    sizeRating:3,
+    progress:33,
+    tasks:[
+      'design',
+      'implement',
+      'test',
+      'release',
+    ],
+  },
+  {
+    title:'Anon Suggestion Box',
+    img:['018','047'],
+    description:'A form on our website for anonymously suggesting changes and or fixes for the project.',
+    getInvolved:'Once the box is up leave us a message. We always love hearing from our community!',
+    sizeRating:2,
+    progress:25,
+    tasks:[
+      'design',
+      'implement',
+      'test',
+      'release',
+    ],
+  },
+]
+
+export const froadmapData_admin_general = [
+  {
+    title:'Establish the Froge Foundation',
+
+    img:['002','031'],
+    description:`Froge Finance with establish a charitable foundation which directly works 
+    with other charitable organizations to effectively use the funds generated from FrogeX 
+    and other Froge Finance Tokens to save the planet and heal our environment.`,
+    getInvolved:'',
+    sizeRating:5,
+    progress:100,
+    tasks:[
+      'Incorporate Foundation',
+      'Set up Foundation website',
+      'Setup Donation Charter',
+      'Seek publicity for the Foundation',
+    ],
+  },
+  {
+    title:'Montel Williams: The FrogeX Fighter',
+
+    img:['004','033'],
+    description:`Froge Finance will sponsor Montel Williams, an up and coming MMA fighter 
+    with a passion for cryptocurrency and our green mission. This will result in greater 
+    visibility of our token in and around the octagon. MMA has become a sport that 
+    many crypto enthusiasts pay close attention to and we're happy to have such a 
+    close relationship with Montel and his coaching team.`,
+    getInvolved:'',
+    sizeRating:3,
+    progress:55,
+    tasks:[
+      'Sponsoring Montel',
+      'Having PR events like AMAs and Meetups with Montel',
+      'Arranging Watch Parties for Fights Montel is in',
+    ],
+  },
+  {
+    title:'FrogeX Eco-Investment Portfolio',
+
+    img:['005','034'],
+    description:`This would be an addition to our Hybrid Eco-DEX where fiat users could 
+      put money into a managed portfolio of Eco-Defi coins that will not only save the 
+      planet but generate a nice amount of dividend income between 3-6% Quarterly. 
+      This would be a good option for those who are Eco-Conscious and understand the 
+      power of Cryptocurrency but lack the time/knowledge to invest on their own`,
+    getInvolved:`If you have a good understanding of investments or experience in 
+      sustainable investing please feel free to contact us with your suggestions 
+      for investments or strategies.`,
+    sizeRating:3,
+    progress:33,
+    tasks:[
+      'Creating a separate Legal Entity for this kind of business',
+      'Gaining the regulatory approval to act as a management fund',
+      'Marketing our new service to Older and Busier clienteles',
+    ],
+  },
+  {
+    title:'CoinMarketCap listing',
+
+    img:['007','036'],
+    description:`CoinMarketCap is the premier cryptocurrency tracking service. 
+      We will submit to and list FrogeX with their service to improve visibility for our project.`,
+    getInvolved:'',
+    sizeRating:2,
+    progress:100,
+    tasks:[
+      'File application',
+      'EXTDEP: Listing Occurs',
+      'Retract the v1 Froge Finance page',
+    ],
+  },
+  {
+    title:'CoinGecko listing',
+
+    img:['007','036'],
+    description:`CoinGecko is a tracking and databasing service used by dozens of 
+      wallets and websites. We will submit to and list FrogeX with their service 
+      to both improve visibility for our project and allow prices to be 
+      shown in holders' wallets.`,
+    getInvolved:'',
+    sizeRating:2,
+    progress:100,
+    tasks:[
+      'File application',
+      'EXTDEP: Listing Occurs',
+      'Retract the v1 Froge Finance page',
+    ],
+  },
+  {
+    title:'FrogeX In-Office',
+
+    img:['012','041'],
+    description:`Using Marketing and/or Charity funds FrogeX would back local and 
+      state level politicians in the US and other countries to push Eco-conscious 
+      and Transparency agendas. Targeted offices would be Mayors, Treasurers, 
+      Attorney Generals, Comptrollers, Governors, Local and State Assemblypersons, 
+      and any other position that might have sway over ecologic decisions`,
+    getInvolved:`If you hold a position in public office, work in politics or have 
+      political connections please reach out to us to help us network with these 
+      potential partners and organizations to expand our positive environmental 
+      impact into the public sphere!`,
+    getInvolved2:`If you are or know a political candidate or currently seated political 
+      representative who would be interested in working with us to further our goals of 
+      environmental stewardship and the proliferation of cryptocurrencies please contact the team.`,
+    sizeRating:8,
+    progress:5,
     tasks:[
       'Choosing existing candidates or inspiring new candidates',
       'Financially and Tangibly backing their bids for office',
       'Preparing tactical plans for the candidates to use when running',
       'Preparing agendas and networking the candidates with other candidates who are either backed by us or share similar goals',
     ],
-    progress:0,
   },
   {
-    id:'fm-gamenight',
-    category: admin,
-    title:'Game/Event Night',
-    headImg:'013',
-    prgBarImg:'042',
-    description:'Games and fun for all, hosted by TBD!',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'2',
-    sizeText:'All we need is a host!',
-    tasks:[
-      'find a host',
-      'set a time',
-      'help host with content/games ideas',
-      'attend and have fun!',
-    ],
-    progress:99,
-  },
-  {
-    id:'fm-frogedream',
-    category: dev,
-    title:'A Froge Dream',
-    headImg:'014',
-    prgBarImg:'043',
-    description:'We will compose and produce a video sequence depicting a person\s inspiration' +
-      'and journey to save the rainforests - with Froge!',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'5',
-    sizeText:'This one depends on the creative process.',
-    tasks:[
-      'make a storyboard',
-      'write dialog/content',
-      'find artist to work with',
-      'secure funding for artist',
-      'watch together!',
-    ],
-    progress:50,
-  },
-  {
-    id:'fm-anonsuggbox',
-    title:'Anon Suggestion Box',
-    headImg:'018',
-    prgBarImg:'047',
-    description:'We need an anon suggestion box on the website @MooncoHodlings ',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'We can accomplish this by ',
-    tasks:[
-      'design',
-      'implement',
-      'test',
-      'release',
-    ],
-    progress:82,
-  },
-  {
-    id:'fm-onboarding',
-    title:'X Games Sponsorship',
-    headImg:'015',
-    prgBarImg:'044',
-    description:'We will Frogeify an athlete for the coming X Games!',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'Sponsorships are a fairly straightforward process, just need the funding!',
-    tasks:[
-      'research how to sponsor',
-      'establish contact',
-      'secure funding',
-      'watch together!',
-    ],
-    progress:12,
-  },
-  {
-    id:'fm-frogelounge',
-    title:'Froge Lounge',
-    headImg:'016',
-    prgBarImg:'045',
-    description:'We will create a chat+stream lounge on our own domain. Stream our pet frog, ' +
-      'stream anything David Attenborough has done, anything nature related. ' +
-      'Just somewhere to go to and catch a vibe.',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'8',
-    sizeText:'We need to decide on the approach, and decide on how this would be time-slotted',
-    tasks:[
-      'Decide priority VS other cards',
-      'Design the approach & scope',
-      'Figure out when this work would be done',
-      'chill in the lounge!',
-    ],
-    progress:123,
-  },
+    title:'Game Nights with FrogeX',
 
-]
-const templateAndOffRecord = [
-  {
-    title:'Awesome Thing',
-    headImg:'017',
-    prgBarImg:'046',
-    description:'This feature will ',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'We can accomplish this by ',
+    img:['013','042'],
+    description:`Having a great community is about more than constant marketing and hype. 
+      In order to foster the comradery and joy of a vigorous and healthy community we 
+      will be hosting game nights and other events where community members can interact 
+      with each other and the team.`,
+    getInvolved:`Join in when a game night is announced and have fun!  
+      Also please message with any ideas/suggestions!`,
+    sizeRating:2,
+    progress:50,
     tasks:[
-      'design',
-      'implement',
-      'test',
-      'release',
+      'Establish a host',
+      'Set a time',
+      'Help host with content/games ideas',
+      'Attend and have fun!',
     ],
   },
   {
-    id:'fm-hybridecodex',
-    category: admin,
+    title:'"A Froge Dream" Production',
+
+    img:['014','043'],
+    description:`This will be a video documentary depicting the impact Froge Finance 
+      and FrogeX have had through the lens of a person's inspirational journey to save the environment.`,
+    getInvolved:`If you are or know a filmmaker or anyone who works in the film 
+      industry who is interested in producing this documentary please contact the team.`,
+    sizeRating:13,
+    progress:0,
+    tasks:[
+      'Make a storyboard',
+      'Write dialog/content',
+      'Secure funding for artist',
+      'Find artist to work with',
+      'Watch together!',
+    ],
+  },
+  {
+    title:'X Games Sponsorship',
+
+    img:['015','044'],
+    description:'We will Frogeify an athlete for the coming X Games!',
+    getInvolved:`If you are involved in X games sponsorship or as an 
+    athlete and have ideas to help us make the dream of FrogeX X games 
+    sponsorship a reality, please reach out to us with opportunities or suggestions!`,
+    sizeRating:3,
+    progress:15,
+    tasks:[
+      'Research: How to sponsor',
+      'Establish contact & build a relationship',
+      'Secure & deliver funding',
+      'Watch together!',
+    ],
+  },
+]
+
+const offRecordOnDeck = [
+  {
     title:'Hybrid Eco-DEX',
-    headImg:'003',
-    prgBarImg:'032',
-    description:'The creation of a Decentralized Exchange with in-built fiat onboarding and offboarding that operates via a layer 2 abstraction to save gas and gives a portion of the fees collected to Eco-Charities and other Environmental Causes. This would operate using the Uniswap liquidity pools for any tokens listed rather than establishing new pools',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'To launch this we will need to',
+    img:['003','032'],
+    description:`The creation of a Decentralized Exchange with in-built fiat 
+      onboarding and offboarding that operates via a layer 2 abstraction to 
+      save gas and gives a portion of the fees collected to Eco-Charities and 
+      other Environmental Causes. This would operate using the Uniswap liquidity 
+      pools for any tokens listed rather than establishing new pools`,
+    getInvolved:'',
+    sizeRating:21,
+    progress:25,
     tasks:[
       'Establish a reliable means of onboarding and offboarding Crypto to and from Fiat',
       'Establish or Adopt a Layer 2 solution which allows for extreme gas savings',
@@ -346,23 +336,54 @@ const templateAndOffRecord = [
       'File any requisite paperwork to get the Exchange legally recognized',
       'Link with existing Uniswap Liquidity pools',
     ],
-    progress:25,
   },
   {
-    id:'fm-twitterbot',
-    category: admin,
     title:'TwitterBot',
-    headImg:'003',
-    prgBarImg:'032',
-    description:'idea of a twitter bot that would maybe seek out our tag and either tally up how many times it was mentioned, or provide links to the tweets, or whatever else we want it to do. The possibilities are really endless.',
-    howToHelp:'3',
-    nextStep: 'Next up: to xyz.',
-    sizeRating:'3',
-    sizeText:'',
+
+    img:['003','032'],
+    description:`idea of a twitter bot that would maybe seek out our tag and 
+    either tally up how many times it was mentioned, or provide links to 
+    the tweets, or whatever else we want it to do. The possibilities are really endless.`,
+    getInvolved:'',
+    sizeRating:3,
+    progress:25,
     tasks:[
       '',
     ],
-    progress:25,
   },
+  {
+    title:'FrogeX as Currency on Digital Platforms',
 
+    img:['006','035'],
+    description:`We convince gaming and merchant platforms to accept and use 
+      FrogeX as currency. Platforms like Steam, Amazon, Ebay, Humble Bundle, 
+      and smaller retail groups could be convinced based on the 
+      Eco-conscious nature and the ETH rewards function of FrogeX`,
+    getInvolved:'',
+    sizeRating:3,
+    progress:77,
+    tasks:[
+      'Making business relationships with retailers',
+      'Demonstrating the ease of use and potential gains for doing so',
+      'Creating a Layer 2 business platform or using an existing one like Kranz',
+    ],
+  },
+]
+
+export const aboutSize = [
+  `"Size" means "Estimate of work-hours".`,
+  `Size units follow the fibbonaci sequence (1,2,3,5,8,13,21)`,
+  `1 size unit = "1 day of actual work" = "6 hours of actual work"`,
+  `1 size unit does NOT mean it will take 1 day.`,
+  `1 size unit just means "6 hours of work".`,
+  `Work hours can be impeded by what is termed "blockers"`,
+  `"Blockers" can be internal or external.`,
+  `Internal Blocker Example: 1 task is dependent on another task - they must be carried out in succession.`,
+  `External Blocker Example: A task is dependent on action from an external team.`,
+  `So, a size of 1 can mean "knock it out in an afternoon", or it can mean "this is a small workload"`,
+  `Typically, sizes of 13, 21, and greater, are discouraged,
+      because if a set of tasks get to be that large 
+      then a breakdown into smaller parts is appropriate.`,
+  `For a better browsing experience, our froadmap displays ideas of greater size.`,
+  `Now you know about "size". :)`
 ]
