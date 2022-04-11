@@ -1,6 +1,6 @@
 
 const activeLabelStyles = {
-  transform: 'scale(0.85) translateY(-30px)',
+  transform: 'scale(0.85) translateY(-32px)',
 }
 
 export const formStyles = {

@@ -33,7 +33,7 @@ function PgHomeFAQ() {
         <NewsMarquee/>
       </VFlexCS>
       <VFlexCS h='4rem'>
-        <Heading>Support</Heading>
+        <Heading>Contact & Support</Heading>
       </VFlexCS>
 
       <PondFeatureRequest/>
