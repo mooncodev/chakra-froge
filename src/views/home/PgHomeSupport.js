@@ -28,7 +28,7 @@ import { PondFeatureRequest } from './sections/PondFeatureRequest.js';
 function PgHomeFAQ() {
 
   return (
-    <VFlex flexGrow={1} align={'center'}>
+    <VFlex flexGrow={1}>
       <VFlexCS h='4rem'>
         <NewsMarquee/>
       </VFlexCS>

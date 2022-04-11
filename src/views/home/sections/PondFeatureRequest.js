@@ -92,7 +92,7 @@ export const PondFeatureRequest = () => {
   }
 
   return (
-    <Pond>
+    <Pond alignSelf='center'>
 
       <PondHeader size="md">Feature Suggestion</PondHeader>
 
