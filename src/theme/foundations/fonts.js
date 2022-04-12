@@ -6,6 +6,9 @@ import "@fontsource/montserrat/300.css"
 import "@fontsource/montserrat/500.css"
 import "@fontsource/montserrat/700.css"
 import "@fontsource/montserrat/900.css"
+import "@fontsource/im-fell-english"
+import "@fontsource/im-fell-english-sc"
+import "@fontsource/zcool-xiaowei"
 
 export const fontsTheme = {
   fonts: {
@@ -13,6 +16,9 @@ export const fontsTheme = {
     rale: 'Raleway, Helvetica, sans-serif',
     mont: 'Montserrat, Helvetica, sans-serif',
     mono: "Menlo, monospace",
+    fell: "IM Fell English, serif",
+    fellsc: "IM Fell English, serif",
+    zcool: "ZCOOL XiaoWei, serif",
   },
   fontWeights: {
     rale: { light: 300, medium: 500, bold: 700, heavy: 900, },

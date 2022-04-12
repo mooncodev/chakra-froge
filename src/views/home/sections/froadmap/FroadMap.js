@@ -18,28 +18,6 @@ import { sSub } from '../../../../helpers/math/zmath.mjs';
 import { FrogeLogoOutlineSvg } from 'assets/FrogeBrand.js';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 
-export function bgBefore({
-  opacity='1', bgColor, img,borderRadius='0',
-  size='cover',pos='50% 50%',rpt='no-repeat',
-}){
-  const rv = {opacity:opacity,content:'""',
-    pos:"absolute",top:0,right:0,left:0,bottom:0,
-    borderRadius:borderRadius}
-  if(img){
-    rv.backgroundImage = img
-    rv.backgroundSize = size
-    rv.backgroundRepeat = rpt
-    rv.backgroundPosition = pos
-  }
-  if(bgColor){
-    rv.backgroundColor=bgColor
-  }
-  return {
-    _before:rv
-  }
-  //...bgBefore({opacity:'.6',img:'',})
-  //...bgBefore({opacity:'.6',bgColor:'#259',})
-}
 
 const $$Icon = {
   borderRadius: "50%", border:'2px solid',borderColor:'bog.400',color:'bog.600', opacity:'.1' }
@@ -160,7 +138,8 @@ export function FroadMapCard({ froadMapObj,id,...rest }) {
     borderRadius:'7px',
     bgColor:'bog.650',
     height:heights.body,
-    justifyContent:'center', flexGrow:'1', padding:'.9rem',overflowY:'auto',
+    justifyContent:'center', flexGrow:'1', padding:'.9rem',
+    overflowY:'auto',
   }
   const tab = {
     userSelect:'none',

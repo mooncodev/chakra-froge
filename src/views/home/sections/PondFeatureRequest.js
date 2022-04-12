@@ -71,7 +71,7 @@ export const PondFeatureRequest = () => {
       img:['000','000'],
       description:description,
       getInvolved:getInvolved,
-      sizeRating:size,
+      sizeRating:parseInt(size),
       progress:10,
       tasks:[],
     }
@@ -100,7 +100,7 @@ export const PondFeatureRequest = () => {
         <Input onChange={onChangeTitle} placeholder=' ' />
         {/* <IconButton aria-label="icon" icon={<BiPaste />} size="xs" /> */}
         <FormLabel>Feature Title</FormLabel>
-        <FormErrorMessage>Your First name is invalid</FormErrorMessage>
+        <FormErrorMessage>Must be 3-30 chars</FormErrorMessage>
       </FormControl>
 
       <HStack alignSelf='start' mt={3}><S>Size:</S><S fontSize=".7rem" color='gray.500'>(loose est. # days of dedicated work)</S></HStack>
