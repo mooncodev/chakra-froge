@@ -27,7 +27,7 @@ export const bgImg = (img)=>({ background:`50% 50%/cover no-repeat url(${img})` 
 export const pxNumToRem = (v)=>{
   if(['vw','vh','em','%','px'].indexOf(v)>-1){return v}return (parseInt(v) * .0625) + 'rem'}
 export const numToPxStr = (v)=>{
-  if(['vw','vh','em','%','px'].indexOf(v)>-1){return v}return (v + 'px')}
+  if(/\D/.test(v)){return v}return (v + 'px')}
 export const absXY=(x='0',y='0')=>({position:'absolute',top:numToPxStr(y),right:numToPxStr(x),bottom:numToPxStr(y),left:numToPxStr(x),})
 export const absX=(x='0')=>({ position:"absolute", right:numToPxStr(x), left:numToPxStr(x),})
 export const absY=(y='0')=>({ position:"absolute", top:numToPxStr(y), bottom:numToPxStr(y),})
@@ -113,8 +113,8 @@ export function MtgCard({ cardObj, ...rest }) {
     fontSize:'.55rem',color:'#BBBBBB',
   }
   const footMidAccent = {
-    ...abs(null,137,48,137),
-    borderRadius:'3rem',
+    ...abs(null,null,29,'calc(50% - 1rem)'),
+    borderRadius:'50%',
     border:'2px solid black',
     bgColor:'green.700',
     w:'2rem',h:'1rem',
