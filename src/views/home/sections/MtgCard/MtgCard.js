@@ -108,6 +108,17 @@ export function MtgCard({ cardObj, ...rest }) {
   const powerPlate = {
     ...abs(null,37,28)
   }
+  const footer = {
+    ...abs(null,36,12,34),lineHeight: 'normal',
+    fontSize:'.55rem',color:'#BBBBBB',
+  }
+  const footMidAccent = {
+    ...abs(null,137,48,137),
+    borderRadius:'3rem',
+    border:'2px solid black',
+    bgColor:'green.700',
+    w:'2rem',h:'1rem',
+  }
 
   return (
     <Box sx={base}>
@@ -117,10 +128,18 @@ export function MtgCard({ cardObj, ...rest }) {
         <Box sx={artFG}/>
       </Box>
       <Box sx={typePlate}>{tgHandle}</Box>
-      <Box sx={descPlate}>
+      <Box sx={descPlate} pb={4}>
         {bio}
       </Box>
       <Box sx={powerPlate}>4/4</Box>
+      <Box sx={footMidAccent} flex={0}></Box>
+      <HFlexSC sx={footer} justify='space-between' alignItems='end'>
+        <VFlex flex={1}>
+          <Box>123/321 R</Box>
+          <Box>Ribbit Ribbit</Box>
+        </VFlex>
+        <S flex={1} textAlign={'right'}>2022 Wizards of the Froge</S>
+      </HFlexSC>
     </Box>
   )
 }

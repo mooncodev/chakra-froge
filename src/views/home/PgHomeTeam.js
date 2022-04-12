@@ -16,6 +16,7 @@ import Lefroge from 'views/home/sections/MtgCard/assets/Lefroge.png'
 import Moonco from 'views/home/sections/MtgCard/assets/Moonco.png'
 import Panda from 'views/home/sections/MtgCard/assets/Panda.png'
 import Wesley from 'views/home/sections/MtgCard/assets/Wesley.png'
+import KasperFormal from 'views/home/sections/MtgCard/assets/KasperFormal.png'
 
 import bg001 from 'views/home/sections/MtgCard/assets/001.jpg'
 import bg002 from 'views/home/sections/MtgCard/assets/002.jpg'
@@ -72,7 +73,7 @@ const copy = {
       name:'Kevin Mahoney',
       tgHandle:'@DeepLazan',
       title:'Business Oversight Lead and Financial Guarantor',
-      bio:`Investor and Business Management professional. Key investor and financial backer for FrogeX.`
+      bio:`Investment and Business Management professional. Key investor and financial backer for FrogeX.`
     },
     {
       imgs:[Panda,bg005],
@@ -94,12 +95,12 @@ const copy = {
         social media accounts.`
     },
     {
-      imgs:[Based,bg007],
+      imgs:[KasperFormal,bg007],
       name:'Kasper Ripken',
       tgHandle:'@EuropeanCat',
       title:'Froge Foundation President and Legal Advisor',
       bio:`Partner at Helder advocatuur. President/founder of Froge Finance Foundation, 
-        our charity organization. Acts as Legal Counsel for FrogeX and the Foundation.`},
+        our charity organization.`},
   ]
 }
 
