@@ -1,4 +1,3 @@
-// Chakra imports
 import { Grid, } from '@chakra-ui/react';
 // assets
 import React from 'react';
@@ -14,11 +13,11 @@ export default function PgNFT() {
 
   return (
     <>
-      <PondTpl_NFTProduct pondLink={['PgNFT','NFTProduct1']}/>
-      <PondTpl_NFTProduct pondLink={['PgNFT','NFTProduct2']}/>
-      <PondTpl_NFTProduct pondLink={['PgNFT','NFTProduct3']}/>
-      <PondTpl_NFTProduct pondLink={['PgNFT','NFTProduct4']}/>
-      <PondTpl_NFTProduct pondLink={['PgNFT','NFTProduct5']}/>
+      <PondTpl_NFTProduct/>
+      <PondTpl_NFTProduct/>
+      <PondTpl_NFTProduct/>
+      <PondTpl_NFTProduct/>
+      <PondTpl_NFTProduct/>
     </>
   );
 }

@@ -4,12 +4,7 @@ import { useWeb3React } from '@web3-react/core'
 import { network } from './connectors'
 import { useEagerConnect, useInactiveListener } from './web3Hooks.js'
 import { Text } from '@chakra-ui/react';
-import {
-  useCrawlStore,
-  useFxAccountStore,
-  useFxStore,
-  useW3Store
-} from '../../../services/atoms.js';
+import { useCrawlStore, useUserStore, useFxStore, useW3Store } from 'services';
 
 let ran1x = false
 export default function W3RManager({ children }) {
@@ -58,7 +53,7 @@ export default function W3RManager({ children }) {
   useEffect(async () => {
     console.log('w3rmanager running user effects')
     await useW3Store.getState().u_init(u_)
-    await useFxAccountStore.getState().hydrateFxGetAccount()
+    await useUserStore.getState().hydrateFxGetAccount()
   }, [u_chainId,u_account,u_active,])
   useEffect(async () => {
     console.log('w3rmanager running network effects')

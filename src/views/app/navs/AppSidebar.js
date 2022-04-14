@@ -1,5 +1,4 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
-// chakra imports
 import {
   Box,
   Button, Center,
@@ -19,13 +18,13 @@ import React, { useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
 import { RocketIcon } from '../../../components/Icons/Icons.js';
 import { useAtom } from 'jotai';
-import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
 import { FrogeLogoSvg } from 'assets/FrogeBrand.js';
 import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
 import { desktopSidebarWidth, PHASE } from 'data/constants.js';
 import { sxGlassBg,sxGlassBg2 } from '../bits/UtilityTags.js';
 import { SBNavLink } from '../bits/SBNavLink.js';
 import FrogeEyeEye from '../../../assets/logos/froge-eyeeye-outline-halfwhites.svg';
+import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
 export function AppSidebar(props) {
   // to check for active links and opened collapses
   let location = useLocation();

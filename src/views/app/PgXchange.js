@@ -1,4 +1,3 @@
-// Chakra imports
 import { Grid, } from '@chakra-ui/react';
 // assets
 import React from 'react';
@@ -16,9 +15,9 @@ export default function PgXchange() {
 
   return (
     <>
-      <PondTpl_List pondLink={['PgXchange','List of things']}/>
-      <PondTpl_Wizard pondLink={['PgXchange','From Fiat']}/>
-      <PondTpl_Wizard pondLink={['PgXchange','To Froge']}/>
+      <PondTpl_List/>
+      <PondTpl_Wizard/>
+      <PondTpl_Wizard/>
     </>
   );
 }

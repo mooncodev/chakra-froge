@@ -33,3 +33,50 @@ useBearStore.setState({ paw: false })
 unsub1()
 // Destroying the store (removing all listeners)
 useBearStore.destroy()
+
+
+
+// const priceAtom = atom(10)
+// const messageAtom = atom('hello')
+// const productAtom = atom({ id: 12, name: 'good stuff' })
+//
+// const readOnlyAtom = atom((get) => get(priceAtom) * 2)
+// const writeOnlyAtom = atom(
+//   null, // it's a convention to pass `null` for the first argument
+//   (get, set, update) => {
+//     // `update` is any single value we receive for updating this atom
+//     set(priceAtom, get(priceAtom) - update.discount)
+//   }
+// )
+
+// const readWriteAtom = atom(
+//   (get) => get(priceAtom) * 2,
+//   (get, set, newPrice) => {
+//     set(priceAtom, newPrice / 2)
+//     // you can set as many atoms as you want at the same time
+//   }
+// )
+
+
+// const ethPriceAtom = atom('')
+
+// export const ethPrice = atom(
+//   (get) => get(ethPriceAtom),
+//   async (get, set, update) => {
+//     await axios('/api/etherscan?method=ethPrice').then(res=>{
+//       if(res.data && res.data.response) {
+//         set(ethPriceAtom, res.data.response);
+//       }
+//     })
+//   })
+//
+// export const setEthPrice = atom(
+//   null, // it's a convention to pass `null` for the first argument
+//   async (get, set, update) => {
+//     await axios('/api/etherscan?method=ethPrice').then(res=>{
+//       if(res.data && res.data.response) {
+//         set(ethPriceAtom, res.data.response);
+//       }
+//     })
+//   }
+// )

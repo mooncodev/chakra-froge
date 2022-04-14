@@ -29,7 +29,6 @@ export const PondFeatureRequest = () => {
   const [description, setDescription] = useState('')
   const [descriptionErr, setDescriptionErr] = useState(false)
   const [getInvolved, setGetInvolved] = useState('')
-  const [getInvolvedErr, setGetInvolvedErr] = useState(false)
   const [status, setStatus] = useState('none')//none|processing|fail|success
   const [step1, setStep1] = useState('research')
   const [step2, setStep2] = useState('design')
@@ -49,17 +48,14 @@ export const PondFeatureRequest = () => {
   const onChangeGetInvolved = (e)=>{
     let inputValue = e.target.value
     setGetInvolved(inputValue)
-    setGetInvolvedErr(inputValue.length>300||inputValue.length<10)
   }
   const onSubmit = async (e)=>{
     setStatus('processing');
-    setTitleErr(title.length>30||title.length<3)
+    setTitleErr(title.length>10||title.length<3)
     setDescriptionErr(description.length>300||description.length<10)
-    setGetInvolvedErr(getInvolved.length>300||getInvolved.length<10)
 
     if( titleErr
      || descriptionErr
-     || getInvolvedErr
     ){
       setStatus('none');
       console.log(`come on, dont bullshit me`);
@@ -114,7 +110,7 @@ export const PondFeatureRequest = () => {
         <FormLabel>Description:</FormLabel>
       </FormControl>
 
-      <FormControl mt={6} variant='floating' id='first-name' isRequired isInvalid={getInvolvedErr}>
+      <FormControl mt={6} variant='floating' id='first-name' isRequired>
         <Textarea value={getInvolved} onChange={onChangeGetInvolved}
                   placeholder=' ' size='sm'/>
         <FormLabel>How people can get involved:</FormLabel>

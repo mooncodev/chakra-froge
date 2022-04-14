@@ -1,4 +1,3 @@
-// Chakra imports
 import { Grid, } from '@chakra-ui/react';
 // assets
 import React from 'react';
@@ -11,10 +10,10 @@ export default function PgSponsorships() {
 
   return (
     <>
-      <PondTpl_List pondLink={['PgSponsorships','List of things']}/>
-      <PondTpl_Spotlight3 pondLink={['PgSponsorships','Montel']}/>
-      <PondTpl_Spotlight2 pondLink={['PgSponsorships','Jeremy']}/>
-      <PondTpl_Spotlight2 pondLink={['PgSponsorships','Henry']}/>
+      <PondTpl_List/>
+      <PondTpl_Spotlight3/>
+      <PondTpl_Spotlight2/>
+      <PondTpl_Spotlight2/>
     </>
   );
 }

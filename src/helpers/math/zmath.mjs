@@ -1,5 +1,5 @@
-import {ethers} from "ethers";
-import exactMath from "./exact-math.mjs";
+import { ethers } from 'ethers';
+import exactMath from './exact-math.mjs';
 
 const sUint256max='115792089237316195423570985008687907853269984665640564039457584007913129639935';
 const diff       ='31319569545912321281247414944698969706902316100102552102633584007913129639836';
@@ -425,4 +425,11 @@ export {
   sAdd,sSub,sMul,sDiv,sAddRay,_Add,_Sub,_Mul,_Div,_AddRay,sScaleToPcts,
   sRnd,sAbs,sPow,sFla,sExp,sHR,hrExp,sNewtonSqRt,sChg,_Chk,
   sIs,sIs0,_F,sIsGT,sIsLT,sIsGTorEq,sIsLTorEq,sIsEq,sIsNotEq
+}
+
+export function balToHrTuple(rawBal, decimal, usdPrice) {
+  //@returns [rawBal, decimalAdjustedBal, usdEquivalent]
+  const decimalAdjustedBal = sRnd(sExp(rawBal, -decimal), -4);
+  const usdEquivalent = sRnd(sMul(decimalAdjustedBal, usdPrice), -2);
+  return [rawBal, decimalAdjustedBal, usdEquivalent];
 }

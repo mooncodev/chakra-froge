@@ -1,57 +1,61 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from 'react';
 import {
-  VStack,
+  VStack,chakra,
   Button,
   Text,
   Input,
-  Box, Menu, MenuButton, MenuList, Flex, MenuItem, Center,
+  Box, Menu, MenuButton, MenuList, Flex, MenuItem, Center, Icon,
 } from '@chakra-ui/react';
-import { useWeb3React } from "@web3-react/core";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import { Tooltip } from "@chakra-ui/react";
 import { toHex, truncateAddress } from "helpers/math/utils.js";
-import { wcModalIsOpenAtom } from '../../../services/atoms.js';
 import { useAtom } from 'jotai';
 import { BtnBrandIcon } from '../bits/UtilityTags.js';
-import { ItemContent } from '../../../components/Menu/ItemContent.js';
-import avatar1 from '../../../assets/img/avatars/avatar1.png';
-import avatar2 from '../../../assets/img/avatars/avatar2.png';
-import avatar3 from '../../../assets/img/avatars/avatar3.png';
+import { HistoryItem } from './HistoryItem.js';
 import { MdOutlineHistory } from 'react-icons/md';
+import { GrTransaction } from 'react-icons/gr';
+import { CITxStatusGreen, CITxStatusYellow, CITxStatusRed } from 'assets/FrogeBrand.js';
+import { wcModalIsOpenAtom, useUserStore, useW3Store } from 'services';
+
+const sxStatusIcon = {
+  color:'bog.150',
+  mr:'.8rem',
+  bgColor:'bog.800',
+  borderRadius:'8rem',
+  p:'.4rem', w:'2rem', h:'2rem',
+  '& path':{stroke:'bog.300'},
+}
+const H_SUCCESS='Transaction Succeeded';
+const H_CANCELLED='Transaction Cancelled';
+const H_FAILED='Transaction Failed';
+const TxStatusGreen = ()=>(<CITxStatusGreen sx={sxStatusIcon}/>)
+const TxStatusYellow = ()=>(<CITxStatusRed sx={sxStatusIcon}/>)
+const TxStatusRed = ()=>(<CITxStatusYellow sx={sxStatusIcon}/>)
+const mockHistory = [
+  {msg:H_SUCCESS,icon:TxStatusGreen,time:'5 hours ago'},
+  {msg:H_CANCELLED,icon:TxStatusRed,time:'2 days ago'},
+  {msg:H_FAILED,icon:TxStatusYellow,time:'4 days ago'},
+]
 
 export default function HistoryWidget() {
-  const {
-    library:u_library,
-    chainId:u_chainId,
-    account:u_account,
-    activate:u_activate,
-    deactivate:u_deactivate,
-    active:u_active
-  } = useWeb3React();
-  const [signature, setSignature] = useState("");
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
-  const [signedMessage, setSignedMessage] = useState("");
-  const [verified, setVerified] = useState();
-  const [wcModalIsOpen, set_wcModalIsOpen] = useAtom(wcModalIsOpenAtom);
+  const u_chainId= useW3Store(s=>s.u_chainId);
+  const u_account= useW3Store(s=>s.u_account);
+  const u_active= useW3Store(s=>s.u_active);
+
+  const history = useUserStore(useCallback(s=>s.users[u_account]?s.users[u_account].history:{}, [u_account]))
 
   const resetState = () => {
-    setMessage("");
-    setSignature("");
-    setVerified(undefined);
   };
 
-  useEffect(() => {
-    const provider = window.localStorage.getItem("provider");
-    // if (provider) activate(connectors[provider]); //auto-activate onload
-  }, []);
+  useEffect(async () => {
+    if(u_active){
+      // await useUserStore.getState().syncHistory()
+    }
+  }, [u_account])
 
-  useEffect(() => {
-    if(wcModalIsOpen)resetState()
-  }, [wcModalIsOpen]);
 
   return (
-    <Menu id='NotifsMenu'>
+    <Menu id='NotifsMenu' colorScheme={'green'}>
       <MenuButton id='NotifsButton'>
         <Center id="BtnBrandIcon"
                 __css={{
@@ -63,24 +67,13 @@ export default function HistoryWidget() {
       </MenuButton>
       <MenuList p="16px 8px">
         <Flex flexDirection="column">
-          <MenuItem borderRadius="8px" mb="10px">
-            <ItemContent
-              time="13 minutes ago" info="from Alicia"
-              boldInfo="New Message" aName="Alicia" aSrc={avatar1}
-            />
-          </MenuItem>
-          <MenuItem borderRadius="8px" mb="10px">
-            <ItemContent
-              time="2 days ago" info="by Josh Henry"
-              boldInfo="New Album" aName="Josh Henry" aSrc={avatar2}
-            />
-          </MenuItem>
-          <MenuItem borderRadius="8px">
-            <ItemContent
-              time="3 days ago" info="Payment succesfully completed!"
-              boldInfo="" aName="Kara" aSrc={avatar3}
-            />
-          </MenuItem>
+          {Object.values(history).sort((a,b)=>{ a.t_created - b.t_created}).map((v,i)=>
+            <MenuItem key={i} borderRadius="8px" mb="10px">
+              <HistoryItem
+                msg={v.msg} time={v.time} icon={v.icon}
+              />
+            </MenuItem>
+          )}
         </Flex>
       </MenuList>
     </Menu>

@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { BtnXs, TextXs } from './UtilityTags.js';
-import { useFxStore } from '../../../services/atoms.js';
+import { useFxStore } from 'services';
 
 export default function PopoverFXGetConfig() {
 

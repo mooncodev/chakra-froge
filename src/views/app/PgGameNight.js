@@ -1,4 +1,3 @@
-// Chakra imports
 import { Grid, } from '@chakra-ui/react';
 // assets
 import React from 'react';
@@ -11,9 +10,9 @@ export default function PgGameNight() {
 
   return (
     <>
-      <PondGameNightUpcoming pondLink={['PgGameNight','Upcoming Events']}/>
-      <PondGameNightRegister pondLink={['PgGameNight','Register']}/>
-      <PondTpl_UpcomingEvts pondLink={['PgGameNight','Tpl Upcoming']}/>
+      <PondGameNightUpcoming/>
+      <PondGameNightRegister/>
+      <PondTpl_UpcomingEvts/>
     </>
   );
 }

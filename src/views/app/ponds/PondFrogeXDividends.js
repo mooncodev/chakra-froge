@@ -1,4 +1,3 @@
-// Chakra imports
 import {
   Box,
   Button,
@@ -13,50 +12,56 @@ import {
   VStack, forwardRef,
 } from '@chakra-ui/react';
 import {Pond,PondBody,PondHeader} from '../bits/Pond.js';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { useWeb3React } from '@web3-react/core';
 import { call, stx, FX, readFX } from 'stx/stx.js';
 import { olaToObject } from '../../../helpers/deep.js';
-import { useCrawlStore, useFxAccountStore, useFxStore } from '../../../services/atoms.js';
+import { useUserStore, useFxStore } from 'services';
+import { useCrawlStore } from 'services';
 import { BtnXs, P, S, sxFrogeEyeEyeBeforeBg, TextXs } from '../bits/UtilityTags.js';
 import { Bubble, BubLabel, BubSub, BubValue } from '../bits/Bubble.js';
-import { last4 } from '../../../helpers/math/zmath.mjs';
+import { last4, sRnd } from '../../../helpers/math/zmath.mjs';
 import { mont } from '../../../theme/foundations/fonts.js';
 import { MoreInfoPopover } from '../bits/MoreInfoPopover.js';
-
+import { tplUserItem } from '../../../services/useUserStore.js';
 
 let _execClaimFn = ()=>{}
 
-
 export default function PondFrogeXDividends(props) {
-  const {pondLink} = props;
   const {chainId:u_chainId,account:u_account,active:u_active,} = useWeb3React()
   const {chainId:n_chainId,account:n_account,active:n_active,} = useWeb3React('NETWORK')
 
-  const _getAccount = useState({})
   const [isClaimBtnDisabled, set_isClaimBtnDisabled] = useState(false)
 
   const ethPrice = useCrawlStore(s=>s.ethPrice)
   const fxPrice = useFxStore(s=>s.fxPrice)
-  const _balanceFx = useFxAccountStore(s=>s._balance)
-  const _xDivsAvailable = useFxAccountStore(s=>s._xDivsAvailable)
-  const _xDivsEarnedToDate = useFxAccountStore(s=>s._xDivsEarnedToDate)
-  const _xDivsWithdrawnToDate = useFxAccountStore(s=>s._xDivsWithdrawnToDate)
-  const _xMinClaimableDivs = useFxStore(s=>s._xMinClaimableDivs)
-  const _fxIsClaimEligible = useFxAccountStore(s=>s._fxIsClaimEligible)
+  const user = useUserStore(s=>s.users[u_account])
 
+
+  let fxGetAccount = useUserStore(useCallback(s=>
+    s.users[u_account] ?
+      ( s.users[u_account].fxGetAccount )
+     :( tplUserItem.fxGetAccount ),[user]))
+  let fxAcct = false
+
+  // let _balance = useUserStore(useCallback(s=>s.users[u_account]?s.users[u_account].fxGetAccount._balance,[user]))
+  // let _xDivsAvailable = useUserStore(useCallback(s=>s.users[u_account]?s.users[u_account].fxGetAccount._xDivsAvailable,[user]))
+  // let _xDivsEarnedToDate = useUserStore(useCallback(s=>s.users[u_account]?s.users[u_account].fxGetAccount._xDivsEarnedToDate,[user]))
+  // let _xDivsWithdrawnToDate = useUserStore(useCallback(s=>s.users[u_account]?s.users[u_account].fxGetAccount._xDivsWithdrawnToDate,[user]))
+  // let _xMinClaimableDivs = useUserStore(useCallback(s=>s.users[u_account]?s.users[u_account].fxGetAccount._xMinClaimableDivs,[user]))
+  // let _fxIsClaimEligible = useUserStore(useCallback(s=>s.users[u_account]?s.users[u_account].fxGetAccount._fxIsClaimEligible,[user]))
 
   useEffect(async ()=>{
-    // await hydrate()
-  },[])
+    fxAcct = {...fxGetAccount}
+  },[fxGetAccount])
 
 
   const hydrate = async()=>{
     console.log('hydrating stuff from PondMyFrogeXRewards')
-    await useFxAccountStore.getState().hydrateFxGetAccount()
+    await useUserStore.getState().hydrateFxGetAccount()
     await useFxStore.getState().hydrateFxStore()
-    if(_fxIsClaimEligible){
+    if(user._fxIsClaimEligible){
       set_isClaimBtnDisabled(false)
     }else{
       set_isClaimBtnDisabled(true)
@@ -67,59 +72,63 @@ export default function PondFrogeXDividends(props) {
 
   const onExecClaim = async() => {
     set_isClaimBtnDisabled(true)
-    const rcpt = await useFxAccountStore.getState().execClaim()
+    await useUserStore.getState().execClaim(async(evt,data,err)=>{
+      if(evt==='hash'){//creation cb
+      }else{//activity cb
+      }
+      if(evt==='rcpt'){}
+      if(evt==='conf'){}
+      if(evt==='err'){}
+    })
     set_isClaimBtnDisabled(false)
   };
 
   const tickerBubbleStyle = {
-    color:'gray.400',
+    color:'bog.200',
     width: "45%",
     bgColor:'global.bubble',
     borderRadius: '6px',
     ...mont.md.md,
   }
   return (
-    <Pond maxWidth='400px' variant='alignCenter' pondLink={pondLink}>
-      <PondHeader>
-        <S color='white'>FrogeX</S>&nbsp;<S color='gray.300'>Dividends</S>
-      </PondHeader>
-      {u_account&&<TextXs mt='-5px' mb='7px'>For <S fontWeight='bold'>{last4(u_account)}</S></TextXs>}
+    <Pond title={<><S color='white'>FrogeX</S>&nbsp;<S color='gray.300'>Dividends</S></>}>
+
+      {u_account&&<TextXs mt='-3px' mb='7px'>For <S fontWeight='bold'>{last4(u_account)}</S></TextXs>}
       <PondBody>
           <HStack width='100%' justifyContent='space-evenly'>
-            <VStack __css={tickerBubbleStyle}><P>FrogeX</P><P>${fxPrice}</P></VStack>
-            <VStack __css={tickerBubbleStyle}><P>ETH</P><P>${ethPrice}</P></VStack>
+            <VStack __css={tickerBubbleStyle}><P>FrogeX</P><P sx={{color:'boog.400'}}>${fxPrice}</P></VStack>
+            <VStack __css={tickerBubbleStyle}><P>ETH</P><P sx={{color:'boog.400'}}>${sRnd(ethPrice,-2)}</P></VStack>
           </HStack>
-          {!u_account ? (
-            <TextXs>Please connect a wallet to view its FrogeX details
+          {!user || !fxAcct ? (
+            <TextXs>Please connect a wallet to view its FrogeX detail
               and optionally claim its due ETH rewards!</TextXs>
           ):(
             <>
               <Bubble>
                 <BubLabel>Gross Total Earned Dividends</BubLabel>
                 <BubValue>
-                  {_xDivsEarnedToDate[1]} ETH
-                  <BubSub>(${_xDivsEarnedToDate[2]} USD)</BubSub>
+                  {fxAcct._xDivsEarnedToDate[1]} ETH
+                  <BubSub>(${fxAcct._xDivsEarnedToDate[2]} USD)</BubSub>
                 </BubValue>
               </Bubble>
               <Bubble>
                 <BubLabel>Dividends Claimed To Date</BubLabel>
                 <BubValue>
-                  {_xDivsWithdrawnToDate[1]} ETH
-                  <BubSub>(${_xDivsWithdrawnToDate[2]} USD)</BubSub>
+                  {fxAcct._xDivsWithdrawnToDate[1]} ETH
+                  <BubSub>(${fxAcct._xDivsWithdrawnToDate[2]} USD)</BubSub>
                 </BubValue>
               </Bubble>
               <Bubble>
                 <BubLabel>Unclaimed Dividends</BubLabel>
                 <BubValue>
-                  {_xDivsAvailable[1]}&nbsp;ETH
-                  <BubSub>(${_xDivsAvailable[2]}&nbsp;USD)</BubSub>
+                  {fxAcct._xDivsAvailable[1]}&nbsp;ETH
+                  <BubSub>(${fxAcct._xDivsAvailable[2]}&nbsp;USD)</BubSub>
                 </BubValue>
               </Bubble>
-              <br/>
-              <Button disabled={!_fxIsClaimEligible || isClaimBtnDisabled}
-                      onClick={() => onExecClaim()}>Make Claim</Button>
+              <Button disabled={user&&!user._fxIsClaimEligible || isClaimBtnDisabled} mt={3} mb={1}
+                      onClick={() => onExecClaim()}>Claim Now</Button>
 
-              <TextXs>Minimum For Claim (Current Setting):</TextXs>
+              <TextXs><strong>Minimum For Claim</strong> (current setting):</TextXs>
               {/* <MoreInfoPopover> */}
               {/*   We try to set the minimum around $20 USD equivalent - this helps keep the cost */}
               {/*   low on myriad TX, because of the auto-claim feature. For example, imagine you */}
@@ -127,8 +136,8 @@ export default function PondFrogeXDividends(props) {
               {/*   contract prevents this with a minimum claimable setting, which is manually */}
               {/*   adjusted from time to time to keep things running optimally. */}
               {/* </MoreInfoPopover> */}
-              <TextXs>{_xMinClaimableDivs[1]}&nbsp;ETH&nbsp;
-                (${_xMinClaimableDivs[2]}&nbsp;USD)</TextXs>
+              <TextXs mb={1}>{fxAcct._xMinClaimableDivs[1]}&nbsp;ETH&nbsp;
+                (${fxAcct._xMinClaimableDivs[2]}&nbsp;USD)</TextXs>
             </>
           )}
       </PondBody>

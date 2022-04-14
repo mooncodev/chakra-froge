@@ -1,4 +1,3 @@
-// Chakra imports
 import {
   Box,
   Button,
@@ -6,9 +5,6 @@ import {
   HStack,
   Image,
   Text,
-  Portal,
-  VStack,
-  forwardRef,
   Heading,
   Link,
   Stack,
@@ -19,20 +15,14 @@ import {
   IconButton, Input,
 } from '@chakra-ui/react';
 import {Pond,PondBody,PondHeader} from '../bits/Pond.js';
-import React, { useEffect, useState } from 'react';
-
-import { useWeb3React } from '@web3-react/core';
-import { useCrawlStore, useFxAccountStore, useFxStore } from '../../../services/atoms.js';
-import { BtnXs, P, S, TextXs } from '../bits/UtilityTags.js';
-import { mont } from '../../../theme/foundations/fonts.js';
+import React from 'react';
 import { CopyIcon } from '@chakra-ui/icons';
 
 export function PondTpl_Spotlight(props) {
-  // const {pondLink} = props;
   // useEffect(async ()=>{},[])
 
   return (
-    <Pond pondLink={props.pondLink}>
+    <Pond>
       <PondHeader>Froge XYZ Partnership: Partner!</PondHeader>
       <PondBody>
         <Image src="https://via.placeholder.com/900x320" />
@@ -47,11 +37,11 @@ export function PondTpl_Spotlight(props) {
   );
 }
 export function PondTpl_Spotlight3(props) {
-  // const {pondLink} = props;
+
   // useEffect(async ()=>{},[])
 
   return (
-    <Pond pondLink={props.pondLink}>
+    <Pond>
       <PondHeader>Partner Spotlight</PondHeader>
       <PondBody>
         <Text>
@@ -72,10 +62,10 @@ export function PondTpl_Spotlight3(props) {
   );
 }
 export function PondTpl_List(props) {
-  // const {pondLink} = props;
+
   // useEffect(async ()=>{},[])
   return (
-    <Pond pondLink={props.pondLink}>
+    <Pond>
       <PondHeader>Leaderboard: Texas Frogem</PondHeader>
       <PondBody>
         <HStack spacing={2} justifyContent="space-between">
@@ -104,10 +94,10 @@ export function PondTpl_List(props) {
   );
 }
 export function PondTpl_Spotlight2(props) {
-  // const {pondLink} = props;
+
   // useEffect(async ()=>{},[])
   return (
-    <Pond pondLink={props.pondLink}>
+    <Pond>
       <PondHeader>Montel Williams</PondHeader>
       <PondBody>
         <HStack spacing={2} justifyContent="space-between">
@@ -134,10 +124,10 @@ export function PondTpl_Spotlight2(props) {
   );
 }
 export function PondTpl_NFTProduct(props) {
-  // const {pondLink} = props;
+
   // useEffect(async ()=>{},[])
   return (
-    <Pond pondLink={props.pondLink}>
+    <Pond>
       <Image src="https://via.placeholder.com/300x300" />
       <PondHeader textAlign="left" size="md" display="block">
         NFT: FrogeSoFly
@@ -157,10 +147,10 @@ export function PondTpl_NFTProduct(props) {
   );
 }
 export function PondTpl_Wizard(props) {
-  // const {pondLink} = props;
+
   // useEffect(async ()=>{},[])
   return (
-    <Pond pondLink={props.pondLink}>
+    <Pond>
       <PondHeader textAlign="left" size="md" display="block">
         Xchange
       </PondHeader>
@@ -185,10 +175,10 @@ export function PondTpl_Wizard(props) {
 }
 
 export function PondTpl_UpcomingEvts(props) {
-  // const {pondLink} = props;
+
   // useEffect(async ()=>{},[])
   return (
-    <Pond pondLink={props.pondLink}>
+    <Pond>
 
       <Heading textAlign="center" size="lg">
         Upcoming Events
@@ -236,10 +226,10 @@ export function PondTpl_UpcomingEvts(props) {
   );
 }
 export function PondTpl_BNCalc(props) {
-  // const {pondLink} = props;
+
   // useEffect(async ()=>{},[])
   return (
-    <Pond pondLink={props.pondLink}>
+    <Pond>
 
       <Heading size="md">BigNum Calc</Heading>
       <HStack spacing={2}>

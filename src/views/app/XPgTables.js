@@ -1,5 +1,4 @@
 import React from "react";
-// Chakra imports
 import {
   Flex,
   Table, Tbody, Text, Th, Thead, Tr,

@@ -1,28 +1,16 @@
-// Chakra imports
 import {
   Box, Button, Flex, Image, Text, VStack,
 } from '@chakra-ui/react';
 import {Pond,PondBody,PondHeader} from '../bits/Pond.js';
-import {
-  CartIcon, DocumentIcon, GlobeIcon, RocketIcon, StatsIcon, WalletIcon,
-} from "components/Icons/Icons.js";
 import React, { useEffect, useState } from 'react';
 
 import { useWeb3React } from '@web3-react/core';
-import { call, stx, FX, readFX } from 'stx/stx.js';
-import addr from 'data/addresses.js';
-import { olaToObject } from '../../../helpers/deep.js';
-import LogoMetaMask from '../wallet/assets/LogoMetaMask.png';
 import { connectors } from '../wallet/connectors.js';
-import { useCrawlStore, useFxAccountStore, useFxStore } from '../../../services/atoms.js';
-import { useAtom } from 'jotai';
-import PopoverFXGetConfig from '../bits/PopoverFXGetConfig.js';
+import { useUserStore, useFxStore, useCrawlStore } from 'services';
 import { BtnXs, TextXs } from '../bits/UtilityTags.js';
 
 
-
 export default function PondNetworkVitals(props) {
-  const {pondLink} = props;
   const u_ = useWeb3React()
   const n_ = useWeb3React('NETWORK')
   const {
@@ -43,8 +31,7 @@ export default function PondNetworkVitals(props) {
   } = n_
 
   const _getConfigRaw = useFxStore(s=>s.fxGetConfigRaw)
-  const _balanceFx = useFxAccountStore(s=>s._balance[1])
-  const _balanceFxUSD = useFxAccountStore(s=>s._balance[2])
+  const _balance = useUserStore(s=>s.users[u_account].fxGetAccount._balance)
   // const ethPrice = useCrawlStore(state=>state.ethPrice)
 
 
@@ -61,7 +48,8 @@ export default function PondNetworkVitals(props) {
           n_chainId : {n_chainId}<br/>
           <br/>
           _ethPtnLqty : {_getConfigRaw._ethPtnLqty}<br/>
-          _balanceOf : {_balanceFx}<br/>
+          _balance : {_balance[1]}<br/>
+          _balance (USD) : {_balance[2]}<br/>
 
 
         </TextXs>
@@ -92,8 +80,7 @@ export default function PondNetworkVitals(props) {
   };
 
   return (
-    <Pond minHeight="290.5px" pondLink={pondLink}>
-      <PondHeader>Network Vitals</PondHeader>
+    <Pond title='Network Vitals'>
       <PondBody>
         <VStack>
           <BtnXs onClick={()=>u_activate(connectors.injected)}>Connect User</BtnXs>

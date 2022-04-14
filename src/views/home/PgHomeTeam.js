@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   Box, Flex, Button, FormControl, FormLabel,
-  Heading, Input, Link, Switch, Text, Stack, Image, Grid,
+  Heading, Input, Link, Switch, Text, Stack, Image, Grid, Spacer, Divider,
 } from '@chakra-ui/react';
 // Assets
 import { VFlex, VFlexCS } from '../app/bits/UtilityTags.js';
@@ -113,8 +113,10 @@ function PgHomeTeam() {
       </VFlexCS>
       <VFlexCS h='4rem'>
         <Heading>Team Froge</Heading>
+        <Text><em>Far Beyond Driven.</em></Text>
+        <Divider/><br/>
       </VFlexCS>
-      <VFlexCS mx={{base:'.5rem',md:'4rem',lg:'8rem',}}>
+      <VFlexCS mt={4} mx={{base:'.5rem',md:'4rem',lg:'8rem',}}>
         {copy.originStory}
       </VFlexCS>
 

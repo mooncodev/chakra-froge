@@ -19,7 +19,7 @@ import {
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { GrConnect } from 'react-icons/gr';
 import { last4, sIs0 } from '../../../helpers/math/zmath.mjs';
-import { useFxAccountStore, useW3Store } from '../../../services/atoms.js';
+import { useUserStore, useW3Store } from 'services';
 
 export function BtnCopyToClipboard({ code }) {
   // isCopied is reset after 3 second timeout
@@ -103,7 +103,9 @@ export const ConnectWalletNavButton = ({active,children,...rest})=> {
   const u_chainId= useW3Store(s=>s.u_chainId);
   const u_account= useW3Store(s=>s.u_account);
   const u_active= useW3Store(s=>s.u_active);
-  const _ethBalance= useFxAccountStore(s=>s._ethBalance);
+  const ethBal= useUserStore(s=> {
+    return s.users[u_account]?s.users[u_account].ethBal:['','',''];
+  });
   const buttonStyle = {
     color: 'global.bg', bgColor: 'brand.green',
     h: '1.8rem', w: 'auto', py: '0', px: '8px',
@@ -119,13 +121,13 @@ export const ConnectWalletNavButton = ({active,children,...rest})=> {
   const ethBalStyle    = {...mont.bd.sm,px:'5px'}
   return (
     <Center id="CWButton" __css={buttonStyle}>
-      {!sIs0(_ethBalance[0]) && u_active && (
+      {!sIs0(ethBal[0]) && u_active && (
         <FaEthereum as={Icon}/>
       )}
-      {!sIs0(_ethBalance[0]) && u_active && (
+      {!sIs0(ethBal[0]) && u_active && (
         <VStack __css={ethBalStyle}>
-          <S lineHeight='12px' {...mont.bd.sm}>{_ethBalance[1]}</S>
-          <S lineHeight='11px' {...mont.md.xs}>${_ethBalance[2]}</S>
+          <S lineHeight='12px' {...mont.bd.sm}>{ethBal[1]}</S>
+          <S lineHeight='11px' {...mont.md.xs}>${ethBal[2]}</S>
         </VStack>
       )}
       <Center id="BtnStatusIcon" __css={statusIconStyle}>
@@ -141,21 +143,21 @@ export const ConnectWalletNavButton = ({active,children,...rest})=> {
 }
 
 export const VFlex = (p)=>(
-  <Flex direction="column" align="stretch" justify='stretch' {...p} />)
+  <Flex display='flex' direction="column" align="stretch" justify='stretch' {...p} />)
 export const VFlexCC = (p)=>(
-  <Flex direction="column" align="center"  justify='center' {...p} />)
+  <Flex display='flex' direction="column" align="center"  justify='center' {...p} />)
 export const VFlexCS = (p)=>(
-  <Flex direction="column" align="center"  justify='stretch' {...p} />)
+  <Flex display='flex' direction="column" align="center"  justify='stretch' {...p} />)
 export const VFlexSC = (p)=>(
-  <Flex direction="column" align="stretch" justify='center' {...p} />)
+  <Flex display='flex' direction="column" align="stretch" justify='center' {...p} />)
 export const HFlex = (p)=>(
-  <Flex direction="row" justify="stretch" align='stretch' {...p} />)
+  <Flex display='flex' direction="row" justify="stretch" align='stretch' {...p} />)
 export const HFlexCC = (p)=>(
-  <Flex direction="row" justify="center"  align='center' {...p} />)
+  <Flex display='flex' direction="row" justify="center"  align='center' {...p} />)
 export const HFlexCS = (p)=>(
-  <Flex direction="row" justify="center"  align='stretch' {...p} />)
+  <Flex display='flex' direction="row" justify="center"  align='stretch' {...p} />)
 export const HFlexSC = (p)=>(
-  <Flex direction="row" justify="stretch" align='center' {...p} />)
+  <Flex display='flex' direction="row" justify="stretch" align='center' {...p} />)
 
 export const TextXs = (props)=>(<Text fontSize="xs" color="gray.400" {...props} />)
 export const S = (props)=>(<chakra.span {...props} />)

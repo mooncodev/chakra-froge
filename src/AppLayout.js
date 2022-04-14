@@ -1,4 +1,3 @@
-// Chakra imports
 // import { Provider as AppStateProvider, atom, useAtom } from "jotai";
 import { Box, ChakraProvider, Grid, Portal, useDisclosure, useStyleConfig } from '@chakra-ui/react';
 // import Configurator from "views/app/Configurator.js";
@@ -6,7 +5,7 @@ import AppFooter from "views/app/navs/AppFooter.js";
 // Layout components
 import AppNav from "views/app/navs/AppNav.js";
 import AppSidebar from "views/app/navs/AppSidebar.js";
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useRouteMatch } from 'react-router-dom';
 // Custom Chakra theme
 // import theme from "theme/theme.js";
@@ -17,11 +16,22 @@ import { ethers } from "ethers";
 import { connectors } from 'views/app/wallet/connectors.js';
 import { useDeviceMode } from './theme/foundations/breakpoints.js';
 import { desktopSidebarWidth } from 'data/constants.js';
-import { useCrawlStore, useW3Store } from './services/atoms.js';
-import { PondLinkTagRow } from './services/usePondLinkStore.js';
+import { useW3Store,useCrawlStore } from 'services';
+import { useMutationObservable } from './hooks/useMutationObservable.js';
 
+function scrollbarVisible(element) {
+  return element.scrollHeight > element.clientHeight;
+}
 export default function AppLayout(props) {
   const { variant, children, ...rest } = props;
+
+  const [scrollVis, setScrollVis] = useState('0');
+  const appMainRef = useRef(null);
+  const onAppMainMutation = useCallback((mutationList) => {
+    if(scrollbarVisible(appMainRef.current)){setScrollVis('1');
+    }else{setScrollVis('0');}}, [setScrollVis]);
+  useMutationObservable(appMainRef.current, onAppMainMutation);
+
   const getLibrary = (provider) => {
     const library = new ethers.providers.Web3Provider(provider);
     library.pollingInterval = 8000; // frequency provider is polling
@@ -29,23 +39,7 @@ export default function AppLayout(props) {
   };
   document.documentElement.dir = "ltr";
   // Chakra Color Mode
-  const mainPanelStyles = useStyleConfig("MainPanel", { variant:'main' });
   const [isMobile, isDesktop] = useDeviceMode()
-  let location = useLocation();
-  const pgTag = {
-    '/app/':'PgDash',
-    '/app/dash':'PgDash',
-    '/app/frogex':'PgFrogeX',
-    '/app/eco-action':'PgEcoAction',
-    '/app/sponsorships':'PgSponsorships',
-    '/app/game-night':'PgGameNight',
-    '/app/nft':'PgNFT',
-    '/app/xchange':'PgXchange',
-    '/app/calc':'PgCalculators',
-    '/app/billing':null,
-    '/app/profile':null,
-    '/app/tables':null,
-  }[location.pathname]
 
   // const route = useRoutes()
   return (
@@ -55,32 +49,38 @@ export default function AppLayout(props) {
         <AppNav/>
       </Portal>
       <AppSidebar/>
-      <Box id='AppMain'
-           style={{
+      <Box id='AppMain' ref={appMainRef}
+           sx={{
              height: '100%',
-             overflow: "auto",
+             overflowY: "scroll",
+             overflowX: "hidden",
              marginLeft:isDesktop?desktopSidebarWidth:'0',
              paddingRight:isDesktop?'10px':'1px',
-             paddingTop:'60px'
+             paddingTop:'60px',
+             display: 'flex',
+             flexDirection: 'column',
+             flexBasis: '100vh',
+             backgroundColor: `rgba(17,22,35,${scrollVis})`,//brand.bg
+             justifyContent: 'space-between',
+             "&::-webkit-scrollbar": {
+               width: "6px",
+               backgroundColor: 'inherit',
+             },
+             "&::-webkit-scrollbar-track": {
+               width: "2px",
+               backgroundColor: 'inherit',
+             },
+             "&::-webkit-scrollbar-thumb": {
+               background: "green.700",
+               borderRadius: "24px",
+             },
            }}>
-        {pgTag&&<PondLinkTagRow pondLinkPg={pgTag}/>}
-        <Grid
-          templateColumns={{
-            md: '1fr',
-            lg: '1fr 1fr'
-          }}
-          templateRows={{
-            md: '1fr auto',
-            lg: '1fr'
-          }}
-          gap="18px"
-        >
-
+        <Grid templateColumns="repeat(auto-fit, minmax(350px, 1fr))"
+              gap={6} justifyItems={'center'}
+              templateRows={{ md: '1fr auto', lg: '1fr' }}>
           <Outlet/>
         </Grid>
-
         <AppFooter/>
-
       </Box>
     </>
   );

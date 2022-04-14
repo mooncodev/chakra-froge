@@ -10,8 +10,8 @@ import { useWeb3React } from "@web3-react/core";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import { Tooltip } from "@chakra-ui/react";
 import { toHex, truncateAddress } from "helpers/math/utils.js";
-import { wcModalIsOpenAtom } from '../../../services/atoms.js';
 import { useAtom } from 'jotai';
+import { wcModalIsOpenAtom } from '../../../services/atoms.js';
 
 export default function BoxSignSetVerify() {
   const {

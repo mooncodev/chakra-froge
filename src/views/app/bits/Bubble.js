@@ -18,7 +18,7 @@ const BubbleStyleConfig = {
       textAlign:'center',
       lineHeight: 'normal',
       width: "100%",
-      color:'gray.400',
+      color:'bog.200',
       ...mont.md.lg,
     },
     BubValue:{
@@ -31,7 +31,7 @@ const BubbleStyleConfig = {
       ...mont.md.md,
     },
     BubSub:{
-      color:'gray.400',
+      color:'bog.400',
       position: "absolute",
       right: "0",
       top: "100%",

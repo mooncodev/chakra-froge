@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 
 import { injected } from './connectors'
-import { useFxAccountStore, useW3Store } from '../../../services/atoms.js';
+import { useUserStore, useW3Store } from 'services';
 
 export function useEagerConnect() {
   const u_activate = useW3Store(s=>s.u_activate)
@@ -63,7 +63,7 @@ export function useInactiveListener(suppress = false) {
               console.error('Failed to activate after accounts changed', err)
             })
           }
-          useFxAccountStore.getState().removeAccount();
+          useUserStore.getState().removeAccount();
         }else{
 
         }

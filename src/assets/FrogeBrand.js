@@ -7,6 +7,30 @@ import React from 'react';
 export const FrogeLogoPng = ({ full = false, ...rest })=>(<Image {...rest} src={'assets/logos/froge-logo-512.png'}/>)
 export const FrogeTitleLogoColorPng = (rest)=>(<Image {...rest} src={'assets/logos/froge-title-logo-ff-color-512.png'}/>)
 
+export const CITxStatusGreen = createIcon({
+  viewBox: "0 0 24 24",
+  path: (<>
+      <polyline points="7 14 11 20 19 4" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"/>
+  </>),
+});
+export const CITxStatusYellow = createIcon({
+  displayName: "FrogeLogoSvg",
+  viewBox: "0 0 24 24",
+  path: (<>
+      <circle cx="12" cy="20" r="2" fill="currentColor"/>
+      <line x1="12" y1="4" x2="12" y2="15" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4"/>
+    </>
+  ),
+});
+export const CITxStatusRed = createIcon({
+  displayName: "FrogeLogoSvg",
+  viewBox: "0 0 24 24",
+  path: (<>
+      <line x1="7" y1="7" x2="17" y2="17" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"/>
+      <line x1="7" y1="17" x2="17" y2="7" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"/>
+    </>
+  ),
+});
 export const FrogeLogoSvg = createIcon({
   displayName: "FrogeLogoSvg",
   viewBox: "0 0 460 460",

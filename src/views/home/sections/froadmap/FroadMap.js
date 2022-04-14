@@ -83,7 +83,6 @@ const heights = {
 
 export function FroadMapCard({ froadMapObj,id,...rest }) {
   const v = froadMapObj;
-  const theme = useTheme()
   const cardBase = {
     bgColor:'bog.600',
     borderRadius:'12px',
@@ -167,7 +166,6 @@ export function FroadMapCard({ froadMapObj,id,...rest }) {
     h:'.5rem',transition:'all .5s ease',
     w:'unset',
   }
-
 
   const panelTitle = { ...mont.lt.sm }
   const panelBody = { ...mont.md.md }

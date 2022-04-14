@@ -1,4 +1,3 @@
-// chakra imports
 import { Box, ChakraProvider, Portal } from "@chakra-ui/react";
 // core components
 import HomeNavbar from "views/home/navs/HomeNavbar.js";

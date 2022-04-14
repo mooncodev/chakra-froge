@@ -1,3 +1,4 @@
+const [__,__E,__W] = [console.log,console.error,console.warn];
 import Web3 from 'web3';
 
 import abiFrags from './abiFragments';
@@ -7,7 +8,7 @@ import { ethers } from 'ethers';
 import { olaToObject } from '../helpers/deep.js';
 import { atom } from 'jotai';
 
-import { useCrawlStore } from '../services/atoms.js';
+import { useCrawlStore, useUserStore, useW3Store } from 'services';
 import {
   getAmountOut, sMul, weiToUSD, sExp, _Mul, _Add, _Div, sRnd
 } from '../helpers/math/zmath.mjs';
@@ -26,7 +27,7 @@ export async function evaluateTransaction(
     const methods = contract.callStatic
     return await methods[methodName](...args)
   } catch (e) {
-    console.log(e);return e;
+    __(e);return e;
   }
 }
 export const WETH = {
@@ -73,7 +74,7 @@ export const FXP = {
     // const rsvFX = await FX.balanceOf(addr.mainnet.FROGEX.PAIR)
     // const rsvWETH = await WETH.balanceOf(addr.mainnet.FROGEX.PAIR)
     const gRsvs = await readFXP('getReserves', [])
-    // console.log(gRsvs)
+    // __(gRsvs)
     const { reserve0,reserve1 } = gRsvs;
     return [reserve0,reserve1] //TODO: unburden multicall
   },
@@ -107,14 +108,14 @@ export async function call(address,path,args=[]){
   const fnAbi = abiFrags[path[0]].find(v=>v.name===path[1])
   const failRV = fnAbi.outputs.length<2? '' : fnAbi.outputs.map(v=>'');
   if(!['pure','view'].includes(fnAbi.stateMutability)){
-    console.error('call() should only be used with pure/view methods')
+    __E('call() should only be used with pure/view methods')
     return failRV;
   }
   if(web3==null||web3.eth==null){return failRV;}
   const _encodeFunctionCall = web3.eth.abi.encodeFunctionCall(fnAbi, args);
   let _tx = {to: address, data: _encodeFunctionCall};
   const rcpt = await web3.eth.call(_tx)
-    .catch((err)=>{console.error(`in call():`,err)})
+    .catch((err)=>{__E(`in call():`,err)})
   return decodeAndConvertBcRv(rcpt, fnAbi)
 }
 
@@ -131,111 +132,97 @@ const decodeAndConvertBcRv = (bcRv, fnAbi)=>{
         outputOLA[fnAbi.outputs[i].name] = numdObj[i]
       }
       return outputOLA;
-    }else{console.error(`Unexpected zero outputs for ${fnAbi.name} `,bcRv)}
+    }else{__E(`Unexpected zero outputs for ${fnAbi.name} `,bcRv)}
   }
   catch(err){
-    console.error(`Reciept would not process for ${fnAbi.name}`,bcRv,err);
+    __E(`Reciept would not process for ${fnAbi.name}`,bcRv,err);
     return null
   }
 }
 
+export async function onHistory(evt,hID,data,e){
+  if(evt==='hID'){console.log(evt, data)}
+  if(evt==='transactionHash'){console.log(evt, data)}
+  if(evt==='receipt'){console.log(evt, data)}
+  if(evt==='confirmation'){console.log(evt, data)}
+  if(evt==='error'){console.log(evt, data)}
+}
 
-/**
- * Abstraction of web3's .call() and .sendTransaction()
- *
- * @function stx()
- * @notice stx is an acronym for "sendTransaction"
- * @param {String?} from - signer address for the call
- * @param {String} to - destination address of the call
- * @param {Array?}  path - performs lookup on abiFragments object.
- * @param {Array?}  args - matches expected inputs from abi, when applicable
- * @param {String?} value - amount of ETH to send with tx, when applicable
- * @param {Function?} onHash - fired when the hash is available
- * @param {Function?} onRcpt - fired when the receipt is available
- * @param {Function?} onConf - fired as the confirmation number rises
- * @param {Function?} onErr - fired on error
- *
- * @promise:
- * - always resolves (never rejects) with either the expected outputs,
- *     or null in place of the expected outputs.
- * - We return null for failures because false is a valid return
- * - We always resolve to escape the need for .catch() on the implementation side
- *     and also so that we can always expect to spread an array matching the
- *     ABI's outputs, even when it fails Eg. const [a,b,c] = await stx({...stxParams})
- * @returns {Promise<Boolean|String|String[]|null|null[]>}
- * - when an ABI has 0 outputs, resolves true or null
- * - when an ABI has 1 output, resolves string or null
- * - when an ABI has >1 output, resolves an array of strings or an array of nulls
- */
-export async function stx({from,to,path,value,args=[],
-  onHash=()=>{}, onRcpt=()=>{}, onConf=()=>{}, onErr=()=>{}}) {
-  if(!path && value){//basic send ETH
-    return await STX({ from: from, to: to, value: value })
+/** stx() - acronym for web3's "sendTransaction()"
+ * @returns callback system based on web3 events */
+export async function stx(params) {
+  const {from='',to='',path='',value='',args=[], on=()=>{}} = params;
+  const hID = 'st'+web3.utils.randomHex(4).substring(1) // "stx4a9Af6" //TODO: increase hex size
+
+  const _on = (evt,data,e)=>{
+    on(evt,hID,from,data,e);
+    useUserStore.getState().setHistory(evt,hID,from,data,e)
   }
+  _on('hID', params)
+  if(!path && value){return sendEth({from:from,to:to,value:value,on:on})}
   const fnAbi = abiFrags[path[0]].find(v=>v.name===path[1])
-  if(!fnAbi){console.error(`${path} had no matching Abi`)}
+  if(!fnAbi){__E(`${path} had no matching Abi`)}
   const failRV = fnAbi.outputs.length<2? '' : fnAbi.outputs.map(v=>'');
-
+  if(web3.eth==null){on('error',failRV);return failRV;}
   if(['pure','view'].includes(fnAbi.stateMutability)){
-    return await call(to,path,args).then().catch()
-  }
+    return call(to,path,args)}
   if(!['nonpayable', 'payable'].includes(fnAbi.stateMutability)){
-    console.error('stx could not find stateMutability as payable/nonpayable')
-    return failRV;
-  }
+    __E('stx could not find stateMutability as payable/nonpayable')
+    return failRV;}
 
-  if(web3==null||web3.eth==null){return failRV;}
-  let _tx = {};
-  const _encodeFunctionCall = web3.eth.abi.encodeFunctionCall(fnAbi, args);
-  _tx.to = to;
-  _tx.data = _encodeFunctionCall;
+  let _tx = {to:to,from:from,data:web3.eth.abi.encodeFunctionCall(fnAbi, args)};
   if(value){_tx.value = value;}
-  if(from){
-    _tx.from = from
-    let nonce = await web3.eth.getTransactionCount(from, 'latest');
-    _tx.nonce = nonce++;
-  }
+  let nonce = await web3.eth.getTransactionCount(from, 'latest');
+  _tx.nonce = nonce++;
 
   _tx.gas = await web3.eth.estimateGas(_tx).then((res)=>{
-    console.log(`[${path}] estGas: `,res)
+    __(`[${path}] estGas: `,res)
     return res;
   }).catch((err)=>{
-    console.log(`[${path}] estGas failed: `,err);
+    __(`[${path}] estGas failed: `,err);
+    _on('err',`[${path}] web3.eth unavailable - exiting`);
     return null;
   });
-  if(_tx.gas == null){return failRV;}
+  if(!_tx.gas){return failRV;}
 
-  const res = await STX(_tx).then(r=>r).catch(e=>e)
-  return res;
-  async function STX (txPayload) {
-    if(web3==null||web3.eth==null){return null;}
-    return web3.eth.sendTransaction(txPayload)
-    .on('transactionHash', (hash)=>{
-      console.log(`TxHash`, hash); onHash(hash);
-    })
-    .on('receipt', async (rcpt)=>{
-      console.log(`receipt`, rcpt);
-      try{
-        const bcOut = decodeAndConvertBcRv(rcpt.rawData, fnAbi)
-        onRcpt(rcpt, bcOut);
-      }catch(e){
-        onRcpt(rcpt, null, e);
-      }
-      return rcpt;
-    })
-    .on('confirmation', (confNum, rcpt)=>{
-      console.log(`confirmation #`, confNum);
-      onConf(confNum, rcpt)
-    })
-    .on('error', (err)=>{
-      console.error(`STXerr `,err);
-      onErr(err);
-      return err;
-    })
-    .then((final)=>{
-      console.error(`STXfinal `,final);
-      return final;
-    });
+  return web3.eth.sendTransaction(_tx)
+  .on('transactionHash', (hash)=>{_on('hash',hash);})
+  .on('receipt', async (rcpt)=>{
+    _on('rcpt',rcpt);
+    try{
+      const bcOut = decodeAndConvertBcRv(rcpt.rawData, fnAbi)
+      _on('out',bcOut);
+    }catch(e){_on('out',null, e);}
+  })
+  .on('confirmation', (confNum)=>{
+    __(`stx conf!: `,confNum);
+    _on('conf',confNum);
+  })
+  .on('error', (err)=>{
+    __(`stx err!(A): `,err);
+    _on('err',err);
+  })
+  .catch(err=> {
+    __('stx err!(B)',err)
+    _on('err', err);
+  })
 
-  }
+}
+
+
+
+
+
+
+export async function sendEth({from,to,value,on}){
+  web3.eth.sendTransaction({ from: from, to: to, value: value })
+  .on('transactionHash', (hash)=>{on('transactionHash',hash);})
+  .on('receipt', async (rcpt)=>{
+    try{
+      on('receipt',rcpt);
+    }catch(e){on('receiptFail',rcpt, null, e);}
+  })
+  .on('confirmation', (confNum, rcpt)=>{on('confirmation',confNum,rcpt);})
+  .on('error', (err)=>{on('error',err);})
+
 }

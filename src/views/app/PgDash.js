@@ -1,9 +1,8 @@
-// Chakra imports
 import { Grid, } from '@chakra-ui/react';
 // assets
 import React from 'react';
 // react icons
-import PondNetworkVitals from './ponds/PondNetworkVitals.js';
+// import PondNetworkVitals from './ponds/PondNetworkVitals.js';
 import PondFrogeXDividends from './ponds/PondFrogeXDividends.js';
 
 export default function PgDash() {
@@ -13,8 +12,9 @@ export default function PgDash() {
 
     <>
         {/* <BogGlobalStats/> */}
-        <PondFrogeXDividends pondLink={['PgDash','FrogeX Dividends']}/>
-        <PondNetworkVitals pondLink={['PgDash','Network Vitals']}/>
+        <PondFrogeXDividends/>
+
+      {/* <PondNetworkVitals/> */}
         {/* <PondFrogeXVitals/> */}
         {/* <PondRockets/> */}
     </>

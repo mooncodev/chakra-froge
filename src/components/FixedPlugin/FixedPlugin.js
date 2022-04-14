@@ -1,4 +1,3 @@
-// Chakra Imports
 import { Button, } from "@chakra-ui/react";
 // Custom Icons
 import { SettingsIcon } from "components/Icons/Icons";

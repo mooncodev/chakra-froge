@@ -132,7 +132,7 @@ export function MtgCard({ cardObj, ...rest }) {
         {bio}
       </Box>
       <Box sx={powerPlate}>4/4</Box>
-      <Box sx={footMidAccent} flex={0}></Box>
+      <Box sx={footMidAccent} flex={0}/>
       <HFlexSC sx={footer} justify='space-between' alignItems='end'>
         <VFlex flex={1}>
           <Box>123/321 R</Box>

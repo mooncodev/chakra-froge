@@ -1,4 +1,3 @@
-// Chakra imports
 import {
   Box, Button, Flex, Grid,
   Icon, Image, Progress, SimpleGrid, Spacer, Text,
