@@ -119,7 +119,7 @@ export default function WalletMenu() {
   const sxBase = {
     backgroundColor: 'rgba(0,0,0,0)',
     backdropFilter:"brightness(40%) saturate(300%) blur(3px)",
-    width:'260px',
+    width:'275px',
   }
   return (
     <Menu  id='ConnectWalletMenu'>
@@ -169,7 +169,7 @@ export default function WalletMenu() {
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
-                    <AccordionPanel pb={4} bgColor={isExpanded?'bog.800':'inherit'}>
+                    <AccordionPanel pb={4} bgColor={isExpanded?'bog.700':'inherit'}>
                       <HStack>
                         <Text fontSize='xs'>Connection Status:</Text>
                         {u_active ? (<CheckCircleIcon color="green"/>):(<WarningIcon color="red"/>)}
@@ -192,7 +192,7 @@ export default function WalletMenu() {
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
-                    <AccordionPanel pb={4} bgColor={isExpanded?'bog.800':'inherit'} justify="space-evenly">
+                    <AccordionPanel pb={4} bgColor={isExpanded?'bog.700':'inherit'} justify="space-evenly">
                       <HStack>
                         <Button h={100} onClick={switch_userDesiredChainId}><FaEthereum as={Icon}/>&nbsp;Mainnet</Button>
                         <VStack>
@@ -216,20 +216,21 @@ export default function WalletMenu() {
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
-                    <AccordionPanel fontSize='1rem' bgColor={isExpanded?'bog.800':'inherit'} pb={4} justifyContent="space-evenly">
-                      <FormControl display='flex' alignItems='center'>
-                        <FormLabel htmlFor='email-alerts' mb='0'>
+                    <AccordionPanel bgColor={isExpanded?'bog.700':'inherit'} pb={4}>
+                      <FormControl as={HStack} mb={2} justify='space-between'>
+                        <FormLabel htmlFor='email-alerts' mb='0' fontSize='.8rem'>
                           Enable Local Persistence?
                         </FormLabel>
                         <Switch id='email-alerts' />
                       </FormControl>
-                      <FormControl display='flex' alignItems='center'>
-                        <FormLabel htmlFor='email-alerts' mb='0'>
+                      <Button bgColor='green.600' _hover={{bgColor:'green.500'}} width={'100%'} size={'lg'}  mb={2}>Login <S fontSize={10} fontStyle='italic' fontWeight={200} ml={3}>Centralized<br/>Experience</S></Button>
+                      <FormControl as={HStack} mb={2} justify='space-between'>
+                        <FormLabel htmlFor='email-alerts' mb='0' fontSize='.8rem'>
                           Enable Login Persistence?
                         </FormLabel>
                         <Switch id='email-alerts' />
                       </FormControl>
-                      <BoxSignSetVerify/>
+                      {/* <BoxSignSetVerify/> */}
                     </AccordionPanel>
                   </>)}
                 </AccordionItem>
