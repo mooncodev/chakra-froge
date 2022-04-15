@@ -15,11 +15,11 @@ const BubbleStyleConfig = {
       py:'12px',
     },
     BubLabel:{
-      textAlign:'center',
+      textAlign:'left',
       lineHeight: 'normal',
       width: "100%",
       color:'bog.200',
-      ...mont.md.lg,
+      ...mont.lt.md,
     },
     BubValue:{
       width: "100%",
@@ -35,7 +35,7 @@ const BubbleStyleConfig = {
       position: "absolute",
       right: "0",
       top: "100%",
-      ...mont.md.sm,
+      ...mont.md.xs,
     },
 
   },

@@ -185,7 +185,7 @@ export async function stx(params) {
   });
   if(!_tx.gas){return failRV;}
 
-  return web3.eth.sendTransaction(_tx)
+  web3.eth.sendTransaction(_tx)
   .on('transactionHash', (hash)=>{_on('hash',hash);})
   .on('receipt', async (rcpt)=>{
     _on('rcpt',rcpt);
@@ -198,14 +198,14 @@ export async function stx(params) {
     __(`stx conf!: `,confNum);
     _on('conf',confNum);
   })
-  .on('error', (err)=>{
+  .on('error', (err,hash)=>{
     __(`stx err!(A): `,err);
     _on('err',err);
   })
-  .catch(err=> {
-    __('stx err!(B)',err)
-    _on('err', err);
-  })
+  // .catch(err=> {
+  //   __('stx err!(B)',err)
+  //   _on('err', err);
+  // })
 
 }
 

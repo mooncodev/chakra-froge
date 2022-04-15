@@ -53,7 +53,7 @@ export default function W3RManager({ children }) {
   useEffect(async () => {
     console.log('w3rmanager running user effects')
     await useW3Store.getState().u_init(u_)
-    await useUserStore.getState().hydrateFxGetAccount()
+    await useUserStore.getState().initUser()
   }, [u_chainId,u_account,u_active,])
   useEffect(async () => {
     console.log('w3rmanager running network effects')

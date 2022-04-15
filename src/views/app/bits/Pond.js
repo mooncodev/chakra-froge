@@ -5,7 +5,7 @@ import {
   useStyles, chakra, Button, VStack, Heading, Collapse, useTheme
 } from '@chakra-ui/react';
 import React, { useCallback, useRef } from 'react';
-import { VFlexCC } from './UtilityTags.js';
+import { VFlexCC, VFlexSC } from './UtilityTags.js';
 import { motion, useCycle } from 'framer-motion';
 
 
@@ -49,7 +49,7 @@ export function Pond(props) {
   const [show, setShow] = React.useState(true)
   let AnimBox = motion(Box);
   return (
-    <VFlexCC sx={sxPond}>
+    <VFlexSC sx={sxPond}>
       <Center as={Button} {...minBarStyle} onClick={toggle} >
         <chakra.hr sx={minHr}/>
       </Center>
@@ -57,7 +57,7 @@ export function Pond(props) {
       <AnimBox animate={{ height: show ? 'fit-content' : '0' }}>
         {children}
       </AnimBox>
-    </VFlexCC>
+    </VFlexSC>
 
   );
 }

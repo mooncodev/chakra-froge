@@ -6,7 +6,7 @@ import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core';
 import { ethers } from "ethers";
 import AppLayout from './AppLayout.js';
 import W3RManager from './views/app/wallet/W3RManager.js';
-import { appNavDrawerOpenAtom } from 'services';
+import { appNavDrawerOpenAtom, useUserStore } from 'services';
 const Web3ReactProviderNetwork = createWeb3ReactRoot('NETWORK')
 
 const getLibrary = (provider) => {
@@ -16,6 +16,7 @@ const getLibrary = (provider) => {
 };
 export default function AppProvider(props) {
   const { variant, children, ...rest } = props;
+  useUserStore.getState().initStore();
 
   return (
       <ChakraProvider theme={theme} resetCss={false}>

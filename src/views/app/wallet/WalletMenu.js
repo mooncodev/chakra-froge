@@ -26,7 +26,7 @@ import { Tooltip } from "@chakra-ui/react";
 import { networkParams } from "./networks.js";
 import { connectors } from "./connectors.js";
 import { toHex, truncateAddress } from "helpers/math/utils.js";
-import { useW3Store } from 'services';
+import { useUserStore, useW3Store } from 'services';
 import { useAtom } from 'jotai';
 import LogoCoinbaseWallet from './assets/LogoCoinbaseWallet.png';
 import LogoWalletConnect from './assets/LogoWalletConnect.png';
@@ -59,7 +59,7 @@ export default function WalletMenu() {
   const [error, setError] = useState("");
   const [userDesiredChainId, set_userDesiredChainId] = useState(undefined);
   const [wcModalIsOpen, set_wcModalIsOpen] = useAtom(wcModalIsOpenAtom);
-
+  const enableLS = useUserStore(s=>s.global.enableLS)
 
   const handle_userDesiredChainId = (e) => {
     const id = e.target.value;
@@ -205,13 +205,13 @@ export default function WalletMenu() {
                   </>)}
                 </AccordionItem>
 
-                <AccordionItem borderBottomWidth='0!important' opacity='0.7' >
+                <AccordionItem opacity='0.7' >
                   {({ isExpanded }) => (<>
                     <h2>
                       <AccordionButton _expanded={{ bgColor: 'bog.500' }}>
                         <HFlexCC gap={4} flex='1' fontSize={13}>
                           <MdAdminPanelSettings size={30}/>
-                          <S>Settings & Login</S>
+                          <S>Settings</S>
                         </HFlexCC>
                         <AccordionIcon />
                       </AccordionButton>
@@ -221,9 +221,34 @@ export default function WalletMenu() {
                         <FormLabel htmlFor='email-alerts' mb='0' fontSize='.8rem'>
                           Enable Local Persistence?
                         </FormLabel>
-                        <Switch id='email-alerts' />
+                        <Switch
+                          isChecked={!!enableLS}
+                          onChange={e=>useUserStore.getState().setGlobalEnableLS(e.target.checked)}
+                        />
                       </FormControl>
-                      <Button bgColor='green.600' _hover={{bgColor:'green.500'}} width={'100%'} size={'lg'}  mb={2}>Login <S fontSize={10} fontStyle='italic' fontWeight={200} ml={3}>Centralized<br/>Experience</S></Button>
+                      <Button bgColor='blue.800' _hover={{bgColor:'blue.600'}} size={'xs'}  mb={2}
+                        onClick={()=>{useUserStore.getState().clearLS()}}>
+                        Clear Local Persistence
+                      </Button>
+                    </AccordionPanel>
+                  </>)}
+                </AccordionItem>
+
+                <AccordionItem borderBottomWidth='0!important' opacity='0.7' >
+                  {({ isExpanded }) => (<>
+                    <h2>
+                      <AccordionButton _expanded={{ bgColor: 'bog.500' }}>
+                        <HFlexCC gap={4} flex='1' fontSize={13}>
+                          <MdAdminPanelSettings size={30}/>
+                          <S w='min-content'>Centralized Enhancement</S>
+                        </HFlexCC>
+                        <AccordionIcon />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel bgColor={isExpanded?'bog.700':'inherit'} pb={4}>
+                      <Button bgColor='green.600' _hover={{bgColor:'green.500'}} width={'100%'} size={'lg'}  mb={2}>
+                        Login <S fontSize={10} fontStyle='italic' fontWeight={200} ml={3}>Centralized<br/>Enhancement</S>
+                      </Button>
                       <FormControl as={HStack} mb={2} justify='space-between'>
                         <FormLabel htmlFor='email-alerts' mb='0' fontSize='.8rem'>
                           Enable Login Persistence?

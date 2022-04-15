@@ -417,6 +417,16 @@ let r1 = nScaleToPcts(300,900,200)
 let r2 = sScaleToPcts('300',900,200)
 
 
+const abbrvNum = (num, fixed) => {
+  if (num === null) { return ''; }
+  if (num <= 0) { return '0'; }
+  fixed = (!fixed || fixed < 0) ? 0 : fixed; // number of decimal places to show
+  let b = (num).toPrecision(2).split("e"), // get power
+    k = b.length === 1 ? 0 : Math.floor(Math.min(Number(b[1].slice(1)), 14) / 3),
+    c = k < 1 ? num.toFixed(fixed) : (num / Math.pow(10, k * 3) ).toFixed(1 + fixed),
+    d = Number(c) < 0 ? c : Math.abs(Number(c)); // append power
+  return d + ['', 'K', 'M', 'B', 'T'][k];
+}
 
 
 export {
@@ -424,7 +434,7 @@ export {
   k0,num,sEthToWei,first4,last4,surr4s,_toBN,_toHex,inTenMinutes,weiToUSD,usdToWei,
   sAdd,sSub,sMul,sDiv,sAddRay,_Add,_Sub,_Mul,_Div,_AddRay,sScaleToPcts,
   sRnd,sAbs,sPow,sFla,sExp,sHR,hrExp,sNewtonSqRt,sChg,_Chk,
-  sIs,sIs0,_F,sIsGT,sIsLT,sIsGTorEq,sIsLTorEq,sIsEq,sIsNotEq
+  sIs,sIs0,_F,sIsGT,sIsLT,sIsGTorEq,sIsLTorEq,sIsEq,sIsNotEq,abbrvNum
 }
 
 export function balToHrTuple(rawBal, decimal, usdPrice) {

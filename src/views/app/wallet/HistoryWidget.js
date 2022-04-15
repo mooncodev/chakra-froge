@@ -1,51 +1,32 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
-  VStack,chakra,
+  VStack, chakra,
   Button,
   Text,
   Input,
-  Box, Menu, MenuButton, MenuList, Flex, MenuItem, Center, Icon,
+  Box, Menu, MenuButton, MenuList, Flex, MenuItem, Center, Icon, HStack,
 } from '@chakra-ui/react';
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import { Tooltip } from "@chakra-ui/react";
 import { toHex, truncateAddress } from "helpers/math/utils.js";
 import { useAtom } from 'jotai';
-import { BtnBrandIcon } from '../bits/UtilityTags.js';
+import { BtnBrandIcon, HFlex, HFlexCC, HFlexSC, VFlex } from '../bits/UtilityTags.js';
 import { HistoryItem } from './HistoryItem.js';
 import { MdOutlineHistory } from 'react-icons/md';
 import { GrTransaction } from 'react-icons/gr';
 import { CITxStatusGreen, CITxStatusYellow, CITxStatusRed } from 'assets/FrogeBrand.js';
 import { wcModalIsOpenAtom, useUserStore, useW3Store } from 'services';
 
-const sxStatusIcon = {
-  color:'bog.150',
-  mr:'.8rem',
-  bgColor:'bog.800',
-  borderRadius:'8rem',
-  p:'.4rem', w:'2rem', h:'2rem',
-  '& path':{stroke:'bog.300'},
-}
-const H_SUCCESS='Transaction Succeeded';
-const H_CANCELLED='Transaction Cancelled';
-const H_FAILED='Transaction Failed';
-const TxStatusGreen = ()=>(<CITxStatusGreen sx={sxStatusIcon}/>)
-const TxStatusYellow = ()=>(<CITxStatusRed sx={sxStatusIcon}/>)
-const TxStatusRed = ()=>(<CITxStatusYellow sx={sxStatusIcon}/>)
-const mockHistory = [
-  {msg:H_SUCCESS,icon:TxStatusGreen,time:'5 hours ago'},
-  {msg:H_CANCELLED,icon:TxStatusRed,time:'2 days ago'},
-  {msg:H_FAILED,icon:TxStatusYellow,time:'4 days ago'},
-]
 
 export default function HistoryWidget() {
   const u_chainId= useW3Store(s=>s.u_chainId);
   const u_account= useW3Store(s=>s.u_account);
   const u_active= useW3Store(s=>s.u_active);
 
-  const history = useUserStore(useCallback(s=>s.users[u_account]?s.users[u_account].history:{}, [u_account]))
-
-  const resetState = () => {
-  };
+  const history = useUserStore(s=>
+    s.users[u_account]
+    && Object.keys(s.users[u_account].history).length
+      ?s.users[u_account].history :null)
 
   useEffect(async () => {
     if(u_active){
@@ -53,9 +34,15 @@ export default function HistoryWidget() {
     }
   }, [u_account])
 
+  const sxBase = {
+    backgroundColor: 'rgba(0,0,0,0)',
+    backdropFilter:"brightness(40%) saturate(300%) blur(3px)",
+    width:'275px',
+    maxHeight:'20rem',
+  }
 
   return (
-    <Menu id='NotifsMenu' colorScheme={'green'}>
+    <Menu id='NotifsMenu'>
       <MenuButton id='NotifsButton'>
         <Center id="BtnBrandIcon"
                 __css={{
@@ -65,16 +52,27 @@ export default function HistoryWidget() {
                   borderRadius: '7px',
                 }} ><MdOutlineHistory size={25}/></Center>
       </MenuButton>
-      <MenuList p="16px 8px">
-        <Flex flexDirection="column">
-          {Object.values(history).sort((a,b)=>{ a.t_created - b.t_created}).map((v,i)=>
-            <MenuItem key={i} borderRadius="8px" mb="10px">
-              <HistoryItem
-                msg={v.msg} time={v.time} icon={v.icon}
-              />
-            </MenuItem>
-          )}
-        </Flex>
+      <MenuList as={Flex} sx={sxBase} p="10px 8px" bgColor={'bog.900'} flexDirection="column">
+        {history&&<>
+          <HFlexCC justify='space-between' mb='4px' fontSize='.7rem' fontWeight='300'>
+            <Box>In history: {Object.values(history).length}</Box>
+            <Box>Unresolved: {Object.values(history).filter(v=>v.status==='Created').length}</Box>
+          </HFlexCC>
+          <VFlex overflowY='scroll'>
+            {Object.values(history)
+            .sort((a,b)=>b.t_created-a.t_created)
+            .map((v,i)=>
+              <MenuItem key={v.hID} borderRadius="8px" mb="10px">
+                <HistoryItem item={v}/>
+              </MenuItem>
+            )}
+          </VFlex>
+        </>}
+        {!history&&(
+          <MenuItem borderRadius="8px" mb="10px">
+            No history yet
+          </MenuItem>
+        )}
       </MenuList>
     </Menu>
   );
