@@ -100,19 +100,19 @@ export default function WalletMenu() {
   };
 
   const onClickWCBrand = (brand)=>{
-    if(brand==='WC'){
-      u_activate(connectors.walletConnect);
-      setProvider("walletConnect");
-      set_wcModalIsOpen(false)
-    }
+    // if(brand==='WC'){
+    //   u_activate(connectors.walletConnect);
+    //   setProvider("walletConnect");
+    //   set_wcModalIsOpen(false)
+    // }
+    // if(brand==='CBW'){
+    //   u_activate(connectors.coinbaseWallet);
+    //   setProvider("coinbaseWallet");
+    //   set_wcModalIsOpen(false)
+    // }
     if(brand==='MM'){
       u_activate(connectors.injected);
       setProvider("injected");
-      set_wcModalIsOpen(false)
-    }
-    if(brand==='CBW'){
-      u_activate(connectors.coinbaseWallet);
-      setProvider("coinbaseWallet");
       set_wcModalIsOpen(false)
     }
   }
@@ -136,11 +136,14 @@ export default function WalletMenu() {
               Disconnect
             </Button>
           )
-          :(<VStack opacity='0.7'><Button variant="outline" w="100%"
-                                          onClick={() => onClickWCBrand('CBW')}>
-              <Image src={LogoCoinbaseWallet} boxSize={26} mr={2}/>
-              <Text>Coinbase Wallet</Text>
-            </Button>
+          :(
+            <VStack opacity='0.7'>
+              <Box fontSize={'xs'}>Note: Coinbase and WalletConnect are disabled, just until they've been tested!!  Thanks for your patience</Box>
+              <Button variant="outline" w="100%"
+                      onClick={() => onClickWCBrand('CBW')}>
+                <Image src={LogoCoinbaseWallet} boxSize={26} mr={2}/>
+                <Text>Coinbase Wallet</Text>
+              </Button>
               <Button variant="outline" w="100%"
                       onClick={() => onClickWCBrand('WC')}>
                 <Image src={LogoWalletConnect} boxSize={26} mr={2}/>
