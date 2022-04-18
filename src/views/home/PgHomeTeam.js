@@ -55,7 +55,9 @@ const copy = {
       name:'RJ Townsend',
       tgHandle:'@Lefrogeski',
       title:'Project Management, Operations, Marketing',
-      bio:`Experienced community moderator, Project Manager and Marketing Representative.`
+      bio:`I’ve been in the crypto space since 2018, but $FROGE was my 2nd DeFi asset. 
+      I’m experienced in project management and spend my free time petting 
+      my dog and riding dirt bikes on the local National Forest. \nSemper Frogedelis`
     },
     {
       imgs:[Gonzo,bg003],

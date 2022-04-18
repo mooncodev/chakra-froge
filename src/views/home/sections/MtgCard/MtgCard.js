@@ -129,7 +129,7 @@ export function MtgCard({ cardObj, ...rest }) {
       </Box>
       <Box sx={typePlate}>{tgHandle}</Box>
       <Box sx={descPlate} pb={4}>
-        {bio}
+        <strong>{title}</strong><br/><br/>{bio}
       </Box>
       <Box sx={powerPlate}>4/4</Box>
       <Box sx={footMidAccent} flex={0}/>

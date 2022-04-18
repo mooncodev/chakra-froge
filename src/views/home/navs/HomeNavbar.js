@@ -188,17 +188,5 @@ export const NAV_ITEMS = [
       { label: 'FAQ Page', subLabel: 'Robust Q&A!',
         href: '/faq', icon:MdOutlineEco,},
     ],
-  }, {
-    label: 'Team Froge',
-    href: '/team', icon:GiTeamIdea,
-  }, {
-    label: 'Eco',
-    href: '/eco', icon:MdOutlineEco,
-  }, {
-    label: 'Accounting',
-    href: '/accounting', icon:MdAccountBalance,
-  }, {
-    label: 'Launch App',
-    href: '/app', icon:MdPlayArrow,
-  },
+  }
 ];
