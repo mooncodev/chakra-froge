@@ -16,11 +16,9 @@ export default function HomeLayout(props) {
     return ()=>{};
   });
   document.documentElement.dir = "ltr";
-  return (
-    <ChakraProvider theme={theme} resetCss={false} w="100%">
+  return (<>
       <HomeNavbar/>
       <Outlet/>
       <HomeFooter/>
-    </ChakraProvider>
-  );
+</> );
 }

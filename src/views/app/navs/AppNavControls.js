@@ -11,6 +11,8 @@ import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
 import { BtnBrandIcon } from '../bits/UtilityTags.js';
 import HistoryWidget from '../wallet/HistoryWidget.js';
 import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
+import { NavLink } from 'react-router-dom';
+import { CISVG_FrogeNavBack } from '../../../assets/FrogeBrand.js';
 
 export default function AppNavControls(props) {
   const [isMobile, isDesktop] = useDeviceMode()
@@ -22,6 +24,7 @@ export default function AppNavControls(props) {
       pe={{ sm: "0px", md: "16px" }} w={{ sm: "100%", md: "auto" }}
       alignItems="center" flexDirection="row" gap={isMobile?'1.2rem':'.8rem'}
     >
+
       <HistoryWidget/>
 
       <WalletMenu/>

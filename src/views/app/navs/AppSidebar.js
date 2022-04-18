@@ -18,7 +18,7 @@ import React, { useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
 import { RocketIcon } from '../../../components/Icons/Icons.js';
 import { useAtom } from 'jotai';
-import { FrogeLogoSvg } from 'assets/FrogeBrand.js';
+import { CISVG_FrogeNavBack, FrogeLogoSvg } from 'assets/FrogeBrand.js';
 import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
 import { desktopSidebarWidth, PHASE } from 'data/constants.js';
 import { sxGlassBg,sxGlassBg2 } from '../bits/UtilityTags.js';
@@ -78,7 +78,7 @@ export function AppSidebar(props) {
               }}
         >
           <Box pt={8} textAlign='center' position={'relative'}>
-            <FrogeLogoSvg fontSize="69" alignSelf="center"/>
+            <NavLink to='./dash'><FrogeLogoSvg fontSize="69" alignSelf="center"/></NavLink>
             <Stack m={5} direction="column" flexFlow={'wrap'} gap='5px'>
               <SBNavLink to='./'>Dash</SBNavLink>
               <SBNavLink to='./frogex'>FrogeX</SBNavLink>

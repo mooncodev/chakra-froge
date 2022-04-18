@@ -50,21 +50,21 @@ export function FroadMap({ froadMapObj,id,...rest }) {
      <chakra.fieldset sx={frMapCategoryBox}>
        <chakra.legend>Administrative</chakra.legend>
        {froadmapData_admin_general.map((v,i)=>
-         (<FroadMapCard froadMapObj={v} key={v.id}/>)
+         (<FroadMapCard froadMapObj={v} key={v.title}/>)
        )}
      </chakra.fieldset>
 
      <chakra.fieldset sx={frMapCategoryBox}>
        <chakra.legend>Development - General</chakra.legend>
        {froadmapData_dev_general.map((v,i)=>
-         (<FroadMapCard froadMapObj={v} key={v.id}/>)
+         (<FroadMapCard froadMapObj={v} key={v.title}/>)
        )}
      </chakra.fieldset>
 
      <chakra.fieldset sx={frMapCategoryBox}>
        <chakra.legend>Development - Site/dApp</chakra.legend>
        {froadmapData_dev_siteAndDApp.map((v,i)=>
-         (<FroadMapCard froadMapObj={v} key={v.id}/>)
+         (<FroadMapCard froadMapObj={v} key={v.title}/>)
        )}
      </chakra.fieldset>
 

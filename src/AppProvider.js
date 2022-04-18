@@ -19,8 +19,6 @@ export default function AppProvider(props) {
   useUserStore.getState().initStore();
 
   return (
-      <ChakraProvider theme={theme} resetCss={false}>
-
         <JotaiProvider
           initialValues={[
             [appNavDrawerOpenAtom, false]
@@ -36,6 +34,5 @@ export default function AppProvider(props) {
             </Web3ReactProviderNetwork>
           </Web3ReactProvider>
         </JotaiProvider>
-      </ChakraProvider>
   );
 }

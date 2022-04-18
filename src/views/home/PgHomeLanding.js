@@ -119,10 +119,10 @@ function PgHomeLanding() {
               bgPosition="50%" position='relative' userSelect='none'>
         <EcoDefiCircles onToggle={(val)=>setEcoDefi(val)}/>
         <VFlex position='relative'>
-          <Heading as="h1" size="xl" textAlign="center">
+          <Heading as="h1" size="xl" textAlign="center" pl='12px'>
             Our Hope,
           </Heading>
-          <Heading as="h1" size="xl" textAlign="center">
+          <Heading as="h1" size="xl" textAlign="center" pl='12px'>
             Their Hop.
           </Heading>
           <HFlexCC gap={3} fontSize="lg">
