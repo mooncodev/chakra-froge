@@ -18,7 +18,7 @@ import RFBG from 'assets/img/stock-rainforest/square/012.jpg'
 import ecodeficircles from '../../../../assets/logos/ecodefi-circles.svg';
 import FrogeLogoSvg from 'assets/logos/froge-logo.svg';
 import FrogeEyeEyeSvg from 'assets/logos/froge-eyeeye.svg';
-import MTGNatureRich from './mtg-cards/MTG-nature-rich.svg';
+import MTGNatureRich from './mtg-cards/MTG-nature-rich.png';
 
 /**@example
  *  ...bgImg(Based), ...abs(0,0,'20px',0),
