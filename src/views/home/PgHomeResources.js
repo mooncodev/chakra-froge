@@ -87,6 +87,7 @@ function PgHomeResources() {
           <DlBtn label='EcoDefi' filename='ecodefi-circles.svg' filetype='.svg'/>
           <DlBtn label='Froge Hexatoken' filename='froge-eyeeye.svg' filetype='.svg'/>
           <DlBtn label='Froge Hexatoken' filename='froge-eyeeye-outline-nowhites.svg' filetype='.svg'/>
+          <DlBtn label='Logo SVG' filename='froge-logo.svg' filetype='.svg'/>
           <DlBtn label='Logo PNG' filename='froge-logo-1200.png' filetype='.png'/>
           <DlBtn label='Logo Outline' filename='froge-logo-outline.svg' filetype='.svg'/>
           <DlBtn label='Title Logo White SVG' filename='froge-title-logo-ff.svg' filetype='.svg'/>
