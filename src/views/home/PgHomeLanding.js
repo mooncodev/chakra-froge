@@ -38,6 +38,7 @@ import { FrogeAtAGlance } from './sections/FrogeAtAGlance.js';
 import { FrogeLogoOutlineSvg } from 'assets/FrogeBrand.js';
 import { FrogeX } from './sections/FrogeX.js';
 import { FrogeForest } from './sections/FrogeForest.js';
+import { abs } from './sections/MtgCard/MtgCard.js';
 
 export const WalkyFroge = () => {
   const { scrollYProgress } = useViewportScroll()
@@ -94,17 +95,14 @@ function PgHomeLanding() {
   // Chakra color mode
   // const titleColor = "green.200"
   // const textColor = "white"
-  const ffinityStyle = {
+  const sxHeroBg = {
     ':before': {
       content: '" "',
-      position: 'absolute',
-      left: 'auto',
-      top: '0',
-      right: 'auto',
-      backgroundImage: ecodeficircles,
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: '50% 50%',
-      backgroundSize: '100%',
+      ...abs(0,0,0,0),
+      bg: 'green.800',
+      bgImage: FrogImg,
+      bgSize: "cover",
+      bgPosition: "50%",
     },
   }
   const [ecoDefi,setEcoDefi] = useState()
@@ -115,8 +113,7 @@ function PgHomeLanding() {
       // spacing={0}
     >
       {/** HERO SECTION **/}
-      <VFlexCS minHeight='540px' bg='green.800' bgImage={FrogImg} bgSize="cover"
-              bgPosition="50%" position='relative' userSelect='none'>
+      <VFlexCS minHeight='540px' sx={sxHeroBg} position='relative' userSelect='none'>
         <EcoDefiCircles onToggle={(val)=>setEcoDefi(val)}/>
         <VFlex position='relative'>
           <Heading as="h1" size="xl" textAlign="center" pl='12px'>

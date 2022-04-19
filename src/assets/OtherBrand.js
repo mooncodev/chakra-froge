@@ -52,7 +52,7 @@ export const links = {
   // Kektools:{              icon:IconKektools, url:"https://kek.tools/t/0x5fa54fddf1870c344dbfabb37dfab8700ec0def1?pair=0x5119155c5644c31c94f2fbaf0ccc79c4f92fb686"  },
   Dextools:{              icon:IconDextools, url:"https://www.dextools.io/app/ether/pair-explorer/0x5119155c5644c31c94f2fbaf0ccc79c4f92fb686"  },
   Medium:{                icon:IconMedium, url:"https://frogex.medium.com/"  },
-  Twitter:{               icon:IconTwitter, url:"https://twitter.com/financefroge"  },
+  Twitter:{               icon:IconTwitter, url:"https://twitter.com/FrogeFi"  },
   Instagram:{             icon:IconInstagram, url:"https://instagram.com/frogearmy"  },
   Reddit:{                icon:IconReddit, url:"https://reddit.com/r/FrogeFinance/"  },
   Youtube:{               icon:IconYoutube, url:"https://www.youtube.com/channel/UCifr_KT59UfBMU8MAJyj-Jg"  },

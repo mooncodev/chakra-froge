@@ -58,7 +58,7 @@ export const PondFeatureRequest = () => {
      || descriptionErr
     ){
       setStatus('none');
-      console.log(`come on, dont bullshit me`);
+      console.log(`come on, dont bullfrog me`);
       return;
     }
 
@@ -88,9 +88,7 @@ export const PondFeatureRequest = () => {
   }
 
   return (
-    <Pond alignSelf='center'>
-
-      <PondHeader size="md">Feature Suggestion</PondHeader>
+    <Pond title='Feature Suggestion'>
 
       <FormControl mt={4} variant='floating' id='first-name' isRequired isInvalid={titleErr}>
         <Input onChange={onChangeTitle} placeholder=' ' />
@@ -101,7 +99,7 @@ export const PondFeatureRequest = () => {
 
       <HStack alignSelf='start' mt={3}><S>Size:</S><S fontSize=".7rem" color='gray.500'>(loose est. # days of dedicated work)</S></HStack>
       <HStack spacing={2} justifyContent="space-around">
-        <RadioButtons onChange={setSize} options={['1','2','3','5','8','13','21',]} defaultOption='1'/>
+        <RadioButtons onClick={setSize} options={['1','2','3','5','8','13','21',]} defaultOption='1'/>
       </HStack>
 
       <FormControl mt={6} variant='floating' id='first-name' isRequired isInvalid={descriptionErr}>
@@ -110,7 +108,7 @@ export const PondFeatureRequest = () => {
         <FormLabel>Description:</FormLabel>
       </FormControl>
 
-      <FormControl mt={6} variant='floating' id='first-name' isRequired>
+      <FormControl mt={6} variant='floating' id='first-name' >
         <Textarea value={getInvolved} onChange={onChangeGetInvolved}
                   placeholder=' ' size='sm'/>
         <FormLabel>How people can get involved:</FormLabel>

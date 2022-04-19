@@ -25,10 +25,10 @@ import { RadioButtons } from '../app/bits/RadioCard.js';
 import axios from 'axios';
 import { PondFeatureRequest } from './sections/PondFeatureRequest.js';
 
-function PgHomeFAQ() {
+function PgHomeContactAndSupport() {
 
   return (
-    <VFlex flexGrow={1}>
+    <VFlexCS>
       <VFlexCS h='4rem'>
         <NewsMarquee/>
       </VFlexCS>
@@ -37,8 +37,8 @@ function PgHomeFAQ() {
       </VFlexCS>
 
       <PondFeatureRequest/>
-    </VFlex>
+    </VFlexCS>
   );
 }
 
-export default PgHomeFAQ;
+export default PgHomeContactAndSupport;

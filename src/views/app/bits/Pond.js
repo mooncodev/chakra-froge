@@ -2,7 +2,7 @@ import {
   Box, Center,
   StylesProvider,
   useMultiStyleConfig,
-  useStyles, chakra, Button, VStack, Heading, Collapse, useTheme
+  useStyles, chakra, Button, VStack, Heading, Collapse, useTheme, Flex
 } from '@chakra-ui/react';
 import React, { useCallback, useRef } from 'react';
 import { VFlexCC, VFlexSC } from './UtilityTags.js';
@@ -47,14 +47,14 @@ export function Pond(props) {
   }
     const toggle = () => setShow(!show)
   const [show, setShow] = React.useState(true)
-  let AnimBox = motion(Box);
+  let AnimBox = motion(Flex);
   return (
-    <VFlexSC sx={sxPond}>
+    <VFlexSC sx={sxPond} {...rest}>
       <Center as={Button} {...minBarStyle} onClick={toggle} >
         <chakra.hr sx={minHr}/>
       </Center>
       {props.title&&<VFlexCC __css={sxPondHeader}>{props.title}</VFlexCC>}
-      <AnimBox animate={{ height: show ? 'fit-content' : '0' }}>
+      <AnimBox animate={{ height: show ? 'fit-content' : '0' }} flexDirection='column'>
         {children}
       </AnimBox>
     </VFlexSC>
