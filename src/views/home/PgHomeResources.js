@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   Box, Flex, Button, FormControl, FormLabel,
-  Heading, Input, Link, Switch, Text, Stack, Image, Grid, Spacer, Divider, HStack,
+  Heading, Input, Link, Switch, Text, Stack, Image, Grid, Spacer, Divider, HStack, Icon,
 } from '@chakra-ui/react';
 // Assets
 import { HFlexCC, VFlex, VFlexCS } from '../app/bits/UtilityTags.js';
@@ -10,6 +10,7 @@ import { MtgCard } from './sections/MtgCard/MtgCard.js';
 import { MdDownload } from 'react-icons/md';
 import { Pond } from '../app/bits/Pond.js';
 import { DownloadIcon } from '@chakra-ui/icons';
+import { AiFillDropboxCircle } from 'react-icons/ai';
 
 const ResourcesPond = ({ }) => {
   const sxGroupBase = { padding:'.6rem 1.7rem', borderRadius:'12px',_hover:{ bg: 'gray.900' }, justifyContent:'space-between'}
@@ -67,28 +68,22 @@ function PgHomeResources() {
     )
   }
   return (
-    <VFlex flexGrow={1}>
+    <VFlex flexGrow={1} gap={6}>
       <VFlexCS h='4rem'>
         <NewsMarquee/>
       </VFlexCS>
-      <VFlexCS h='4rem'>
+      <VFlexCS textAlign='center'>
         <Heading>Resources & Downloads</Heading>
         <Text fontWeight={200}><em>Files and other goodies to munch on.</em></Text>
         <Divider/><br/>
       </VFlexCS>
-      <VFlexCS mt={4} mx={{base:'.5rem',md:'4rem',lg:'8rem',}}>
 
-      </VFlexCS>
-
-      <Grid templateColumns="repeat(auto-fit, minmax(400px, 1fr))"
-            gap={6} justifyItems={'center'} maxWidth='900px' alignSelf='center'>
-          <ResourcesPond />
-        <Pond title='Graphic Assets'>
+      <Grid templateColumns="repeat(auto-fill, 350px)" gridAutoFlow='dense'
+            gap={6} justifyContent={'center'} alignSelf='center' width='98%' maxW='1360px'>
+        <ResourcesPond />
+        <Pond style={{gridRowEnd:'span 3'}} title='Brand Assets'>
           <DlBtn label='Original Master Logo Workfile' filename='Froge-Logo-Master.ai' filetype='.ai'/>
           <DlBtn label='WIP Vector Perfecting Workfile' filename='logo-perfecting-workfile.ai' filetype='.ai'/>
-          <DlBtn label='Hop On Poster' filename='hop-on.jpg' filetype='.jpg'/>
-          <DlBtn label='Comfy Froge' filename='frog1600x600.png' filetype='.png'/>
-          <DlBtn label='Froge Reporting' filename='froge-news.jpg' filetype='.jpg'/>
           <DlBtn label='EcoDefi' filename='ecodefi-circles.svg' filetype='.svg'/>
           <DlBtn label='Froge Hexatoken' filename='froge-eyeeye.svg' filetype='.svg'/>
           <DlBtn label='Froge Hexatoken' filename='froge-eyeeye-outline-nowhites.svg' filetype='.svg'/>
@@ -101,6 +96,13 @@ function PgHomeResources() {
           <DlBtn label='Title Logo Combo SVG' filename='froge-title-logo-ff-color.svg' filetype='.svg'/>
           <DlBtn label='Title Logo Combo PNG' filename='froge-title-logo-ff-color-1200.png' filetype='.png'/>
           <DlBtn label='FrogeFinity' filename='frogefinity.svg' filetype='.svg'/>
+        </Pond>
+        <Pond title='Etc Graphic Assets'>
+          <DlBtn label='Hop On Poster' filename='hop-on.jpg' filetype='.jpg'/>
+          <DlBtn label='Comfy Froge' filename='frog1600x600.png' filetype='.png'/>
+          <DlBtn label='Froge Reporting' filename='froge-news.jpg' filetype='.jpg'/>
+          <Link as={Button} my={6} href='https://www.dropbox.com/sh/k0cy4qzyphf4hol/AAD7FiiwqnxxQ1wMYR1GoxrUa?dl=0'>
+            <Icon as={AiFillDropboxCircle} mr={2} boxSize={8} color={'blue.300'}/>Meme Storage Dropbox </Link>
         </Pond>
 
       </Grid>
