@@ -112,9 +112,9 @@ const ResourcesList = ({ }) => {
 
 
 const fmV_Sidebar = {
-  open: (height = 1000) => ({ clipPath: `circle(${height * 2 + 200}px at 262px 33px)`,
+  open: (height = 1000) => ({ clipPath: `circle(${height * 2 + 200}px at 262px 30px)`,
     transition: { type: "spring", stiffness: 20, restDelta: 2 } }),
-  closed: { clipPath: "circle(26px at 262px 33px)",
+  closed: { clipPath: "circle(26px at 262px 30px)",
     transition: { delay: 0.3, type: "spring", stiffness: 400, damping: 40 } }
 }
 const fmV_Navigation = {
