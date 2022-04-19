@@ -1,15 +1,15 @@
 import {
-  Box, Button, Center, chakra, Flex, Icon, Image, LinkBox,
+  Box, Button, Center, chakra, Flex, Icon, Image, LinkBox, Link,
   Popover, PopoverArrow, PopoverContent, PopoverTrigger, Portal, Spacer,
-  Stack, Text, useDisclosure, useOutsideClick, useToken,
+  Stack, Text, useDisclosure, useOutsideClick, useToken, ListItem, VStack,
 } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronRightIcon, createIcon, DownloadIcon, } from '@chakra-ui/icons';
 import { NavLink,useNavigate } from 'react-router-dom';
-import { HashLink as Link } from 'react-router-hash-link';
+import { HashLink } from 'react-router-hash-link';
 
 import FrogeTitleAllGreen from 'assets/logos/title-allgreen/froge-title-logo-ff-allgreen.svg';
 import FrogeLogo from 'assets/logos/froge-logo.svg';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 // import { HomeNavMobile } from './HomeNavMobile.js';
 import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
 import { HFlexCC, HFlexSC, S, VFlex } from '../../app/bits/UtilityTags.js';
@@ -32,19 +32,20 @@ import { MenuToggle } from './MenuToggle.js';
 
 
 const sxLaunchButton = {
-  display:'inline-flex', size:'sm', fontWeight:'600', color:'white',
-  fontSize:{ base: '.7rem', md: '.9rem' }, mr:{ base: '60px', md: '10px' },
-  bg:'brand.dkgreen', _hover:{ bg: 'brand.ltgreen', }
+  display:'flex', textAlign:'center', lineHeight:'.9rem',
+  fontWeight:'600', color:'white', minWidth:'4.4rem', padding:'.5rem .9rem',
+  fontSize:{ base: '.7rem', md: '.8rem' }, mr:{ base: '60px', md: '0' },
+  bg:'brand.dkgreen', _hover:{ bg: 'brand.green', }, borderRadius:'1rem',
 }
 const sxFrogeLogo = { position: 'fixed', mr:'1rem', top: '10px', left: '10px', boxSize:'40px', zIndex: '1000' }
-const sxFrogeTitleGreen = { m:'0 1rem 0 2.05rem', h:'2.5rem',w:'auto', }
+const sxFrogeTitleGreen = { m:'0 .6rem 0 2.05rem', h:'2.5rem',w:'auto', }
 const sxDesktopNavBase = {
   bg: 'bog.700', minH: '60px', py: { base: 2 }, px: { base: 4 },
   borderBottom: '1', borderStyle: 'solid', borderColor: 'bog.900',
   justifyContent: 'end', alignItems: 'center',
 }
 const sxDNavLink = { display:{base:'none',md:'block'},
-  fontSize:'sm', fontWeight:'500', color:'gray.200',mx:'1rem', position:'relative',
+  fontSize:'sm', fontWeight:'500', color:'gray.200',mx:'.8rem', position:'relative',
   _hover:{ textDecoration: 'none', color: 'white', },textAlign: 'center'
 }
 const sxDNavPopoverContent = {
@@ -55,30 +56,19 @@ export default function HomeNavbar() {
   const nav = useNavigate()
   const [isMobile,isDesktop] = useDeviceMode()
   return (<>
-    <Portal><Link smooth to='#top'><CISVG_FrogeLogo sx={sxFrogeLogo}/></Link></Portal>
+    <Portal><HashLink smooth to='#top'><CISVG_FrogeLogo sx={sxFrogeLogo}/></HashLink></Portal>
 
     <Flex sx={sxDesktopNavBase} id='top'>
-      <Link smooth to='./' style={{flex:'auto' }}>
+      <HashLink smooth to='./' style={{flex:'auto' }}>
         <CISVG_FrogeTitleGreen sx={sxFrogeTitleGreen}/>
-      </Link>
-      <Box as={Link} smooth to='/#frogex' sx={sxDNavLink}>FrogeX</Box>
-      <Box as={Link} smooth to='/#froadmap' sx={sxDNavLink}>Froad Map</Box>
-      <Box as={Link} to='/team' sx={sxDNavLink}>Team Froge</Box>
-      <Box as={Link} to='/eco' sx={sxDNavLink}>Eco</Box>
-      <Box as={Link} to='/accounting' sx={sxDNavLink}>Accounting</Box>
-      <Popover placement={'bottom-end'} gutter={21} isLazy>
-        <PopoverTrigger>
-          <Box as={Link} to='' sx={sxDNavLink}>Resources
-            <ChevronDownIcon sx={{ ...abs(null,null, '-.7rem','0'), boxSize:'15px',width:'100%', }}/>
-          </Box>
-        </PopoverTrigger>
-        <PopoverContent offset={4} as={Stack} sx={sxDNavPopoverContent}>
-          <PopoverArrow bg={'bog.800'} />
-          <ResourcesList />
-        </PopoverContent>
-      </Popover>
-
-      <Button sx={sxLaunchButton} onClick={()=>nav('/app')}>Launch App</Button>
+      </HashLink>
+      <Box as={HashLink} smooth to='/#frogex' sx={sxDNavLink}>FrogeX</Box>
+      <Box as={HashLink} smooth to='/#froadmap' sx={sxDNavLink}>Froad Map</Box>
+      <Box as={HashLink} to='/team' sx={sxDNavLink}>Team Froge</Box>
+      <Box as={HashLink} to='/eco' sx={sxDNavLink}>Eco</Box>
+      <Box as={HashLink} to='/accounting' sx={sxDNavLink}>Accounting</Box>
+      <Box as={HashLink} to='/resources' sx={sxDNavLink}>Resources</Box>
+      <Box as={HashLink} to='/app' sx={sxLaunchButton}>Launch App</Box>
       {isMobile&&<Portal><HomeNavMobile/></Portal>}
     </Flex>
   </>);
@@ -91,24 +81,7 @@ const DesktopNav = ({sx}) => {
   );
 };
 
-const ResourcesList = ({ }) => {
-  const sxGroupBase = { padding:'.6rem 2rem', borderRadius:'12px',_hover:{ bg: 'gray.900' }}
-  const H1 = ({children})=><Text sx={{transition:'all .3s ease', _groupHover:{ color: 'green.300' }, fontWeight:'500'}}>{children}</Text>
-  const H2 = ({children})=><Text sx={{fontSize:'xs',fontWeight:'300'}}>{children}</Text>
-  const sxIconWrap = { transition: 'all .3s ease', transform: 'translateX(-10px)', opacity: '0',
-    _groupHover: { opacity: '1', transform: 'translateX(0)' }, justify: 'flex-end', align: 'center', flex: '1'
-  }
-  return (<>
-    <Link to='./downloads/FrogeX-Green-Paper.docx' role={'group'}>
-      <HFlexCC sx={sxGroupBase}><Box><H1>FrogeX GreenPaper</H1><H2>FrogeX-Green-Paper.docx</H2></Box>
-        <MdDownload size={17} style={{marginLeft:'4px'}}/></HFlexCC>
-    </Link>
-    <Link to='./downloads/FrogeX-Articles.docx' role={'group'}>
-      <HFlexCC sx={sxGroupBase}><Box><H1>Foundation Articles</H1><H2>FrogeX-Articles.docx</H2></Box>
-        <MdDownload size={17} style={{marginLeft:'4px'}}/></HFlexCC>
-    </Link>
-  </>);
-};
+
 
 
 const fmV_Sidebar = {
@@ -126,8 +99,13 @@ const fmV_MenuItem = {
   closed: { y: 50, opacity: 0, transition: { y: { stiffness: 1000 } } }
 }
 
-const $$ul = { position: "absolute", top: "100px", width: "280px", }
-const $$li = { margin: "0 0 20px 0", padding: "0", listStyle: "none", display: "flex", alignItems: "center", cursor: "pointer"}
+const $$ul = { position: "absolute", top: "100px", width: "280px",  display: 'flex',flexDirection:'column',
+  alignItems:'end' }
+const $$li = { margin: "0 0 20px 0", padding: "0", listStyle: "none", display: "flex",
+  alignItems: "center", cursor: "pointer"}
+const $$Res = { padding: "0", display: "flex",
+  alignItems: "center", cursor: "pointer", bgColor: "bog.900",flexDirection:'column',
+  borderRadius: "1rem", overflow: "hidden", transition: "all .7s ease",}
 const $$Icon = { width: "32px", height: "32px", marginRight: "20px",
   borderRadius: "50%", border:'2px solid',borderColor:'bog.300',color:'bog.400' }
 const $$Text = { width: "200px", justifyContent: "flex-end", borderRadius: "5px",
@@ -142,14 +120,16 @@ export const HomeNavMobile = () => {
     pointerEvents:isOpen?'all':'none', }
   const $$navBg = { position: "fixed", top: "0", right: "0", bottom: "0", width: "300px", background: useToken('colors','bog.800') }
 
-  const MobNavLink = ({to,label,icon})=>(
-    <Box as={Link} smooth to={to}>
+  const MobNavLink = ({to,label,icon})=> {
+    return (<Box as={HashLink} smooth to={to}>
       <motion.li style={$$li} variants={fmV_MenuItem}
                  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
         <Flex sx={$$Text}>{label}</Flex><Icon sx={$$Icon} as={icon}/>
       </motion.li>
     </Box>
-  )
+    );
+  }
+
   return (
     <motion.nav
       style={$$navBase} initial={false}
@@ -163,7 +143,7 @@ export const HomeNavMobile = () => {
         <MobNavLink to='/team' label='Team Froge' icon={GiTeamIdea}/>
         <MobNavLink to='/eco' label='Eco' icon={MdOutlineEco}/>
         <MobNavLink to='/accounting' label='Accounting' icon={MdAccountBalance}/>
-        <MobNavLink to='' label='Resources (soon)' icon={MdWidgets}/>
+        <MobNavLink to='/resources' label='Resources' icon={MdWidgets}/>
         <MobNavLink to='/app' label='Launch App' icon={MdPlayArrow}/>
       </motion.ul>
       <MenuToggle toggle={() => toggleOpen()} />

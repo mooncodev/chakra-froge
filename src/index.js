@@ -25,6 +25,7 @@ import PgHomeFAQ from './views/home/PgHomeFAQ.js';
 import PgHomeSupport from './views/home/PgHomeContactAndSupport.js';
 import PgUnderConstruction from './views/app/PgUnderConstruction.js';
 import PgHomeContactAndSupport from './views/home/PgHomeContactAndSupport.js';
+import PgHomeResources from './views/home/PgHomeResources.js';
 
 const HomeLayout = React.lazy(() => import(/* webpackChunkName: "views-homelayout" */ './HomeLayout.js'));
 // const PgHomeLanding = React.lazy(() => import(/* webpackChunkName: "views-landing" */ './views/home/PgHomeLanding.js'));
@@ -55,6 +56,7 @@ ReactDOM.render(
             <Route path={'/faq'} element={<PgHomeFAQ/>}/>
             <Route path={'/eco'} element={<PgHomeEco/>}/>
             <Route path={'/accounting'} element={<PgHomeAccounting/>}/>
+            <Route path={'/resources'} element={<PgHomeResources/>}/>
             <Route path={'/contact-and-support'} element={<PgHomeContactAndSupport/>}/>
           </Route>
           <Route path={'/app/*'} element={<AppProvider/>}>
