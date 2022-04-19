@@ -11,27 +11,28 @@ import { MdDownload } from 'react-icons/md';
 import { Pond } from '../app/bits/Pond.js';
 import { DownloadIcon } from '@chakra-ui/icons';
 
-const ResourcesList = ({ }) => {
+const ResourcesPond = ({ }) => {
   const sxGroupBase = { padding:'.6rem 1.7rem', borderRadius:'12px',_hover:{ bg: 'gray.900' }, justifyContent:'space-between'}
   const H1 = ({children})=><Text sx={{transition:'all .3s ease', _groupHover:{ color: 'green.300' }, fontWeight:'500'}}>{children}</Text>
   const H2 = ({children})=><Text sx={{fontSize:'xs',fontWeight:'300'}}>{children}</Text>
   const sxIconWrap = { transition: 'all .3s ease', transform: 'translateX(-10px)', opacity: '0',
     _groupHover: { opacity: '1', transform: 'translateX(0)' }, justify: 'flex-end', align: 'center', flex: '1'
   }
-  return (<>
-    <Link href='/downloads/FrogeX-Green-Paper.docx' role={'group'}>
-      <HFlexCC sx={sxGroupBase}><Box><H1>FrogeX GreenPaper</H1><H2>FrogeX-Green-Paper.docx</H2></Box>
-        <MdDownload size={17} style={{marginLeft:'4px'}}/></HFlexCC>
-    </Link>
-    <Link href='/downloads/FrogeX-Articles.docx' role={'group'}>
-      <HFlexCC sx={sxGroupBase}><Box><H1>Foundation Articles</H1><H2>FrogeX-Articles.docx</H2></Box>
-        <MdDownload size={17} style={{marginLeft:'4px'}}/></HFlexCC>
-    </Link>
-    <Link href='/downloads/FrogeX_Brewlabs_Audit.docx' role={'group'}>
-      <HFlexCC sx={sxGroupBase}><Box><H1>FrogeX Audit (Brewlabs)</H1><H2>FrogeX_Brewlabs_Audit.docx</H2></Box>
-        <MdDownload size={17} style={{marginLeft:'4px'}}/></HFlexCC>
-    </Link>
-  </>);
+  return (
+    <Pond title='Downloads'>
+      <Link href='/downloads/FrogeX-Green-Paper.docx' role={'group'}>
+        <HFlexCC sx={sxGroupBase}><Box><H1>FrogeX GreenPaper</H1><H2>FrogeX-Green-Paper.docx</H2></Box>
+          <MdDownload size={17} style={{marginLeft:'4px'}}/></HFlexCC>
+      </Link>
+      {/* <Link href='/downloads/FrogeX-Articles.docx' role={'group'}> */}
+      {/*   <HFlexCC sx={sxGroupBase}><Box><H1>Foundation Articles</H1><H2>FrogeX-Articles.docx</H2></Box> */}
+      {/*     <MdDownload size={17} style={{marginLeft:'4px'}}/></HFlexCC> */}
+      {/* </Link> */}
+      <Link href='/downloads/FrogeX_Brewlabs_Audit.docx' role={'group'}>
+        <HFlexCC sx={sxGroupBase}><Box><H1>FrogeX Audit (Brewlabs)</H1><H2>FrogeX_Brewlabs_Audit.docx</H2></Box>
+          <MdDownload size={17} style={{marginLeft:'4px'}}/></HFlexCC>
+      </Link>
+    </Pond>);
 };
 const download = e => {
   console.log(e.target.href);
@@ -79,11 +80,9 @@ function PgHomeResources() {
 
       </VFlexCS>
 
-      <Grid templateColumns="repeat(auto-fit, minmax(350px, 1fr))"
-            gap={6} justifyItems={'center'}>
-        <Pond title='Downloads'>
-          <ResourcesList />
-        </Pond>
+      <Grid templateColumns="repeat(auto-fit, minmax(400px, 1fr))"
+            gap={6} justifyItems={'center'} maxWidth='900px' alignSelf='center'>
+          <ResourcesPond />
         <Pond title='Graphic Assets'>
           <DlBtn label='Original Master Logo Workfile' filename='Froge-Logo-Master.ai' filetype='.ai'/>
           <DlBtn label='WIP Vector Perfecting Workfile' filename='logo-perfecting-workfile.ai' filetype='.ai'/>
