@@ -83,7 +83,8 @@ function PgHomeResources() {
         <ResourcesPond />
         <Pond style={{gridRowEnd:'span 3'}} title='Brand Assets'>
           <DlBtn label='Original Master Logo Workfile' filename='Froge-Logo-Master.ai' filetype='.ai'/>
-          <DlBtn label='WIP Vector Perfecting Workfile' filename='logo-perfecting-workfile.ai' filetype='.ai'/>
+          <DlBtn label='New Optimized Vector Workfile' filename='logo-vector-optimized.ai' filetype='.ai'/>
+          <DlBtn label='Optimized Logo SVG' filename='logo-vector-optimized.svg' filetype='.svg'/>
           <DlBtn label='EcoDefi' filename='ecodefi-circles.svg' filetype='.svg'/>
           <DlBtn label='Froge Hexatoken' filename='froge-eyeeye.svg' filetype='.svg'/>
           <DlBtn label='Froge Hexatoken' filename='froge-eyeeye-outline-nowhites.svg' filetype='.svg'/>
