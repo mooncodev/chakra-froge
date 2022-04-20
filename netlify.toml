@@ -34,3 +34,23 @@ port = 3001
   to = "https://:splat"
   status = 301
   force = true
+[[redirects]]
+  from = "http://x.frogefinance.com/*"
+  to = "https://froge.fi/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://x.frogefinance.com/*"
+  to = "https://froge.fi/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "http://frogefinance.com/*"
+  to = "https://froge.fi/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://frogefinance.com/*"
+  to = "https://froge.fi/:splat"
+  status = 301
+  force = true
