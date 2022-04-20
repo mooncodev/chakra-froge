@@ -32,7 +32,9 @@ const sxPondHeader={
   fontWeight: 'rale.heavy',
 }
 export function Pond(props) {
-  const { children,...rest } = props;
+  const { children,
+    collapse,...rest } = props;
+  const initShow = collapse?false:true;
   const theme = useTheme();
   const minBarStyle = {
     w:'100%', h:'1rem', bgColor:'bog.500', opacity:'.4',borderRadius:'0 0 5px 5px'
@@ -45,8 +47,8 @@ export function Pond(props) {
   const collaps = {
     borderRadius:'panelsRadius',
   }
-    const toggle = () => setShow(!show)
-  const [show, setShow] = React.useState(true)
+  const toggle = () => setShow(!show)
+  const [show, setShow] = React.useState(initShow)
   let AnimBox = motion(Flex);
   return (
     <VFlexSC sx={sxPond} {...rest}>
@@ -54,7 +56,7 @@ export function Pond(props) {
         <chakra.hr sx={minHr}/>
       </Center>
       {props.title&&<VFlexCC __css={sxPondHeader}>{props.title}</VFlexCC>}
-      <AnimBox animate={{ height: show ? 'fit-content' : '0' }} flexDirection='column'>
+      <AnimBox style={{height:'0'}} animate={{ height: show ? 'fit-content' : '0' }} flexDirection='column'>
         {children}
       </AnimBox>
     </VFlexSC>

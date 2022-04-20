@@ -4,8 +4,8 @@ const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 module.exports = {
     eslint: {
         enable: false,
-        mode: 'extends' || 'file',
-        configure: { /* https://eslint.org/docs/user-guide/configuring */ },
+        // mode: 'extends' || 'file',
+        // configure: { /* https://eslint.org/docs/user-guide/configuring */ },
     },
     babel: {/* https://github.com/babel/babel-loader. */
         "plugins": [
