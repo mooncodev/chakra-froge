@@ -21,8 +21,8 @@ const ResourcesPond = ({ }) => {
   }
   return (
     <Pond title='Downloads'>
-      <Link href='/downloads/FrogeX-Green-Paper.docx' role={'group'}>
-        <HFlexCC sx={sxGroupBase}><Box><H1>FrogeX GreenPaper</H1><H2>FrogeX-Green-Paper.docx</H2></Box>
+      <Link href='/downloads/FrogeX_Greenpaper_Ver3_1.pdf' role={'group'}>
+        <HFlexCC sx={sxGroupBase}><Box><H1>FrogeX GreenPaper</H1><H2>FrogeX_Greenpaper_Ver3_1.pdf</H2></Box>
           <MdDownload size={17} style={{marginLeft:'4px'}}/></HFlexCC>
       </Link>
       {/* <Link href='/downloads/FrogeX-Articles.docx' role={'group'}> */}
