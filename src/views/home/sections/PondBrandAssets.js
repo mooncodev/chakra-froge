@@ -59,8 +59,8 @@ export const PondEtcGraphicAssets = ({ }) => {
       <DlBtn label='Hop On Poster' filename='hop-on.jpg' filetype='.jpg'/>
       <DlBtn label='Comfy Froge' filename='frog1600x600.png' filetype='.png'/>
       <DlBtn label='Froge Reporting' filename='froge-news.jpg' filetype='.jpg'/>
-      <Link as={Button} my={6} href='https://www.dropbox.com/sh/k0cy4qzyphf4hol/AAD7FiiwqnxxQ1wMYR1GoxrUa?dl=0'>
-        <Icon as={AiFillDropboxCircle} mr={2} boxSize={8} color={'blue.300'}/>Meme Storage Dropbox </Link>
+      <Button as={Link} sx={sxFileDlBtn} target='_blank' my={6} href='https://www.dropbox.com/sh/k0cy4qzyphf4hol/AAD7FiiwqnxxQ1wMYR1GoxrUa?dl=0'>
+        <Icon as={AiFillDropboxCircle} mr={2} boxSize={8} color={'blue.300'}/>Meme Storage Dropbox </Button>
     </Pond>
   )
 };
