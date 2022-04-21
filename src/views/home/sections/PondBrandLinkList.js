@@ -51,11 +51,11 @@ export const PondBrandLinkList = ()=>{
   return (
     <Pond title='Brand Image URLs' collapse>
       {Object.entries(JSON).map(([k,v],i,a)=>(
-        <Box><S>{k}</S>
+        <Box key={k}><S>{k}</S>
           {Object.entries(v).map(([kk,vv],ii,aa)=>{
             const url = `${location.origin}/brand/${kk}`
             return (
-              <HStack>
+              <HStack key={url+ii}>
                 <Image src={url} maxWidth={14} maxHeight={8}/>
                 <Text fontSize={8}>{url}</Text>
                 <Text fontSize={8} userSelect='none'>{vv}</Text>
