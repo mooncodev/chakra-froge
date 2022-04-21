@@ -1,32 +1,24 @@
 import { Pond } from '../../app/bits/Pond.js';
-import { Box, Button, HStack, Icon, Image, Link, Text } from '@chakra-ui/react';
+import { Box, Button, chakra, HStack, Icon, Image, Link, Text } from '@chakra-ui/react';
 import React from 'react';
 import { HFlexCC } from '../../app/bits/UtilityTags.js';
 import { MdDownload } from 'react-icons/md';
 import { AiFillDropboxCircle } from 'react-icons/ai';
 
-const download = e => {
-  console.log(e.target.href);
-  fetch(e.target.href, { method: "GET", headers: {} })
-  .then(response => {
-    response.arrayBuffer().then(function(buffer) {
-      const url = window.URL.createObjectURL(new Blob([buffer]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "image.png"); //or any other extension
-      document.body.appendChild(link);
-      link.click();
-    });
-  }).catch(err => {console.log(err);});
-};
 
+const sxFileDlBtn = {
+  display: 'flex',
+  backgroundColor: 'bog.700',
+  padding: '2px 10px',
+  borderRadius: '8px'
+}
 const DlBtn = ({label, filename, filetype})=>{
   return (
     <HStack justify='space-between' mt={2}>
       {filetype!=='.ai'&&<Image src={`/downloads/${filename}`} width={10}/>}
       <Text fontSize={14}>{label}</Text>
-      <Link as={Button} href={`/downloads/${filename}`} onClick={e => download(e)}>{filetype}
-        <MdDownload style={{marginLeft:'4px',marginTop:'5px'}}/></Link>
+      <Link as={chakra.a} download href={`/downloads/${filename}`} sx={sxFileDlBtn}>
+        {filetype}<MdDownload style={{marginLeft:'4px',marginTop:'5px'}}/></Link>
     </HStack>
   )
 }
@@ -57,6 +49,7 @@ export const PondBrandAssets = ({ }) => {
       <DlBtn label='Title Logo Combo SVG' filename='froge-title-logo-ff-color.svg' filetype='.svg'/>
       <DlBtn label='Title Logo Combo PNG' filename='froge-title-logo-ff-color-1200.png' filetype='.png'/>
       <DlBtn label='FrogeFinity' filename='frogefinity.svg' filetype='.svg'/>
+      <br/>
     </Pond>
   )
 };
