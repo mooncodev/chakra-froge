@@ -18,7 +18,8 @@ const convertBytes = function(bytes,fixed=1) {
 const files = fs.readdirSync('.')
 let froges = {},
   ffs = {},
-  fffs = {}
+  fffs = {},
+  etc = {}
 
 files.forEach(function(file) {
   const fpath = path.resolve(__dirname,file)
@@ -27,11 +28,14 @@ files.forEach(function(file) {
   if(file.indexOf('froge')>-1){
     froges[file] = fsize
   }
-  if(file.indexOf('ff')>-1){
+  else if(file.indexOf('fff')>-1){
+    fffs[file] = fsize
+  }
+  else if(file.indexOf('ff')>-1){
     ffs[file] = fsize
   }
-  if(file.indexOf('fff')>-1){
-    fffs[file] = fsize
+  else{
+    etc[file] = fsize
   }
 })
 
@@ -43,6 +47,7 @@ const json = {
   ['Froge Logo']:froges,
   ['Froge Finance']:ffs,
   ['Froge Finance Foundation']:fffs,
+  ['Froge Etc']:etc,
 }
 
 debugger;
