@@ -14,7 +14,8 @@ import { links,icons } from '../../assets/OtherBrand.js';
 import TgChannel from '../../assets/logos-other/tg-channel.png';
 import TgGroup from '../../assets/logos-other/tg-group.png';
 import { MdEmail, MdNavigateNext } from 'react-icons/md';
-
+import OTPHoriz from 'assets/logos-other/OneTreePlanted_Key Logo_Long_White.png'
+import RFUSHoriz from 'assets/logos-other/RFUS_horizontal_white_RGB.png'
 export default function HomeFooter() {
 
   return (<>
@@ -26,10 +27,18 @@ export default function HomeFooter() {
         maxW={1100}
         alignSelf={{ base: 'unset',md: 'center' }}
       >
-        <Stack spacing={{ base: '6', md: '8' }} align="center" flex={1}>
-          <FrogeTitleLogoSvg style={{ width: '150px', }}/>
-          <Text>We're friendly!  Come say hi:<br/>
-            <Link color='bog.400' href=''> Community Telegram</Link></Text>
+        <Stack direction="row" spacing={{ base:'3',md:'8', }} flex={3}>
+
+          <Stack spacing={{ base: '6', md: '8' }} align="center" flex={1}>
+            <FrogeTitleLogoSvg style={{ width: '150px', }}/>
+            <Text>We're friendly!  <Link color='bog.400' href=''>Come say hi!
+              </Link></Text>
+          </Stack>
+          <VStack spacing={{ base: '6', md: '8' }} align="center" flex={1}>
+            <Text fontSize="sm" fontWeight="semibold" color="subtle">Partners</Text>
+            <Image src={OTPHoriz} maxWidth='10rem'/>
+            <Image src={RFUSHoriz} maxWidth='10rem'/>
+          </VStack>
         </Stack>
 
         <Stack direction="row" spacing={{ base:'3',md:'8', }} flex={3}>
@@ -47,12 +56,12 @@ export default function HomeFooter() {
           <VStack spacing={{ base:'2',md:'4', }} minW="90" flex={{ base:'1',md:'1', }}>
             <Text fontSize="sm" fontWeight="semibold" color="subtle">Find Out</Text>
             <Stack spacing="3" shouldWrapChildren>
-              <Button as={'a'} variant="link" href={links.FrogeAdminEmail.url}>
-                <Icon as={MdEmail} boxSize='1.4rem' mr='.3rem'/>admin@froge.fi</Button>
               <Button as={'a'} variant="link" href={links.FrogeTgCommunity.url}>
                 <Image src={TgGroup} boxSize='1.4rem' mr='.3rem'/>Telegram Main</Button>
               <Button as={'a'} variant="link" href={links.FrogeTgAnnounce.url}>
                 <Image src={TgChannel} boxSize='1.4rem' mr='.3rem'/>Telegram News</Button>
+              <Button as={'a'} variant="link" href={links.FrogeAdminEmail.url}>
+                <Icon as={MdEmail} boxSize='1.4rem' mr='.3rem'/>admin@froge.fi</Button>
               <Button as={'a'} variant="link" href={links.Medium.url}
                       sx={{backgroundColor:'bog.300', padding:'0 14px', borderRadius:'7px'}}>{icons.Medium}</Button>
               <Button as={'a'} variant="link" href={'/contact-and-support'}>Contact & Support
@@ -60,11 +69,12 @@ export default function HomeFooter() {
             </Stack>
           </VStack>
         </Stack>
-        <VStack spacing="4" flex={1}>
-          <Text fontSize="sm" fontWeight="semibold" color="subtle">Stay up to date</Text>
-          <Input maxW={{ base:'50%',md:'unset' }} minW='80px' disabled placeholder="Email" type="email" required/>
-          <Button disabled type="submit" flexShrink={0}>Subscribe</Button>
-        </VStack>
+
+        {/* <VStack spacing="4" flex={1}> */}
+        {/*   <Text fontSize="sm" fontWeight="semibold" color="subtle">Stay up to date</Text> */}
+        {/*   <Input maxW={{ base:'50%',md:'unset' }} minW='80px' disabled placeholder="Email" type="email" required/> */}
+        {/*   <Button disabled type="submit" flexShrink={0}>Subscribe</Button> */}
+        {/* </VStack> */}
       </Stack>
       <Divider/>
       <Stack p="6px 16px" justify="end" align="center"

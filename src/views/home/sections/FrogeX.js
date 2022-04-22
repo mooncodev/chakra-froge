@@ -1,20 +1,26 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Image, Link, Tab,
-  TabList, TabPanel, TabPanels,
-  Tabs,
-  Text,
-  useBreakpointValue
+import { chakra,
+  Box, Flex, Heading, Image, Link, Tab, TabList, TabPanel, TabPanels, Tabs,
+  Text, useBreakpointValue
 } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { HFlex, S, VFlexCS } from '../../app/bits/UtilityTags.js';
 import { SentenceTabs } from '../../app/bits/SentenceTabs.js';
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboardButton } from '../../../hooks/CTCBButton.js';
+import UniLogo from 'assets/logos-other/uniswap-logo.png'
+const uniswapLink = 'https://app.uniswap.org/#/swap?outputCurrency=0x5fA54fdDF1870C344DbFaBb37dFab8700Ec0Def1'
+const contractAddress = '0x5fA54fdDF1870C344DbFaBb37dFab8700Ec0Def1'
 export const FrogeX = () => {
   const _h = '60px'
+  const [copied,setCopied] = useState(false)
 
+  const triggerCopied = ()=>{
+    if(copied){return}
+    setCopied(true)
+    setTimeout(()=>{
+      setCopied(false)
+    },2000)
+  }
   return (
     <VFlexCS mb='2rem' gap={5} id='frogex'>
       <Heading as={'h1'} color='brand.ltgreen'>FrogeX</Heading>
@@ -42,6 +48,17 @@ export const FrogeX = () => {
                       ETH Dividends, Charity, Marketing, and Liquidity Auto-Pump.`]}
                     panelContents={[]}>
       </SentenceTabs>
+      <CopyToClipboardButton text={contractAddress} sx={{
+        backgroundColor:'bog.800',border:'1px solid gray',
+      }}>
+        Copy Contract Address
+      </CopyToClipboardButton>
+      <Link href={uniswapLink} target='_blank'
+            sx={{
+              display:'flex',gap:'.3rem',alignItems:'center',border:'1px solid gray',
+              backgroundColor:'purple.700',p:'.3rem .8rem',borderRadius:'5rem',_hover:{backgroundColor:'purple.600'}
+            }}
+      ><Image src={UniLogo} width={6}/>Buy on Uniswap</Link>
     </VFlexCS>
   )
 }
