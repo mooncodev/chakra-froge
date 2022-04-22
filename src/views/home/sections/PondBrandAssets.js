@@ -12,13 +12,13 @@ const sxFileDlBtn = {
   padding: '2px 10px',
   borderRadius: '8px'
 }
-const DlBtn = ({label, filename, filetype})=>{
+const DlBtn = ({label, path, ext})=>{
   return (
     <HStack justify='space-between' mt={2}>
-      {filetype!=='.ai'&&<Image src={`/downloads/${filename}`} width={10}/>}
+      {ext!=='.ai'&&<Image src={`${path}`} width={10}/>}
       <Text fontSize={14}>{label}</Text>
-      <Link as={chakra.a} download href={`/downloads/${filename}`} sx={sxFileDlBtn}>
-        {filetype}<MdDownload style={{marginLeft:'4px',marginTop:'5px'}}/></Link>
+      <Link as={chakra.a} download href={`${path}`} sx={sxFileDlBtn}>
+        {ext}<MdDownload style={{marginLeft:'4px',marginTop:'5px'}}/></Link>
     </HStack>
   )
 }
@@ -33,22 +33,22 @@ const sxIconWrap = { transition: 'all .3s ease', transform: 'translateX(-10px)',
 export const PondBrandAssets = ({ }) => {
   return (
     <Pond style={{gridRowEnd:'span 3'}} title='Brand Assets'>
-      <DlBtn label='Original Master Logo Workfile' filename='Froge-Logo-Master.ai' filetype='.ai'/>
-      <DlBtn label='New Optimized Vector Workfile' filename='logo-vector-optimized.ai' filetype='.ai'/>
-      <DlBtn label='Optimized Logo SVG' filename='logo-vector-optimized.svg' filetype='.svg'/>
-      <DlBtn label='EcoDefi' filename='ecodefi-circles.svg' filetype='.svg'/>
-      <DlBtn label='Froge Hexatoken' filename='froge-eyeeye.svg' filetype='.svg'/>
-      <DlBtn label='Froge Hexatoken' filename='froge-eyeeye-outline-nowhites.svg' filetype='.svg'/>
-      <DlBtn label='Logo SVG' filename='froge-logo.svg' filetype='.svg'/>
-      <DlBtn label='Logo PNG' filename='froge-logo-1200.png' filetype='.png'/>
-      <DlBtn label='Logo Outline' filename='froge-logo-outline.svg' filetype='.svg'/>
-      <DlBtn label='Title Logo White SVG' filename='froge-title-logo-ff.svg' filetype='.svg'/>
-      <DlBtn label='Title Logo White PNG' filename='froge-title-logo-ff-1200.png' filetype='.png'/>
-      <DlBtn label='Title Logo Green SVG' filename='froge-title-logo-ff-allgreen.svg' filetype='.svg'/>
-      <DlBtn label='Title Logo Green PNG' filename='froge-title-logo-ff-allgreen-1200.png' filetype='.png'/>
-      <DlBtn label='Title Logo Combo SVG' filename='froge-title-logo-ff-color.svg' filetype='.svg'/>
-      <DlBtn label='Title Logo Combo PNG' filename='froge-title-logo-ff-color-1200.png' filetype='.png'/>
-      <DlBtn label='FrogeFinity' filename='frogefinity.svg' filetype='.svg'/>
+      <DlBtn path='/downloads/Froge_Brand_Workfile_v2.ai' ext='.ai' label='Froge_Brand_Workfile_v2'/>
+      <DlBtn path='/brand/froge.svg' ext='.svg' label='New Optimized Logo SVG'/>
+      <DlBtn path='/brand/froge512o.png' ext='.png' label='Logo medium PNG8'/>
+      <DlBtn path='/brand/froge1200.png' ext='.png' label='Logo large PNG'/>
+      <DlBtn path='/downloads/froge-logo-outline.svg' ext='.svg' label='Logo Outline'/>
+      <DlBtn path='/brand/ff-combo.svg' ext='.svg' label='FF Combo SVG'/>
+      <DlBtn path='/brand/ff-combo1200.png' ext='.png' label='FF Combo PNG'/>
+      <DlBtn path='/brand/ff-green.svg' ext='.svg' label='FF Green SVG'/>
+      <DlBtn path='/brand/ff-green1200.png' ext='.png' label='FF Green PNG'/>
+      <DlBtn path='/brand/ff-white.svg' ext='.svg' label='FF White SVG'/>
+      <DlBtn path='/brand/ff-white1200.png' ext='.png' label='FF White PNG'/>
+      <DlBtn path='/downloads/ecodefi-circles.svg' ext='.svg' label='EcoDefi'/>
+      <DlBtn path='/downloads/froge-eyeeye.svg' ext='.svg' label='Froge Hexatoken'/>
+      <DlBtn path='/downloads/froge-eyeeye-outline-nowhites.svg' ext='.svg' label='Froge Hexatoken'/>
+      <DlBtn path='/brand/frogefinity.svg' ext='.svg' label='FrogeFinity'/>
+      <DlBtn path='/brand/frogefinity1200.png' ext='.png' label='FrogeFinity'/>
       <br/>
     </Pond>
   )
@@ -56,9 +56,9 @@ export const PondBrandAssets = ({ }) => {
 export const PondEtcGraphicAssets = ({ }) => {
   return (
     <Pond title='Etc Graphic Assets'>
-      <DlBtn label='Hop On Poster' filename='hop-on.jpg' filetype='.jpg'/>
-      <DlBtn label='Comfy Froge' filename='frog1600x600.png' filetype='.png'/>
-      <DlBtn label='Froge Reporting' filename='froge-news.jpg' filetype='.jpg'/>
+      <DlBtn path='/downloads/hop-on.jpg' ext='.jpg' label='Hop On Poster'/>
+      <DlBtn path='/downloads/frog1600x600.png' ext='.png' label='Comfy Froge'/>
+      <DlBtn path='/downloads/froge-news.jpg' ext='.jpg' label='Froge Reporting'/>
       <Button as={Link} sx={sxFileDlBtn} target='_blank' my={6} href='https://www.dropbox.com/sh/k0cy4qzyphf4hol/AAD7FiiwqnxxQ1wMYR1GoxrUa?dl=0'>
         <Icon as={AiFillDropboxCircle} mr={2} boxSize={8} color={'blue.300'}/>Meme Storage Dropbox </Button>
     </Pond>
