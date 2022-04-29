@@ -120,9 +120,9 @@ export const HomeNavMobile = () => {
     pointerEvents:isOpen?'all':'none', }
   const $$navBg = { position: "fixed", top: "0", right: "0", bottom: "0", width: "300px", background: useToken('colors','bog.800') }
 
-  const MobNavLink = ({to,label,icon})=> {
+  const MobNavLink = ({to,label,icon,onClick})=> {
     return (<Box as={HashLink} smooth to={to}>
-      <motion.li style={$$li} variants={fmV_MenuItem}
+      <motion.li style={$$li} variants={fmV_MenuItem} onClick={onClick}
                  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
         <Flex sx={$$Text}>{label}</Flex><Icon sx={$$Icon} as={icon}/>
       </motion.li>
@@ -138,13 +138,13 @@ export const HomeNavMobile = () => {
     >
       <motion.div style={$$navBg} variants={fmV_Sidebar} />
       <motion.ul style={$$ul} variants={fmV_Navigation}>
-        <MobNavLink to='/#frogex' label='FrogeX' icon={FrogeLogoOutlineSvg}/>
-        <MobNavLink to='/#froadmap' label='Froad Map' icon={GiTreasureMap}/>
-        <MobNavLink to='/team' label='Team Froge' icon={GiTeamIdea}/>
-        <MobNavLink to='/eco' label='Eco' icon={MdOutlineEco}/>
-        <MobNavLink to='/accounting' label='Accounting' icon={MdAccountBalance}/>
-        <MobNavLink to='/resources' label='Resources' icon={MdWidgets}/>
-        <MobNavLink to='/app' label='Launch App' icon={MdPlayArrow}/>
+        <MobNavLink to='/#frogex' onClick={()=>{toggleOpen()}} label='FrogeX' icon={FrogeLogoOutlineSvg}/>
+        <MobNavLink to='/#froadmap' onClick={()=>{toggleOpen()}} label='Froad Map' icon={GiTreasureMap}/>
+        <MobNavLink to='/team' onClick={()=>{toggleOpen()}} label='Team Froge' icon={GiTeamIdea}/>
+        <MobNavLink to='/eco' onClick={()=>{toggleOpen()}} label='Eco' icon={MdOutlineEco}/>
+        <MobNavLink to='/accounting' onClick={()=>{toggleOpen()}} label='Accounting' icon={MdAccountBalance}/>
+        <MobNavLink to='/resources' onClick={()=>{toggleOpen()}} label='Resources' icon={MdWidgets}/>
+        <MobNavLink to='/app' onClick={()=>{toggleOpen()}} label='Launch App' icon={MdPlayArrow}/>
       </motion.ul>
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
