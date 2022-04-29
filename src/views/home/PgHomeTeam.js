@@ -137,7 +137,7 @@ function PgHomeTeam() {
             gap={6} justifyItems={'center'}>
         <MtgCard cardObj={copy.team.moonco}/>
         <MtgCard cardObj={copy.team.lefrogeski}/>
-        {/* <MtgCard cardObj={copy.team.drgonzo}/> */}
+        <MtgCard cardObj={copy.team.jacob}/>
         <MtgCard cardObj={copy.team.lazan}/>
         <MtgCard cardObj={copy.team.panda}/>
         <MtgCard cardObj={copy.team.wesley}/>

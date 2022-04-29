@@ -66,11 +66,13 @@ export function MtgCard({ cardObj, ...rest }) {
   }
   const artBG = {
     ...bgImg(BGIMAGE),
-    ...abs(-10,-10,-10,-10)
+    ...abs(-10,-10,-10,-10),
   }
   const artFG = {
     ...bgImg(FGIMAGE),
-    ...abs(-10,-10,-10,-10)
+    ...abs(-10,-10,-10,-10),
+    backgroundPosition: '50% 0%',
+    backgroundSize: 'contain',
   }
   const typePlate = {
     ...abs(275,0,null,32),
