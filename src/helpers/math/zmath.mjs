@@ -427,13 +427,28 @@ const abbrvNum = (num, fixed) => {
     d = Number(c) < 0 ? c : Math.abs(Number(c)); // append power
   return d + ['', 'K', 'M', 'B', 'T'][k];
 }
+function lightenDarkenColor(col, amt) {
+  let usePound = false;
+  if (col[0] == "#") {col = col.slice(1);usePound = true;}
+  let num = parseInt(col,16);
+  let r = (num >> 16) + amt;
+  if (r > 255) r = 255;
+  else if  (r < 0) r = 0;
+  let b = ((num >> 8) & 0x00FF) + amt;
+  if (b > 255) b = 255;
+  else if  (b < 0) b = 0;
+  let g = (num & 0x0000FF) + amt;
+  if (g > 255) g = 255;
+  else if (g < 0) g = 0;
+  return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+}
 
 
 export {
   sUint256max,sPpow2_128,sJsMaxSafeInt,
   k0,num,sEthToWei,first4,last4,surr4s,_toBN,_toHex,inTenMinutes,weiToUSD,usdToWei,
   sAdd,sSub,sMul,sDiv,sAddRay,_Add,_Sub,_Mul,_Div,_AddRay,sScaleToPcts,
-  sRnd,sAbs,sPow,sFla,sExp,sHR,hrExp,sNewtonSqRt,sChg,_Chk,
+  sRnd,sAbs,sPow,sFla,sExp,sHR,hrExp,sNewtonSqRt,sChg,_Chk,lightenDarkenColor,
   sIs,sIs0,_F,sIsGT,sIsLT,sIsGTorEq,sIsLTorEq,sIsEq,sIsNotEq,abbrvNum
 }
 
@@ -443,3 +458,5 @@ export function balToHrTuple(rawBal, decimal, usdPrice) {
   const usdEquivalent = sRnd(sMul(decimalAdjustedBal, usdPrice), -2);
   return [rawBal, decimalAdjustedBal, usdEquivalent];
 }
+
+

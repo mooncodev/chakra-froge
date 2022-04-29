@@ -35,7 +35,6 @@ export function Pond(props) {
   const { children,
     collapse,...rest } = props;
   const initShow = collapse?false:true;
-  const theme = useTheme();
   const minBarStyle = {
     w:'100%', h:'1rem', bgColor:'bog.500', opacity:'.4',borderRadius:'0 0 5px 5px'
   }

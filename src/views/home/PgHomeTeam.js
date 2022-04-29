@@ -17,6 +17,7 @@ import Moonco from 'views/home/sections/MtgCard/assets/Moonco.png'
 import Panda from 'views/home/sections/MtgCard/assets/Panda.png'
 import Wesley from 'views/home/sections/MtgCard/assets/Wesley.png'
 import KasperFormal from 'views/home/sections/MtgCard/assets/KasperFormal.png'
+import Jacob from 'views/home/sections/MtgCard/assets/Jacob.png'
 
 import bg001 from 'views/home/sections/MtgCard/assets/001.jpg'
 import bg002 from 'views/home/sections/MtgCard/assets/002.jpg'
@@ -39,8 +40,8 @@ const copy = {
     (a currency which saves the planet) was worth their elevated and long term devotion.<br/><br/></>,
   whyWeDoxx:`A doxxed team is important in this day and age with all of the
             crypto projects out there... many of which with malicious intention.`,
-  team: [
-    {
+  team: {
+    moonco: {
       imgs:[Moonco,bg001],
       name:'Todd Durica',
       tgHandle:'@MooncoHodlings',
@@ -50,7 +51,7 @@ const copy = {
         the Space Warfare Systems Center Atlantic (DOD) in Charleston. Built FrogeX's contract 
         from the ground up to be the most efficient, yet featureful ERC20 contract yet devised.`
     },
-    {
+    lefrogeski: {
       imgs:[Lefroge,bg002],
       name:'RJ Townsend',
       tgHandle:'@Lefrogeski',
@@ -59,7 +60,7 @@ const copy = {
       I’m experienced in project management and spend my free time petting 
       my dog and riding dirt bikes on the local National Forest. \nSemper Frogedelis`
     },
-    {
+    drgonzo: {
       imgs:[Gonzo,bg003],
       name:'Oliver Rush',
       tgHandle:'@DrGonzo1184',
@@ -70,14 +71,23 @@ const copy = {
         pictures to national commercials.  Former original Hoge team member, started 
         working for Froge soon after launch.`
     },
-    {
+    jacob: {
+      imgs:[Jacob,bg008],
+      name:'Jacob',
+      tgHandle:'@jdmichae',
+      title:'Charity Outreach & Relationships',
+      bio:`Working as a liaison of the Froge Finance Foundation to network our project 
+      with other non profit organizations who share our objectives of 
+      planting trees and protecting the rainforests.`
+    },
+    lazan: {
       imgs:[Lazan,bg004],
       name:'Kevin Mahoney',
       tgHandle:'@DeepLazan',
       title:'Business Oversight Lead and Financial Guarantor',
       bio:`Investment and Business Management professional. Key investor and financial backer for FrogeX.`
     },
-    {
+    panda: {
       imgs:[Panda,bg005],
       name:'Fernando',
       tgHandle:'@CryptoPanda420',
@@ -85,7 +95,7 @@ const copy = {
       bio:`Experience in fundraising for UNICEF. FrogeX offered me an opportunity to bring my own 
         experience in the traditional charity industry to a revolutionary digital asset project.`
     },
-    {
+    wesley: {
       imgs:[Wesley,bg006],
       name:'Wesley Brower',
       tgHandle:'@MerchFROGE',
@@ -96,14 +106,15 @@ const copy = {
         FrogeX merch store, and supports FrogeX marketing efforts through his personal @HappyStonks 
         social media accounts.`
     },
-    {
+    kasper: {
       imgs:[KasperFormal,bg007],
       name:'Kasper Ripken',
       tgHandle:'@EuropeanCat',
       title:'Froge Foundation President and Legal Advisor',
       bio:`Partner at Helder advocatuur. President/founder of Froge Finance Foundation, 
-        our charity organization.`},
-  ]
+        our charity organization.`
+    },
+  }
 }
 
 function PgHomeTeam() {
@@ -124,13 +135,13 @@ function PgHomeTeam() {
 
       <Grid templateColumns="repeat(auto-fit, minmax(350px, 1fr))"
             gap={6} justifyItems={'center'}>
-        <MtgCard cardObj={copy.team[0]}/>
-        <MtgCard cardObj={copy.team[1]}/>
-        <MtgCard cardObj={copy.team[2]}/>
-        <MtgCard cardObj={copy.team[3]}/>
-        <MtgCard cardObj={copy.team[4]}/>
-        <MtgCard cardObj={copy.team[5]}/>
-        <MtgCard cardObj={copy.team[6]}/>
+        <MtgCard cardObj={copy.team.moonco}/>
+        <MtgCard cardObj={copy.team.lefrogeski}/>
+        {/* <MtgCard cardObj={copy.team.drgonzo}/> */}
+        <MtgCard cardObj={copy.team.lazan}/>
+        <MtgCard cardObj={copy.team.panda}/>
+        <MtgCard cardObj={copy.team.wesley}/>
+        <MtgCard cardObj={copy.team.kasper}/>
 
       </Grid>
     </VFlex>

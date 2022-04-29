@@ -2,9 +2,12 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Button, chakra } from '@chakra-ui/react';
 import React from 'react';
 import { HFlex } from '../views/app/bits/UtilityTags.js';
+import { lightenDarkenColor } from '../helpers/math/zmath.mjs';
 
 export const CopyToClipboardButton = ({ text,children,sx }) => {
   const duration = 0.4;
+  const copyIconColor = sx.color?sx.color:'#DDDDDD'
+  const copyIconColorDarker = lightenDarkenColor(copyIconColor,-20)
   const boxVariants = {
     hover: isChecked => ({
       scale: 1.05,
@@ -17,7 +20,7 @@ export const CopyToClipboardButton = ({ text,children,sx }) => {
       opacity: isChecked ? 0 : 1,
     }),
     checked: { opacity: 0 },
-    unchecked: { stroke: '#949699', strokeWidth: 2, opacity: 1 },
+    unchecked: { stroke: copyIconColorDarker, strokeWidth: 2, opacity: 1 },
   };
 
   const tickVariants = {
@@ -30,7 +33,7 @@ export const CopyToClipboardButton = ({ text,children,sx }) => {
       scale: 1.02,
     },
     checked: { color: '#9aff00' },
-    unchecked: { color: '#DDDDDD', },
+    unchecked: { color: copyIconColor, },
   };
 
   const [isChecked, setIsChecked] = React.useState(false);
@@ -83,7 +86,7 @@ export const CopyToClipboardButton = ({ text,children,sx }) => {
         whileHover="hover"
         whileTap="pressed"
         transition={{ duration }}
-        width="25" height="25"
+        width="25"
         viewBox="0 0 25 25" fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

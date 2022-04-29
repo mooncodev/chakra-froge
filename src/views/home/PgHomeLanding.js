@@ -23,13 +23,22 @@ import {
   Tab,
   Grid,
   SimpleGrid,
-  useBreakpointValue,
+  useBreakpointValue, useColorModeValue, useColorMode, useTheme,
 } from '@chakra-ui/react';
 import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
 import frogefinity from '../../assets/logos/frogefinity.svg';
 import ecodeficircles from '../../assets/logos/ecodefi-circles.svg';
 import FrogeEyeEye from '../../assets/logos/froge-eyeeye-outline-halfwhites.svg';
-import { HFlex, HFlexCC, S, TextXs, VFlex, VFlexCS, VFlexSC } from '../app/bits/UtilityTags.js';
+import {
+  HFlex,
+  HFlexCC,
+  HFlexCS,
+  S,
+  TextXs,
+  VFlex,
+  VFlexCS,
+  VFlexSC
+} from '../app/bits/UtilityTags.js';
 import { SentenceTabs } from '../app/bits/SentenceTabs.js';
 import { FroadMap, FroadMapCard } from './sections/froadmap/FroadMap.js';
 import { motion, useViewportScroll, useMotionValue, useTransform } from "framer-motion"
@@ -39,6 +48,8 @@ import { FrogeLogoOutlineSvg } from 'assets/FrogeBrand.js';
 import { FrogeX } from './sections/FrogeX.js';
 import { FrogeForest } from './sections/FrogeForest.js';
 import { abs } from './sections/MtgCard/MtgCard.js';
+import { CopyToClipboardButton } from '../../hooks/CTCBButton.js';
+import UniLogo from '../../assets/logos-other/uniswap-logo.png';
 
 export const WalkyFroge = () => {
   const { scrollYProgress } = useViewportScroll()
@@ -54,7 +65,7 @@ function EcoDefiCircles({ width, height, fill, onToggle }) {
   const ffinStyle = {
     position: 'absolute',
     left: 'auto',
-    top: { base: '96px', md: '86px' },
+    top: { base: '126px', md: '116px' },
     right: 'auto',
     opacity:'.6',
     '& ellipse:hover':{fillOpacity:'1', cursor:'pointer'},
@@ -90,8 +101,11 @@ function EcoDefiCircles({ width, height, fill, onToggle }) {
     </Box>
   )
 }
+const uniswapLink = 'https://app.uniswap.org/#/swap?outputCurrency=0x5fA54fdDF1870C344DbFaBb37dFab8700Ec0Def1'
+const contractAddress = '0x5fA54fdDF1870C344DbFaBb37dFab8700Ec0Def1'
 
 function PgHomeLanding() {
+  const { colors } = useTheme()
   // Chakra color mode
   // const titleColor = "green.200"
   // const textColor = "white"
@@ -112,18 +126,33 @@ function PgHomeLanding() {
       // divider={<StackDivider borderColor='gray.200' />}
       // spacing={0}
     >
+
+
+      {/** CTA STRIP **/}
+      <HFlexCC h='2rem' gap={2} justify={{base:'center',md:'end'}} pr={{base:'0',md:2}} >
+        <CopyToClipboardButton text={contractAddress} sx={{
+          color:colors.gray['300'],whiteSpace: 'nowrap',
+          backgroundColor:'bog.800',fontSize:'10px', height:'1.4rem'
+        }}>
+          Contract Address
+        </CopyToClipboardButton>
+        <Link href={uniswapLink} target='_blank'
+              sx={{ whiteSpace: 'nowrap',
+                color:'gray.300',
+                display:'flex',gap:'.3rem',alignItems:'center', height:'1.4rem',
+                backgroundColor:'#192030',p:'.3rem .8rem',borderRadius:'.5rem',_hover:{backgroundColor:'purple.600', color:'white'}
+              }}
+        ><Image src={UniLogo} height='1rem'/>Buy on Uniswap</Link>
+      </HFlexCC>
+
       {/** HERO SECTION **/}
       <VFlexCS minHeight='540px' sx={sxHeroBg} position='relative' userSelect='none'>
         <EcoDefiCircles onToggle={(val)=>setEcoDefi(val)}/>
-        <VFlex position='relative'>
-          <Heading as="h1" size="xl" textAlign="center" pl='12px'>
-            Our Hope,
-          </Heading>
-          <Heading as="h1" size="xl" textAlign="center" pl='12px'>
-            Their Hop.
-          </Heading>
+        <VFlex position='relative' mt={4}>
+          <Heading as="h1" size="xl" textAlign="center" pl='12px'>Our Hope,</Heading>
+          <Heading as="h1" size="xl" textAlign="center" pl='12px'>Their Hop.</Heading>
           <HFlexCC gap={3} fontSize="lg">
-            <Text textAlign="right">Welcome to Froge:</Text>
+            <Text textAlign="right">Welcome to&nbsp;Froge:</Text>
             <Text fontSize='2rem' textAlign="center" color="brand.green" fontWeight='900'>
               the world's
             </Text>
