@@ -57,6 +57,7 @@ export function SentenceTabs({ sentence,panelContents,id,...rest }) {
     padding:'0 .2rem',
     borderRadius:'7px',
     textDecor:'underline',
+    whiteSpace:'no-wrap'
   }
   const linksSelected = {
     color: 'bog.200',

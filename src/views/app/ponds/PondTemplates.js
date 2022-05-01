@@ -1,22 +1,18 @@
 import {
   Box,
-  Button,
-  Flex,
-  HStack,
-  Image,
-  Text,
-  Heading,
-  Link,
-  Stack,
-  Progress,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  IconButton, Input,
+  Heading,
+  HStack,
+  Image,
+  Link,
+  Progress,
+  Stack,
+  Text,
 } from '@chakra-ui/react';
-import {Pond,PondBody,PondHeader} from '../bits/Pond.js';
+import { Pond, PondBody, PondHeader } from '../bits/Pond.js';
 import React from 'react';
-import { CopyIcon } from '@chakra-ui/icons';
 
 export function PondTpl_Spotlight(props) {
   // useEffect(async ()=>{},[])
@@ -222,41 +218,6 @@ export function PondTpl_UpcomingEvts(props) {
         </Box>
       </HStack>
       <Link textAlign="right">read more</Link>
-    </Pond>
-  );
-}
-export function PondTpl_BNCalc(props) {
-
-  // useEffect(async ()=>{},[])
-  return (
-    <Pond>
-
-      <Heading size="md">BigNum Calc</Heading>
-      <HStack spacing={2}>
-        <Input />
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="xs" />
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="xs" />
-      </HStack>
-      <HStack spacing={2} justifyContent="space-around">
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="sm" />
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="sm" />
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="sm" />
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="sm" />
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="sm" />
-      </HStack>
-      <HStack spacing={2}>
-        <Input />
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="xs" />
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="xs" />
-      </HStack>
-      <HStack spacing={2} justifyContent="space-between">
-        <Text>...Output...</Text>
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="xs" />
-      </HStack>
-      <HStack spacing={2} justifyContent="space-between">
-        <Text>...Adjusted Output...</Text>
-        <IconButton aria-label="icon" icon={<CopyIcon />} size="xs" />
-      </HStack>
     </Pond>
   );
 }

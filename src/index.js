@@ -58,6 +58,8 @@ ReactDOM.render(
             <Route path={'/accounting'} element={<PgHomeAccounting/>}/>
             <Route path={'/resources'} element={<PgHomeResources/>}/>
             <Route path={'/contact-and-support'} element={<PgHomeContactAndSupport/>}/>
+            <Route path={'/contact'} element={<PgHomeContactAndSupport/>}/>
+            <Route path={'/support'} element={<PgHomeContactAndSupport/>}/>
           </Route>
           <Route path={'/app/*'} element={<AppProvider/>}>
             <Route path={'dash'} element={<PgDash/>}/>

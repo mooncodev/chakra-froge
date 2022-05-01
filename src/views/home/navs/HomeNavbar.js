@@ -9,12 +9,12 @@ import { HashLink } from 'react-router-hash-link';
 
 import FrogeTitleAllGreen from 'assets/logos/title-allgreen/froge-title-logo-ff-allgreen.svg';
 import FrogeLogo from 'assets/logos/froge-logo.svg';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // import { HomeNavMobile } from './HomeNavMobile.js';
 import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
 import { HFlexCC, HFlexSC, S, VFlex } from '../../app/bits/UtilityTags.js';
 // import { NAV_ITEMS } from './NAV_ITEMS.js';
-import { motion, useCycle } from 'framer-motion';
+import { motion, useCycle, useViewportScroll } from 'framer-motion';
 import { useDimensions } from '../motionexample/use-dimensions.js';
 import {
   MdOutlineEco,
@@ -26,7 +26,12 @@ import {
 } from 'react-icons/md';
 import { GiTreasureMap,GiTeamIdea } from 'react-icons/gi';
 import { RiArticleLine } from 'react-icons/ri';
-import { FrogeLogoOutlineSvg,CISVG_FrogeLogo,CISVG_FrogeTitleGreen } from 'assets/FrogeBrand.js';
+import {
+  FrogeLogoOutlineSvg,
+  CISVG_FrogeLogo,
+  CISVG_FrogeTitleGreen,
+  CISVG_NavArrowGreen
+} from 'assets/FrogeBrand.js';
 import { abs, bgImg } from '../sections/MtgCard/MtgCard.js';
 import { MenuToggle } from './MenuToggle.js';
 
@@ -38,6 +43,10 @@ const sxLaunchButton = {
   bg:'brand.dkgreen', _hover:{ bg: 'brand.green', }, borderRadius:'1rem',
 }
 const sxFrogeLogo = { position: 'fixed', mr:'1rem', top: '10px', left: '10px', boxSize:'40px', zIndex: '1000' }
+const sxNavArrowGreen = {
+  position: 'fixed', mr:'1rem', top: '10px', left: '30px', boxSize:'40px',
+  zIndex: '999',color:'#9fd748',opacity:'0'
+}
 const sxFrogeTitleGreen = { m:'0 .6rem 0 2.05rem', h:'2.5rem',w:'auto', }
 const sxDesktopNavBase = {
   bg: 'bog.700', minH: '60px', py: { base: 2 }, px: { base: 4 },
@@ -51,12 +60,36 @@ const sxDNavLink = { display:{base:'none',md:'block'},
 const sxDNavPopoverContent = {
   border:'0',bgColor:'bog.800',borderRadius:'.9rem',width:'fit-content', px:'.7rem'
 }
+const fmV_NavTopArrow = {
+  show:   { opacity: 1, transition: { opacity: { stiffness: 1000 } } },
+  hide: { opacity: 0, transition: { opacity: { stiffness: 100  } } }
+}
 
-export default function HomeNavbar() {
-  const nav = useNavigate()
+export default function HomeNavbar({scrollElmtRef}) {
+  // const nav = useNavigate()
+  // const { scrollY } = useViewportScroll()
+
   const [isMobile,isDesktop] = useDeviceMode()
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [])
+  const onScroll = async () => {
+    let heightToShowAt = 80;
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    setIsScrolled(winScroll > heightToShowAt)
+  };
+  const FM_NavTopArrow = motion(CISVG_NavArrowGreen)
   return (<>
-    <Portal><HashLink smooth to='#top'><CISVG_FrogeLogo sx={sxFrogeLogo}/></HashLink></Portal>
+    <Portal>
+      <HashLink smooth to='#top'>
+        <CISVG_FrogeLogo sx={sxFrogeLogo}/>
+        <FM_NavTopArrow
+          sx={sxNavArrowGreen} initial={{ opacity: 0 }}
+          variants={fmV_NavTopArrow} animate={isScrolled ? "show" : "hide"}
+        />
+      </HashLink>
+    </Portal>
 
     <Flex sx={sxDesktopNavBase} id='top'>
       <HashLink smooth to='./' style={{flex:'auto' }}>

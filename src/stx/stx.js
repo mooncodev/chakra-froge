@@ -13,8 +13,8 @@ import {
   getAmountOut, sMul, weiToUSD, sExp, _Mul, _Add, _Div, sRnd
 } from '../helpers/math/zmath.mjs';
 
-const web3 = new Web3(Web3.givenProvider);
-
+const web3 = new Web3(Web3.givenProvider );
+web3.givenProvider.enable()
 function _sleep(ms) {//usage: await _sleep(5000);
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -89,6 +89,11 @@ export const FXP = {
     return amountOut;
   },
   getFxPrice:async()=> {
+    //TODO: make independent from chain of connected wallet
+    //TODO: for example, wallet connected to mumbai, but web3 able to be on Eth mnet
+    if(web3.utils.hexToNumber(web3.givenProvider.chainId) !== 1 ){
+      return null;
+    }
     let weiOut = await FXP.getAmountOut(1_000_000_000,0);
     await useCrawlStore.getState().fetch_ethPrice()
     return weiToUSD(weiOut,useCrawlStore.getState().ethPrice);
@@ -105,6 +110,7 @@ export async function readFXP(method, args=[]){
 }
 
 export async function call(address,path,args=[]){
+
   const fnAbi = abiFrags[path[0]].find(v=>v.name===path[1])
   const failRV = fnAbi.outputs.length<2? '' : fnAbi.outputs.map(v=>'');
   if(!['pure','view'].includes(fnAbi.stateMutability)){

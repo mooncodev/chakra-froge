@@ -44,13 +44,14 @@ export default function HistoryWidget() {
   return (
     <Menu id='NotifsMenu'>
       <MenuButton id='NotifsButton'>
-        <Center id="BtnBrandIcon"
+        <Center id="HistoryIcon"
                 __css={{
                   color: 'global.bg',
                   bgColor: 'brand.green',
                   h: '2rem', w: '2rem', p: '3px',
                   borderRadius: '7px',
-                }} ><MdOutlineHistory size={25}/></Center>
+                  _hover:{ bgColor: 'brand.ltgreen', },
+                }} ><MdOutlineHistory size={23}/></Center>
       </MenuButton>
       <MenuList as={Flex} sx={sxBase} p="10px 8px" bgColor={'bog.900'} flexDirection="column">
         {history&&<>

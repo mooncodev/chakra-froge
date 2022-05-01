@@ -30,34 +30,33 @@ const sxPondHeader={
   fontFamily: 'rale',
   fontSize: '1.3rem',
   fontWeight: 'rale.heavy',
+  userSelect:'none',
 }
+const fmV_PondBod = {
+  open:   { height: '100%',  opacity: 1, transition: { height: { stiffness: 1000, velocity: -100 } } },
+  closed: { height: '0', opacity: 0, transition: { height: { stiffness: 1000 } } }
+}
+
 export function Pond(props) {
-  const { children,
-    collapse,...rest } = props;
-  const initShow = collapse?false:true;
-  const minBarStyle = {
-    w:'100%', h:'1rem', bgColor:'bog.500', opacity:'.4',borderRadius:'0 0 5px 5px'
-  }
-  const minHr = {
-    position:'relative',
-    // _hover:{bgColor:'#fff'},
-    w:'70%',
-  }
-  const collaps = {
-    borderRadius:'panelsRadius',
-  }
-  const toggle = () => setShow(!show)
-  const [show, setShow] = React.useState(initShow)
-  let AnimBox = motion(Flex);
+  const initOpen = collapse?[false, true]:[true, false];
+  const [isOpen, toggleOpen] = useCycle(...initOpen);
+  const { children, collapse=false,title,...rest } = props;
+  const sxMinBar = { w:'100%', h:'1rem', bgColor:'bog.700', borderRadius:'0 0 5px 5px' }
+  const sxMinHR = { position:'relative', w:'70%', }
+  const stPondBod = {height:'100%',flexDirection: 'column',}
+
   return (
     <VFlexSC sx={sxPond} {...rest}>
-      <Center as={Button} {...minBarStyle} onClick={toggle} >
-        <chakra.hr sx={minHr}/>
-      </Center>
+      <Button as={Center} sx={sxMinBar} onClick={()=>toggleOpen()} >
+        <chakra.hr sx={sxMinHR}/>
+      </Button>
       {props.title&&<VFlexCC __css={sxPondHeader}>{props.title}</VFlexCC>}
-      <AnimBox style={{height:'0'}} animate={{ height: show ? 'fit-content' : '0' }} flexDirection='column'>
+      <motion.div style={stPondBod}
+                  variants={fmV_PondBod}
+                  animate={isOpen ? "open" : "closed"}
+      >
         {children}
-      </AnimBox>
+      </motion.div>
     </VFlexSC>
 
   );

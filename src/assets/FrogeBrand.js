@@ -242,13 +242,13 @@ export const CISVG_FrogeNavBack =  createIcon({
         <path transform="translate(-4.46 -2.59)" fill="#9fd748" d="M131,508h19c-53.95-87.9-32.69-117.51-15-126C82.91,380.87,95.48,448.58,131,508Z"/>
       </g>
       <g id="outline">
-        <path transform="translate(-4.46 -2.59)" fill="none" stroke="#212e3e" strokeMiterlimit="10" d="M131.2,355c115.13-71.77,263.21-115.15,380.34-96C519,321,445.41,454,409,508H216.4S131.11,420.07,131.2,355Z" stroke-width="16"/>
-        <path transform="translate(-4.46 -2.59)" fill="none" stroke="#212e3e" strokeMiterlimit="10" d="M134,375s-74.33,11-3,133H487.7s81.8-173.66-1.7-142.5" stroke-width="16"/>
+        <path transform="translate(-4.46 -2.59)" fill="none" stroke="#212e3e" strokeMiterlimit="10" d="M131.2,355c115.13-71.77,263.21-115.15,380.34-96C519,321,445.41,454,409,508H216.4S131.11,420.07,131.2,355Z" strokeWidth="16"/>
+        <path transform="translate(-4.46 -2.59)" fill="none" stroke="#212e3e" strokeMiterlimit="10" d="M134,375s-74.33,11-3,133H487.7s81.8-173.66-1.7-142.5" strokeWidth="16"/>
         <path transform="translate(-4.46 -2.59)" fill="#212e3e" d="M252,403c1.49,9.41,4.68,18.33,8.09,27.13A315.88,315.88,0,0,0,278.44,468c6.75,12.06,14.43,24.25,22.11,35.77L294,500.19c13.58-.23,28.51-.22,42.08-.05l-5.94,2.72c6.17-7.07,12.41-14.95,18.1-22.43,11.59-15.42,22.57-31.44,31-48.83,4.15-8.71,7.62-17.79,9.18-27.65,2.59,20.23-5,40.41-13.51,58.4a266.46,266.46,0,0,1-35.07,53.43c-16.42.32-33.84.25-50.25,0-11.06-17.54-21-36.06-28.13-55.58-5-13.72-8.79-28-9.85-42.61A64.83,64.83,0,0,1,252,403Z"/>
-        <path d="M161,336.71c8.68-50.54,51.09-110.52,74-139.54,21-26.62,143.76-29.58,185.6-23.52,26.63,3.86,35.07,42,37.64,80.51" transform="translate(-4.46 -2.59)" fill="none" stroke="#212e3e" stroke-miterlimit="10" stroke-width="16"/>
+        <path d="M161,336.71c8.68-50.54,51.09-110.52,74-139.54,21-26.62,143.76-29.58,185.6-23.52,26.63,3.86,35.07,42,37.64,80.51" transform="translate(-4.46 -2.59)" fill="none" stroke="#212e3e" strokeMiterlimit="10" strokeWidth="16"/>
         <ellipse cx="274.29" cy="157.25" rx="53.88" ry="72.82" fill="none" stroke="#212e3e" strokeMiterlimit="10" strokeWidth="16"/>
         <ellipse cx="375.47" cy="162.67" rx="41.94" ry="48.99" fill="none" stroke="#212e3e" strokeMiterlimit="10" strokeWidth="16"/>
-        <path id="tooth" transform="translate(-4.46 -2.59)" fill="#fff" stroke="#212e3e" strokeMiterlimit="10" d="M217.63,309c19.37-8.58,39.15-16.3,59.12-23.06-10.35-19.67-19.14-29.4-26.66-30.43-7.8-1.06-28.47,5.49-31.9,10.88C209.53,280,217.63,309,217.63,309Z" stroke-width="16"/>
+        <path id="tooth" transform="translate(-4.46 -2.59)" fill="#fff" stroke="#212e3e" strokeMiterlimit="10" d="M217.63,309c19.37-8.58,39.15-16.3,59.12-23.06-10.35-19.67-19.14-29.4-26.66-30.43-7.8-1.06-28.47,5.49-31.9,10.88C209.53,280,217.63,309,217.63,309Z" strokeWidth="16"/>
       </g>
       <g id="eye-lids-dk">
         <path id="lid-dk-right" transform="translate(-4.46 -2.59)" fill="#7ba835" d="M410.6,131.84c-32.64-21.74-55.76,24.69-55.76,24.69l-16.65,4.07C338.19,130.6,372.48,94,410.6,131.84Z"/>
@@ -349,6 +349,11 @@ export const FrogeTitleLogoSvg = ({ ...rest })=>{
   </chakra.svg>
     )
 };
+export const CISVG_NavArrowGreen = createIcon({
+  displayName: "NavArrowGreen",
+  viewBox: "0 0 300 540",
+  d: "M296.6,142.1,158.1,3.4a11.4,11.4,0,0,0-16.2,0L3.4,142.1a11.4,11.4,0,0,0,8.1,19.5H56V525.3A14.7,14.7,0,0,0,70.8,540H229.3A14.7,14.7,0,0,0,244,525.3V161.6h44.5A11.4,11.4,0,0,0,296.6,142.1Z",
+});
 export const FrogefinitySvg = createIcon({
   displayName: "Frogefinity",
   viewBox: "0 0 319.19 242.5",

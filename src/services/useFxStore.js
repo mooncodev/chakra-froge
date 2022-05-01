@@ -13,6 +13,7 @@ export const useFxStore = create((set,get) => ({
   fxGetConfigArrArr: [[]],
   hydrateFxStore: async (state) => {
     const fxPrice = await FXP.getFxPrice();
+    if(fxPrice==null){return;}
     const xGetDivsGlobalTotalDist = await readFX('xGetDivsGlobalTotalDist')
     const cfg = await readFX('getConfig')
     if(cfg) {

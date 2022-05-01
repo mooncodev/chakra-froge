@@ -84,21 +84,6 @@ export const BtnFrMap = ({children,...rest})=>(
           }}>{children}</chakra.button>
 )
 
-export const BtnBrandIcon = ({type,children,...rest})=> {
-  const _icon = {
-    burger: HamburgerIcon,
-    history: MdOutlineHistory,
-  }[type]
-  return (<Button as={_icon} id="BtnBrandIcon"
-                  __css={{
-                    color: 'global.bg',
-                    bgColor: 'brand.green',
-                    h: '2rem',
-                    w: 'auto',
-                    p: '3px',
-                    borderRadius: '7px',
-                  }} {...rest}><MdOutlineHistory>{children}</MdOutlineHistory></Button>);
-}
 export const ConnectWalletNavButton = ({active,children,...rest})=> {
   const u_chainId= useW3Store(s=>s.u_chainId);
   const u_account= useW3Store(s=>s.u_account);
@@ -134,7 +119,7 @@ export const ConnectWalletNavButton = ({active,children,...rest})=> {
         {!u_active ? (<GrConnect size='20px'/>):(<MdOutlinePrivateConnectivity size='20px'/>)}
       </Center>
       {!u_active ? (
-        <Text> Connect Wallet</Text>
+        <Text userSelect='none'> Connect Wallet</Text>
       ) : (
         <Text fontSize={12}> {u_account&&last4(u_account)}</Text>
       )}

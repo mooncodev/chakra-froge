@@ -8,6 +8,7 @@ import { SentenceTabs } from '../../app/bits/SentenceTabs.js';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { CopyToClipboardButton } from '../../../hooks/CTCBButton.js';
 import UniLogo from 'assets/logos-other/uniswap-logo.png'
+import EthScanLogoSVG from 'assets/logos-other/etherscan-logo-circle.svg'
 const uniswapLink = 'https://app.uniswap.org/#/swap?outputCurrency=0x5fA54fdDF1870C344DbFaBb37dFab8700Ec0Def1'
 const contractAddress = '0x5fA54fdDF1870C344DbFaBb37dFab8700Ec0Def1'
 export const FrogeX = () => {
@@ -36,7 +37,7 @@ export const FrogeX = () => {
                     w={{ base:'98%',sm:'90%',md:'70%',lg:'40rem', }}
                     sentence={[`"FrogeX's liquidity `,`##auto-pumps`,` itself, `,`##auto-locks`,
                       ` on the contract itself, and achieves `,`##perpetual-lock`,
-                      ` through any-time incrementing of its unlock date`]}
+                      ` through any-time incrementing of its unlock date."`]}
                     panelContents={[FXText.autopump, FXText.autolock,
                       FXText.perpetualLock]}>
       </SentenceTabs>
@@ -45,7 +46,7 @@ export const FrogeX = () => {
                     sentence={[`"FrogeX taxes sells at 8% and buys at 5%.  These 
                       settings can be changed, but only within very limited ranges.
                       Taxes are purposed 4-ways by managed proportion: 
-                      ETH Dividends, Charity, Marketing, and Liquidity Auto-Pump.`]}
+                      ETH Dividends, Charity, Marketing, and Liquidity Auto-Pump."`]}
                     panelContents={[]}>
       </SentenceTabs>
       <CopyToClipboardButton text={contractAddress} sx={{
@@ -59,6 +60,18 @@ export const FrogeX = () => {
               backgroundColor:'purple.700',p:'.3rem .8rem',borderRadius:'5rem',_hover:{backgroundColor:'purple.600'}
             }}
       ><Image src={UniLogo} width={6}/>Buy on Uniswap</Link>
+      <Link href={uniswapLink} target='_blank'
+            sx={{
+              display:'flex',gap:'.3rem',alignItems:'center',border:'1px solid',borderColor:'blue.900',
+              backgroundColor:'gray.700',p:'.3rem .8rem',borderRadius:'5rem',_hover:{backgroundColor:'gray.600'}
+            }}
+      ><Image src={EthScanLogoSVG} width={6}/>FrogeX on Etherscan</Link>
+      <Link href='https://coinmarketcap.com/currencies/frogex/' target='_blank'
+            sx={{
+              display:'flex',gap:'.3rem',alignItems:'center',border:'1px solid',borderColor:'blue.900',
+              backgroundColor:'gray.700',p:'.3rem .8rem',borderRadius:'5rem',_hover:{backgroundColor:'gray.600'}
+            }}
+      ><Image src={EthScanLogoSVG} width={6}/>FrogeX on CoinMarketCap</Link>
     </VFlexCS>
   )
 }
