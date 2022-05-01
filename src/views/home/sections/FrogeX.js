@@ -9,6 +9,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { CopyToClipboardButton } from '../../../hooks/CTCBButton.js';
 import UniLogo from 'assets/logos-other/uniswap-logo.png'
 import EthScanLogoSVG from 'assets/logos-other/etherscan-logo-circle.svg'
+import CMCSVG from 'assets/logos-other/coinmarketcap-logo-white.svg'
 const uniswapLink = 'https://app.uniswap.org/#/swap?outputCurrency=0x5fA54fdDF1870C344DbFaBb37dFab8700Ec0Def1'
 const contractAddress = '0x5fA54fdDF1870C344DbFaBb37dFab8700Ec0Def1'
 export const FrogeX = () => {
@@ -56,22 +57,22 @@ export const FrogeX = () => {
       </CopyToClipboardButton>
       <Link href={uniswapLink} target='_blank'
             sx={{
-              display:'flex',gap:'.3rem',alignItems:'center',border:'1px solid gray',
+              display:'flex',gap:'.3rem',alignItems:'center',border:'1px solid',borderColor:'gray.800',
               backgroundColor:'purple.700',p:'.3rem .8rem',borderRadius:'5rem',_hover:{backgroundColor:'purple.600'}
             }}
       ><Image src={UniLogo} width={6}/>Buy on Uniswap</Link>
-      <Link href={uniswapLink} target='_blank'
+      <Link href='https://coinmarketcap.com/currencies/frogex/' target='_blank'
             sx={{
-              display:'flex',gap:'.3rem',alignItems:'center',border:'1px solid',borderColor:'blue.900',
+              display:'flex',gap:'.3rem',alignItems:'center',border:'1px solid',borderColor:'gray.800',
+              backgroundColor:'#1d318f',p:'.3rem .8rem',borderRadius:'5rem',_hover:{backgroundColor:'#2753ff'}
+            }}
+      ><Image src={CMCSVG} width={6}/>FrogeX on CoinMarketCap</Link>
+      <Link href='https://etherscan.io/token/0x5fA54fdDF1870C344DbFaBb37dFab8700Ec0Def1' target='_blank'
+            sx={{
+              display:'flex',gap:'.3rem',alignItems:'center',border:'1px solid',borderColor:'gray.800',
               backgroundColor:'gray.700',p:'.3rem .8rem',borderRadius:'5rem',_hover:{backgroundColor:'gray.600'}
             }}
       ><Image src={EthScanLogoSVG} width={6}/>FrogeX on Etherscan</Link>
-      <Link href='https://coinmarketcap.com/currencies/frogex/' target='_blank'
-            sx={{
-              display:'flex',gap:'.3rem',alignItems:'center',border:'1px solid',borderColor:'blue.900',
-              backgroundColor:'gray.700',p:'.3rem .8rem',borderRadius:'5rem',_hover:{backgroundColor:'gray.600'}
-            }}
-      ><Image src={EthScanLogoSVG} width={6}/>FrogeX on CoinMarketCap</Link>
     </VFlexCS>
   )
 }
