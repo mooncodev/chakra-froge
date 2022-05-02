@@ -10,9 +10,13 @@ import {
   FaMinus,
   FaSquareRootAlt,
   FaTimes,
+} from 'react-icons/fa';
+import {
   MdOutlineExplicit,
+} from 'react-icons/md';
+import {
   BsBoxArrowInDownLeft
-} from 'react-icons/all.js';
+} from 'react-icons/bs';
 import { sAdd, sDiv, sExp, sMul, sNewtonSqRt, sSub } from '../../../helpers/math/zmath.mjs';
 
 const mockTestInput = `bg={'bog.700'} minH={'60px'} py={{ base: 2 }} px={{ base: 4 }}
