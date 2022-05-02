@@ -15,7 +15,8 @@ import {
 
 const web3 = new Web3(Web3.givenProvider );
 const tryWeb3Enable = (w3)=>{
-  try{w3.givenProvider.enable()}catch(e){console.log('could not enable web3 under givenProvider')}
+  try{w3.givenProvider.enable();return true;}
+  catch(e){console.log('could not enable web3 under givenProvider');return false;}
 }
 tryWeb3Enable(web3)
 function _sleep(ms) {//usage: await _sleep(5000);
@@ -94,6 +95,7 @@ export const FXP = {
   getFxPrice:async()=> {
     //TODO: make independent from chain of connected wallet
     //TODO: for example, wallet connected to mumbai, but web3 able to be on Eth mnet
+    if(!tryWeb3Enable(web3)){return}
     if(web3.utils.hexToNumber(web3.givenProvider.chainId) !== 1 ){
       return null;
     }
@@ -113,7 +115,7 @@ export async function readFXP(method, args=[]){
 }
 
 export async function call(address,path,args=[]){
-  tryWeb3Enable(web3);
+  if(!tryWeb3Enable(web3)){return}
   const fnAbi = abiFrags[path[0]].find(v=>v.name===path[1])
   const failRV = fnAbi.outputs.length<2? '' : fnAbi.outputs.map(v=>'');
   if(!['pure','view'].includes(fnAbi.stateMutability)){
@@ -160,7 +162,7 @@ export async function onHistory(evt,hID,data,e){
 /** stx() - acronym for web3's "sendTransaction()"
  * @returns callback system based on web3 events */
 export async function stx(params) {
-  tryWeb3Enable(web3);
+  if(!tryWeb3Enable(web3)){return}
   const {from='',to='',path='',value='',args=[], on=()=>{}} = params;
   const hID = 'st'+web3.utils.randomHex(4).substring(1) // "stx4a9Af6" //TODO: increase hex size
 
