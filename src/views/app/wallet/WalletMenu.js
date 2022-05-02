@@ -46,6 +46,7 @@ import {
 import { mont } from '../../../theme/foundations/fonts.js';
 import { wcModalIsOpenAtom } from '../../../services/atoms.js';
 import { GiGearHammer } from 'react-icons/gi';
+import { isFirefox } from 'react-device-detect';
 
 export default function WalletMenu() {
   const {
@@ -117,7 +118,7 @@ export default function WalletMenu() {
     }
   }
   const sxBase = {
-    backgroundColor: 'rgba(0,0,0,0)',
+    backgroundColor: isFirefox?'rgba(0,0,0,.9)':'rgba(0,0,0,0)',
     backdropFilter:"brightness(40%) saturate(300%) blur(3px)",
     width:'275px',
   }

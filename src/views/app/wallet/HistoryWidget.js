@@ -16,6 +16,7 @@ import { MdOutlineHistory } from 'react-icons/md';
 import { GrTransaction } from 'react-icons/gr';
 import { CITxStatusGreen, CITxStatusYellow, CITxStatusRed } from 'assets/FrogeBrand.js';
 import { wcModalIsOpenAtom, useUserStore, useW3Store } from 'services';
+import { isFirefox } from 'react-device-detect';
 
 
 export default function HistoryWidget() {
@@ -35,7 +36,7 @@ export default function HistoryWidget() {
   }, [u_account])
 
   const sxBase = {
-    backgroundColor: 'rgba(0,0,0,0)',
+    backgroundColor:  isFirefox?'rgba(0,0,0,.9)':'rgba(0,0,0,0)',
     backdropFilter:"brightness(40%) saturate(300%) blur(3px)",
     width:'275px',
     maxHeight:'20rem',
