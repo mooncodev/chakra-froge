@@ -14,7 +14,10 @@ import {
 } from '../helpers/math/zmath.mjs';
 
 const web3 = new Web3(Web3.givenProvider );
-web3.givenProvider.enable()
+const tryWeb3Enable = (w3)=>{
+  try{w3.givenProvider.enable()}catch(e){console.log('could not enable web3 under givenProvider')}
+}
+tryWeb3Enable(web3)
 function _sleep(ms) {//usage: await _sleep(5000);
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -110,7 +113,7 @@ export async function readFXP(method, args=[]){
 }
 
 export async function call(address,path,args=[]){
-
+  tryWeb3Enable(web3);
   const fnAbi = abiFrags[path[0]].find(v=>v.name===path[1])
   const failRV = fnAbi.outputs.length<2? '' : fnAbi.outputs.map(v=>'');
   if(!['pure','view'].includes(fnAbi.stateMutability)){
@@ -157,6 +160,7 @@ export async function onHistory(evt,hID,data,e){
 /** stx() - acronym for web3's "sendTransaction()"
  * @returns callback system based on web3 events */
 export async function stx(params) {
+  tryWeb3Enable(web3);
   const {from='',to='',path='',value='',args=[], on=()=>{}} = params;
   const hID = 'st'+web3.utils.randomHex(4).substring(1) // "stx4a9Af6" //TODO: increase hex size
 

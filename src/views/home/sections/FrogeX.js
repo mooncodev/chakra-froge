@@ -44,8 +44,8 @@ export const FrogeX = () => {
       </SentenceTabs>
       <SentenceTabs id={'CCC'}
                     w={{ base:'98%',sm:'90%',md:'70%',lg:'40rem', }}
-                    sentence={[`"FrogeX taxes sells at 8% and buys at 5%.  These 
-                      settings can be changed, but only within very limited ranges.
+                    sentence={[`"FrogeX taxes sells at 8%, and buys at 5%.  Regular transfers are tax-free.  
+                      These settings can be changed, but only within very limited ranges.
                       Taxes are purposed 4-ways by managed proportion: 
                       ETH Dividends, Charity, Marketing, and Liquidity Auto-Pump."`]}
                     panelContents={[]}>
@@ -121,6 +121,10 @@ const FXText = {
       <><Text>The owner of FrogeX can, at any time, increment the date when the liquidity would unlock.
         The unlock date can <em>only</em> be incremented.  By continually setting the unlock date forward,
         it is possible for investors to never be faced with the fear that the liquidity will ever unlock.</Text></>
+  },
+  charity: {title:'Charity',body:
+      <><Text>A portion of taxes from each transaction are allocated toward our eco-charity
+        initiatives of planting trees and protecting the rainforests.</Text></>
   },
 
 }

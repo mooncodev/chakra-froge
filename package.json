@@ -65,9 +65,9 @@
         "react-scripts": "^5.0.0",
         "react-scroll-parallax": "^3.0.5",
         "react-scroll-to": "^3.0.0-beta.6",
-        "web3": "^1.7.1",
-        "webpack": "^5.70.0",
-        "zustand": "^3.7.1"
+        "web3": "^1.7.3",
+        "webpack": "^5.72.0",
+        "zustand": "^4.0.0-rc.1"
     },
     "devDependencies": {
         "babel-plugin-emotion": "^11.0.0",
