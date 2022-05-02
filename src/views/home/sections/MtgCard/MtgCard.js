@@ -1,21 +1,11 @@
 import {
-  Box, Center, StylesProvider, useMultiStyleConfig, useStyles, chakra,
-  Button, VStack, Heading, Tabs, TabList, HStack, Tab, TabPanels, TabPanel,
-  Flex, Icon, useDisclosure, Collapse, useTheme, Text, Image
+  Box
 } from '@chakra-ui/react';
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { mont } from 'theme/foundations/fonts.js';
-import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
-import { FiChevronDown } from 'react-icons/fi';
-import { animate } from 'framer-motion';
-import { FrogeLogoOutlineSvg } from 'assets/FrogeBrand.js';
-import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
-import { HFlexSC, S, VFlex, VFlexCS } from '../../../app/bits/UtilityTags.js';
-import Based from 'assets/img/team/Based.png'
-import GREENBG from 'assets/img/mtg-texture-green.jpg'
-import RFBG from 'assets/img/stock-rainforest/square/012.jpg'
-import ecodeficircles from '../../../../assets/logos/ecodefi-circles.svg';
+import React from 'react';
+import { HFlexSC, S, VFlex } from '../../../app/bits/UtilityTags.js';
+// import Based from 'assets/img/team/Based.png'
+// import GREENBG from 'assets/img/mtg-texture-green.jpg'
+// import RFBG from 'assets/img/stock-rainforest/square/012.jpg'
 import FrogeLogoSvg from 'assets/logos/froge-logo.svg';
 import FrogeEyeEyeSvg from 'assets/logos/froge-eyeeye.svg';
 import MTGNatureRich from './mtg-cards/MTG-nature-rich.png';

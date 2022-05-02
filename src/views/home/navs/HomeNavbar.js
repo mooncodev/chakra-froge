@@ -115,14 +115,17 @@ const DesktopNav = ({sx}) => {
 };
 
 
-
-
-const fmV_Sidebar = {
-  open: (height = 1000) => ({ clipPath: `circle(${height * 2 + 200}px at 262px 30px)`,
-    transition: { type: "spring", stiffness: 20, restDelta: 2 } }),
-  closed: { clipPath: "circle(26px at 262px 30px)",
-    transition: { delay: 0.3, type: "spring", stiffness: 400, damping: 40 } }
+const MobNavLink = ({to,label,icon,onClick})=> {
+  return (<Box as={HashLink} smooth to={to}>
+      <motion.li style={$$li} variants={fmV_MenuItem} onClick={onClick}
+                 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+        <Flex sx={$$Text}>{label}</Flex><Icon sx={$$Icon} as={icon}/>
+      </motion.li>
+    </Box>
+  );
 }
+
+
 const fmV_Navigation = {
   open:   { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
   closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
@@ -152,24 +155,33 @@ export const HomeNavMobile = () => {
   const $$navBase = { position: "fixed", top: "0", right: "0", bottom: "0", width: "300px", zIndex:'900',
     pointerEvents:isOpen?'all':'none', }
   const $$navBg = { position: "fixed", top: "0", right: "0", bottom: "0", width: "300px", background: useToken('colors','bog.800') }
-
-  const MobNavLink = ({to,label,icon,onClick})=> {
-    return (<Box as={HashLink} smooth to={to}>
-      <motion.li style={$$li} variants={fmV_MenuItem} onClick={onClick}
-                 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-        <Flex sx={$$Text}>{label}</Flex><Icon sx={$$Icon} as={icon}/>
-      </motion.li>
-    </Box>
-    );
+  const $$navBgSupportOldIOS = {
+    position: "fixed", top: "0", right: "0", bottom: "0",
+    width: "300px", background: useToken('colors','bog.800') ,
+    'webkit-clip-path': isOpen?`circle(${height * 2 + 200}px at 262px 30px)`:"circle(26px at 262px 30px)",
   }
 
+
+  const fmV_Sidebar = {
+    open: (height = 1000) => ({
+      clipPath: `circle(${height * 2 + 200}px at 262px 30px)`,
+      WebkitClipPath: `circle(${height * 2 + 200}px at 262px 30px)`,
+      transition: { type: "spring", stiffness: 20, restDelta: 2 } }),
+    closed: {
+      clipPath: "circle(26px at 262px 30px)",
+      WebkitClipPath: "circle(26px at 262px 30px)",
+      transition: { delay: 0.3, type: "spring", stiffness: 400, damping: 40 } }
+  }
+  const FMBoxNavBaseBg = motion(Box)
   return (
     <motion.nav
-      style={$$navBase} initial={false}
+      style={$$navBase}
+      initial="closed"
       animate={isOpen ? "open" : "closed"}
       custom={height} ref={containerRef}
     >
-      <motion.div style={$$navBg} variants={fmV_Sidebar} />
+      <FMBoxNavBaseBg sx={$$navBg} variants={fmV_Sidebar}      initial="closed"
+                  animate={isOpen ? "open" : "closed"}/>
       <motion.ul style={$$ul} variants={fmV_Navigation}>
         <MobNavLink to='/#frogex' onClick={()=>{toggleOpen()}} label='FrogeX' icon={FrogeLogoOutlineSvg}/>
         <MobNavLink to='/#froadmap' onClick={()=>{toggleOpen()}} label='Froad Map' icon={GiTreasureMap}/>

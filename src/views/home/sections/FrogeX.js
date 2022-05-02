@@ -36,7 +36,7 @@ export const FrogeX = () => {
       </SentenceTabs>
       <SentenceTabs id={'BBB'}
                     w={{ base:'98%',sm:'90%',md:'70%',lg:'40rem', }}
-                    sentence={[`"FrogeX's liquidity `,`##auto-pumps`,` itself, `,`##auto-locks`,
+                    sentence={[`"FrogeX's liquidity `,`##auto-posts`,` itself, `,`##auto-locks`,
                       ` on the contract itself, and achieves `,`##perpetual-lock`,
                       ` through any-time incrementing of its unlock date."`]}
                     panelContents={[FXText.autopump, FXText.autolock,
@@ -46,9 +46,9 @@ export const FrogeX = () => {
                     w={{ base:'98%',sm:'90%',md:'70%',lg:'40rem', }}
                     sentence={[`"FrogeX taxes sells at 8%, and buys at 5%.  Regular transfers are tax-free.  
                       These settings can be changed, but only within very limited ranges.
-                      Taxes are purposed 4-ways by managed proportion: 
-                      ETH Dividends, Charity, Marketing, and Liquidity Auto-Pump."`]}
-                    panelContents={[]}>
+                      Taxes are purposed 4-ways by managed proportion: `,
+                      `##ETH Dividends, `,`##Charity, `,`##Marketing, `,` and Liquidity Auto-Posting."`]}
+                    panelContents={[FXText.ethDividends,FXText.charity,FXText.marketing]}>
       </SentenceTabs>
       <CopyToClipboardButton text={contractAddress} sx={{
         backgroundColor:'bog.800',border:'1px solid gray',
@@ -122,9 +122,21 @@ const FXText = {
         The unlock date can <em>only</em> be incremented.  By continually setting the unlock date forward,
         it is possible for investors to never be faced with the fear that the liquidity will ever unlock.</Text></>
   },
+  ethDividends: {title:'ETH Dividends',body:
+      <><Text>Holding froge will net you <em>passive income</em> in the form of
+        FrogeX's parent coin, Ethereum. Netting
+        Ethereum (instead of FrogeX) results in an over-all avoidance of "selling pressure"
+        which would otherwise be present.  It also means that the dividends you are earning
+        are not subject to FrogeX's market (AKA FrogeX's chart activity).</Text></>
+  },
   charity: {title:'Charity',body:
       <><Text>A portion of taxes from each transaction are allocated toward our eco-charity
         initiatives of planting trees and protecting the rainforests.</Text></>
+  },
+  marketing: {title:'Marketing',body:
+      <><Text>Some of the taxes are portioned toward marketing efforts by the team!
+        This allows us to engage in operations which draw in new audiences and attention
+        to our project, and FrogeX itself.  Another positive for all invested!</Text></>
   },
 
 }
