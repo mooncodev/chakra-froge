@@ -1,7 +1,7 @@
 import {
-  Box, Button, Flex, Grid,
+  Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Flex, Grid,
   Icon, Image, Progress, SimpleGrid, Spacer, Text,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 // assets
 import peopleImage from "assets/img/people-image.png";
 import frog009 from "assets/img/stock-frogs/darkbg/square/009.jpg";
@@ -19,12 +19,16 @@ import addr from 'data/addresses.js';
 import { olaToObject } from '../../../helpers/deep.js';
 import PortionBar from '../../../components/Charts/PortionBar.js';
 import { BtnReadMore } from '../bits/UtilityTags.js';
+import OnramperWidget from "@onramper/widget";
 
-export default function PondFrogeXVitals() {
+export default function PondFiatOnboarding() {
   const textColor = "white"
   const w3r = useWeb3React()
   // const [_getConfig, set_getConfig] = useState(cfgInit)
-
+  const wallets = {
+    BTC: { address: "btcAddr" },
+    BNB: { address: "bnbAddress", memo: "cryptoTag" },
+  };
 
   useEffect(async ()=>{
 
@@ -35,35 +39,58 @@ export default function PondFrogeXVitals() {
   },[])
 
   return (
-    <Pond minHeight="290.5px" p="1.2rem">
-      <PondHeader>FrogeX Vitals</PondHeader>
-      <PondBody w="100%">
-        <Flex flexDirection={{ sm: "column", lg: "row" }} w="100%">
-          <Flex
-            flexDirection="column"
-            h="100%"
-            lineHeight="1.6"
-            width={{ lg: "55%" }}
-          >
-            <Spacer />
-            <Flex align="center">
-              <BtnReadMore onClick={()=>console.log('reading!')}/>
-            </Flex>
-          </Flex>
-          <Spacer />
-          <Flex
-            bg="green.300" align="center" justify="center"
-            borderRadius="15px" width={{ lg: "30%" }}
-            minHeight={{ sm: "250px" }}
-          >
-            <Image
-              src={frog009}
-              alt="chakra image"
-              minWidth={{ md: "100px", lg: "100px" }}
-            />
-          </Flex>
-        </Flex>
-      </PondBody>
+    <Pond title='Fiat Onboarding' style={{ padding: '0' }}>
+      {/* <Progress value={60} max={100} /> */}
+      {/* <Breadcrumb> */}
+      {/*   <BreadcrumbItem> */}
+      {/*     <BreadcrumbLink>step1</BreadcrumbLink> */}
+      {/*   </BreadcrumbItem> */}
+      {/*   <BreadcrumbItem> */}
+      {/*     <BreadcrumbLink>step2</BreadcrumbLink> */}
+      {/*   </BreadcrumbItem> */}
+      {/*   <BreadcrumbItem> */}
+      {/*     <BreadcrumbLink>step3</BreadcrumbLink> */}
+      {/*   </BreadcrumbItem> */}
+      {/*   <BreadcrumbItem> */}
+      {/*     <BreadcrumbLink>step4</BreadcrumbLink> */}
+      {/*   </BreadcrumbItem> */}
+      {/* </Breadcrumb> */}
+      {/* <Image src="https://via.placeholder.com/300x420" /> */}
+
+      <Box
+        sx={{
+          height: "525px",
+          boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.1)",
+          borderRadius: "10px",
+          margin: "auto",
+          color:'brand.outline',
+        }}
+      >
+        <OnramperWidget
+          API_KEY="pk_test_ass3gtLSWQpI11IWUZLJdrfyQhj7bTw_3xwLvhEvH6Q0"
+          darkMode={true}
+          color='black'
+          // fontFamily={fontFamily}
+          // defaultAddrs={wallets}
+          // defaultAmount={defaultAmount}
+          // defaultCrypto={defaultCrypto}
+          // defaultFiat={defaultFiat}
+          // defaultFiatSoft={defaultFiatSoft}
+          // defaultPaymentMethod={defaultPaymentMethod}
+          filters={{
+            onlyCryptos: ["ETH"],
+            // excludeCryptos: excludeCryptos,
+            // onlyPaymentMethods: onlyPaymentMethods,
+            // excludePaymentMethods: excludePaymentMethods,
+            // excludeFiat: excludeFiat,
+            // onlyGateways: onlyGateways,
+            // onlyFiat: onlyFiat,
+          }}
+          // isAddressEditable={isAddressEditable}
+          // amountInCrypto={amountInCrypto}
+          // redirectURL={redirectURL}
+        />
+      </Box>
     </Pond>
   );
 }

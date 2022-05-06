@@ -4,12 +4,12 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { ColorModeScript,ChakraProvider } from '@chakra-ui/react'
 import theme from './theme/theme.js';
 
-import XPgBilling from './views/app/XPgBilling.js';
+// import XPgBilling from './views/app/XPgBilling.js';
+// import XPgProfile from './views/app/XPgProfile.js';
+// import XPgTables from './views/app/XPgTables.js';
 import PgDash from './views/app/PgDash.js';
-import XPgProfile from './views/app/XPgProfile.js';
-import XPgTables from './views/app/XPgTables.js';
-import PgEcoAction from './views/app/PgEcoAction.js';
 import PgFrogeX from './views/app/PgFrogeX.js';
+import PgEcoAction from './views/app/PgEcoAction.js';
 import PgSponsorships from './views/app/PgSponsorships.js';
 import PgGameNight from './views/app/PgGameNight.js';
 import PgNFT from './views/app/PgNFT.js';
@@ -68,11 +68,11 @@ ReactDOM.render(
             <Route path={'sponsorships'} element={<PgUnderConstruction/>}/>
             <Route path={'game-night'} element={<PgUnderConstruction/>}/>
             <Route path={'nft'} element={<PgUnderConstruction/>}/>
-            <Route path={'xchange'} element={<PgUnderConstruction/>}/>
+            <Route path={'xchange'} element={<PgXchange/>}/>
             <Route path={'calc'} element={<PgCalculators/>}/>
-            <Route path={'billing'} element={<XPgBilling/>}/>
-            <Route path={'profile'} element={<XPgProfile/>}/>
-            <Route path={'tables'} element={<XPgTables/>}/>
+            {/* <Route path={'billing'} element={<XPgBilling/>}/> */}
+            {/* <Route path={'profile'} element={<XPgProfile/>}/> */}
+            {/* <Route path={'tables'} element={<XPgTables/>}/> */}
             <Route path={'*'} element={<PgDash/>}/>
           </Route>
           <Route path="*" element={<HomeLayout/>}/>

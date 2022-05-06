@@ -29,7 +29,7 @@ export default function AppNav(props) {
 
 
   return (
-    <Box position="fixed" w='100vw' top="0" left="0" right="0">
+    <Box position="fixed" w='100vw' top="0" left="0" right="0" zIndex={600}>
       <NavLink to='/'><CISVG_FrogeNavBack sx={{fontSize: "39", position:'absolute',top:'.6rem',left:{ base: '.6rem', md: '12.2rem' } }} /></NavLink>
       <Center id="__AppNavbar" position="absolute" top="10px" right="24px" display="flex">
         <Box ms="auto" w={{ base: '100%', md: 'unset' }}>

@@ -123,7 +123,7 @@ export default function WalletMenu() {
     width:'275px',
   }
   return (
-    <Menu  id='ConnectWalletMenu'>
+    <Menu id='ConnectWalletMenu'>
       <MenuButton onClick={()=>set_wcModalIsOpen(true)} id='WCButton'>
         <ConnectWalletNavButton/>
       </MenuButton>
