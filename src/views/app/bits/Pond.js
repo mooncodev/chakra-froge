@@ -46,7 +46,7 @@ export function Pond(props) {
   const stPondBod = {height:'100%',flexDirection: 'column',}
 
   return (
-    <VFlexSC sx={sxPond} {...rest}>
+    <VFlexSC name='pond' sx={sxPond} {...rest}>
       <Button as={Center} sx={sxMinBar} onClick={()=>toggleOpen()} >
         <chakra.hr sx={sxMinHR}/>
       </Button>
