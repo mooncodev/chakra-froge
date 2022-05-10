@@ -125,7 +125,7 @@ function PgHomeTeam() {
         <NewsMarquee/>
       </VFlexCS>
       <VFlexCS h='4rem'>
-        <Heading>Team Froge</Heading>
+        <Heading>Team Froge</Heading><br/>
         <Divider/><br/>
       </VFlexCS>
       <VFlexCS mt={4} mx={{base:'.5rem',md:'4rem',lg:'8rem',}}>
