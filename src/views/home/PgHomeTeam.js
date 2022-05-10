@@ -64,7 +64,7 @@ const copy = {
       imgs:[Gonzo,bg003],
       name:'Oliver Rush',
       tgHandle:'@DrGonzo1184',
-      title:'Public Relations, Marketing & Branding, Community Liaison',
+      title:'PR Consultant',
       bio:`Studied at Culver Academies, University of Glasgow, and Hofstra University.  
         Spent over a decade and a half working in media, advertising, and film production, 
         on both the technical and creative sides of projects ranging from major motion 
@@ -142,6 +142,7 @@ function PgHomeTeam() {
         <MtgCard cardObj={copy.team.panda}/>
         <MtgCard cardObj={copy.team.wesley}/>
         <MtgCard cardObj={copy.team.kasper}/>
+        <MtgCard cardObj={copy.team.drgonzo}/>
 
       </Grid>
     </VFlex>
