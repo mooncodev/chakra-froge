@@ -126,7 +126,6 @@ function PgHomeTeam() {
       </VFlexCS>
       <VFlexCS h='4rem'>
         <Heading>Team Froge</Heading>
-        <Text><em>Far Beyond Driven.</em></Text>
         <Divider/><br/>
       </VFlexCS>
       <VFlexCS mt={4} mx={{base:'.5rem',md:'4rem',lg:'8rem',}}>
