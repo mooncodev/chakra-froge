@@ -18,7 +18,7 @@ const tryWeb3Enable = (w3)=>{
   try{w3.givenProvider.enable();return true;}
   catch(e){console.log('could not enable web3 under givenProvider');return false;}
 }
-tryWeb3Enable(web3)
+//tryWeb3Enable(web3)
 function _sleep(ms) {//usage: await _sleep(5000);
   return new Promise(resolve => setTimeout(resolve, ms));
 }
