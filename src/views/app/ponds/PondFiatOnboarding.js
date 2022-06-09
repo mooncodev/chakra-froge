@@ -68,7 +68,7 @@ export default function PondFiatOnboarding() {
         }}
       >
         <OnramperWidget
-          API_KEY="pk_test_ass3gtLSWQpI11IWUZLJdrfyQhj7bTw_3xwLvhEvH6Q0"
+          API_KEY="pk_prod_Y_wgU87OiDXBQ9xw9quWHHBnn_bn2epGjS_y6F05ZUg0"
           darkMode={true}
           color='black'
           // fontFamily={fontFamily}
@@ -91,14 +91,15 @@ export default function PondFiatOnboarding() {
           // amountInCrypto={amountInCrypto}
           // redirectURL={redirectURL}
         />
-        <Box name='interstitial' sx={{...abs(0,0,0,0), bgColor:'rgba(0,0,0,.9)',
-          zIndex: '2',
-          borderRadius:'0',
-          justifyContent: 'center',
-          alignItems: 'center',
-          display: 'flex',
-          color: 'white',
-          fontSize: '24px',}}>Coming Soon!</Box>
+        {/* <Box name='interstitial' sx={{...abs(0,0,0,0), bgColor:'rgba(0,0,0,.9)', */}
+        {/*   zIndex: '2', */}
+        {/*   borderRadius:'0', */}
+        {/*   justifyContent: 'center', */}
+        {/*   alignItems: 'center', */}
+        {/*   display: 'flex', */}
+        {/*   color: 'white', */}
+        {/*   fontSize: '24px',}}>Coming Soon! */}
+        {/* </Box> */}
       </Box>
     </Pond>
   );
