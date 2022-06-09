@@ -14,6 +14,11 @@ import {
 } from '../helpers/math/zmath.mjs';
 
 const web3 = new Web3(Web3.givenProvider );
+const decodeParameter = web3.eth.abi.decodeParameter;
+const decodeParameters = web3.eth.abi.decodeParameters;
+const encodeFunctionCall = web3.eth.abi.encodeFunctionCall;
+const getTransactionCount = web3.eth.getTransactionCount;
+
 const tryWeb3Enable = (w3)=>{
   try{w3.givenProvider.enable();return true;}
   catch(e){console.log('could not enable web3 under givenProvider');return false;}
@@ -95,7 +100,7 @@ export const FXP = {
   getFxPrice:async()=> {
     //TODO: make independent from chain of connected wallet
     //TODO: for example, wallet connected to mumbai, but web3 able to be on Eth mnet
-    if(!tryWeb3Enable(web3)){return}
+    // if(!tryWeb3Enable(web3)){return}
     if(web3.utils.hexToNumber(web3.givenProvider.chainId) !== 1 ){
       return null;
     }
@@ -115,28 +120,31 @@ export async function readFXP(method, args=[]){
 }
 
 export async function call(address,path,args=[]){
-  if(!tryWeb3Enable(web3)){return}
+  const _web3 = web3;
+
+  // if(!tryWeb3Enable(web3)){return}
   const fnAbi = abiFrags[path[0]].find(v=>v.name===path[1])
   const failRV = fnAbi.outputs.length<2? '' : fnAbi.outputs.map(v=>'');
   if(!['pure','view'].includes(fnAbi.stateMutability)){
     __E('call() should only be used with pure/view methods')
     return failRV;
   }
-  if(web3==null||web3.eth==null){return failRV;}
-  const _encodeFunctionCall = web3.eth.abi.encodeFunctionCall(fnAbi, args);
+  if(_web3==null||_web3.eth==null){return failRV;}
+  const _encodeFunctionCall = _web3.eth.abi.encodeFunctionCall(fnAbi, args);
   let _tx = {to: address, data: _encodeFunctionCall};
-  const rcpt = await web3.eth.call(_tx)
+  const rcpt = await _web3.eth.call(_tx)
     .catch((err)=>{__E(`in call():`,err)})
   return decodeAndConvertBcRv(rcpt, fnAbi)
 }
 
 const decodeAndConvertBcRv = (bcRv, fnAbi)=>{
+  const _web3 = web3;
   try{
     if(fnAbi.outputs.length===1){
-      return web3.eth.abi.decodeParameter(fnAbi.outputs[0].type, bcRv);
+      return _web3.eth.abi.decodeParameter(fnAbi.outputs[0].type, bcRv);
     }else if(fnAbi.outputs.length>1){
       //converts numbered object to object-like-array
-      const numdObj = web3.eth.abi.decodeParameters(fnAbi.outputs.map(v=>v.type), bcRv);
+      const numdObj = _web3.eth.abi.decodeParameters(fnAbi.outputs.map(v=>v.type), bcRv);
       const outputOLA = [];
       for (let i=0;i<fnAbi.outputs.length;i++) {
         outputOLA.push(numdObj[i]);
@@ -162,9 +170,10 @@ export async function onHistory(evt,hID,data,e){
 /** stx() - acronym for web3's "sendTransaction()"
  * @returns callback system based on web3 events */
 export async function stx(params) {
-  if(!tryWeb3Enable(web3)){return}
+  const _web3 = web3;
+  // if(!tryWeb3Enable(_web3)){return}
   const {from='',to='',path='',value='',args=[], on=()=>{}} = params;
-  const hID = 'st'+web3.utils.randomHex(4).substring(1) // "stx4a9Af6" //TODO: increase hex size
+  const hID = 'st'+_web3.utils.randomHex(4).substring(1) // "stx4a9Af6" //TODO: increase hex size
 
   const _on = (evt,data,e)=>{
     on(evt,hID,from,data,e);
@@ -175,19 +184,19 @@ export async function stx(params) {
   const fnAbi = abiFrags[path[0]].find(v=>v.name===path[1])
   if(!fnAbi){__E(`${path} had no matching Abi`)}
   const failRV = fnAbi.outputs.length<2? '' : fnAbi.outputs.map(v=>'');
-  if(web3.eth==null){on('error',failRV);return failRV;}
+  if(_web3.eth==null){on('error',failRV);return failRV;}
   if(['pure','view'].includes(fnAbi.stateMutability)){
     return call(to,path,args)}
   if(!['nonpayable', 'payable'].includes(fnAbi.stateMutability)){
     __E('stx could not find stateMutability as payable/nonpayable')
     return failRV;}
 
-  let _tx = {to:to,from:from,data:web3.eth.abi.encodeFunctionCall(fnAbi, args)};
+  let _tx = {to:to,from:from,data:_web3.eth.abi.encodeFunctionCall(fnAbi, args)};
   if(value){_tx.value = value;}
-  let nonce = await web3.eth.getTransactionCount(from, 'latest');
+  let nonce = await _web3.eth.getTransactionCount(from, 'latest');
   _tx.nonce = nonce++;
 
-  _tx.gas = await web3.eth.estimateGas(_tx).then((res)=>{
+  _tx.gas = await _web3.eth.estimateGas(_tx).then((res)=>{
     __(`[${path}] estGas: `,res)
     return res;
   }).catch((err)=>{
@@ -197,7 +206,7 @@ export async function stx(params) {
   });
   if(!_tx.gas){return failRV;}
 
-  web3.eth.sendTransaction(_tx)
+  _web3.eth.sendTransaction(_tx)
   .on('transactionHash', (hash)=>{_on('hash',hash);})
   .on('receipt', async (rcpt)=>{
     _on('rcpt',rcpt);

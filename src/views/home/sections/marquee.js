@@ -20,7 +20,7 @@ export const NewsMarquee = () => {
         gradientColor={[21,27,41]}
         gradientWidth={100}
       >
-        <Image src={require('assets/memes/bobo-pepe-report-news.png')} width={'70px'} marginRight={3}/>
+        <Image src={require('assets/memes/froge-news.jpg')} width={'70px'} marginRight={3}/>
         <S fontSize={textSize}>
           <Box>Site currently under <strong>heavy</strong> construction!</Box>
           <Box> Please bear with us.</Box>

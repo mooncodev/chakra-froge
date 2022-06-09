@@ -149,8 +149,7 @@ function PgHomeLanding() {
       <VFlexCS minHeight='540px' sx={sxHeroBg} position='relative' userSelect='none'>
         <EcoDefiCircles onToggle={(val)=>setEcoDefi(val)}/>
         <VFlex position='relative' mt={4}>
-          <Heading as="h1" size="xl" textAlign="center" pl='12px'>Our Hope,</Heading>
-          <Heading as="h1" size="xl" textAlign="center" pl='12px'>Their Hop.</Heading>
+          <Heading as="h1" size="xl" textAlign="center" pl='12px'>Our Hope,<br/>Their Hop.</Heading>
           <HFlexCC gap={3} fontSize="lg">
             <Text textAlign="right">Welcome to&nbsp;Froge:</Text>
             <Text fontSize='2rem' textAlign="center" color="brand.green" fontWeight='900'>
