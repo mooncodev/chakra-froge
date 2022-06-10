@@ -124,7 +124,7 @@ export const froadmapData_dev_siteAndDApp = [
     getInvolved:`If you know any good services or have a point of contact 
       at any fiat onboarders please contact the team.`,
     sizeRating:3,
-    progress:33,
+    progress:100,
     tasks:['design', 'implement', 'test', 'release',],
   },
   {
