@@ -12,13 +12,10 @@ import AppNavControls from "./AppNavControls.js";
 import { sxGlassBg } from '../bits/UtilityTags.js';
 import { NavLink } from 'react-router-dom';
 import { CISVG_FrogeNavBack } from '../../../assets/FrogeBrand.js';
-// import { useAtom } from 'jotai';
-// import { appNavDrawerOpenAtom } from '../../services/atoms.js';
 
 
 export default function AppNav(props) {
   const [scrolled, setScrolled] = useState(false);
-  // const [get_appNavDrawerOpen, set_appNavDrawerOpen] = useAtom(appNavDrawerOpenAtom)
   // const [get_fixedRightDist, set_fixedRightDist] = useState('10px')
 
   // Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)

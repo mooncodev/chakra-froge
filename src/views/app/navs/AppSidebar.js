@@ -17,21 +17,15 @@ import PropTypes from "prop-types";
 import React, { useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
 import { RocketIcon } from '../../../components/Icons/Icons.js';
-import { useAtom } from 'jotai';
 import { CISVG_FrogeNavBack, FrogeLogoSvg } from 'assets/FrogeBrand.js';
 import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
 import { desktopSidebarWidth, PHASE } from 'data/constants.js';
 import { sxGlassBg,sxGlassBg2 } from '../bits/UtilityTags.js';
 import { SBNavLink } from '../bits/SBNavLink.js';
 import FrogeEyeEye from '../../../assets/logos/froge-eyeeye-outline-halfwhites.svg';
-import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
+import { useAppStore } from '../../../services/useAppStore.js';
 export function AppSidebar(props) {
-  // to check for active links and opened collapses
-  let location = useLocation();
-  // this is for the rest of the collapses
-  // verifies if routeName is the one active (in browser input)
-  const [get_appNavDrawerOpen, set_appNavDrawerOpen] = useAtom(appNavDrawerOpenAtom)
-
+  // let location = useLocation();
   //  Chakra Color Mode
   const mainText = "gray.200"
 
@@ -44,9 +38,13 @@ export function AppSidebar(props) {
 
   // SIDEBAR
   const [isMobile, isDesktop] = useDeviceMode()
+  const appNavDrawerOpen = useAppStore(state => state.appNavDrawerOpen)
 
-  useEffect(()=>{console.log('deviceMode changed');
-    set_appNavDrawerOpen(false);},[isDesktop])
+  useEffect(()=>{
+    //close drawer on ALL deviceMode changes
+    console.log('deviceMode changed');
+    useAppStore.getState().set_appNavDrawerOpen(false)
+  },[isDesktop])
 
   const btnRef = React.useRef();
   // Color variables
@@ -93,8 +91,8 @@ export function AppSidebar(props) {
 
         </Flex>
       ) : (
-        <Drawer isOpen={isDesktop?false:get_appNavDrawerOpen}
-                onClose={() => set_appNavDrawerOpen(false)}
+        <Drawer isOpen={isDesktop?false:appNavDrawerOpen}
+                onClose={() => useAppStore.getState().set_appNavDrawerOpen(false)}
                 finalFocusRef={btnRef} placement="right">
           <DrawerOverlay backdropFilter="saturate(200%) blur(3px)"/>
           <DrawerContent style={{background:'transparent',borderRadius:'9px',

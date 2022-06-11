@@ -31,7 +31,7 @@ export default function HomeFooter() {
 
           <Stack spacing={{ base: '6', md: '8' }} align="center" flex={1}>
             <FrogeTitleLogoSvg style={{ width: '150px', }}/>
-            <Text>We're friendly!  <Link color='bog.400' href=''>Come say hi!
+            <Text>We're friendly!  <Link color='bog.400' href={links.FrogeTgCommunity.url}>Come say hi!
               </Link></Text>
           </Stack>
           <VStack spacing={{ base: '6', md: '8' }} align="center" flex={1}>

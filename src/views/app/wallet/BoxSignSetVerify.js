@@ -10,8 +10,8 @@ import { useWeb3React } from "@web3-react/core";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import { Tooltip } from "@chakra-ui/react";
 import { toHex, truncateAddress } from "helpers/math/utils.js";
-import { useAtom } from 'jotai';
-import { wcModalIsOpenAtom } from '../../../services/atoms.js';
+// import { wcModalIsOpenAtom } from '../../../services/atoms.js';
+import { useAppStore } from '../../../services/useAppStore.js';
 
 export default function BoxSignSetVerify() {
   const {
@@ -27,8 +27,8 @@ export default function BoxSignSetVerify() {
   const [message, setMessage] = useState("");
   const [signedMessage, setSignedMessage] = useState("");
   const [verified, setVerified] = useState();
-  const [wcModalIsOpen, set_wcModalIsOpen] = useAtom(wcModalIsOpenAtom);
-
+  // const [wcModalIsOpen, set_wcModalIsOpen] = useAtom(wcModalIsOpenAtom);
+  const wcModalIsOpen = useAppStore(s=>s.wcModalIsOpen)
   const handleInput = (e) => {
     const msg = e.target.value;
     setMessage(msg);

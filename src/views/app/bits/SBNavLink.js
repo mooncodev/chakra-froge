@@ -2,8 +2,7 @@ import { Button, useStyleConfig } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 import { sxGlassBg2 } from './UtilityTags.js';
 import React from 'react';
-import { useAtom } from 'jotai';
-import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
+import { useAppStore } from '../../../services/useAppStore.js';
 
 const SBNavLinkStyleConfig = {
   baseStyle: {
@@ -38,9 +37,8 @@ const SBNavLinkStyleConfig = {
 export function SBNavLink(props) {
   const { to, variant, children, ...rest } = props
   const styles = useStyleConfig('SBNavLink', { variant })
-  const [, set_appNavDrawerOpen] = useAtom(appNavDrawerOpenAtom)
   return <Button as={NavLink} to={to} __css={styles} _hover={{ opacity: ".8" }}
-                 onClick={()=>set_appNavDrawerOpen(false)}
+                 onClick={()=>useAppStore.getState().set_appNavDrawerOpen(false)}
                  >{children}</Button>
 }
 export const SBNavLinkComponent = {

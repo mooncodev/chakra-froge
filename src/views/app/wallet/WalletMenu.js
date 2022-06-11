@@ -27,7 +27,6 @@ import { networkParams } from "./networks.js";
 import { connectors } from "./connectors.js";
 import { toHex, truncateAddress } from "helpers/math/utils.js";
 import { useUserStore, useW3Store } from 'services';
-import { useAtom } from 'jotai';
 import LogoCoinbaseWallet from './assets/LogoCoinbaseWallet.png';
 import LogoWalletConnect from './assets/LogoWalletConnect.png';
 import LogoMetaMask from './assets/LogoMetaMask.png';
@@ -44,9 +43,10 @@ import {
   S
 } from '../bits/UtilityTags.js';
 import { mont } from '../../../theme/foundations/fonts.js';
-import { wcModalIsOpenAtom } from '../../../services/atoms.js';
+// import { wcModalIsOpenAtom } from '../../../services/atoms.js';
 import { GiGearHammer } from 'react-icons/gi';
 import { isFirefox } from 'react-device-detect';
+import { useAppStore } from '../../../services/useAppStore.js';
 
 export default function WalletMenu() {
   const {
@@ -59,7 +59,6 @@ export default function WalletMenu() {
   } = useW3Store(s=>s);
   const [error, setError] = useState("");
   const [userDesiredChainId, set_userDesiredChainId] = useState(undefined);
-  const [wcModalIsOpen, set_wcModalIsOpen] = useAtom(wcModalIsOpenAtom);
   const enableLS = useUserStore(s=>s.global.enableLS)
 
   const handle_userDesiredChainId = (e) => {
@@ -114,7 +113,7 @@ export default function WalletMenu() {
     if(brand==='MM'){
       u_activate(connectors.injected);
       setProvider("injected");
-      set_wcModalIsOpen(false)
+      useAppStore.getState().set_wcModalIsOpen(false)
     }
   }
   const sxBase = {
@@ -124,7 +123,7 @@ export default function WalletMenu() {
   }
   return (
     <Menu id='ConnectWalletMenu'>
-      <MenuButton onClick={()=>set_wcModalIsOpen(true)} id='WCButton'>
+      <MenuButton onClick={()=>useAppStore.getState().set_wcModalIsOpen(true)} id='WCButton'>
         <ConnectWalletNavButton/>
       </MenuButton>
       <MenuList p="16px 8px" sx={sxBase}>

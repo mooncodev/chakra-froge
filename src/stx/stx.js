@@ -6,7 +6,6 @@ import addr from '../data/addresses.js';
 
 import { ethers } from 'ethers';
 import { olaToObject } from '../helpers/deep.js';
-import { atom } from 'jotai';
 
 import { useCrawlStore, useUserStore, useW3Store } from 'services';
 import {

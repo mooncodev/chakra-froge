@@ -1,6 +1,6 @@
 import {
   Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Flex, Grid,
-  Icon, Image, Progress, SimpleGrid, Spacer, Text,
+  Icon, Image, Progress, SimpleGrid, Spacer, Text,Tabs, TabList, TabPanels, Tab, TabPanel,
 } from '@chakra-ui/react';
 // assets
 import peopleImage from "assets/img/people-image.png";
@@ -10,7 +10,7 @@ import {Pond,PondBody,PondHeader} from '../bits/Pond.js';
 import {
   CartIcon, DocumentIcon, GlobeIcon, RocketIcon, StatsIcon, WalletIcon,
 } from "components/Icons/Icons.js";
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 // react icons
 import { BsArrowRight } from "react-icons/bs";
 import { useWeb3React } from '@web3-react/core';
@@ -21,52 +21,71 @@ import PortionBar from '../../../components/Charts/PortionBar.js';
 import { BtnReadMore } from '../bits/UtilityTags.js';
 import OnramperWidget from "@onramper/widget";
 import { abs } from '../../home/sections/MtgCard/MtgCard.js';
+import { SwapWidget } from '@uniswap/widgets'
+import '@uniswap/widgets/fonts.css'
+import { getApiUrl } from '../wallet/connectors.js';
+import { providers, ethers } from 'ethers';
+import detectEthereumProvider from '@metamask/detect-provider';
+import { useUserStore } from '../../../services/index.js';
+import { tplUserItem } from '../../../services/useUserStore.js';
+
+const jsonRpcEndpoint = getApiUrl('infura', 'mainnet')
+const jsonRpcProvider = new providers.JsonRpcProvider(jsonRpcEndpoint);
+const provider = new ethers.providers.Web3Provider(jsonRpcProvider);
+
 
 export default function PondFiatOnboarding() {
-  const textColor = "white"
-  const w3r = useWeb3React()
-  // const [_getConfig, set_getConfig] = useState(cfgInit)
-  const wallets = {
-    BTC: { address: "btcAddr" },
-    BNB: { address: "bnbAddress", memo: "cryptoTag" },
-  };
+  // const textColor = "white"
+  const {chainId:u_chainId,account:u_account,active:u_active,library:u_library,} = useWeb3React()
+
+  const [account, setAccount] = useState({
+    address: '',
+    provider: provider,
+  })
+  const user = useUserStore(s=>s.users[u_account])
+
+
+  let [fxAcct,setFxAcct] = useState(false)
 
   useEffect(async ()=>{
+      setAccount({
+        address: u_account,
+        provider: u_library?u_library.provider:provider,
+      })
+  },[user])
 
-    // set_getConfig(olaToObject(await stx({
-    //   from:w3r.account,to: addr.mainnet.FROGEX.ERC20,
-    //   abiLookup: ['FrogeX','getConfig'],})))
+//   async function connectWallet() {
+// //check if Metamask is installed in the browser
+//     const ethereumProvider = await detectEthereumProvider();
+//     if (ethereumProvider) {
+//       //prompt user to connect their wallet
+//       const accounts = await window.ethereum.request({
+//         method: 'eth_requestAccounts',
+//       })
+//       const address = accounts[0];
+//       setAccount({
+//         address: address,
+//         provider: ethereumProvider
+//       })
+//     }
+//   }
 
-  },[])
+  // const wallets = {
+  //   BTC: { address: "btcAddr" },
+  //   BNB: { address: "bnbAddress", memo: "cryptoTag" },
+  // };
+
 
   return (
     <Pond title='Fiat Onboarding' style={{ padding: '0' }}>
-      {/* <Progress value={60} max={100} /> */}
-      {/* <Breadcrumb> */}
-      {/*   <BreadcrumbItem> */}
-      {/*     <BreadcrumbLink>step1</BreadcrumbLink> */}
-      {/*   </BreadcrumbItem> */}
-      {/*   <BreadcrumbItem> */}
-      {/*     <BreadcrumbLink>step2</BreadcrumbLink> */}
-      {/*   </BreadcrumbItem> */}
-      {/*   <BreadcrumbItem> */}
-      {/*     <BreadcrumbLink>step3</BreadcrumbLink> */}
-      {/*   </BreadcrumbItem> */}
-      {/*   <BreadcrumbItem> */}
-      {/*     <BreadcrumbLink>step4</BreadcrumbLink> */}
-      {/*   </BreadcrumbItem> */}
-      {/* </Breadcrumb> */}
-      {/* <Image src="https://via.placeholder.com/300x420" /> */}
 
-      <Box
-        sx={{
-          height: "525px",
-          boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.1)",
-          borderRadius: "10px",
-          margin: "auto",
-          color:'brand.outline',
-        }}
-      >
+      <Box sx={{
+        height: "525px",
+        boxShadow: "0 2px 10px 0 rgba(0, 0, 0, 0.1)",
+        borderRadius: "10px",
+        margin: "auto",
+        color:'brand.outline',
+      }}>
         <OnramperWidget
           API_KEY="pk_prod_Y_wgU87OiDXBQ9xw9quWHHBnn_bn2epGjS_y6F05ZUg0"
           darkMode={true}
@@ -91,16 +110,20 @@ export default function PondFiatOnboarding() {
           // amountInCrypto={amountInCrypto}
           // redirectURL={redirectURL}
         />
-        {/* <Box name='interstitial' sx={{...abs(0,0,0,0), bgColor:'rgba(0,0,0,.9)', */}
-        {/*   zIndex: '2', */}
-        {/*   borderRadius:'0', */}
-        {/*   justifyContent: 'center', */}
-        {/*   alignItems: 'center', */}
-        {/*   display: 'flex', */}
-        {/*   color: 'white', */}
-        {/*   fontSize: '24px',}}>Coming Soon! */}
-        {/* </Box> */}
+        {/*
+  <Box name='interstitial' sx={{...abs(0,0,0,0), bgColor:'rgba(0,0,0,.9)',
+    zIndex: '2',
+    borderRadius:'0',
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    color: 'white',
+    fontSize: '24px',}}>Coming Soon!
+  </Box>
+*/}
       </Box>
+
+
     </Pond>
   );
 }

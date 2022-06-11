@@ -9,13 +9,12 @@ import {
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import { Tooltip } from "@chakra-ui/react";
 import { toHex, truncateAddress } from "helpers/math/utils.js";
-import { useAtom } from 'jotai';
 import { BtnBrandIcon, HFlex, HFlexCC, HFlexSC, VFlex } from '../bits/UtilityTags.js';
 import { HistoryItem } from './HistoryItem.js';
 import { MdOutlineHistory } from 'react-icons/md';
 import { GrTransaction } from 'react-icons/gr';
 import { CITxStatusGreen, CITxStatusYellow, CITxStatusRed } from 'assets/FrogeBrand.js';
-import { wcModalIsOpenAtom, useUserStore, useW3Store } from 'services';
+import { useUserStore, useW3Store } from 'services';
 import { isFirefox } from 'react-device-detect';
 
 

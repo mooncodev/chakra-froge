@@ -64,10 +64,10 @@ ReactDOM.render(
           <Route path={'/app/*'} element={<AppProvider/>}>
             <Route path={'dash'} element={<PgDash/>}/>
             <Route path={'frogex'} element={<PgFrogeX/>}/>
-            <Route path={'eco-action'} element={<PgUnderConstruction/>}/>
-            <Route path={'sponsorships'} element={<PgUnderConstruction/>}/>
-            <Route path={'game-night'} element={<PgUnderConstruction/>}/>
-            <Route path={'nft'} element={<PgUnderConstruction/>}/>
+            <Route path={'eco-action'} element={<PgUnderConstruction pgHeadingText='Eco Action'/>}/>
+            <Route path={'sponsorships'} element={<PgUnderConstruction pgHeadingText='Sponsorships'/>}/>
+            <Route path={'game-night'} element={<PgUnderConstruction pgHeadingText='Game Night'/>}/>
+            <Route path={'nft'} element={<PgUnderConstruction pgHeadingText='NFT'/>}/>
             <Route path={'xchange'} element={<PgXchange/>}/>
             <Route path={'calc'} element={<PgCalculators/>}/>
             {/* <Route path={'billing'} element={<XPgBilling/>}/> */}

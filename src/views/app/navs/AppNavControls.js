@@ -1,17 +1,15 @@
 import React from "react";
 import { Button, Center, Flex, } from '@chakra-ui/react';
-import { useAtom } from 'jotai';
 import WalletMenu from '../wallet/WalletMenu.js';
 import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
 import HistoryWidget from '../wallet/HistoryWidget.js';
-import { appNavDrawerOpenAtom } from '../../../services/atoms.js';
 import { CISVG_FrogeNavBack } from '../../../assets/FrogeBrand.js';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import { useAppStore } from '../../../services/useAppStore.js';
 
 
 export default function AppNavControls(props) {
   const [isMobile, isDesktop] = useDeviceMode()
-  const [get_appNavDrawerOpen, set_appNavDrawerOpen] = useAtom(appNavDrawerOpenAtom)
 
   return (
     <Flex id='FCB-AppNavbarLinks'
@@ -25,7 +23,7 @@ export default function AppNavControls(props) {
       <HistoryWidget/>
       {isMobile && (
         <Center id="AppMenuIcon"
-                onClick={() => set_appNavDrawerOpen(!get_appNavDrawerOpen)}
+                onClick={() => useAppStore.getState().set_appNavDrawerOpen(!useAppStore.getState().appNavDrawerOpen)}
                 cursor='pointer'
                 __css={{
                   color: 'global.bg',

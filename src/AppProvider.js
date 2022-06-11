@@ -1,4 +1,3 @@
-import { Provider as JotaiProvider, atom, useAtom } from "jotai";
 import { Box, ChakraProvider, Portal, useDisclosure, useStyleConfig } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import theme from "theme/theme.js";
@@ -19,11 +18,6 @@ export default function AppProvider(props) {
   useUserStore.getState().initStore();
 
   return (
-        <JotaiProvider
-          initialValues={[
-            [appNavDrawerOpenAtom, false]
-          ]}
-        >
           <Web3ReactProvider getLibrary={getLibrary}>
             <Web3ReactProviderNetwork getLibrary={getLibrary}>
               <W3RManager>
@@ -33,6 +27,5 @@ export default function AppProvider(props) {
               </W3RManager>
             </Web3ReactProviderNetwork>
           </Web3ReactProvider>
-        </JotaiProvider>
   );
 }

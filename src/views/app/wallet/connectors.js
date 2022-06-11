@@ -62,7 +62,7 @@ export const INFURA_NETWORK_URLS = {
 }
 
 const SUPPORTED_CHAIN_IDS = [1, 4, 3, 42, 5, 56, 97, 1337]
-function getApiUrl(provider, network){
+export function getApiUrl(provider, network){
   const ALCHEMY_API_KEY = "cWCtBK24kbl-oSybYisKWNUXwSft1BRA";
   const INFURA_API_KEY = "0eaa508254d64389be2f25787cc66181";
   if(provider==='alchemy'){return `https://eth-${network}.alchemyapi.io/v2/${ALCHEMY_API_KEY}`}
