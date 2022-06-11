@@ -80,11 +80,11 @@ export function AppSidebar(props) {
             <Stack m={5} direction="column" flexFlow={'wrap'} gap='5px'>
               <SBNavLink to='./'>Dash</SBNavLink>
               <SBNavLink to='./frogex'>FrogeX</SBNavLink>
+              <SBNavLink to='./xchange'>Xchange</SBNavLink>
               <SBNavLink to='./eco-action'>Eco Action</SBNavLink>
               <SBNavLink to='./sponsorships'>Sponsorships</SBNavLink>
               <SBNavLink to='./game-night'>Game Night</SBNavLink>
               <SBNavLink to='./nft'>NFT</SBNavLink>
-              <SBNavLink to='./xchange'>Xchange</SBNavLink>
               <SBNavLink to='./calc'>Calculators</SBNavLink>
             </Stack>
           </Box>
@@ -105,11 +105,11 @@ export function AppSidebar(props) {
                 <Stack my={5} direction="column" alignItems="center">
                   <SBNavLink to='./'>Dash</SBNavLink>
                   <SBNavLink to='./frogex'>FrogeX</SBNavLink>
+                  <SBNavLink to='./xchange'>Xchange</SBNavLink>
                   <SBNavLink to='./eco-action'>Eco Action</SBNavLink>
                   <SBNavLink to='./sponsorships'>Sponsorships</SBNavLink>
                   <SBNavLink to='./game-night'>Game Night</SBNavLink>
                   <SBNavLink to='./nft'>NFT</SBNavLink>
-                  <SBNavLink to='./xchange'>Xchange</SBNavLink>
                   <SBNavLink to='./calc'>Calculators</SBNavLink>
                   {PHASE<3 &&(<>
                     <SBNavLink to="./billing">billing</SBNavLink>
