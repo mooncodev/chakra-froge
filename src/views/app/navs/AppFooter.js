@@ -7,20 +7,20 @@ import { NavLink } from 'react-router-dom';
 export default function AppFooter(props) {
   // const linkTeal = "red.200"=
   return (
-    <Flex id='AppFooter'
-      flexDirection="column"
+    <Flex
+      id='AppFooter'
+      flexDirection="row"
       alignItems="center"
-      justifyContent="space-between"
-      px="20px"
-          mt="26px"
-
-          opacity='0.8'
+      justifyContent="space-evenly"
+      width={{ base: '350px', md: '500px' }}
+      gap={2}
+      my="8px"
+      mx={'auto'}
+      opacity='0.8'
+      textAlign='center'
+      fontSize={{base:'14px',md:'16px'}}
     >
-      <List display="flex"
-            my={{ base: "10px", xl: "15px" }}
-      >
-        <ListItem me={{ base: "20px", md: "44px", }}>
-          <Text color="gray.400">
+          <Text color="gray.400" >
             &copy; {1900 + new Date().getYear()},{" "}
             <Link
               as={NavLink}
@@ -28,26 +28,24 @@ export default function AppFooter(props) {
               to="../"
               target="_parent"
             >
-              {"Ribbit"}
+              Ribbit
             </Link>
           </Text>
 
-        </ListItem>
-        <ListItem me={{ base: "20px", md: "44px", }}>
+
           <Link href="https://froge.fi"
             target="_parent"
             color="gray.400">
-            {"Back to Home"}
+            Back to Home
           </Link>
-        </ListItem>
-        <ListItem me={{ base: "20px", md: "44px", }}>
+
           <Link color="gray.400"
             target="_parent"
             href="https://froge.fi">
-            {"Support"}
+            Support
           </Link>
-        </ListItem>
-      </List>
+
+
     </Flex>
   );
 }

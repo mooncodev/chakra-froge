@@ -22,7 +22,7 @@ export default function PgXchange() {
   return (
     <AppMain pgHeadingText={'Xchange'}
     pgContextBar={
-      <ButtonGroup size='sm' isAttached variant='outline'>
+      <ButtonGroup size='sm' isAttached variant='outline' ml='4px'>
         <Button size={'sm'} isActive={xchangeTab==='fiatonboard'}>
           <Text onClick={()=>useAppStore.getState().set_xchangeTab('fiatonboard')}>
             Fiat Onboard</Text>

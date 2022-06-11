@@ -36,7 +36,7 @@ function scrollbarVisible(element) {
 export function AppPgHeading({ pgHeadingText }){
   return (
     <Heading as={'h4'} size='md' width={'fit-content'} ml={'12px'} position={'relative'} style={{color:useToken('colors','brand.green')}}>
-      <CISVG_PageAccent sx={{...abs('-4px',null,null,'-8px')}}/>
+      <CISVG_PageAccent sx={{...abs('-6px',null,null,'-8px')}}/>
       {pgHeadingText}
       <CISVG_PageAccent sx={{...abs(null,'-8px','-8px',null), transform:'rotate(180deg)'}}/>
     </Heading>

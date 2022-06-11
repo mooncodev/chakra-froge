@@ -36,8 +36,12 @@ export default function HomeFooter() {
           </Stack>
           <VStack spacing={{ base: '6', md: '8' }} align="center" flex={1}>
             <Text fontSize="sm" fontWeight="semibold" color="subtle">Partners</Text>
-            <Image src={OTPHoriz} maxWidth='10rem'/>
-            <Image src={RFUSHoriz} maxWidth='10rem'/>
+            <Link href='https://onetreeplanted.org/' target='_blank'>
+              <Image src={OTPHoriz} maxWidth='10rem'/>
+            </Link>
+            <Link href='https://rainforestfoundation.org/' target='_blank'>
+              <Image src={RFUSHoriz} maxWidth='10rem'/>
+            </Link>
           </VStack>
         </Stack>
 
@@ -80,7 +84,7 @@ export default function HomeFooter() {
       <Stack p="6px 16px" justify="end" align="center"
              direction={{ base: 'column-reverse', md: 'row' }}>
         <Text fontSize="sm" color="bog.650">
-          &copy; {new Date().getFullYear()} MoonCo Systems Inc
+          &copy; {new Date().getFullYear()} With &lt;3, your friend Moonco
         </Text>
       </Stack></>
   );
