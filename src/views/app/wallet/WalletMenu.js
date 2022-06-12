@@ -199,9 +199,9 @@ export default function WalletMenu() {
                       <HStack>
                         <Button h={100} onClick={switch_userDesiredChainId}><FaEthereum as={Icon}/>&nbsp;Mainnet</Button>
                         <VStack>
-                          <Button size='xs' onClick={switch_userDesiredChainId}><FaEthereum as={Icon}/>&nbsp;Ropsten</Button>
-                          <Button size='xs' onClick={switch_userDesiredChainId}><FaEthereum as={Icon}/>&nbsp;Rinkeby</Button>
-                          <Button size='xs' onClick={switch_userDesiredChainId}><FaEthereum as={Icon}/>&nbsp;Kovan</Button>
+                          <Button onClick={switch_userDesiredChainId} size='xs'><FaEthereum as={Icon}/>&nbsp;Ropsten</Button>
+                          <Button onClick={switch_userDesiredChainId} size='xs'><FaEthereum as={Icon}/>&nbsp;Rinkeby</Button>
+                          <Button onClick={switch_userDesiredChainId} size='xs'><FaEthereum as={Icon}/>&nbsp;Kovan</Button>
                         </VStack>
                       </HStack>
                     </AccordionPanel>

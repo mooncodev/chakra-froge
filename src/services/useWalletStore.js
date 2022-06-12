@@ -4,7 +4,7 @@ import { connectors } from '../views/app/wallet/connectors.js';
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
 
-export const useW3Store = create((set,get) => ({
+export const useWalletStore = create((set,get) => ({
   web3:web3,
   u_library:null,
   u_chainId:'',

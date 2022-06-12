@@ -1,7 +1,4 @@
 import create from 'zustand';
-import { FXP, readFX } from '../stx/stx.js';
-import { balToHrTuple } from '../helpers/math/zmath.mjs';
-import { useCrawlStore } from 'services';
 import produce from 'immer';
 
 export const useAppStore = create((set,get) => ({
@@ -11,7 +8,7 @@ export const useAppStore = create((set,get) => ({
   },
   wcModalIsOpen:false,
   set_wcModalIsOpen: async (bOpen) => {
-    set({appNavDrawerOpen:bOpen});
+    set({wcModalIsOpen:bOpen});
   },
   xchangeTab:'fiatonboard',
   set_xchangeTab: async (tabName) => {
