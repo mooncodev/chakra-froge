@@ -3,7 +3,7 @@ import {
   Box, Flex, Button, FormControl, FormLabel,
   Heading, Input, Link, Switch, Text,
 } from "@chakra-ui/react";
-import { VFlex, VFlexCS } from '../app/bits/UtilityTags.js';
+import { VFlex, VFlexCS } from '../common/UtilityTags.js';
 import { NewsMarquee } from './sections/marquee.js';
 
 

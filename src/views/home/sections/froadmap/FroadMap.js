@@ -1,21 +1,21 @@
 import {
-  Box, Center, StylesProvider, useMultiStyleConfig, useStyles, chakra,
-  Button, VStack, Heading, Tabs, TabList, HStack, Tab, TabPanels, TabPanel,
+  Box, Center, /* StylesProvider, useMultiStyleConfig, useStyles,  */
+  Button, chakra, VStack, Heading, Tabs, TabList, HStack, Tab, TabPanels, TabPanel,
   Flex, Icon, useDisclosure, Collapse, useTheme, Text
 } from '@chakra-ui/react';
-import { motion, useMotionValue, useTransform } from "framer-motion";
+// import { motion, useMotionValue, useTransform } from "framer-motion";
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { HFlex, S, TextXs, VFlex, VFlexCS } from '../../../app/bits/UtilityTags.js';
+import { HFlex, S, TextXs, VFlex, VFlexCS } from '../../../common/UtilityTags.js';
 import { mont } from '../../../../theme/foundations/fonts.js';
 import { froadmapData_dev_general,
   froadmapData_dev_siteAndDApp,
   froadmapData_admin_general, } from './froadmap-data.js';
-import ecodeficircles from '../../../../assets/logos/ecodefi-circles.svg';
-import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
+// import ecodeficircles from '../../../../assets/logos/ecodefi-circles.svg';
+// import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
 import { FiChevronDown } from 'react-icons/fi';
-import { animate } from 'framer-motion';
+// import { animate } from 'framer-motion';
 import { sSub } from '../../../../helpers/math/zmath.mjs';
-import { FrogeLogoOutlineSvg } from 'assets/FrogeBrand.js';
+// import { FrogeLogoOutlineSvg } from 'assets/FrogeBrand.js';
 import { ParallaxProvider, Parallax, useParallax } from 'react-scroll-parallax';
 
 

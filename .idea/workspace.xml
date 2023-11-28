@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d092bf95-5e55-482c-8a93-9bfde10a1c7b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/dapp-mobile-view.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/detectWindowEthereum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/buildWalletAPI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/cellar/utils.js_with_all_wallets_and_chains.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/coinbase/coinbase.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/coinbase/icon.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/common/elements/AddressTable.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/common/elements/Button.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/common/elements/CloseButton.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/common/elements/Modal.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/common/elements/Spinner.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/common/elements/TableHeader.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/common/views/AccountSelect.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/components/ConnectWalletNavButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/components/MessageNoInjectedFound.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/components/SvgIcon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/chainsMeta.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/getDevice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/i18n/en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/Index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/account-center/DisconnectAllConfirm.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/account-center/Index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/account-center/Maximized.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/account-center/Micro.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/account-center/Minimized.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/account-center/WalletRow.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/chain/SwitchChain.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/connect/ActionRequired.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/connect/Agreement.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/connect/ConnectedWallet.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/connect/ConnectingWallet.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/connect/Index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/connect/InstallWallet.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/connect/SelectingWallet.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/connect/Sidebar.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/connect/WalletButton.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/shared/CloseButton.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/shared/InfoIcon.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/shared/Modal.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/shared/NetworkSelector.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/shared/PendingStatusIcon.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/shared/Spinner.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/shared/SuccessStatusIcon.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/shared/WalletAppBadge.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/views/shared/Warning.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/core/walletsMeta.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/demo/App.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/demo/blocknative-icon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/demo/blocknative-logo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/demo/global.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/demo/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/demo/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/hooks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/arbitrum.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/avalanche.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/binance.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/celo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/ethereum.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/fantom.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/flare.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/gnosis.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/harmony-one.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/optimism.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/polygon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/chain/question.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/arbitrum.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/arrow-forward.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/avalanche.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/binance.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/blocknative.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/caret-light.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/caret.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/celo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/close.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/close2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/default-app-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/elipsis.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/ethereum.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/fantom.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/flare.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/gnosis.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/harmony-one.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/info.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/optimism.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/pending.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/plus-circle.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/polygon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/question.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/success.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/core/warning.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/alphawallet.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/atoken.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/binance.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/bitpie.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/blockwallet.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/brave.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/coinbase.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/dcent.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/detected.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/exodus.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/frame.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/huobiwallet.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/hyperpay.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/imtoken.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/infinitywallet.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/liquality.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/meetone.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/metamask.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/mykey.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/oneInch.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/opera.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/ownbit.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/question.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/status.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/tallywallet.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/tokenary.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/tokenpocket.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/tp.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/trust.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/walletconnect.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/walletio.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/icons/wallet/xdefi.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/injectedModule.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/rpcApiRequests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/sdk_walletconnect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/useWalletStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/valor/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/common/BtnCopyToClipboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/common/cssHelpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dapp/ponds/BogCharts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondNetworkVitals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craco.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/craco.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/logos/black.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/logos/mobile.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/logos/white-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/logos/white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomeLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomeLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/CTCBButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/CTCBButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/useW3Store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/useW3Store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/useWalletStore.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/PgCalculators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/PgCalculators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/PgDash.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/PgDash.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/PgEcoAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/PgEcoAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/PgFrogeX.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/PgFrogeX.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/PgGameNight.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/PgGameNight.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/PgNFT.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/PgNFT.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/PgSponsorships.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/PgSponsorships.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/PgUnderConstruction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/PgUnderConstruction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/PgXchange.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/PgXchange.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/XPgBilling.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/XPgBilling.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/XPgProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/XPgProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/XPgTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/XPgTables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/bits/Bubble.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/Bubble.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/bits/MoreInfoPopover.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/MoreInfoPopover.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/bits/Pond.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/Pond.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/bits/PopoverFXGetConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/PopoverFXGetConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/bits/RadioCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/RadioCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/bits/SBNavLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/SBNavLink.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/bits/SentenceTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/SentenceTabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/bits/UtilityTags.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/UtilityTags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/calcs/PondBigNumCalc.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/calcs/PondBigNumCalc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/calcs/PondCSSPropsConverter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/calcs/PondCSSPropsConverter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/calcs/proofCssPropsConv.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/calcs/proofCssPropsConv.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/navs/AppFooter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/navs/AppFooter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/navs/AppNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/navs/AppNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/navs/AppNavControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/navs/AppNavControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/navs/AppSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/navs/AppSidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/BogGlobalStats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/BogGlobalStats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondActiveUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondActiveUsers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondFiatOnboarding.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondFiatOnboarding.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondFrogeXDividends.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondFrogeXDividends.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondFrogeXVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondFrogeXVitals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondGameNightRegister.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondGameNightRegister.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondGameNightUpcoming.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondGameNightUpcoming.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondNetworkVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondOrdersOverview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondOrdersOverview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondProjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondRockets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondRockets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondSalesOverview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondSalesOverview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondTemplates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondTemplates.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/ponds/PondUniswapWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dapp/ponds/PondUniswapWidget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/BoxSignSetVerify.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/BoxSignSetVerify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/HistoryItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/HistoryItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/HistoryWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/HistoryWidget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/W3RManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/W3RManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/WalletMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/WalletMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/assets/LogoCoinbaseWallet.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/assets/LogoCoinbaseWallet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/assets/LogoMetaMask.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/assets/LogoMetaMask.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/assets/LogoWalletConnect.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/assets/LogoWalletConnect.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/connectors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/connectors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/networks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/networks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/uni-connectors-example.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/uni-connectors-example.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/app/wallet/web3Hooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/valor/components/web3Hooks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/PgHomeAccounting.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/PgHomeAccounting.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/PgHomeContactAndSupport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/PgHomeContactAndSupport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/PgHomeEco.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/PgHomeEco.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/PgHomeFAQ.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/PgHomeFAQ.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/PgHomeLanding.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/PgHomeLanding.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/PgHomeResources.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/PgHomeResources.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/PgHomeTeam.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/PgHomeTeam.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/navs/HomeNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/navs/HomeNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/navs/MenuToggle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/navs/MenuToggle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/FrogeAtAGlance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/FrogeAtAGlance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/FrogeForest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/FrogeForest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/FrogeX.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/FrogeX.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/MtgCard/MtgCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/MtgCard/MtgCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/PondBrandAssets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/PondBrandAssets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/PondBrandLinkList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/PondBrandLinkList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/PondFeatureRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/PondFeatureRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/PondPrimaryDownloads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/PondPrimaryDownloads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/froadmap/FroadMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/froadmap/FroadMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/sections/marquee.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/sections/marquee.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2MASiro1bn82zRwDnK8hWdViSNR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -8,10 +8,10 @@ import {
   useStyleConfig, useToken
 } from '@chakra-ui/react';
 // import Configurator from "views/app/Configurator.js";
-import AppFooter from "views/app/navs/AppFooter.js";
+import AppFooter from "views/dapp/navs/AppFooter.js";
 // Layout components
-import AppNav from "views/app/navs/AppNav.js";
-import AppSidebar from "views/app/navs/AppSidebar.js";
+import AppNav from "views/dapp/navs/AppNav.js";
+import AppSidebar from "views/dapp/navs/AppSidebar.js";
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useRouteMatch } from 'react-router-dom';
 // Custom Chakra theme
@@ -20,15 +20,15 @@ import { Outlet, useLocation, useRouteMatch } from 'react-router-dom';
 // import { appNavDrawerOpenAtom, signatureAtom, w3rLibraryAtom } from './services/atoms.js';
 import { createWeb3ReactRoot, useWeb3React, Web3ReactProvider } from '@web3-react/core';
 import { ethers } from "ethers";
-import { connectors } from 'views/app/wallet/connectors.js';
+import { connectors } from 'valor/components/connectors.js';
 import { useDeviceMode } from './theme/foundations/breakpoints.js';
 import { desktopSidebarWidth } from 'data/constants.js';
 import { useW3Store,useCrawlStore } from 'services';
 import { useMutationObservable } from './hooks/useMutationObservable.js';
 import { CISVG_PageAccent } from './assets/FrogeBrand.js';
-import { abs } from './views/home/sections/MtgCard/MtgCard.js';
 import { useAppStore } from './services/useAppStore.js';
-import { TextXs } from './views/app/bits/UtilityTags.js';
+import { TextXs } from './views/common/UtilityTags.js';
+import { abs } from './views/common/cssHelpers.js';
 
 function scrollbarVisible(element) {
   return element.scrollHeight > element.clientHeight;

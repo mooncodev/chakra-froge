@@ -1,7 +1,7 @@
-import { Pond } from '../../app/bits/Pond.js';
+import { Pond } from '../../common/Pond.js';
 import { Box, Button, chakra, HStack, Icon, Image, Link, Text } from '@chakra-ui/react';
 import React from 'react';
-import { HFlexCC } from '../../app/bits/UtilityTags.js';
+import { HFlexCC } from '../../common/UtilityTags.js';
 import { MdDownload } from 'react-icons/md';
 import { AiFillDropboxCircle } from 'react-icons/ai';
 

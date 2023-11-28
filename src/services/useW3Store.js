@@ -1,6 +1,6 @@
 import create from 'zustand';
 import React from 'react';
-import { connectors } from '../views/app/wallet/connectors.js';
+import { connectors } from '../valor/components/connectors.js';
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
 

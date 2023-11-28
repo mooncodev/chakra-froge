@@ -9,10 +9,10 @@ import { drawerStyles } from "./components/drawer";
 import { CardComponent } from "./additions/card/Card";
 import { CardBodyComponent } from "./additions/card/CardBody";
 import { CardHeaderComponent } from "./additions/card/CardHeader";
-import { SBNavLinkComponent } from '../views/app/bits/SBNavLink.js';
-import { BubbleComponent } from '../views/app/bits/Bubble.js';
+import { SBNavLinkComponent } from '../views/common/SBNavLink.js';
+import { BubbleComponent } from '../views/common/Bubble.js';
 import { colorWheels } from './foundations/colorWheels.js';
-import { SentenceTabsComponent } from '../views/app/bits/SentenceTabs.js';
+import { SentenceTabsComponent } from '../views/common/SentenceTabs.js';
 import { formStyles } from './components/form.js';
 // import { mode } from "@chakra-ui/theme-tools";
 export default extendTheme(

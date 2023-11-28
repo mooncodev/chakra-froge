@@ -9,8 +9,8 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
-import { HFlex, HFlexSC, S, VFlexCS } from '../../app/bits/UtilityTags.js';
-import { SentenceTabs } from '../../app/bits/SentenceTabs.js';
+import { HFlex, HFlexSC, S, VFlexCS } from '../../common/UtilityTags.js';
+import { SentenceTabs } from '../../common/SentenceTabs.js';
 import { Parallax, ParallaxProvider, useParallax } from 'react-scroll-parallax';
 import FrogeLogoSvg from 'assets/logos/froge-logo.svg';
 import forestBG from "assets/parallax-woods/ParallaxWoodsBG.png";
@@ -45,7 +45,7 @@ const mfWraps = {
 }
 
 const FROGE = ()=>{
-  const __Froge = {
+  const sxFrogeLogoSvg = {
     position:'absolute',bottom: '30px',left: '50%',
     width:'100px',height:'100px',backgroundRepeat: 'no-repeat',backgroundPosition: '0 0',backgroundSize: 'contain',
     backgroundImage: FrogeLogoSvg
@@ -57,7 +57,7 @@ const FROGE = ()=>{
     },
   })
   return (
-    <Box sx={__Froge} ref={refFroge.ref}/>
+    <Box sx={sxFrogeLogoSvg} ref={refFroge.ref}/>
 )}
 
 export const Forest = () => {

@@ -4,7 +4,7 @@ import {
   Heading, Input, Link, Switch, Text, Stack, Image, Grid, Spacer, Divider,
 } from '@chakra-ui/react';
 // Assets
-import { VFlex, VFlexCS } from '../app/bits/UtilityTags.js';
+import { VFlex, VFlexCS } from '../common/UtilityTags.js';
 import { NewsMarquee } from './sections/marquee.js';
 import { MtgCard } from './sections/MtgCard/MtgCard.js';
 

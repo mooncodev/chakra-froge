@@ -40,8 +40,8 @@ module.exports = {
 
             return {
                 ...config,
-                // mode: "development", // "production" | "development" | "none"
-                // devtool: "source-map",
+                mode: "development", // "production" | "development" | "none"
+                devtool: "source-map",
                 module: {
                     ...module,
                     // Exclude `node_modules` from `source-map-loader`.

@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Button, chakra } from '@chakra-ui/react';
 import React from 'react';
-import { HFlex } from '../views/app/bits/UtilityTags.js';
+import { HFlex } from '../views/common/UtilityTags.js';
 import { lightenDarkenColor } from '../helpers/math/zmath.mjs';
 
 export const CopyToClipboardButton = ({ text,children,sx }) => {

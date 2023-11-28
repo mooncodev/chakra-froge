@@ -9,7 +9,7 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
-import { HFlex, S, VFlexCS } from '../../app/bits/UtilityTags.js';
+import { HFlex, S, VFlexCS } from '../../common/UtilityTags.js';
 
 export const FrogeAtAGlance = () => {
   const _h = '60px'

@@ -3,16 +3,16 @@ import {
   Popover, PopoverArrow, PopoverContent, PopoverTrigger, Portal, Spacer,
   Stack, Text, useDisclosure, useOutsideClick, useToken, ListItem, VStack,
 } from '@chakra-ui/react';
-import { ChevronDownIcon, ChevronRightIcon, createIcon, DownloadIcon, } from '@chakra-ui/icons';
-import { NavLink,useNavigate } from 'react-router-dom';
+// import { ChevronDownIcon, ChevronRightIcon, createIcon, DownloadIcon, } from '@chakra-ui/icons';
+// import { NavLink,useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
-import FrogeTitleAllGreen from 'assets/logos/title-allgreen/froge-title-logo-ff-allgreen.svg';
-import FrogeLogo from 'assets/logos/froge-logo.svg';
+// import FrogeTitleAllGreen from 'assets/logos/title-allgreen/froge-title-logo-ff-allgreen.svg';
+// import FrogeLogo from 'assets/logos/froge-logo.svg';
 import React, { useEffect, useRef, useState } from 'react';
 // import { HomeNavMobile } from './HomeNavMobile.js';
 import { useDeviceMode } from '../../../theme/foundations/breakpoints.js';
-import { HFlexCC, HFlexSC, S, VFlex } from '../../app/bits/UtilityTags.js';
+// import { HFlexCC, HFlexSC, S, VFlex } from '../../app/bits/UtilityTags.js';
 // import { NAV_ITEMS } from './NAV_ITEMS.js';
 import { motion, useCycle, useViewportScroll } from 'framer-motion';
 import { useDimensions } from '../motionexample/use-dimensions.js';
@@ -32,8 +32,8 @@ import {
   CISVG_FrogeTitleGreen,
   CISVG_NavArrowGreen
 } from 'assets/FrogeBrand.js';
-import { abs, bgImg } from '../sections/MtgCard/MtgCard.js';
 import { MenuToggle } from './MenuToggle.js';
+import { abs, bgImg } from '../../common/cssHelpers.js';
 
 
 const sxLaunchButton = {

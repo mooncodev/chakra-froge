@@ -23,12 +23,12 @@ import {
   Tab,
   Grid,
   SimpleGrid,
-  useBreakpointValue, useColorModeValue, useColorMode, useTheme,
+  useTheme,
 } from '@chakra-ui/react';
 import FrogImg from 'assets/img/stock-frogs/darkbg/wide/006.jpg'
-import frogefinity from '../../assets/logos/frogefinity.svg';
-import ecodeficircles from '../../assets/logos/ecodefi-circles.svg';
-import FrogeEyeEye from '../../assets/logos/froge-eyeeye-outline-halfwhites.svg';
+// import frogefinity from '../../assets/logos/frogefinity.svg';
+// import ecodeficircles from '../../assets/logos/ecodefi-circles.svg';
+// import FrogeEyeEye from '../../assets/logos/froge-eyeeye-outline-halfwhites.svg';
 import {
   HFlex,
   HFlexCC,
@@ -38,8 +38,8 @@ import {
   VFlex,
   VFlexCS,
   VFlexSC
-} from '../app/bits/UtilityTags.js';
-import { SentenceTabs } from '../app/bits/SentenceTabs.js';
+} from '../common/UtilityTags.js';
+import { SentenceTabs } from '../common/SentenceTabs.js';
 import { FroadMap, FroadMapCard } from './sections/froadmap/FroadMap.js';
 import { motion, useViewportScroll, useMotionValue, useTransform } from "framer-motion"
 import { NewsMarquee } from './sections/marquee.js';
@@ -47,9 +47,9 @@ import { FrogeAtAGlance } from './sections/FrogeAtAGlance.js';
 import { FrogeLogoOutlineSvg } from 'assets/FrogeBrand.js';
 import { FrogeX } from './sections/FrogeX.js';
 import { FrogeForest } from './sections/FrogeForest.js';
-import { abs } from './sections/MtgCard/MtgCard.js';
 import { CopyToClipboardButton } from '../../hooks/CTCBButton.js';
 import UniLogo from '../../assets/logos-other/uniswap-logo.png';
+import { abs } from '../common/cssHelpers.js';
 
 export const WalkyFroge = () => {
   const { scrollYProgress } = useViewportScroll()

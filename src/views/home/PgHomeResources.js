@@ -4,11 +4,11 @@ import {
   Heading, Input, Link, Switch, Text, Stack, Image, Grid, Spacer, Divider, HStack, Icon,
 } from '@chakra-ui/react';
 // Assets
-import { HFlexCC, VFlex, VFlexCS } from '../app/bits/UtilityTags.js';
+import { HFlexCC, VFlex, VFlexCS } from '../common/UtilityTags.js';
 import { NewsMarquee } from './sections/marquee.js';
 import { MtgCard } from './sections/MtgCard/MtgCard.js';
 import { MdDownload } from 'react-icons/md';
-import { Pond } from '../app/bits/Pond.js';
+import { Pond } from '../common/Pond.js';
 import { DownloadIcon } from '@chakra-ui/icons';
 import { AiFillDropboxCircle } from 'react-icons/ai';
 import { PondBrandLinkList } from './sections/PondBrandLinkList.js';

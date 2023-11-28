@@ -4,8 +4,9 @@ import theme from "theme/theme.js";
 import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core';
 import { ethers } from "ethers";
 import AppLayout from './AppLayout.js';
-import W3RManager from './views/app/wallet/W3RManager.js';
-import { appNavDrawerOpenAtom, useUserStore } from 'services';
+// import W3RManager from './valor/components/W3RManager.js';
+// import { appNavDrawerOpenAtom, useUserStore } from 'services';
+import { useWalletStore } from './valor/useWalletStore.js';
 const Web3ReactProviderNetwork = createWeb3ReactRoot('NETWORK')
 
 const getLibrary = (provider) => {
@@ -15,17 +16,20 @@ const getLibrary = (provider) => {
 };
 export default function AppProvider(props) {
   const { variant, children, ...rest } = props;
-  useUserStore.getState().initStore();
+  // useUserStore.getState().initStore();
+  useEffect(async ()=>{
+    await useWalletStore.getState().initWalletStore();
+  },[])
 
   return (
-          <Web3ReactProvider getLibrary={getLibrary}>
-            <Web3ReactProviderNetwork getLibrary={getLibrary}>
-              <W3RManager>
+          // <Web3ReactProvider getLibrary={getLibrary}>
+          //   <Web3ReactProviderNetwork getLibrary={getLibrary}>
+          //     <W3RManager>
 
                 <AppLayout/>
 
-              </W3RManager>
-            </Web3ReactProviderNetwork>
-          </Web3ReactProvider>
+          //     </W3RManager>
+          //   </Web3ReactProviderNetwork>
+          // </Web3ReactProvider>
   );
 }

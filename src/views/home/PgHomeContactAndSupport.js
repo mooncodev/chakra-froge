@@ -16,12 +16,12 @@ import {
   FormHelperText,
   FormErrorMessage, Textarea,
 } from '@chakra-ui/react';
-import { S, VFlex, VFlexCS } from '../app/bits/UtilityTags.js';
+import { S, VFlex, VFlexCS } from '../common/UtilityTags.js';
 import { NewsMarquee } from './sections/marquee.js';
-import { Pond, PondHeader } from '../app/bits/Pond.js';
+import { Pond, PondHeader } from '../common/Pond.js';
 import { CopyIcon } from '@chakra-ui/icons';
 import { BiPaste } from 'react-icons/bi';
-import { RadioButtons } from '../app/bits/RadioCard.js';
+import { RadioButtons } from '../common/RadioCard.js';
 import axios from 'axios';
 import { PondFeatureRequest } from './sections/PondFeatureRequest.js';
 

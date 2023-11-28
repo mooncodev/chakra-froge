@@ -3,8 +3,8 @@ import { chakra,
   Text, useBreakpointValue
 } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
-import { HFlex, S, VFlexCS } from '../../app/bits/UtilityTags.js';
-import { SentenceTabs } from '../../app/bits/SentenceTabs.js';
+import { HFlex, S, VFlexCS } from '../../common/UtilityTags.js';
+import { SentenceTabs } from '../../common/SentenceTabs.js';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { CopyToClipboardButton } from '../../../hooks/CTCBButton.js';
 import UniLogo from 'assets/logos-other/uniswap-logo.png'

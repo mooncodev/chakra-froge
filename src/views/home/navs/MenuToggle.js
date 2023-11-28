@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Button, chakra, useToken } from '@chakra-ui/react';
-import { VFlex } from '../../app/bits/UtilityTags.js';
+import { VFlex } from '../../common/UtilityTags.js';
 import React from 'react';
 
 const $$BurgerBtnWrap = {

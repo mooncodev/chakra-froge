@@ -1,30 +1,13 @@
-import {
-  Box
-} from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import React from 'react';
-import { HFlexSC, S, VFlex } from '../../../app/bits/UtilityTags.js';
+import { HFlexSC, S, VFlex } from '../../../common/UtilityTags.js';
 // import Based from 'assets/img/team/Based.png'
 // import GREENBG from 'assets/img/mtg-texture-green.jpg'
 // import RFBG from 'assets/img/stock-rainforest/square/012.jpg'
-import FrogeLogoSvg from 'assets/logos/froge-logo.svg';
+// import FrogeLogoSvg from 'assets/logos/froge-logo.svg';
 import FrogeEyeEyeSvg from 'assets/logos/froge-eyeeye.svg';
 import MTGNatureRich from './mtg-cards/MTG-nature-rich.png';
-
-/**@example
- *  ...bgImg(Based), ...abs(0,0,'20px',0),
- */
-export const bgImg = (img)=>({ background:`50% 50%/cover no-repeat url(${img})` })
-export const pxNumToRem = (v)=>{
-  if(['vw','vh','em','%','px'].indexOf(v)>-1){return v}return (parseInt(v) * .0625) + 'rem'}
-export const numToPxStr = (v)=>{
-  if(/\D/.test(v)){return v}return (v + 'px')}
-export const absXY=(x='0',y='0')=>({position:'absolute',top:numToPxStr(y),right:numToPxStr(x),bottom:numToPxStr(y),left:numToPxStr(x),})
-export const absX=(x='0')=>({ position:"absolute", right:numToPxStr(x), left:numToPxStr(x),})
-export const absY=(y='0')=>({ position:"absolute", top:numToPxStr(y), bottom:numToPxStr(y),})
-export const abs=(top,right,bottom,left,rv={position:"absolute"})=>{
-  if(top||top===0){rv.top=numToPxStr(top)}if(right||right===0){rv.right=numToPxStr(right)}
-  if(bottom||bottom===0){rv.bottom=numToPxStr(bottom)}if(left||left===0){rv.left=numToPxStr(left)}return rv;
-}
+import { abs, bgImg } from '../../../common/cssHelpers.js';
 
 const $$ = {
   descriptionText: `When Oath of Nissa enters the battlefield,

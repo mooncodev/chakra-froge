@@ -6,9 +6,9 @@ import {
   Text, Textarea,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import {  S,  } from '../../app/bits/UtilityTags.js';
-import { Pond, PondHeader } from '../../app/bits/Pond.js';
-import { RadioButtons } from '../../app/bits/RadioCard.js';
+import {  S,  } from '../../common/UtilityTags.js';
+import { Pond, PondHeader } from '../../common/Pond.js';
+import { RadioButtons } from '../../common/RadioCard.js';
 import axios from 'axios';
 
 const mockCreateEpic = {

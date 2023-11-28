@@ -1,7 +1,7 @@
-import { Pond } from '../../app/bits/Pond.js';
+import { Pond } from '../../common/Pond.js';
 import { Box, HStack, Image, Text } from '@chakra-ui/react';
 import React from 'react';
-import { S } from '../../app/bits/UtilityTags.js';
+import { S } from '../../common/UtilityTags.js';
 
 //generated with: public/brand/makeLogoDirJSX.js
 const JSON = {
