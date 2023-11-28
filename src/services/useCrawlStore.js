@@ -18,7 +18,7 @@ export const useCrawlStore = create((set,get) => ({
     set({ethPriceTS: epoch.now()});
     console.log('OK updating ethPrice')
     const res = await axios('/api/etherscan?method=ethPrice')
-    if(res.data) {
+    if(res.data && res.data.indexOf('Error')<0) {
       set({ethPrice: res.data});
     }
     return get().ethPrice
